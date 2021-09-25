@@ -1,0 +1,20 @@
+@prefix : <http://Assignment2b.org/entity#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix link: <http://Assignment2b.org/link#>.
+
+:Class01
+    link:inclues :Sensor029;
+    link:inclues :Computer101.
+
+:Computer101
+    link:hasOwner :User10A.
+
+:User10A
+    link:hasName "Pedro".
+
+:Sensor029  
+    link:hasMeasurement :Measurement8401.
+
+:Measurement8401  
+    link:atTime "2010-06-12T12:00:12"^^xsd:dateTime;
+    link:hasTemperature 29.

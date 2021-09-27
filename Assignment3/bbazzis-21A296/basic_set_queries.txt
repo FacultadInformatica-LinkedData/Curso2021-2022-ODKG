@@ -1,0 +1,102 @@
+1. 
+select distinct ?class 
+where{
+?class rdf:type rdfs:Class
+}
+
+2.
+select distinct ?sc
+where{
+?sc rdfs:subClassOf <http://GP-onto.fi.upm.es/exercise2#Establishment>
+}
+
+3.
+select distinct ?city
+where{
+?city rdf:type <https://GP-onto.fi.upm.es/exercise2#City> 
+}
+
+4.
+select distinct ?number_citizens
+where{
+<http://GP-onto.fi.upm.es/exercise2#Santiago_de_Compostela> <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?number_citizens
+}
+
+5.
+select distinct ?cities ?number_citizens
+where{
+?cities <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?number_citizens
+}
+
+6.
+select distinct ?cities ?number_citizens
+where{
+?cities <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?number_citizens
+}
+order by asc(?cities)
+
+7.
+select distinct ?locality ?number_citizens
+where{
+?locality rdf:type/rdfs:subClassOf* <http://GP-onto.fi.upm.es/exercise2#Locality> .
+optional{
+?locality <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?number_citizens
+}
+}
+
+8.
+select distinct ?cities ?number_citizens
+where{
+?cities <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?number_citizens
+filter(xsd:integer(?number_citizens) > " 200000 "^^<http://www.w3.org/2001/XMLSchema#integer>)
+}
+
+9.
+select distinct ?locality ?province ?street ?number
+where{
+<http://GP-onto.fi.upm.es/exercise2#Pazo_Breogan> <http://GP-onto.fi.upm.es/exercise2#isPlacedIn> ?locality.
+?locality <http://GP-onto.fi.upm.es/exercise2#inProvince> ?province.
+<http://GP-onto.fi.upm.es/exercise2#Pazo_Breogan> <http://GP-onto.fi.upm.es/exercise2#hasAddress> ?address.
+?address <http://GP-onto.fi.upm.es/exercise2#hasStreet> ?street.
+?address <http://GP-onto.fi.upm.es/exercise2#hasNumber> ?number.
+}
+
+10.
+select distinct ?sc
+where{
+?sc rdfs:subClassOf* <http://GP-onto.fi.upm.es/exercise2#Location>.
+}
+
+11.
+select distinct ?locality
+where{
+?locality rdf:type/rdfs:subClassOf* <http://GP-onto.fi.upm.es/exercise2#Locality> .
+}
+
+12.
+describe ?res
+where{
+?res rdfs:label "Madrid"
+}
+
+13.
+construct{
+?place <http://GP-onto.fi.upm.es/exercise2#isIn> ?province
+}
+where{
+?place rdf:type/rdfs:subClassOf* <http://GP-onto.fi.upm.es/exercise2#TouristicLocation> .
+optional{
+?place <http://GP-onto.fi.upm.es/exercise2#isPlacedIn> ?locality .
+?locality <http://GP-onto.fi.upm.es/exercise2#inProvince> ?province
+}
+}
+
+14.
+ask{
+?town rdf:type <http://GP-onto.fi.upm.es/exercise2#Town> 
+}
+
+15.
+ASK { 
+?chapel rdf:type <http://GP-onto.fi.upm.es/exercise2#Chapel>
+}

@@ -1,0 +1,16 @@
+@prefix : <https://www.odkg.upm.es/entities#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix props: <https://www.odkg.upm.es/properties#> .
+
+:Class01 props:includes :Sensor029 ;
+	props:includes :Computer101 .
+		 
+:Sensor029 props:hasMeasurement :Measurement8401 .
+
+:Computer101 props:hasOwner :User10A .
+
+:Measurement8401 props:hasTemperature 29 ;	
+	props:atTime "2010-06-12T12:00:12"^^xsd:dateTime .
+				 
+
+:User10A props:hasName "Pedro" .

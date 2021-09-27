@@ -1,0 +1,80 @@
+1. Get all the properties that can be applied to instances of
+the Politician class
+(<https://www.wikidata.org/wiki/Q82955>)
+
+SELECT DISTINCT ?instance ?instance_label ?property
+WHERE {
+?instance wdt:P31 wd:Q82955.
+?instance ?property ?value.
+OPTIONAL{
+?instance rdfs:label ?instance_label.
+filter(lang(?instance_label) = 'en')
+}
+} 
+
+RESULT: https://w.wiki/47pM
+
+2. Get all the properties, except wdt:P31 and p:P31, that can be applied
+to instances of the Politician class
+
+SELECT DISTINCT ?instance ?instance_label ?property
+WHERE {
+?instance wdt:P31 wd:Q82955.
+?instance ?property ?value.
+OPTIONAL{
+?instance rdfs:label ?instance_label.
+filter(lang(?instance_label) = 'en')
+}
+filter(?property != wdt:P31 && ?property != p:P31)
+}
+
+RESULT: https://w.wiki/47pX  
+
+3. Which different values exist for the properties, except
+wdt:P31 and p:P31, of the instances of the Politician class?
+
+SELECT DISTINCT ?property ?value
+WHERE {
+?politician_instance wdt:P31 wd:Q82955.
+?politician_instance ?property ?politician_value.
+?x ?property ?value
+OPTIONAL{
+?value rdfs:label ?value_label.
+filter(lang(?value_label) = 'en')
+}
+filter(?property != wdt:P31 && ?property != p:P31)
+}
+LIMIT 1000
+
+RESULT: https://w.wiki/47zA 
+
+4. For each of the properties, except wdt:P31 and p:P31, that can be
+applied to instances of the Politician class, which different
+values do they take in those instances?
+
+SELECT DISTINCT ?property ?value ?value_label
+WHERE {
+?instance wdt:P31 wd:Q82955.
+?instance ?property ?value.
+OPTIONAL{
+?value rdfs:label ?value_label.
+filter(lang(?value_label) = 'en')
+}
+filter(?property != wdt:P31 && ?property != p:P31)
+}
+
+RESULT: https://w.wiki/47pd 
+
+5. For each of the properties, except wdt:P31 and p:P31, that can be
+applied to instances of the Politician class, how many
+distinct values do they take in those instances?
+
+SELECT DISTINCT ?property (COUNT(?value) AS ?val_per_prop)
+WHERE {
+?instance wdt:P31 wd:Q82955.
+?instance ?property ?value
+filter(?property != wdt:P31 && ?property != p:P31)
+}
+GROUP BY ?property
+
+RESULT: https://w.wiki/47pr

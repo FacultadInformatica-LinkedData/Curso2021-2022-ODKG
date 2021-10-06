@@ -1,0 +1,73 @@
+1. Get all the properties that can be applied to instances of the Politician class (<http://dbpedia.org/ontology/Politician>)
+
+PREFIX vocab: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?props
+WHERE{
+?inst a vocab:Politician .
+?inst ?props ?value .
+}
+
+Result: https://dbpedia.org/snorql/?query=PREFIX+vocab%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fprops%0D%0AWHERE%7B%0D%0A%3Finst+a+vocab%3APolitician+.%0D%0A%3Finst+%3Fprops+%3Fvalue+.%0D%0A%7D
+
+2. Get all the properties, except rdf:type, that can be applied to instances of the Politician
+
+PREFIX vocab: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?props
+WHERE{
+?inst a vocab:Politician .
+?inst ?props ?value .
+FILTER(?props!=rdf:type) .
+}
+
+Result: https://dbpedia.org/snorql/?query=PREFIX+vocab%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fprops%0D%0AWHERE%7B%0D%0A%3Finst+a+vocab%3APolitician+.%0D%0A%3Finst+%3Fprops+%3Fvalue+.%0D%0AFILTER%28%3Fprops%21%3Drdf%3Atype%29%0D%0A%7D
+
+3. Which different values exist for the properties, except rdf:type, of the instances of the Politician class?
+
+PREFIX vocab: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?value
+WHERE{
+?inst a vocab:Politician .
+?inst ?props ?value .
+FILTER(?props!=rdf:type) .
+}
+
+Result: https://dbpedia.org/snorql/?query=PREFIX+vocab%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fvalue%0D%0AWHERE%7B%0D%0A%3Finst+a+vocab%3APolitician+.%0D%0A%3Finst+%3Fprops+%3Fvalue+.%0D%0AFILTER%28%3Fprops%21%3Drdf%3Atype%29%0D%0A%7D
+
+4. For each of the properties, except rdf:type, that can be applied to instances of the Politician class, which different values do they take in those instances?
+
+PREFIX vocab: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?props ?value
+WHERE{
+?inst a vocab:Politician .
+?inst ?props ?value .
+FILTER(?props!=rdf:type) .
+}
+
+Result: https://dbpedia.org/snorql/?query=PREFIX+vocab%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fprops+%3Fvalue%0D%0AWHERE%7B%0D%0A%3Finst+a+vocab%3APolitician+.%0D%0A%3Finst+%3Fprops+%3Fvalue+.%0D%0AFILTER%28%3Fprops%21%3Drdf%3Atype%29%0D%0A%7D
+
+5. For each of the properties, except rdf:type, that can be applied to instances of the Politician class, how many distinct values do they take in those instances?
+
+PREFIX vocab: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?props COUNT(DISTINCT ?value)
+WHERE{
+?inst a vocab:Politician .
+?inst ?props ?value .
+FILTER(?props!=rdf:type) .
+}
+
+Result: https://dbpedia.org/snorql/?query=PREFIX+vocab%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Fprops+COUNT%28DISTINCT+%3Fvalue%29%0D%0AWHERE%7B%0D%0A%3Finst+a+vocab%3APolitician+.%0D%0A%3Finst+%3Fprops+%3Fvalue+.%0D%0AFILTER%28%3Fprops%21%3Drdf%3Atype%29+.%0D%0A%7D
+
+
+
+
+
+
+
+
+
+

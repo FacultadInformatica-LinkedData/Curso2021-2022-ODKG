@@ -1,0 +1,48 @@
+# 1. Get all the properties that can be applied to instances of the Politician class (<http://dbpedia.org/ontology/Politician>)
+###################################################
+SELECT DISTINCT ?props
+WHERE
+{
+	?politician a <http://dbpedia.org/ontology/Politician> .
+	?politician ?props ?value
+}
+
+# 2. Get all the properties, except rdf:type, that can be applied to instances of the Politician class.
+###################################################
+SELECT DISTINCT ?props
+WHERE
+{
+	?politician a <http://dbpedia.org/ontology/Politician> .
+	?politician ?props ?value
+	FILTER (?props != rdf:type)
+}
+
+# 3. Which different values exist for the properties, except rdf:type, of the instances of the Politician class?
+###################################################
+SELECT DISTINCT ?value
+WHERE
+{
+	?politician a <http://dbpedia.org/ontology/Politician> .
+	?politician ?props ?value
+	FILTER (?props != rdf:type)
+}
+
+# 4. For each of the properties, except rdf:type, that can be applied to instances of the Politician class, which different values do they take in those instances?
+###################################################
+SELECT DISTINCT ?politician ?value
+WHERE
+{
+	?politician a <http://dbpedia.org/ontology/Politician> .
+	?politician ?props ?value
+	FILTER (?props != rdf:type)
+}
+
+# 5. For each of the properties, except rdf:type, that can be applied to instances of the Politician class, how many distinct values do they take in those instances?
+###################################################
+SELECT DISTINCT ?politician COUNT(DISTINCT ?value)
+WHERE
+{
+	?politician a <http://dbpedia.org/ontology/Politician> .
+	?politician ?props ?value
+	FILTER (?props != rdf:type)
+}

@@ -1,0 +1,12 @@
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+CONSTRUCT { 
+ ?place vocab:isIn ?province
+}
+WHERE {
+ ?place rdf:type/rdfs:subClassOf* vocab:TouristicLocation.
+ OPTIONAL{
+  ?place vocab:isPlacedIn ?locality.
+  ?locality vocab:inProvince ?province.
+ }
+}

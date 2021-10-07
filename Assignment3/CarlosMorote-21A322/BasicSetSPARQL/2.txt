@@ -1,0 +1,6 @@
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+ ?class rdfs:subClassOf vocab:Establishment
+}

@@ -1,0 +1,95 @@
+1)
+SELECT DISTINCT ?type
+WHERE{
+  ?s a ?type.
+}
+
+2)
+SELECT ?subclasses
+WHERE{
+  ?subclasses rdfs:subClassOf :Establishment.
+}
+
+3)
+SELECT ?instancies
+WHERE{
+  ?instancies rdf:type :city.
+}
+
+4)
+SELECT ?inhabitants
+WHERE{
+  :SantiagoCompostela :hasInhabitantNumber ?inhabitants.
+}
+
+5)
+SELECT ?inhabitants
+WHERE{
+  {:SantiagoCompostela :hasInhabitantNumber ?inhabitants.} UNIONS
+  {:Arzua :hasInhabitantNumber ?inhabitants.}
+}
+
+6)
+SELECT ?places ?inhabitants
+WHERE{
+  ?places :hasInhabitantNumber ?inhabitants.
+}
+ORDER BY ASC(?places)
+
+7)
+SELECT ?instancies ?inhabitants
+WHERE{
+  {?aux rdfs:subClassOf :Locality .
+  ?instancies rdf:type ?aux .
+  OPTIONAL {?instancies :hasInhabitantNumber ?inhabitant}
+}
+
+8)
+SELECT ?places
+WHERE{
+  ?places :hasInhabitantNumber ?inhabitants .
+  FILTER (xsd:integer(?inhabitants) > 200.000^^xsd:integer).
+}
+
+9)
+SELECT ?street ?number ?locality ?province
+WHERE{
+  :Pazo_Breogan :isPlaceIn ?locality; :hasAddress ?PostalAddress .
+  ?locality :inProvince ?province .
+  ?PostalAddress :hasStreet :street .
+  ?PostalAddress :hasNumber ?number .
+}
+
+10)
+SELECT ?subclasses
+WHERE{
+  ?subclasses rdfs:subClassOf :Location .
+}
+
+11)
+SELECT ?instancies
+WHERE{
+  ?aux rdfs:subClassOf :Locality .
+  ?instancies rdf:type ?aux .
+}
+
+12)
+DESCRIBE ?resource
+WHERE{
+  ?resource rdfs:label "Madrid" .
+}
+
+13)
+CONSTRUCT{ ?places :isln ?provincies}
+WHERE{
+  ?aux rdfs:subClassOf :TouristicLocation .
+  ?places rdf:type ?aux .
+  ?places :isPlaceIn ?locality .
+  ?locality :inProvince ?provinces .
+}
+
+14)
+ASK{?x rdf:type :Town}
+
+15)
+ASK{?x rdf:type :chapel}

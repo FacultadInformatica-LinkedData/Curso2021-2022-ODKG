@@ -1,0 +1,27 @@
+@base <http://www.w3.org/2002/07/owl#> .
+
+### http://www.ontogrid.net/StickyNote#eventDate 
+:eventDate rdf:type owl:AnnotationProperty .
+
+###  http://www.ontogrid.net/StickyNote#involves
+:involves rdf:type owl:AnnotationProperty .
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type ns1:Datatype .
+
+:event4 :eventDate "2006-05-16"^^xsd:date ;
+        
+        :involves :OscarCorcho .
+
+
+
+:event3 :eventDate "2006-05-15"^^xsd:date ;
+        
+        :involves :CaroleGoble ,
+                  :PinarAlper .
+
+
+
+:event5 :eventDate "2006-05-15"^^xsd:date ;
+        
+        :involves :CaroleGoble .

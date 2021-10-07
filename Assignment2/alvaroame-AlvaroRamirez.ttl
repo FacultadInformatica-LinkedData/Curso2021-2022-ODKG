@@ -1,0 +1,14 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <http://schema.org/> .
+@prefix : <http://odkg.02/#> .
+
+:Class01 dc:includes :Sensor029;
+   dc:includes :Computer101.
+:Sensor029 dc:hasMeasurement :Measurement8401.
+:Computer101 dc:hasOwner :User10A.
+:Measurement8401 rdfs:hasTemperature 29;
+   rdfs:atTime "2010-06-12T12:00:12"^^xsd:dateTime.
+:User10A dc:hasName "Pedro".

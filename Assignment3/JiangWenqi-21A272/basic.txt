@@ -1,0 +1,153 @@
+## The endpoint that you can use for this exercise is: http://sandbox.linkeddata.es/sparql 
+## and the graph is http://sandbox.linkeddata.es/Grado_20122013
+
+# 1. Get all the classes
+SELECT DISTINCT ?class
+WHERE {
+	?class rdf:type rdfs:Class
+} 
+
+
+# 2. Get all the subclasses of the class Establishment
+PREFIX res: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT DISTINCT ?subclass
+WHERE {
+	?subclass rdfs:subClassOf  res:Establishment
+}
+
+# 3. Get all instances of the class City
+PREFIX res: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT DISTINCT ?cities
+WHERE {
+	?cities rdf:type res:City
+} 
+
+# 4. Get the number of inhabitants of Santiago de Compostela
+PREFIX res: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT DISTINCT ?citizen_number
+WHERE {
+	res:Santiago_de_Compostela res:hasInhabitantNumber ?citizen_number
+} 
+
+# 5. Get the number of inhabitants of Santiago de Compostela and Arzua
+PREFIX res: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT ?city_name ?citizen_number
+WHERE {
+	?city_name res:hasInhabitantNumber ?citizen_number .
+} 
+
+# 6. Get all places, together with the number of inhabitants, ordered by the place name (ascending)
+PREFIX res: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT ?city_name ?citizen_number
+WHERE {
+	?city_name res:hasInhabitantNumber ?citizen_number .
+} 
+ORDER BY ASC(?city_name)
+
+# 7. Get all instances of  Locality together with their number of inhabitants (if this information exists)
+PREFIX res: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT DISTINCT ?city_name ?citizen_number
+WHERE {
+   ?city_name rdf:type/rdfs:subClassOf* res:Locality.
+   OPTIONAL{
+       ?city_name res:hasInhabitantNumber ?citizen_number
+   }
+} 
+
+# 8. Get all places with more than 200.000 inhabitants
+PREFIX res: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT ?city_name ?citizen_number
+WHERE {
+    ?city_name res:hasInhabitantNumber ?citizen_number .
+    FILTER(?citizen_number > 200000)
+} 
+
+# 9. Get postal address data for Pazo_Breogan (street, number, locality, province)
+
+# 10. Get all subclasses of class Location
+# 11. Get all instances of class Locality
+# 12. Describe the resource with rdfs:label "Madrid”
+# 13. Construct a graph that relates directly all touristic places with their provinces, using a new property called ”isIn”
+# 14. Check whether there is any instance of Town
+
+
+
+9. Get postal data of Pazo_Breogan (street, number, locality, province)
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT DISTINCT ?palacio ?street ?number ?locality ?province 
+WHERE {
+vocab:Pazo_Breogan rdfs:label ?palacio.
+vocab:Pazo_Breogan vocab:isPlacedIn ?locality.
+?locality vocab:inProvince ?province.
+vocab:Pazo_Breogan vocab:hasAddress ?address.
+?address vocab:hasStreet ?street.
+?address vocab:hasNumber ?number.
+} 
+
+RESULT: http://sandbox.linkeddata.es/sparql?default-graph-uri=http%3A%2F%2Fsandbox.linkeddata.es%2FGrado_20122013&query=PREFIX+vocab%3A+%3Chttp%3A%2F%2FGP-onto.fi.upm.es%2Fexercise2%23%3E%0D%0ASELECT+DISTINCT+%3Fpalacio+%3Fstreet+%3Fnumber+%3Flocality+%3Fprovince+%0D%0AWHERE+%7B%0D%0Avocab%3APazo_Breogan+rdfs%3Alabel+%3Fpalacio.%0D%0Avocab%3APazo_Breogan+vocab%3AisPlacedIn+%3Flocality.%0D%0A%3Flocality+vocab%3AinProvince+%3Fprovince.%0D%0Avocab%3APazo_Breogan+vocab%3AhasAddress+%3Faddress.%0D%0A%3Faddress+vocab%3AhasStreet+%3Fstreet.%0D%0A%3Faddress+vocab%3AhasNumber+%3Fnumber.%0D%0A%7D+%0D%0A&format=text%2Fhtml&timeout=0&debug=on
+
+10. Get the subclasses of class Location
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT DISTINCT ?subclasses
+WHERE {
+?subclasses rdfs:subClassOf* vocab:Location.
+}
+
+RESULT: http://sandbox.linkeddata.es/sparql?default-graph-uri=http%3A%2F%2Fsandbox.linkeddata.es%2FGrado_20122013&query=PREFIX+vocab%3A+%3Chttp%3A%2F%2FGP-onto.fi.upm.es%2Fexercise2%23%3E%0D%0ASELECT+DISTINCT+%3Fsubclasses%0D%0AWHERE+%7B%0D%0A%3Fsubclasses+rdfs%3AsubClassOf*+vocab%3ALocation.%0D%0A%7D+%0D%0A&format=text%2Fhtml&timeout=0&debug=on
+
+11. Get the instances of class Locality
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT DISTINCT ?localities
+WHERE {
+?localities rdf:type/rdfs:subClassOf* vocab:Locality.
+} 
+
+RESULT: http://sandbox.linkeddata.es/sparql?default-graph-uri=http%3A%2F%2Fsandbox.linkeddata.es%2FGrado_20122013&query=PREFIX+vocab%3A+%3Chttp%3A%2F%2FGP-onto.fi.upm.es%2Fexercise2%23%3E%0D%0ASELECT+DISTINCT+%3Flocalities%0D%0AWHERE+%7B%0D%0A%3Flocalities+rdf%3Atype%2Frdfs%3AsubClassOf*+vocab%3ALocality.%0D%0A%7D+%0D%0A&format=text%2Fhtml&timeout=0&debug=on
+
+12. Describe the resource with rdfs:label "Madrid"
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+DESCRIBE ?resource
+WHERE { 
+?resource rdfs:label "Madrid" 
+}
+
+RESULT: http://sandbox.linkeddata.es/sparql?default-graph-uri=http%3A%2F%2Fsandbox.linkeddata.es%2FGrado_20122013&query=PREFIX+vocab%3A+%3Chttp%3A%2F%2FGP-onto.fi.upm.es%2Fexercise2%23%3E%0D%0ADESCRIBE+%3Fresource%0D%0AWHERE++++%7B+%0D%0A%3Fresource+rdfs%3Alabel+%22Madrid%22+%0D%0A%7D%0D%0A&format=text%2Fturtle&timeout=0&debug=on
+
+13. Construct the RDF(S) graph that directly relates all the touristic places
+with their respective provinces, using a new property called ”isIn”
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+CONSTRUCT { 
+?touristic_place vocab:isIn ?province
+}
+WHERE {
+?touristic_place rdf:type/rdfs:subClassOf* vocab:TouristicLocation.
+OPTIONAL{
+?touristic_place vocab:isPlacedIn ?locality.
+?locality vocab:inProvince ?province
+}
+}
+
+RESULT: http://sandbox.linkeddata.es/sparql?default-graph-uri=&query=PREFIX+vocab%3A+%3Chttp%3A%2F%2FGP-onto.fi.upm.es%2Fexercise2%23%3E%0D%0ACONSTRUCT+%7B+%0D%0A%3Ftouristic_place+vocab%3AisIn+%3Fprovince%0D%0A%7D%0D%0AWHERE%7B%0D%0A%3Ftouristic_place+rdf%3Atype%2Frdfs%3AsubClassOf*+vocab%3ATouristicLocation.%0D%0AOPTIONAL%7B%0D%0A%3Ftouristic_place+vocab%3AisPlacedIn+%3Flocality.%0D%0A%3Flocality+vocab%3AinProvince+%3Fprovince%0D%0A%7D%0D%0A%7D&format=text%2Fturtle&timeout=0&debug=on
+
+14. Ask if there is some instance of Town
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+ASK { 
+?town rdf:type vocab:Town
+}
+
+RESULT: http://sandbox.linkeddata.es/sparql?default-graph-uri=&query=PREFIX+vocab%3A+%3Chttp%3A%2F%2FGP-onto.fi.upm.es%2Fexercise2%23%3E%0D%0AASK+%7B+%0D%0A%3Ftown+rdf%3Atype+vocab%3ATown%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on
+
+15. Ask if there is some instance of Chapel
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+ASK { 
+?chapel rdf:type vocab:Chapel
+}
+
+RESULT: http://sandbox.linkeddata.es/sparql?default-graph-uri=&query=PREFIX+vocab%3A+%3Chttp%3A%2F%2FGP-onto.fi.upm.es%2Fexercise2%23%3E%0D%0AASK+%7B+%0D%0A%3Fchapel+rdf%3Atype+vocab%3AChapel%0D%0A%7D&format=text%2Fhtml&timeout=0&debug=on

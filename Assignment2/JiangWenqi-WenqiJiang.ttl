@@ -1,0 +1,22 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix link: <http://assignment2.org/link#>.
+@prefix : <http://example.org/properties/#>.
+
+:Class6305
+    link:includes :Wenqi;
+    link:includes :Laptop;
+    link:includes :Projector.
+
+:Wenqi
+    link:hasSurname "Jiang".
+
+:Laptop
+    link:hasOwner :Wenqi;
+    link:output :Projector;
+    link:battery "80%".
+
+:Projector
+    link:showTime :TimeScreen.
+
+:TimeScreen
+   link:atTime "2021-09-30 12:00:12"^^xsd:dateTime.

@@ -1,0 +1,161 @@
+Q1
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select distinct *
+    where {
+    ?type rdf:type rdfs:Class
+    } LIMIT 100
+
+Q2
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select distinct *
+    where {
+    ?subclass rdfs:subClassOf p:Establishment
+    } LIMIT 100
+
+Q3
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select distinct *
+    where {
+    ?instance rdf:type p:City
+    } LIMIT 100
+
+Q4
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select distinct ?val
+    where {
+    ?city rdfs:label "Santiago_de_Compostela" .
+    ?city p:hasInhabitantNumber ?val
+
+    } LIMIT 100
+
+Q5
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select distinct ?val
+    where {
+    ?city rdfs:label ?cityName .
+    ?city p:hasInhabitantNumber ?val .
+    FILTER (?cityName IN ("Santiago_de_Compostela", "Arzua") )
+
+    } LIMIT 100
+
+    TOTAL:
+        PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+        select SUM(xsd:integer (?val))
+        where {
+        ?city rdfs:label ?cityName .
+        ?city p:hasInhabitantNumber ?val .
+        FILTER (?cityName IN ("Santiago_de_Compostela", "Arzua") )
+
+        } LIMIT 100
+
+Q6
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select DISTINCT ?name xsd:integer(?val)
+    where {
+    {
+    {?place rdf:type p:City}
+    UNION
+    {?place rdf:type p:Town}
+    UNION
+    {?place rdf:type p:Village}
+    }.
+    ?place p:hasInhabitantNumber ?val.
+    ?place rdfs:label ?name
+
+    } ORDER BY ASC(xsd:integer(?val))
+
+
+Q7
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select ?place ?num
+    where {
+    ?thing rdfs:subClassOf p:Locality .
+    ?place rdf:type ?thing .
+    OPTIONAL{?place p:hasInhabitantNumber ?num}
+
+    }
+
+Q8
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select ?place ?num
+    where {
+    ?thing rdfs:subClassOf p:Locality .
+    ?place rdf:type ?thing .
+    OPTIONAL{?place p:hasInhabitantNumber ?num} .
+    FILTER (xsd:integer(?num) >200000)
+
+    }
+
+Q9
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select ?place ?localityName ?province ?street ?number
+    where {
+    ?place rdfs:label "Pazo_Breogan" .
+    ?place p:hasAddress ?postalAddress .
+    ?postalAddress p:hasStreet ?street .
+    ?postalAddress p:hasNumber ?number .
+    ?place p:isPlacedIn ?locality .
+    ?locality p:inProvince ?province .
+    ?locality rdfs:label ?localityName
+    }
+
+Q10
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select *
+    where {
+
+    ?sub rdfs:subClassOf p:Location
+    }
+
+Q11
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    select distinct *
+    where {
+    ?subClass rdfs:subClassOf p:Locality.
+    ?instance rdf:type ?subClass
+    } LIMIT 100
+Q12
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    DESCRIBE *
+    where {
+    ?entity rdfs:label "Madrid"
+    } LIMIT 100
+    
+Q13
+    PREFIX p: <http://GP-onto.fi.upm.es/exercise2#>
+
+    CONSTRUCT  {
+        ?places p:isIn ?province
+    }
+    WHERE {
+        ?places rdf:type/rdfs:subClassOf* p:TouristicLocation.
+        OPTIONAL{
+            ?places p:isPlacedIn ?locality.
+            ?locality p:inProvince ?province
+        }
+    } LIMIT 100
+
+Q14
+ASK
+where {
+?instance rdf:type p:Town 
+}
+
+Q15
+ASK
+where {
+?instance rdf:type p:Chapel 
+}

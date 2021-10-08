@@ -1,0 +1,10 @@
+PREFIX vocab: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?property
+WHERE {
+ {
+  ?instance a vocab:Politician.
+  ?instance ?property ?_.
+  FILTER(?property != rdf:type).
+ }
+}

@@ -1,0 +1,6 @@
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE {
+ ?town_subClass rdf:type/rdfs:subClassOf* vocab:Town.
+}

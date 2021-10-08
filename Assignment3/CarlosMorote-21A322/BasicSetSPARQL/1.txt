@@ -1,0 +1,4 @@
+SELECT *
+WHERE{
+ ?class a rdfs:Class
+}

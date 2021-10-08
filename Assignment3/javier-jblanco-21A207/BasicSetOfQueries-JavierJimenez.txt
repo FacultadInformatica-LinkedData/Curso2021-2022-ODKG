@@ -1,0 +1,88 @@
+Q1. 
+SELECT ?c 
+WHERE{
+?c rdf:type rdfs:Class
+} ORDER BY ASC(?c)
+
+Q2.
+SELECT ?est 
+WHERE{
+?est rdfs:subClassOf <http://GP-onto.fi.upm.es/exercise2#Establishment>
+} ORDER BY ASC(?est)
+
+Q3.
+SELECT ?city
+WHERE{
+?city rdf:type <http://GP-onto.fi.upm.es/exercise2#City> 
+} ORDER BY ASC(?city)
+
+Q4.
+SELECT ?InhabitantN
+WHERE{
+<http://GP-onto.fi.upm.es/exercise2#Santiago_de_Compostela> <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?InhabitantN
+} 
+
+Q5.
+SELECT ?city ?InhabitantN
+WHERE{
+#?city rdf:type <http://GP-onto.fi.upm.es/exercise2#City>. #This would exclude Arzua, which is not catalogued as a city
+?city <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?InhabitantN.
+} ORDER BY ASC(?InhabitantN) #Other cities don't have their population numbers in the graph
+
+Q6.
+SELECT ?places ?InhabitantN
+WHERE{
+?places <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?InhabitantN
+}
+ORDER BY ASC(?places)
+
+Q7.
+SELECT ?locality ?InhabitantN
+WHERE{
+?locality rdf:type/rdfs:subClassOf* <http://GP-onto.fi.upm.es/exercise2#Locality> . #* is used to show all subsubclasses
+OPTIONAL{
+?locality <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?InhabitantN
+}
+}
+
+Q8.
+SELECT ?city ?InhabitantN
+WHERE{
+?city <http://GP-onto.fi.upm.es/exercise2#hasInhabitantNumber> ?InhabitantN
+filter(xsd:integer(?InhabitantN) > " 200000 "^^<http://www.w3.org/2001/XMLSchema#integer>)
+}
+
+Q9.
+SELECT ?locality ?province ?address ?street ?number
+WHERE{
+<http://GP-onto.fi.upm.es/exercise2#Pazo_Breogan> <http://GP-onto.fi.upm.es/exercise2#isPlacedIn> ?locality.
+?locality <http://GP-onto.fi.upm.es/exercise2#inProvince> ?province.
+<http://GP-onto.fi.upm.es/exercise2#Pazo_Breogan> <http://GP-onto.fi.upm.es/exercise2#hasAddress> ?address.
+?address <http://GP-onto.fi.upm.es/exercise2#hasStreet> ?street.
+?address <http://GP-onto.fi.upm.es/exercise2#hasNumber> ?number.
+}
+
+Q10.
+SELECT ?location
+WHERE{
+?location rdfs:subClassOf* <http://GP-onto.fi.upm.es/exercise2#Location>. #* is used to show all subsubclasses
+} ORDER BY (?location)
+
+Q11.
+SELECT ?locality
+WHERE{
+?locality rdf:type/rdfs:subClassOf* <http://GP-onto.fi.upm.es/exercise2#Locality> .
+}
+
+Q12.
+DESCRIBE ?Madrid
+WHERE{
+?Madrid rdfs:label "Madrid"
+}
+
+
+Q14.
+SELECT ?town 
+WHERE{
+?town rdf:type <http://GP-onto.fi.upm.es/exercise2#Town> 
+}

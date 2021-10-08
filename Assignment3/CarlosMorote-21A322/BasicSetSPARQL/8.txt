@@ -1,0 +1,8 @@
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+PREFIX types: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT *
+WHERE{
+ ?location vocab:hasInhabitantNumber ?value.
+ FILTER(types:integer(?value) > "200000"^^types:integer)
+}

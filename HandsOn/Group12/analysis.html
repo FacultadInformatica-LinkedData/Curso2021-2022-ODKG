@@ -1,0 +1,346 @@
+<html>
+
+<body>
+  <h1>Data Analysis</h1>
+
+  <h2>Dataset analysis</h2>
+
+  <ul>
+    <li>1001 rows</li>
+    <li>30 attributes</li>
+  </ul>
+
+  <b>Attribute description:</b>
+  <style type="text/css">
+    .tg {
+      border: none;
+      border-collapse: collapse;
+      border-color: #ccc;
+      border-spacing: 0;
+    }
+
+    .tg td {
+      background-color: #fff;
+      border-color: #ccc;
+      border-style: solid;
+      border-width: 0px;
+      color: #333;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      overflow: hidden;
+      padding: 10px 5px;
+      word-break: normal;
+    }
+
+    .tg th {
+      background-color: #f0f0f0;
+      border-color: #ccc;
+      border-style: solid;
+      border-width: 0px;
+      color: #333;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      overflow: hidden;
+      padding: 10px 5px;
+      word-break: normal;
+    }
+
+    .tg .tg-grbq {
+      background-color: #313131;
+      color: #ffffff;
+      text-align: left;
+      vertical-align: top
+    }
+
+    .tg .tg-buh4 {
+      background-color: #f9f9f9;
+      text-align: left;
+      vertical-align: top
+    }
+
+    .tg .tg-0lax {
+      text-align: left;
+      vertical-align: top
+    }
+  </style>
+  <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-grbq">Column</th>
+        <th class="tg-grbq">Type</th>
+        <th class="tg-grbq">Comments/Range (rounded)</th>
+        <th class="tg-grbq">Problems</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-buh4">ID-EVENTO</td>
+        <td class="tg-buh4">int</td>
+        <td class="tg-buh4">Unique<br>Not empty values<br>10,200,000 - 11,500,000</td>
+        <td class="tg-buh4"></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">TITULO</td>
+        <td class="tg-0lax">string</td>
+        <td class="tg-0lax">Not unique<br>Not empty values<br></td>
+        <td class="tg-0lax">The strings has not clear format</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">PRECIO</td>
+        <td class="tg-buh4">string</td>
+        <td class="tg-buh4">Not unique<br>Empty values</td>
+        <td class="tg-buh4">There are pleanty of missing values<br>The type should be int but string has no clear format
+        </td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">GRATUITO</td>
+        <td class="tg-0lax">int</td>
+        <td class="tg-0lax">0 --&gt; False<br>1 --&gt; True<br>Not unique<br>Not empty values</td>
+        <td class="tg-0lax"></td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">LARGA-DURACION</td>
+        <td class="tg-buh4">int</td>
+        <td class="tg-buh4">0 --&gt; False<br>1 --&gt; True<br>Not unique<br>Not empty value</td>
+        <td class="tg-buh4"></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">DIAS-SEMANA</td>
+        <td class="tg-0lax">string</td>
+        <td class="tg-0lax">Not unique<br>Empty values</td>
+        <td class="tg-0lax">List (as string) that indicates the week days where the show is performed</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">DIAS-EXLUSIVOS</td>
+        <td class="tg-buh4">string</td>
+        <td class="tg-buh4">Not unique<br>Empty values</td>
+        <td class="tg-buh4">List (as string) of dates</td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">FECHA</td>
+        <td class="tg-0lax">date</td>
+        <td class="tg-0lax">Not unique<br>Not empty values<br>Range: January 2022 - February 2018</td>
+        <td class="tg-0lax"></td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">FECHA-FIN</td>
+        <td class="tg-buh4">date</td>
+        <td class="tg-buh4">Not unique<br>Not empty values<br>Range: January 2022 - February 2018</td>
+        <td class="tg-buh4">The hour is always 23:59</td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">HORA</td>
+        <td class="tg-0lax">date</td>
+        <td class="tg-0lax">Not unique<br>Empty values<br></td>
+        <td class="tg-0lax">24 hour format</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">DESCRIPTION</td>
+        <td class="tg-buh4">string</td>
+        <td class="tg-buh4">Not unique<br>Empty values</td>
+        <td class="tg-buh4">Raw text</td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">CONTENT-URL</td>
+        <td class="tg-0lax">string</td>
+        <td class="tg-0lax">Not unique<br>Not empty values</td>
+        <td class="tg-0lax">url which locates the source</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">TITULO-ACTIVIDAD</td>
+        <td class="tg-buh4">string</td>
+        <td class="tg-buh4">Not unique<br>Empty values</td>
+        <td class="tg-buh4"></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">URL-ACTIVIDAD</td>
+        <td class="tg-0lax">string</td>
+        <td class="tg-0lax">Not unique<br>Empty value</td>
+        <td class="tg-0lax">url that locates "ACTIVIDAD"</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">URL-INSTALACION</td>
+        <td class="tg-buh4">string</td>
+        <td class="tg-buh4">Not unique<br>Empty value</td>
+        <td class="tg-buh4">url that locates "INSTALACION"</td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">NOMBRE-INSTALACION</td>
+        <td class="tg-0lax">string</td>
+        <td class="tg-0lax">Not unique<br>Empty value</td>
+        <td class="tg-0lax">Location where the event takes place</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">ACCESIBILIDAD.INSTALACION</td>
+        <td class="tg-buh4">double</td>
+        <td class="tg-buh4">Not unique<br>Empty values</td>
+        <td class="tg-buh4">Values found: 0,1, "1,6", 2. What models those numbers is unknown</td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">CLASE-VIAL-INSTALACION</td>
+        <td class="tg-0lax">string</td>
+        <td class="tg-0lax">Not unique <br>Empty values</td>
+        <td class="tg-0lax">Values: CALLE, PLAZA, AVENIDA, PASEO</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">NOMBRE-VIA-INSTALACION</td>
+        <td class="tg-buh4">string</td>
+        <td class="tg-buh4">Not unique<br>Empty value</td>
+        <td class="tg-buh4">Name which correspond of the street</td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">NUM-INSTALACION</td>
+        <td class="tg-0lax">int</td>
+        <td class="tg-0lax">Not unique<br>Empty value</td>
+        <td class="tg-0lax">Nº where the show was carried out</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">DISTRITO-INSTALACION</td>
+        <td class="tg-buh4">string</td>
+        <td class="tg-buh4">Not unique<br>Empty value</td>
+        <td class="tg-buh4"></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">BARRIO-INSTALACION</td>
+        <td class="tg-0lax">string</td>
+        <td class="tg-0lax">Not unique<br>Empty value</td>
+        <td class="tg-0lax"></td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">CODIGO-POSTAL-INSTALACION</td>
+        <td class="tg-buh4">int</td>
+        <td class="tg-buh4">Not unique<br>Empty value</td>
+        <td class="tg-buh4"></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">COORDENADA-X</td>
+        <td class="tg-0lax">int</td>
+        <td class="tg-0lax">Not unique<br>Empty value</td>
+        <td class="tg-0lax"></td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">COORDENADA-Y </td>
+        <td class="tg-buh4">int</td>
+        <td class="tg-buh4">Not unique<br>Empty value</td>
+        <td class="tg-buh4"></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">LATITUD</td>
+        <td class="tg-0lax">double</td>
+        <td class="tg-0lax">Not unique<br>Empty value</td>
+        <td class="tg-0lax"></td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">LONGITUD</td>
+        <td class="tg-buh4">double</td>
+        <td class="tg-buh4">Not unique<br>Empty value</td>
+        <td class="tg-buh4"></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax">TIPO</td>
+        <td class="tg-0lax">string</td>
+        <td class="tg-0lax">Not unique<br>Empty value</td>
+        <td class="tg-0lax">format: /contenido/actividades/{the activity itself}</td>
+      </tr>
+      <tr>
+        <td class="tg-buh4">AUDIENCIA</td>
+        <td class="tg-buh4">string</td>
+        <td class="tg-buh4">Not unique<br>Empty value</td>
+        <td class="tg-buh4">format: /usuario/{kind}<br><br>Many kind of users are allowed</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h2>Licensing of the Data Source Analysis</h2>
+
+  <p>These general terms and conditions permit the reuse of the textual documents and data subject to them for commercial and non-commercial purposes. The reuse of photographs and graphic material is limited, as detailed in the following paragraphs. Reuse is understood as the use of documents held by the Madrid City Council and other agencies and entities attached to it, by individuals or legal entities, for commercial or non-commercial purposes, provided that such use does not constitute a public administrative activity.</p>
+  <p>The editorial content (text) of the Tourist Resources provided in this open data group is not subject to copyright or intellectual property rights and is therefore free to use.</p>
+  <p>It is also authorized to introduce the modifications that are strictly necessary to adapt the contents to the needs of the support and/or means of diffusion in which they are going to be used. Any other modification shall be subject to the prior consent of the Madrid City Council. Notwithstanding the foregoing, the modifications may in no case violate the Organic Law 1/1982 of May 5, 1982, on the civil protection of the right to honor, personal and family privacy, and the self-image of the persons portrayed in the photographs, and neither their image, nor that of the City of Madrid City Council, may be used for purposes or for uses that are pornographic, may not be used for pornographic or illicit purposes or in a fraudulent, usurpatory, libelous, defamatory manner or for the purpose of violating the right to privacy or self-image of any person or to infringe any intellectual or industrial property right of any natural or legal person, especially the moral rights of the author.</p>
+  <p>The authorization granted does not cover any rights and/or faculties not expressly mentioned, as well as, in particular, the intellectual property rights that are managed, licensed and/or invoiced through collective management entities in accordance with the TRLPI, or legislation in force at any given time, and that are accrued on the occasion of the exploitation or use of the contents. These rights must be authorized, licensed and/or paid, as the case may be, through the rights holder or the corresponding collective rights management entity at the expense of the legitimate user who exploits the contents.</p>
+  <p>Source: https://datos.madrid.es/portal/site/egob/menuitem.3efdb29b813ad8241e830cc2a8a409a0/?vgnextoid=748eb054f9edb410VgnVCM1000000b205a0aRCRD&vgnextchannel=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default</p>
+
+  <br>
+
+  <p>Therefore, we will be able to freely make use of the data set as long as we do not breach any of the previously written laws.</p>
+
+  <h2>Resource Naming Strategy</h2>
+  <p>
+    The Web relies on the use of Uniform Resource Identifiers as a single global identification system. Defining a
+    consistent, useable, stable and self-describing Resource Naming Strategy, along with following the best practices
+    proposed by standards contribute to enhancing the quality of Linked Data.
+  </p>
+
+  <p>
+    Of course, finding the optimal naming policy is not a trivial task and has no one size fits all solution. Thus,
+    sometimes one has to follow their instict onto deciding what might suit best to the problem that their are to solve.
+    Of course, we should aim, to our best extent, to try to adhere to the recommendations provided by the reputed
+    institutions in the field.
+  </p>
+
+  <p>
+    In this work, we propose a draft for the resource naming strategy for the dataset chosen for the practical work,
+    which has been defined attending to the documentation of the subject, and to recommendations by the W3C.
+  </p>
+
+  <p>
+    To that end, let us first have a look to the generic syntax of a URI:
+    <br>
+    URI = scheme:[//authority]path[?query] [#fragment]
+    <br><br>
+    Now, let us define the domain on which our data will be located.
+    <br><br>
+    <b>SCHEME:</b> Arguably the most popular schemes are http and https. Although there are alternatives like ftp, data,
+    irc. We are sticking with the https scheme, which is the one that fits best our needs.
+    <br><br>
+    <b>AUTHORITY:</b> The authority component can be further subdivided into three subcomponents
+    <li>authority = [userinfo@]host[:port]</li>
+    <br>
+    We eschew the use of the userinfo and port subcomponents. The host we propose is <b>"data.eventsatmadrid.org"</b>, in which our ontologies will be published. It is worth noting that "eventsatmadrid.org" is an unregistered domain. 
+    <br><br>
+    Thus, the domain that we will be using can be formulated as: <b>https://data.eventsatmadrid.org/</b>
+  </p>
+  <p>
+    Now that we have defined the domain in which the ontology will be located, let us define the paths and patterns for
+    ontology classes, properties in the ontology and individuals.
+  </p>
+  <li><b>Definition of ontologies:</b> ontologies will be defined with the following pattern, where [ontologyName] is
+    the name of the ontology. [...]/ontology/<b>[ontologyName]</b></li>
+  <ul>
+    <li>Example: https://data.eventsatmadrid.org/ontology/TouristAttraction</li>
+  </ul>
+  <li><b>Ontological terms</b> are defined using hash URIs (#), verifying the following patterns:</li>
+    <ul>
+      <li><b>Classes:</b>[...]/ontology/[ontologyName]<b>#[className]</b></li>
+      <ul><li>Example: https://data.eventsatmadrid.org/ontology/TouristAttraction#Museum</li></ul>
+    </ul>
+    <ul>
+      <li><b>Properties:</b>[...]/ontology/[ontologyName]<b>#[PropertyName]</b></li>
+      <ul><li>Example: https://data.eventsatmadrid.org/ontology/TouristAttraction#Capacity</li></ul>
+    </ul>
+  <li><b>Definition of data:</b> following the pattern [...]<b>/resource/</b></li>
+  <ul>
+    <li><b>Individuals</b>: defined using slash (/) URIs, which must verify the pattern [...]/resource/[className]<b>#[identifier]</b></li>
+    <ul><li>Example: https://data.eventsatmadrid.org/ontology/Museum#ReinaSofia</li></ul>
+  </ul>
+
+  <h3>Recap of the naming strategy</h3>
+  <ul>
+    <li><b>Domain:</b> https://data.eventsatmadrid.org/ </li>
+    <ul>
+      <li><b>Ontology:</b> ontology/ </li>
+      <ul>
+        <li><b>Class:</b> [ClassName] </li>
+        <li><b>Property:</b> [PropertyName] </li>
+      </ul>
+      <li><b>Data:</b> resource/ </li>
+      <ul>
+        <li><b>Individual:</b> [ClassName]/[Identifier] </li>
+      </ul>
+    </ul>
+  </ul>
+  </ul>
+</body>
+
+</html>

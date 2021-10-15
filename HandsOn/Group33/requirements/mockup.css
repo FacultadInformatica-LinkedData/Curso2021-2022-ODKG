@@ -1,0 +1,102 @@
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: blue;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  color:black;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left {
+  position: absolute;
+  top:150px;
+  left: 16px;
+  color:black;
+  font-family: "Lucida Console", "Courier New", monospace;
+
+}
+
+
+
+.container2 {
+  position: relative;
+  text-align: center;
+  background-color: lightgray;
+  width: 100%;
+}
+.left2{
+  position: absolute;
+  top:8px;
+  left: 256px;
+}
+.left3{
+  position: absolute;
+  top:32px;
+  left: 768px;
+
+}
+
+.left4{
+  position: absolute;
+  top:64px;
+  left: 256px;
+
+}
+.left5{
+  position: absolute;
+  top:96px;
+  left: 230px;
+
+}
+.right5{
+  position: absolute;
+  top:96px;
+  right: 32px;
+
+}
+
+.left6{
+  position: absolute;
+  top:150px;
+  left: 8px;
+
+
+
+

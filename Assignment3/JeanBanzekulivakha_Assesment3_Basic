@@ -1,0 +1,130 @@
+## 1. Get all the classes
+
+SELECT *
+WHERE {
+   ?class a rdfs:Class
+}
+
+## 2. Get all the subclasses of the class Establishment
+
+SELECT *
+WHERE {
+   ?subClass rdfs:subClassOf <http://GP-onto.fi.upm.es/exercise2#Establishment>
+}
+
+## 3. Get all instances of the class City
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE {
+   ?classCity a/rdfs:subClassOf* ex1:City
+}
+
+## 4. Get the number of inhabitants of Santiago de Compostela
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE {
+   ex1:Santiago_de_Compostela ex1:hasInhabitantNumber ?numInhabitant
+}
+
+## 5. Get the number of inhabitants of Santiago de Compostela and Arzua
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE {
+   { ex1:Santiago_de_Compostela	ex1:hasInhabitantNumber ?numInhabitant }
+   UNION
+   { ex1:Arzua ex1:hasInhabitantNumber ?numInhabitant }
+}
+
+## 6. Get all places, together with the number of inhabitants, ordered by the place name (ascending)
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE {
+  OPTIONAL{ ?place ex1:hasInhabitantNumber ?numInhabitant }
+}
+ORDER BY ASC(?place)
+
+## 7. Get all instances of Locality together with their number of inhabitants (if this information exists)
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?place ?numInhabitant
+WHERE {
+  ?loc rdfs:subClassOf* ex1:Locality .
+  ?place a ?loc .
+  OPTIONAL{ ?place ex1:hasInhabitantNumber ?numInhabitant }
+}
+
+## 8. Get all places with more than 200.000 inhabitants
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE {
+  OPTIONAL{ ?place ex1:hasInhabitantNumber ?numInhabitant }
+  FILTER (xsd:integer(?numInhabitant) > "200000"^^<http://www.w3.org/2001/XMLSchema#integer>)
+}
+
+## 9. Get postal address data for Pazo_Breogan (street, number, locality, province)
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?street ?number ?locality ?province
+WHERE {
+  ex1:Pazo_Breogan ex1:hasAddress ?address .
+  ?address ex1:hasStreet ?street .
+  ?address ex1:hasNumber ?number .
+  ex1:Pazo_Breogan ex1:isPlacedIn ?locality .
+  ?locality ex1:inProvince ?province
+}
+
+## 10. Get all subclasses of class Location
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE {
+  ?subClass rdfs:subClassOf* ex1:Location
+}
+
+## 11. Get all instances of class Locality
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE {
+   ?instance a/rdfs:subClassOf* ex1:Locality
+}
+
+## 12. Describe the resource with rdfs:label "Madrid”
+
+DESCRIBE ?res
+WHERE
+{
+  ?res rdfs:label "Madrid".
+}
+
+## 13. Construct a graph that relates directly all touristic places with their provinces, using a new property called ”isIn”
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+CONSTRUCT { ?place ex1:isIn ?province }
+WHERE {
+  ?place a/rdfs:subClassOf* ex1:TouristicLocation .
+  OPTIONAL { ?place ex1:isPlacedIn/ex1:inProvince ?province }
+}
+
+## 14. Check whether there is any instance of Town
+
+PREFIX ex1: <http://GP-onto.fi.upm.es/exercise2#>
+
+ASK {
+  ?instance a ex1:Town
+}

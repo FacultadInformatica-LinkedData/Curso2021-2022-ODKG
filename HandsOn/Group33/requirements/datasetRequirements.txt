@@ -1,0 +1,21 @@
+R1. Data are in one of the selected smart city domains.
+Data provides the information regarding the location of electrical bikes for renting which is related to the domain Smart Traffic 
+
+R2. Data are available as a CSV file.
+The data is stored in the file dataset_moby_bike_april_2021 which is a csv file located on the csv folder
+
+R3. Data have an open license so they can be published.
+As stated in the description of the dataset in the link https://data.smartdublin.ie/dataset/moby-bikes. The data has a license Creative Common Attribution 4.0 (cc-by) and the description of this license allows to:
+
+"The Creative Commons Attribution license allows re-distribution and re-use of a licensed work on the condition that the creator is appropriately credited." (https://data.smartdublin.ie/dataset/moby-bikes#:~:text=Creative%20Commons%20Attribution)
+
+R4. Data can be easily linked with generic real-world entities (e.g., locations).
+This dataset has the attributes Latitude and Longitude of the bikes if they are locked out of the station, that way it is possible to link this information to a real world map
+
+
+R5. Documentation exists for the data (optional).
+In the following link there is the documentation and explanation of the schema of data
+https://data.smartdublin.ie/dataset/moby-bikes/resource/e14dd0c4-76f5-4d38-ba06-9cc461dd04d1?view_id=020fa25c-3d4d-45c0-9d69-6fbd27aa496f
+
+R6. Data can come from multiple data sources (optional).
+This dataset provides information collected just from the server where bikes are connected to, so it is not multiple sources.

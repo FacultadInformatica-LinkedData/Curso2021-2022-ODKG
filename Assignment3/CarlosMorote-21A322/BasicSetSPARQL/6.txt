@@ -1,0 +1,7 @@
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+ ?location vocab:hasInhabitantNumber ?value
+}
+ORDER BY ASC (?location)

@@ -1,0 +1,52 @@
+[
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "fecha",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": ".",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column fecha by separator"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "fecha 2",
+    "description": "Remove column fecha 2"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "fecha 1",
+    "newColumnName": "fecha",
+    "description": "Rename column fecha 1 to fecha"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "alerta",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [],
+        "fromBlank": true,
+        "fromError": false,
+        "to": "OK"
+      }
+    ],
+    "description": "Mass edit cells in column alerta"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "alerta",
+    "newColumnName": "estado",
+    "description": "Rename column alerta to estado"
+  }
+]

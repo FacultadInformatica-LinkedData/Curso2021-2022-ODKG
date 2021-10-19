@@ -1,0 +1,30 @@
+@prefix : http://opendatagroup03.com/smartbins . 
+@prefix RecycleBin: http://opendatagroup03.com/smartbins/recyclebin .
+@prefix Location: http://opendatagroup03.com/smartbins/location .
+@prefix xsd: http://www.w3.org/2001/XMLSchema#.
+@prefix onto: http://opendatagroup03.com/smartbins/ontology/ont#
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+
+
+### http://opendatagroup03.com/smartbins/resource//1524401
+:1524401 a onto:RecycleBin;
+	onto:hasID 1524401^^xsd:integer;
+	onto:isLocatedIn :Location01;
+	onto:hasCapacity 0^^xsd:integer;
+	onto:residueType "envases"^^xsd:string;
+	onto:isAvailable True^^xsd:boolean;
+	onto:lastUpdate 2021-10-06T09:46:45.000+0200^^xsd:dateTime.
+### http://opendatagroup03.com/smartbins/resource//Location01
+:Location01 a onto:Location;
+	onto:latitude -369347474986033^^xsd:integer;
+	onto:longitude 404163721753529^^xsd:integer;
+	onto:hasAddress "Paseo Del Prado (Plaza De La Lealtad)"^^xsd:string.
+
+
+
+	

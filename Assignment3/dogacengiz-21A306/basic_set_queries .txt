@@ -1,0 +1,147 @@
+1-
+SELECT ?class
+WHERE{
+?class rdf:type rdfs:Class
+}
+
+
+2-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?subclass 
+WHERE{
+?subclass rdfs:subClassOf vocab:Establishment
+}
+
+
+3-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?city
+WHERE{
+?city rdf:type vocab:City
+}
+
+
+4-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?inhabitants 
+WHERE{
+vocab:Santiago_de_Compostela vocab:hasInhabitantNumber ?inhabitants
+}
+
+
+5-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+?city vocab:hasInhabitantNumber ?value
+}
+
+
+6-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+?city vocab:hasInhabitantNumber ?value
+} ORDER BY ASC(?city)
+
+
+7-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+?locality rdfs:subClassOf vocab:Locality.
+?instance rdf:type ?locality.
+OPTIONAL {?instance vocab:hasInhabitantNumber ?value}
+} 
+
+
+8-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+?locality rdfs:subClassOf vocab:Locality.
+?instance rdf:type ?locality.
+?instance vocab:hasInhabitantNumber ?value.
+FILTER(xsd:integer(?value) > " 200000 "^^<http://www.w3.org/2001/XMLSchema#integer>)
+} 
+
+
+9-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+vocab:Pazo_Breogan vocab:hasAddress ?address.
+?address vocab:hasNumber ?number.
+?address vocab:hasStreet ?street.
+
+vocab:Pazo_Breogan vocab:isPlacedIn ?locality.
+?locality vocab:inProvince ?province
+} 
+
+
+10-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+?subLocations rdfs:subClassOf* vocab:Location
+} 
+
+
+11-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+?locality rdf:type/rdfs:subClassOf* vocab:Locality
+} 
+
+
+12-
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+DESCRIBE ?x
+WHERE{
+?x rdfs:label "Madrid"
+}
+
+
+13-
+PREFIX vocab:<http://GP-onto.fi.upm.es/exercise2#>
+
+CONSTRUCT {
+ ?touristic_places vocab:isIn ?provinces
+} WHERE {
+ ?touristic_places rdf:type/rdfs:subClassOf* vocab:TouristicLocation .
+ OPTIONAL {
+  ?touristic_places vocab:isPlacedIn ?localities .
+  ?localities vocab:inProvince ?provinces}
+}
+
+
+14-
+PREFIX vocab:<http://GP-onto.fi.upm.es/exercise2#>
+
+ASK{
+?x rdf:type vocab:Town
+}
+
+
+15-
+PREFIX vocab:<http://GP-onto.fi.upm.es/exercise2#>
+
+ASK{
+?x rdf:type vocab:Chapel
+}
+
+
+
+

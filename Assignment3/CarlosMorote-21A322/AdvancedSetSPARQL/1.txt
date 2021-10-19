@@ -1,0 +1,7 @@
+PREFIX vocab: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?property ?label
+WHERE {
+ ?instance ?property vocab:Politician.
+ OPTIONAL { ?property rdfs:label ?label. }
+}

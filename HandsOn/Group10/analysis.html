@@ -1,0 +1,195 @@
+<html>
+<body>
+<h1>Analysis</h1>
+
+<h2>Analysis of the different datasets </h2>
+
+<p>The datasets we are going to use have all the same format. They have 31 attributes and all together they have 2115 rows. The datasets are: </p>
+    <ul>
+<li> Actividades Culturales y de Ocio Municipal en los próximos 100 días </li>
+
+<li>Actividades gratuitas en Bibliotecas Municipales en los próximos 60 días</li>
+<li> Agenda de actividades y eventos</li>
+<li> Actividades gratuitas en Bibliotecas Municipales en los próximos 60 días</li>
+</ul>
+In the following an analysis of each of the columns corresponding to the different attributes will be done: 
+
+<p><b>ID-EVENTO</b></p>
+  This attribute refers to the ID event. Clustering was not possible. There are 202 choices. An example would be: "10657294". 
+  
+<p><b>TITULO</b></p>
+This attribute refers to title. At the beginning there were 1022 choices, but after clustering we reduced it to 1010.It's set as a string/text type. An example would be: "¡Abracadabra! ¿De qué monstruo se habla?".
+ 
+  
+<p><b>PRECIO</b></p>
+This attribute refers to the price of the events. At the beginning there were 70 choices, but after clustering we reduced it to 50. It's set as a string/text type because some prices are divided by age, early ticket, online purchase, etc. Down below we can see some examples of the choices left:
+<li>Acceso libre</li>
+<li>18 euros, 4 euros, 3,50 euros</li>
+<li>Acceso libre hasta completar aforo</li>
+<li>Próximamente a la venta</li>
+<li>Consultar programación</li>
+<li>Precio taquilla: 12 euros, Anticipada online : 10 euros</li>
+<p><b>GRATUITO</b></p>
+This attribute it's a boolean defining if the event is free or not. Clustering was not possible in this attribute since there are only 2 choices:
+<li>1(TRUE) : 1527 rows</li>
+<li>0(FALSE) : 588</li>
+  <p>Two of the rows that correspond to category 1, which means that should be free in the attribute described before as price are defined as 'Más información en breve'.Consequently this discrepancy will have to be analyzed</p>  
+<p><b>LARGA-DURACION</b></p>
+This attribute is a boolean defining if the events duration is for more than a day or not. There are only two categories and clustering was not possible:
+<li>1(TRUE) : 743 rows</li>
+<li>0(FALSE) : 1372</li>
+<p><b>DIAS-SEMANA</b></p>
+ This attribute refers to the days of the week in which the events take place. There are 32 choices of different combinations of days of the week, for example :
+  <li>L,M,X,J</li>
+<li>V,S,D</li>
+<li>M,X,J,V,S,D</li>
+  <p>Additionally there are 1372 blank rows of events that are not more than one day long. </p>
+<p><b>DIAS-EXCLUIDOS</b></p>
+  This attribute represents the days that are excluded from the calendar because of national and autonomical holidays. There are 98 choices and this attribute couldn't be clustered. The format is "YYYY-MM-DD". 
+<p><b>FECHA</b></p>
+  This attribute refers to the beginning date of the event. Clustering was not possible. There are 187 choices. An example of beginning date would be: 2021-10-01 00:00:00.0
+  
+<p><b>FECHA-FIN</b></p>
+ This attribute refers to the end date of the event. Clustering was not possible. There are 157 choices. An example of end date would be: 2021-10-06 23:59:00.0
+<p><b>HORA</b></p>
+This attribute refers to the Time of the event. Clustering was not possible. There are 34 choices. 
+09:45 (4), 10:31 (2), 10:45 (2), 11:00 (27), 11:30 (2), 12:00 (84), 12:30 (23), 13:00 (11), 15:30 (3), 17:00 (7), 17:30 (42), 18:00 (132), 18:30 (67), 19:00 (6), 20:00 (2), (blank) (34).
+<p><b>DESCRIPCION</b></p>
+This attribute refers to a description of the event. Initially there were 492 choices, and after clustering we obtained 488.
+<p><b>CONTENT-URL</b></p>
+This attribute refers to the URL content. Clustering was not possible. There are 1115 choices.
+<p><b>TITULO-ACTIVIDAD</b></p>
+This attribute refers to the tile of the event. Clustering was not possible. There were 332 an after clustering we reduced it to 331 choices.
+<p><b>URL-ACTIVIDAD</b></p>
+This attribute refers to the URL of the event. Clustering was not possible. There are 331 choices.
+<p><b>URL-INSTALACION</b></p>
+ This attribute refers to the URL of the facility. Clustering was not possible. There are 138 choices.
+<p><b>NOMBRE-INSTALACION</b></p>
+  This attribute refers to the name of the facility. Clustering was not possible. There are 139 choices.
+<p><b>ACCESIBILIDAD-INSTALACION</b></p>
+ This attribute refers to the accessibility of the facility. Clustering was not possible. There are 8 choices: 0 (39), 1 (1413), 1,4 (2), 1,4,5,6 (6), 1,5(11), 1,6 (309), 2 (160), 3 (2), (blank) (173). 
+<p><b>CLASE-VIAL-INSTALACION</b></p>
+ This attribute refers to the road class of the facility. Before clustering there were 9 choices and after we got 8:
+<li>AVENIDA: 211
+<li>BULEVAR: 17
+<li>CALLE: 1176
+<li>CARRETERA: 9
+<li>GLORIETA: 9
+<li>PASEO: 142
+<li>PLAZA: 338
+<li>RONDA: 21
+<li>(blank): 173
+  <p> As expected, from now on in all instances that refer to an address feature there will be 173 blanks.
+<p><b>NOMBRE-VIA-INSTALACION</b></p>
+ This attribute refers to the name of the facility road. Before clustering there were 117 choices and after we got 116.
+<p><b>NUM-INSTALACION</b></p>
+  This attribute refers to the street number of the facility. Clustering was not possible. There are 51 choices.
+<p><b>DISTRITO-INSTALACION</b></p>
+   This attribute represents the district of the place where the event is held. Clustering was not possible. There are 21 choices.
+<p><b>BARRIO-INSTALACION</b></p>
+  This attribute represents the neighborhood of the place where the event is held. Before clustering there were 79 classes and now we have 78. Down below we can see sevaral examples:
+  <ul>
+		<li>Pradolongo: 8 rows.</li>
+    <li>Pacifico: 10 rows.</li>
+    <li>Blank: 173 rows.</li>
+  </ul>
+<p><b>CODIGO-POSTAL-INSTALACION</b></p>
+This attribute represents the code used in the postal address
+  <ul>
+    <li>28XXX:47 choices spanning 1942 rows.</li>
+    <li>Blank: 173 rows.</li>
+  </ul>
+<p><b>COORDENADA-X</b></p>
+This attribute represents the directed distance of the point from the y-axis.
+	<ul>
+    <li>XXXXXXX:128 choices spanning 1942 rows.</li>
+    <li>Blank: 173 rows.</li>
+  </ul>
+<p><b>COORDENADA-Y</b></p>
+This attribute represents the directed distance of the point from the x-axis.
+    <ul>
+    <li>XXXXXXX:128 choices spanning 1942 rows.</li>
+    <li>Blank: 173 rows.</li>
+  </ul>
+<p><b>LATITUD:</b></p>
+This attribute represents the angular distance of a place north or south of the earth's equator, or of the equator of a celestial object.
+  <ul>
+    <li>X.XXXXXXXXXXXXXXX:130 choices spanning 1942 rows.</li>
+    <li>Blank: 173 rows.</li>
+  </ul>
+<p><b>LONGITUD:</b></p> 
+This attribute represents the angular distance of a place east or west of the Greenwich meridian, or west of the standard meridian of a celestial object.
+  <ul>
+    <li>X.XXXXXXXXXXXXXXX:130 choices spanning 1942 rows.</li>
+    <li>Blank: 173 rows.</li>
+  </ul>
+<p><b>TIPO</b></p>
+This attribute refers to the type of event. Clustering was not possible. There are 37 choices, some of them are:
+<li>/contenido/actividades/1ciudad21distritos: 72
+<li>/contenido/actividades/ActividadesCalleArteUrbano: 23
+<li>/contenido/actividades/ActividadesEscolares: 2
+<li>/contenido/actividades/Campamentos: 12
+<li>/contenido/actividades/CineActividadesAudiovisuales: 90
+<li>/contenido/actividades/CircoMagia: 27
+<li>/contenido/actividades/ConcursosCertamenes: 6
+<li>/contenido/actividades/CuentacuentosTiteresMarionetas: 69
+<li>/contenido/actividades/CursosTalleres: 460
+<li>/contenido/actividades/DanzaBaile: 44
+<li>/contenido/actividades/ExcursionesItinerariosVisitas: 33
+<p><b>AUDIENCIA</b></p>
+This attribute refers to the type of audience. At the beginning there were 10 choices, but after clustering we got 8, which were:
+<li>/usuario/Discapacitados: 6</li>
+<li>/usuario/Familias: 35</li>
+<li>/usuario/Familias,/usuario/Mayores: 25</li>
+<li>/usuario/Jovenes: 44</li>
+<li>/usuario/Mujeres: 286</li>
+  <li>/usuario/Niños: 311</li>
+<li>exclude/usuario/Niños,/usuario/Familias: 64</li>
+<li>(blank): 1339</li>
+  
+  
+<h2>Licensing of the Data Source Analysis</h2>
+
+<p>The publisher of the dataset is the city hall of Madrid which is also its rightsholder.</p>
+<p>The data was published with a
+   <a href="https://datos.madrid.es/portal/site/egob/menuitem.400a817358ce98c34e937436a8a409a0/?vgnextoid=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextchannel=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default">Condiciones de uso</a> which means that we can:</p>
+<ul>
+   <li><b>Share:</b> copy and redistribute the material in any medium or format</li>
+   <li><b>Adapt:</b> remix, transform, and build upon the material</li>
+</ul>
+<p>as long as we comply with the following conditions:</p>
+<ul>
+  <li><b>Attribution:</b> give credit by saying "Origen de los datos: Ayuntamiento de Madrid" but it cannot be said that it supports this initiative.</li>
+  <li><b>Data of actualization:</b> It is mandatory to mention the last time the data was actualized and the metadata that indicates it cannot be modified.</li>
+  <li><b>No additional restrictions:</b> we don't apply any legal or technological measures that restrict others anything the license allows to do.</li>
+</ul>
+<p>The license we should use for the dataset generated should follow the same conditions as the ones specified in the following link:<a href="https://datos.madrid.es/portal/site/egob/menuitem.400a817358ce98c34e937436a8a409a0/?vgnextoid=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextchannel=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default">Condiciones de uso</a>.</p>
+
+  
+
+  
+  
+<h2>Resource Naming Strategy</h2>
+ 	<ul>
+  <li><b>Domain:</b> http://smartcity.linkeddata.es/ </li>
+  <ul>
+  	<li><b>Path:</b> lcc/ </li>
+  	<ul>
+  		<li><b>Ontology:</b> ontology/ </li>
+  		<ul>
+  			<li><b>Class:</b> [ClassName] </li>
+  			<li><b>Property:</b> [PropertyName] </li>
+  		</ul>
+  		<li><b>Data:</b> resource/ </li>
+  		<ul>
+  			<li><b>Individual:</b> [ClassName]/[Identifier] </li>
+  		</ul>
+  	</ul>
+  </ul>
+</ul>
+  
+  
+ <P> &nbsp;&nbsp; </P>   
+  
+</body>
+</html>

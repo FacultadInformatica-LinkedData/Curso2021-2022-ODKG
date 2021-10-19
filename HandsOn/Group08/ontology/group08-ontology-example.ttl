@@ -1,0 +1,334 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ppg8: <http://pharmacies.odkg.es/group08/ontology/ppg8#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<http://pharmacies.odkg.es/group08/ontology/ppg8/0> ppg8:hasPharmacyIdentifier "2";
+ppg8:hasName "Amaya Corral Palomino";
+ppg8:hasAddress "PLAZA";
+ppg8:hasStreet "del Dos de Mayo";
+ppg8:hasStreetNumber "6";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "440267";
+ppg8:hasY "4475426" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/1> ppg8:hasName "Montserrat Gimenez Mestre";
+ppg8:hasX "440954";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Ríos Rosas";
+ppg8:hasStreetNumber "50";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasPharmacyIdentifier "3";
+ppg8:hasY "4477004" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/2> ppg8:hasPharmacyIdentifier "4";
+ppg8:hasName "Justo Aquilino Corral Aragon";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Argensola";
+ppg8:hasStreetNumber "12";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "441063";
+ppg8:hasY "4475193" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/3> ppg8:hasMunicipality "Madrid";
+ppg8:hasX "442754";
+ppg8:hasPharmacyIdentifier "5";
+ppg8:hasName "Irene Arroita Del Campo";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Alcalá";
+ppg8:hasStreetNumber "98";
+ppg8:hasY "4475148" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/4> ppg8:hasMunicipality "Madrid";
+ppg8:hasY "4475021";
+ppg8:hasX "441090";
+ppg8:hasPharmacyIdentifier "6";
+ppg8:hasName "Esther Sansi Ponsico";
+ppg8:hasAddress "PLAZA";
+ppg8:hasStreet "de Salesas";
+ppg8:hasStreetNumber "7" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/5> ppg8:hasMunicipality "Madrid";
+ppg8:hasStreetNumber "8";
+ppg8:hasPharmacyIdentifier "7";
+ppg8:hasAddress "CALLE";
+ppg8:hasName "Pilar Velez De Mendoza";
+ppg8:hasStreet "de Leopoldo Alas Clarín";
+ppg8:hasX "437825";
+ppg8:hasY "4481330" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/6> ppg8:hasY "4475306";
+ppg8:hasX "454673";
+ppg8:hasPharmacyIdentifier "8";
+ppg8:hasName "Manuel Baños Lopez";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "Cáceres";
+ppg8:hasStreetNumber "5";
+ppg8:hasMunicipality "San Fernando de Henares" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/7> ppg8:hasPharmacyIdentifier "9";
+ppg8:hasName "Roberto Garcia Sanchez";
+ppg8:hasAddress "GTA";
+ppg8:hasStreet "de López de Hoyos";
+ppg8:hasStreetNumber "3";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "442277";
+ppg8:hasY "4476922" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/8> ppg8:hasStreetNumber "4";
+ppg8:hasStreet "del Valle de Mena";
+ppg8:hasAddress "CALLE";
+ppg8:hasName "David Lagos Sanchez";
+ppg8:hasPharmacyIdentifier "10";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "439379";
+ppg8:hasY "4480188" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/9> ppg8:hasX "442561";
+ppg8:hasPharmacyIdentifier "11";
+ppg8:hasName "Rosa Maria Perello Gonzalez-Moreno";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "del Príncipe de Vergara";
+ppg8:hasStreetNumber "210";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasY "4478050" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/10> ppg8:hasPharmacyIdentifier "12";
+ppg8:hasName "Maria Cruz Lamela Martinez";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "del General Pardiñas";
+ppg8:hasStreetNumber "61";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "442473";
+ppg8:hasY "4475915" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/11> ppg8:hasPharmacyIdentifier "14";
+ppg8:hasName "Rosario Jaroso Almodovar";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "Velázquez";
+ppg8:hasStreetNumber "2-4";
+ppg8:hasMunicipality "Loeches";
+ppg8:hasX "465215";
+ppg8:hasY "4470371" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/12> ppg8:hasX "442273";
+ppg8:hasPharmacyIdentifier "15";
+ppg8:hasName "Mercedes Valdes Galera";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Gutenberg";
+ppg8:hasStreetNumber "20";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasY "4473116" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/13> ppg8:hasStreet "de Preciados";
+ppg8:hasY "4474506";
+ppg8:hasX "440152";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasStreetNumber "19";
+ppg8:hasPharmacyIdentifier "16";
+ppg8:hasName "Jose Carlos Montilla Illera";
+ppg8:hasAddress "CALLE" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/14> ppg8:hasStreetNumber "7";
+ppg8:hasPharmacyIdentifier "17";
+ppg8:hasName "Alejandro Jimenez Gamella";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "del Alcalde Henche de la Plata";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "444924";
+ppg8:hasY "4482163" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/15> ppg8:hasName "Emilio Manuel Allue Gomez";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasStreetNumber "31";
+ppg8:hasStreet "de Ponzano";
+ppg8:hasAddress "CALLE";
+ppg8:hasPharmacyIdentifier "18";
+ppg8:hasX "440683";
+ppg8:hasY "4476762" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/16> ppg8:hasMunicipality "Madrid";
+ppg8:hasName "Marta Llorente Garcia";
+ppg8:hasStreet "General";
+ppg8:hasAddress "AVDA";
+ppg8:hasPharmacyIdentifier "19";
+ppg8:hasStreetNumber "1";
+ppg8:hasX "451019";
+ppg8:hasY "4480449" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/17> ppg8:hasStreetNumber "80";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasPharmacyIdentifier "20";
+ppg8:hasX "440463";
+ppg8:hasName "Maria Gloria Sanchez Pastor";
+ppg8:hasAddress "PASEO";
+ppg8:hasStreet "de Santa María de la Cabeza";
+ppg8:hasY "4472251" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/18> ppg8:hasPharmacyIdentifier "21";
+ppg8:hasName "Leyre  De La Iglesia Santamaria";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Rodríguez San Pedro";
+ppg8:hasStreetNumber "23";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "439688";
+ppg8:hasY "4475906" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/19> ppg8:hasName "Ana Maria Quintas Rodriguez";
+ppg8:hasPharmacyIdentifier "22";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Feijoo";
+ppg8:hasStreetNumber "12";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "440361";
+ppg8:hasY "4476244" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/20> ppg8:hasPharmacyIdentifier "23";
+ppg8:hasName "Maria Pilar Fernandez Lopez-Ayllon";
+ppg8:hasStreetNumber "34";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Diego de León";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "442211";
+ppg8:hasY "4476226" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/21> ppg8:hasX "438001";
+ppg8:hasMunicipality "Getafe";
+ppg8:hasPharmacyIdentifier "25";
+ppg8:hasName "María Del Mar Acuyo Iriarte";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "Madrid";
+ppg8:hasStreetNumber "48";
+ppg8:hasY "4462161" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/22> ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Juan Zofío";
+ppg8:hasStreetNumber "4";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasName "Luis Ceña Guisado";
+ppg8:hasPharmacyIdentifier "26";
+ppg8:hasX "439237";
+ppg8:hasY "4470321" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/23> ppg8:hasX "439175";
+ppg8:hasPharmacyIdentifier "27";
+ppg8:hasAddress "CALLE";
+ppg8:hasName "Juan Antonio Ciller Cortes";
+ppg8:hasStreet "de la Ilustración";
+ppg8:hasStreetNumber "8";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasY "4474765" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/24> ppg8:hasName "Jose Ramon Barro Arranz";
+ppg8:hasPharmacyIdentifier "28";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "del General Ricardos";
+ppg8:hasStreetNumber "118";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "438361";
+ppg8:hasY "4471542" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/25> ppg8:hasY "4470374";
+ppg8:hasX "436897";
+ppg8:hasPharmacyIdentifier "29";
+ppg8:hasName "Margarita De Vicente Galan";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Eugenia de Montijo";
+ppg8:hasStreetNumber "43";
+ppg8:hasMunicipality "Madrid" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/26> ppg8:hasX "440650";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreetNumber "44";
+ppg8:hasStreet "de Hortaleza";
+ppg8:hasPharmacyIdentifier "30";
+ppg8:hasName "Beatriz Piñero Panadero";
+ppg8:hasY "4474853" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/27> ppg8:hasPharmacyIdentifier "31";
+ppg8:hasName "Eduardo San Nicolas Lopez";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Ramón Esteban";
+ppg8:hasStreetNumber "27";
+ppg8:hasMunicipality "San Sebastián de los Reyes";
+ppg8:hasX "446730";
+ppg8:hasY "4488417" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/28> ppg8:hasY "4472281";
+ppg8:hasPharmacyIdentifier "33";
+ppg8:hasName "Irene Mercedes Fernandez Gonzalo";
+ppg8:hasAddress "AVDA";
+ppg8:hasStreet "de Peña Prieta";
+ppg8:hasStreetNumber "16";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "443339" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/29> ppg8:hasStreetNumber "7";
+ppg8:hasStreet "Mayor";
+ppg8:hasAddress "PLAZA";
+ppg8:hasName "Maria Isabel Fernandez Cabrera";
+ppg8:hasPharmacyIdentifier "34";
+ppg8:hasMunicipality "Cercedilla";
+ppg8:hasX "410894";
+ppg8:hasY "4510574" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/30> ppg8:hasPharmacyIdentifier "35";
+ppg8:hasName "Marta Covadonga Nestares Lopez";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Goya";
+ppg8:hasStreetNumber "55";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "442205";
+ppg8:hasY "4475180" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/31> ppg8:hasPharmacyIdentifier "37";
+ppg8:hasName "Fernando Ausin Puertas";
+ppg8:hasAddress "AVDA";
+ppg8:hasStreet "de la Ciudad de Barcelona";
+ppg8:hasStreetNumber "101";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "443006";
+ppg8:hasY "4472342" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/32> ppg8:hasPharmacyIdentifier "38";
+ppg8:hasName "Paloma Bañon Blasco";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Toledo";
+ppg8:hasStreetNumber "129";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "439617";
+ppg8:hasY "4473052" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/33> ppg8:hasPharmacyIdentifier "39";
+ppg8:hasName "Miguel Angel Alegre Sanz";
+ppg8:hasAddress "AVDA";
+ppg8:hasStreet "de Peña Prieta";
+ppg8:hasStreetNumber "39";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "443529";
+ppg8:hasY "4472523" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/34> ppg8:hasPharmacyIdentifier "40";
+ppg8:hasName "Olga Mª Toro Ferrandez";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Alonso Cano";
+ppg8:hasStreetNumber "69";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "440833";
+ppg8:hasY "4476994" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/35> ppg8:hasPharmacyIdentifier "41";
+ppg8:hasName "Maria Del Carmen Comendador Sanchez-Serrano";
+ppg8:hasAddress "PASEO";
+ppg8:hasStreet "del General Martínez Campos";
+ppg8:hasStreetNumber "22";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "441055";
+ppg8:hasY "4476262" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/36> ppg8:hasPharmacyIdentifier "42";
+ppg8:hasName "Ana Maria De Diego Lopez";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de San Bernardo";
+ppg8:hasStreetNumber "115";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "440212";
+ppg8:hasY "4476019" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/37> ppg8:hasName "Javier Casado De La Sen";
+ppg8:hasPharmacyIdentifier "43";
+ppg8:hasAddress "PASEO";
+ppg8:hasStreet "de María Lejárraga";
+ppg8:hasStreetNumber "6";
+ppg8:hasMunicipality "Getafe";
+ppg8:hasX "436013";
+ppg8:hasY "4461317" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/38> ppg8:hasName "Belen Gutierrez Abbad";
+ppg8:hasPharmacyIdentifier "44";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "de Alonso Heredia";
+ppg8:hasStreetNumber "22";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "442970";
+ppg8:hasY "4476345" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/39> ppg8:hasPharmacyIdentifier "45";
+ppg8:hasName "Alba Maria Calvo Fernandez";
+ppg8:hasAddress "CALLE";
+ppg8:hasStreet "del General Ricardos";
+ppg8:hasStreetNumber "183";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "437061";
+ppg8:hasY "4470536" .
+<http://pharmacies.odkg.es/group08/ontology/ppg8/40> ppg8:hasPharmacyIdentifier "46";
+ppg8:hasName "Juan Jose Pernia Valdes";
+ppg8:hasAddress "PLAZA";
+ppg8:hasStreet "del Ángel";
+ppg8:hasStreetNumber "14";
+ppg8:hasMunicipality "Madrid";
+ppg8:hasX "440395";
+ppg8:hasY "4473982" .

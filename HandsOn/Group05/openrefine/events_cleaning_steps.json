@@ -1,0 +1,462 @@
+[
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DIAS-SEMANA",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": ",",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column DIAS-SEMANA by separator"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DIAS-SEMANA 1",
+    "newColumnName": "Monday",
+    "description": "Rename column DIAS-SEMANA 1 to Monday"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DIAS-SEMANA 2",
+    "newColumnName": "Tuesday",
+    "description": "Rename column DIAS-SEMANA 2 to Tuesday"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DIAS-SEMANA 3",
+    "newColumnName": "Wednesday",
+    "description": "Rename column DIAS-SEMANA 3 to Wednesday"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DIAS-SEMANA 4",
+    "newColumnName": "Thursday",
+    "description": "Rename column DIAS-SEMANA 4 to Thursday"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DIAS-SEMANA 5",
+    "newColumnName": "Friday",
+    "description": "Rename column DIAS-SEMANA 5 to Friday"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DIAS-SEMANA 6",
+    "newColumnName": "Saturday",
+    "description": "Rename column DIAS-SEMANA 6 to Saturday"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DIAS-SEMANA 7",
+    "newColumnName": "Sunday",
+    "description": "Rename column DIAS-SEMANA 7 to Sunday"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "GRATUITO",
+    "expression": "grel:if( value=='1','free',null)",
+    "onError": "set-to-blank",
+    "newColumnName": "gratuito2",
+    "columnInsertIndex": 4,
+    "description": "Create column gratuito2 at index 4 based on column GRATUITO using expression grel:if( value=='1','free',null)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "PRECIO",
+    "expression": "grel:if(value==null, cells.gratuito2.value, value)",
+    "onError": "set-to-blank",
+    "newColumnName": "precio2",
+    "columnInsertIndex": 3,
+    "description": "Create column precio2 at index 3 based on column PRECIO using expression grel:if(value==null, cells.gratuito2.value, value)"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "ID-EVENTO",
+    "newColumnName": "eventID",
+    "description": "Rename column ID-EVENTO to eventID"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "TITULO",
+    "newColumnName": "Event",
+    "description": "Rename column TITULO to Event"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "precio2",
+    "newColumnName": "price",
+    "description": "Rename column precio2 to price"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "gratuito2",
+    "description": "Remove column gratuito2"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "GRATUITO",
+    "description": "Remove column GRATUITO"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "PRECIO",
+    "description": "Remove column PRECIO"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DIAS-EXCLUIDOS",
+    "newColumnName": "excludedDays",
+    "description": "Rename column DIAS-EXCLUIDOS to excludedDays"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "FECHA",
+    "newColumnName": "startingDate",
+    "description": "Rename column FECHA to startingDate"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "FECHA-FIN",
+    "newColumnName": "EndingDate",
+    "description": "Rename column FECHA-FIN to EndingDate"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "HORA",
+    "newColumnName": "hour",
+    "description": "Rename column HORA to hour"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DESCRIPCION",
+    "newColumnName": "description",
+    "description": "Rename column DESCRIPCION to description"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "CONTENT-URL",
+    "newColumnName": "url",
+    "description": "Rename column CONTENT-URL to url"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "TITULO-ACTIVIDAD",
+    "newColumnName": "activityTitle",
+    "description": "Rename column TITULO-ACTIVIDAD to activityTitle"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "URL-ACTIVIDAD",
+    "newColumnName": "activityUrl",
+    "description": "Rename column URL-ACTIVIDAD to activityUrl"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "URL-INSTALACION",
+    "newColumnName": "urlLink",
+    "description": "Rename column URL-INSTALACION to urlLink"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "NOMBRE-INSTALACION",
+    "newColumnName": "Facilities",
+    "description": "Rename column NOMBRE-INSTALACION to Facilities"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "ACCESIBILIDAD-INSTALACION",
+    "newColumnName": "accessibility",
+    "description": "Rename column ACCESIBILIDAD-INSTALACION to accessibility"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "expression": "join ([coalesce(cells['CLASE-VIAL-INSTALACION'].value,''),coalesce(cells['NOMBRE-VIA-INSTALACION'].value,''),coalesce(cells['NUM-INSTALACION'].value,''),coalesce(cells['BARRIO-INSTALACION'].value,''),coalesce(cells['CODIGO-POSTAL-INSTALACION'].value,'')],' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CLASE-VIAL-INSTALACION using expression join ([coalesce(cells['CLASE-VIAL-INSTALACION'].value,''),coalesce(cells['NOMBRE-VIA-INSTALACION'].value,''),coalesce(cells['NUM-INSTALACION'].value,''),coalesce(cells['BARRIO-INSTALACION'].value,''),coalesce(cells['CODIGO-POSTAL-INSTALACION'].value,'')],' ')"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "CLASE-VIAL-INSTALACION",
+    "newColumnName": "address",
+    "description": "Rename column CLASE-VIAL-INSTALACION to address"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "NOMBRE-VIA-INSTALACION",
+    "description": "Remove column NOMBRE-VIA-INSTALACION"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "NUM-INSTALACION",
+    "description": "Remove column NUM-INSTALACION"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "BARRIO-INSTALACION",
+    "description": "Remove column BARRIO-INSTALACION"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "CODIGO-POSTAL-INSTALACION",
+    "newColumnName": "postal code",
+    "description": "Rename column CODIGO-POSTAL-INSTALACION to postal code"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Column",
+    "description": "Remove column Column"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "LATITUD",
+    "newColumnName": "latitude",
+    "description": "Rename column LATITUD to latitude"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "LONGITUD",
+    "newColumnName": "longitude",
+    "description": "Rename column LONGITUD to longitude"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "TIPO",
+    "newColumnName": "type",
+    "description": "Rename column TIPO to type"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "AUDIENCIA",
+    "newColumnName": "audience",
+    "description": "Rename column AUDIENCIA to audience"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "DISTRITO-INSTALACION",
+    "newColumnName": "district",
+    "description": "Rename column DISTRITO-INSTALACION to district"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "COORDENADA-X",
+    "description": "Remove column COORDENADA-X"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "COORDENADA-Y",
+    "description": "Remove column COORDENADA-Y"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accessibility",
+    "expression": "grel:value.replace('0','not_accessible')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column accessibility using expression grel:value.replace('0','not_accessible')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accessibility",
+    "expression": "grel:value.replace('2','partially installed\naccessible for people with reduced mobility')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column accessibility using expression grel:value.replace('2','partially installed\naccessible for people with reduced mobility')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accessibility",
+    "expression": "grel:value.replace('1','accessible')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column accessibility using expression grel:value.replace('1','accessible')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accessibility",
+    "expression": "grel:value.replace('3',' no information on accessibility')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column accessibility using expression grel:value.replace('3',' no information on accessibility')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accessibility",
+    "expression": "grel:value.replace('4','sign language')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column accessibility using expression grel:value.replace('4','sign language')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accessibility",
+    "expression": "grel:value.replace('5','Tactile signage')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column accessibility using expression grel:value.replace('5','Tactile signage')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accessibility",
+    "expression": "grel:value.replace('6','magnetic induction')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column accessibility using expression grel:value.replace('6','magnetic induction')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "accessibility",
+    "expression": "grel:value.replace('Tactile signage','tactile signage')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column accessibility using expression grel:value.replace('Tactile signage','tactile signage')"
+  },
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "type",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": "/",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column type by separator"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "type 1",
+    "description": "Remove column type 1"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "type 2",
+    "description": "Remove column type 2"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "type 3",
+    "description": "Remove column type 3"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "type 4",
+    "newColumnName": "type",
+    "description": "Rename column type 4 to type"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "type 5",
+    "description": "Remove column type 5"
+  },
+  {
+    "op": "core/column-split",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "audience",
+    "guessCellType": true,
+    "removeOriginalColumn": true,
+    "mode": "separator",
+    "separator": "/",
+    "regex": false,
+    "maxColumns": 0,
+    "description": "Split column audience by separator"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "audience 2",
+    "description": "Remove column audience 2"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "audience 4",
+    "description": "Remove column audience 4"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "audience 1",
+    "description": "Remove column audience 1"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "audience 3",
+    "newColumnName": "audience1",
+    "description": "Rename column audience 3 to audience1"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "audience 5",
+    "newColumnName": "audience2",
+    "description": "Rename column audience 5 to audience2"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "LARGA-DURACION",
+    "newColumnName": "longDuration",
+    "description": "Rename column LARGA-DURACION to longDuration"
+  }
+]

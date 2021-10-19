@@ -1,0 +1,124 @@
+@prefix base: <http://e-scooter.com/ontology#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <https://www.w3.org/2001/XMLSchema#> .
+
+base: a owl:Ontology ;
+    dc:creator "Group33" ;
+    dc:description "OWL Schema for E-scooter trips" ;
+    dc:title "E-scooter trips Ontology" ;
+    owl:versionInfo "0.0.1" .
+
+base:Trip a owl:Class ;
+    rdfs:comment "The class that defines a Trip." ;
+    rdfs:label "Trip" .
+
+base:Community a owl:Class ;
+    rdfs:comment "The class that defines a Community." ;
+    rdfs:label "Community" .
+
+base:Centroid a owl:Class ;
+    rdfs:comment "The class that defines a Centroid." ;
+    rdfs:label "Centroid" .
+
+base:Location a owl:Class ;
+    rdfs:comment "The class that defines a Location." ;
+    rdfs:label "Location" .
+
+base:hasStartCommunity a owl:ObjectProperty ;
+    rdfs:comment "The property that determines the starting community of the Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Start community" ;
+    rdfs:range base:Community .
+
+base:hasEndCommunity a owl:ObjectProperty ;
+    rdfs:comment "The property that determines the ending community of the Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "End community" ;
+    rdfs:range base:Community .
+
+base:hasStartCentroid a owl:ObjectProperty ;
+    rdfs:comment "The property that determines the starting centroid of the Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Starting centroid" ;
+    rdfs:range base:Centroid .
+
+base:hasEndCentroid a owl:ObjectProperty ;
+    rdfs:comment "The property that determines the ending centroid of the Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "End centroid" ;
+    rdfs:range base:Centroid .
+
+base:hasLocation a owl:ObjectProperty ;
+    rdfs:comment "The property that determines the location of a Centroid." ;
+    rdfs:domain base:Centroid ;
+    rdfs:label "Location of centroid" ;
+    rdfs:range base:Location .
+
+base:hasAreaNumber a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the area number of a Community." ;
+    rdfs:domain base:Community ;
+    rdfs:label "Area number" ;
+    rdfs:range xsd:int .
+
+base:hasAreaName a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the area name of a Community." ;
+    rdfs:domain base:Community ;
+    rdfs:label "Area name" ;
+    rdfs:range xsd:string .
+
+base:hasLatitude a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the latitude of a Centroid." ;
+    rdfs:domain base:Location ;
+    rdfs:label "Latitude" ;
+    rdfs:range xsd:double .
+
+base:hasLongitude a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the longitude of a Centroid." ;
+    rdfs:domain base:Location ;
+    rdfs:label "Longitude" ;
+    rdfs:range xsd:double .
+
+base:hasStartTime a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the starting time of a Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Starting time" ;
+    rdfs:range xsd:dateTime .
+
+base:hasEndTime a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the ending time of a Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Ending time" ;
+    rdfs:range xsd:dateTime .
+
+base:hasTripDistance a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the distance of a Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Distance" ;
+    rdfs:range xsd:double .
+
+base:hasTripDuration a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the duration of a Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Duration" ;
+    rdfs:range xsd:double .
+
+base:hasAccuracy a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the aproximate level of accuracy of the distance of a Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Accuracy" ;
+    rdfs:range xsd:double .
+
+base:hasStartCensusTract a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the starting census tract of a Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Starting Census Tract" ;
+    rdfs:range xsd:double .
+
+base:hasEndCensusTract a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the ending census tract of a Trip." ;
+    rdfs:domain base:Trip ;
+    rdfs:label "Ending Census Tract" ;
+    rdfs:range xsd:double .
+

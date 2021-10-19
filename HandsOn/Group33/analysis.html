@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Analysis</title>
+</head>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+<body>
+  <h2>Data Set Description:</h2>
+  <table style="width:80%">
+    <col style="width:20%">
+    <col style="width:20%">
+	  <col style="width:60%">
+    <tr>
+      <th>Name</th>
+      <th>Data Type</th>
+      <th>Description</th>
+      <th>Count</th>
+      <th>Mean</th>
+      <th>Std</th>
+      <th>Min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>Max</th>
+    </tr>
+    <tr>
+      <td>Trip ID</td>
+      <td>Text</td>
+      <td>A unique ID for each trip.</td> 
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Start Time</td>
+      <td>Date & Time</td>
+      <td>When the trip started, rounded to the nearest hour.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>End Time</td>
+      <td>Date & Time</td>
+      <td>When the trip ended, rounded to the nearest hour.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Trip Distance</td>
+      <td>Number</td>
+      <td>Trip distance in meters. (Divide by 1609 for miles.)</td>
+      <td>71100</td>
+      <td>16679.22</td>
+      <td>63674.1</td>
+      <td>0</td>
+      <td>835</td>
+      <td>2000</td>
+      <td>3981</td>
+      <td>64706150</td>
+    </tr>
+    <tr>
+      <td>Trip Duration</td>
+      <td>Number</td>
+      <td>Trip time in seconds.</td>
+      <td>71100</td>
+      <td>947.917</td>
+      <td>1512.281</td>
+      <td>0</td>
+      <td>253</td>
+      <td>578</td>
+      <td>1146</td>
+      <td>90075</td>
+
+    </tr>
+    <tr>
+      <td>Accuracy</td>
+      <td>Number</td>
+      <td>The approximate level of accuracy, in meters, of the GPS measurements reported by the provider.</td>
+      <td>71100</td>
+      <td>821.7422</td>
+      <td>84169.05</td>
+      <td>0</td>
+      <td>10</td>
+      <td>10</td>
+      <td>152</td>
+      <td>22187000</td>
+      
+    </tr>
+    <tr>
+      <td>Start Census Tract</td>
+      <td>Number</td>
+      <td>The Census Tract where the trip started. For privacy, this Census Tract is not shown for some trips.</td>
+      <td>15082</td>
+      <td>17031360000</td>
+      <td>268602.4</td>
+      <td>1.703115e+10</td>
+      <td>1.703120e+10</td>
+      <td>1.703122e+10</td>
+      <td>1.703127e+10</td>
+      <td>1.703184e+10</td>
+      
+    </tr>
+    <tr>
+      <td>End Census Tract</td>
+      <td>Number</td>
+      <td>The Census Tract where the trip ended. For privacy, this Census Tract is not shown for some trips.</td>
+      <td>1.5103e+4</td>
+      <td>1.703135e+10</td>
+      <td>2.651985e+5</td>
+      <td>1.703107e+10</td>
+      <td>1.703120e+10</td>
+      <td>1.703122e+10</td>
+      <td>1.703123e+10</td>
+      <td>1.703184e+10</td>
+      
+    </tr>
+    <tr>
+      <td>Start Community Area Number</td>
+      <td>Number</td>
+      <td>The Community Area number where the trip started.</td>
+      <td>58531</td>
+      <td>21.592</td>
+      <td>3.428</td>
+      <td>5</td>
+      <td>20</td>
+      <td>22</td>
+      <td>23</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>End Community Area Number</td>
+      <td>Number</td>
+      <td>The Community Area number where the trip ended</td>
+      <td>58582</td>
+      <td>21.060</td>
+      <td>4.339</td>
+      <td>4</td>
+      <td>19</td>
+      <td>22</td>
+      <td>23</td>
+      <td>66</td>
+      
+    </tr>
+    <tr>
+      <td>Start Community Area Name</td>
+      <td>Plain Text</td>
+      <td>The Community Area name where the trip started.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      
+    </tr>
+    <tr>
+      <td>End Community Area Name</td>
+      <td>Plain Text</td>
+      <td>The Community Area name where the trip ended.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      
+    </tr>
+    <tr>
+      <td>Start Centroid Latitude</td>
+      <td>Number</td>
+      <td>The latitude of the center of the trip start census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
+      <td>58532</td>
+      <td>41.917</td>
+      <td>0.0236</td>
+      <td>41.83</td>
+      <td>41.9</td>
+      <td>41.92</td>
+      <td>41.93</td>
+      <td>41.95</td>
+      
+    </tr>
+    <tr>
+      <td>Start Centroid Longitude</td>
+      <td>Number</td>
+      <td>The longitude of the center of the trip start census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
+      <td>58532</td>
+      <td>-87.72</td>
+      <td>0.027</td>
+      <td>-87.828</td>
+      <td>-87.734</td>
+      <td>-87.720</td>
+      <td>-87.705</td>
+      <td>-87.633</td>
+      
+    </tr>
+    <tr>
+      <td>End Centroid Latitude</td>
+      <td>Number</td>
+      <td>The latitude of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
+      <td>58582</td>
+      <td>41.917</td>
+      <td>0.022</td>
+      <td>41.7718</td>
+      <td>41.9</td>
+      <td>41.922</td>
+      <td>41.927</td>
+      <td>41.978</td>
+      
+    </tr>
+    <tr>
+      <td>End Centroid Longitude</td>
+      <td>Number</td>
+      <td>The longitude of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
+      <td>58582</td>
+      <td>-87.72</td>
+      <td>0.0253</td>
+      <td>-87.82</td>
+      <td>-87.73</td>
+      <td>-87.72</td>
+      <td>-87.70</td>
+      <td>-87.59</td>
+      
+    </tr>
+    <tr>
+      <td>End Centroid Location</td>
+      <td>Point</td>
+      <td>The location of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <h3>Licensing of the Data Source:</h3>
+  <ul>
+    <li>Data has an open license with some Terms of use that are described in the following paragraph</li>
+    <br>
+    <td align="right">&emsp;As stated in the description of the dataset in this <a href="https://data.cityofchicago.org/Transportation/E-Scooter-Trips-2019-Pilot/2kfw-zvte">link</a>.The data has a See Terms of Use clause that leads to the following description  (<a href="https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html">More info</a>), that basically states that the City of Chicago does not take care of any issues regarding any error that is on the data and also that in the case that the data is used on an application it should state the following paragraph &ldquo; This site provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago.  The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site.  The data provided at this site is subject to change at any time.  It is understood that the data provided at this site is being used at one&apos;s own risk &rdquo;   </td>
+  </ul>
+
+  <h3>Resource naming strategy examples:</h3>
+  <ul>
+    Due to the fact that our data concerns only one topic (e-scooter) and is small in itself, we will use a hash (#) to access resources.
+    The URI domain is http://e-scooter.com because it better reflects the theme of our application.
+    <p>Ontological path:</p>
+    <li>Class: http://e-scooter.com/ontology#{className}</li>
+    <li>Property: http://e-scooter.com/ontology#{propertyName}</li>
+    <li>Individual: http://e-scooter.com/resource/{id}</li>
+
+    
+  </ul>
+</body>
+</html>

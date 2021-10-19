@@ -1,0 +1,8 @@
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT *
+WHERE{
+ { vocab:Arzua vocab:hasInhabitantNumber ?value }
+ UNION
+ { vocab:Santiago_de_Compostela vocab:hasInhabitantNumber ?value }
+}

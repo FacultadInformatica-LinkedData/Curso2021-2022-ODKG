@@ -1,0 +1,142 @@
+@prefix : <http://www.group02.org/pd/ontology/PedestriansMadrid> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.group02.org/pd/ontology/PedestriansMadrid> .
+
+<http://www.group02.org/pd/ontology/PedestriansMadrid> rdf:type owl:Ontology ;
+                                                        owl:versionIRI <http://www.group02.org/pd/ontology/PedestriansMadrid> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasDistrict
+:hasDistrict rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasDistrict ;
+                           owl:allValuesFrom :Street
+                         ] ;
+             rdfs:range [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasDistrict ;
+                          owl:someValuesFrom :District
+                        ] .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasStreet
+:hasStreet rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasStreet ;
+                         owl:allValuesFrom :MeasurementPoint
+                       ] ;
+           rdfs:range [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasStreet ;
+                        owl:someValuesFrom :Street
+                      ] .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#isLocated
+:isLocated rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasStreet ;
+                         owl:allValuesFrom :Measurement
+                       ] ;
+           rdfs:range [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasDistrict ;
+                        owl:someValuesFrom :MeasurementPoint
+                      ] .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasDate
+:hasDate rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Measurement ;
+         rdfs:range xsd:dateTime .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasDistrictNumber
+:hasDistrictNumber rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :District ;
+                   rdfs:range xsd:decimal .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasLatitude
+:hasLatitude rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :MeasurementPoint ;
+             rdfs:range xsd:float .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasLongitude
+:hasLongitude rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :MeasurementPoint ;
+              rdfs:range xsd:float .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasNumber
+:hasNumber rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :MeasurementPoint ;
+           rdfs:range xsd:decimal .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasObservation
+:hasObservation rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :MeasurementPoint ;
+                rdfs:range xsd:string .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasPedestrians
+:hasPedestrians rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Measurement ;
+                rdfs:range xsd:decimal .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasPostCode
+:hasPostCode rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :MeasurementPoint ;
+             rdfs:range xsd:decimal .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#id
+:id rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty ;
+    rdfs:domain :MeasurementPoint ;
+    rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#District
+:District rdf:type owl:Class .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#Measurement
+:Measurement rdf:type owl:Class .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#MeasurementPoint
+:MeasurementPoint rdf:type owl:Class .
+
+
+###  http://www.group02.org/pd/ontology/PedestriansMadrid#Street
+:Street rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

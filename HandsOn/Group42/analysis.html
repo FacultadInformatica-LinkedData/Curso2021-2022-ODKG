@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Analysis</title>
+  <style>
+      body {
+        font-size: 12;
+      }
+      table {
+        width: 100%;
+      }
+      table, tr, td{
+        border: 1px solid black;
+        border-collapse:collapse;
+      }
+  </style>
+</head>
+<body>
+    <h1>ODKG - 2021/2022 - Group42</h1>
+    <h2>License</h2>
+    <p>The publisher of the data is the City Hall of Madrid</p>
+    <p>The licence is: <a href="https://datos.madrid.es/egob/catalogo/aviso-legal" target="blank">https://datos.madrid.es/egob/catalogo/aviso-legal</a></p>
+    <p>Las condiciones generales permiten la reutilización de los documentos para fines comerciales y no comerciales. Se entiende por reutilización el uso de documentos que obran en poder del Ayuntamiento de Madrid, siempre que dicho uso no constituya una actividad administrativa pública.</p>
+    <h2>Dataset analysis</h2>
+       
+    <p>There are 2290 records in our dataset in summary. The reports are from 2019 Januar 1st to 2021 June 30th.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Type</th>
+          <th>Comments/Range</th>
+          <th>Problems</th>
+        </tr>
+        <tr>
+          <td>num_expediente</td>
+          <td>Text</td>
+          <td>The identification number of the accident. Not unique (there might be different people in the same accident)</td>
+          <td>Duplicated values because of having more people in the same accident</td>
+        </tr>
+        <tr>
+          <td>fecha</td>
+          <td>Text</td>
+          <td>Date of the accident, DD/MM/YYYY format. No missing values.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>hora</td>
+          <td>Text</td>
+          <td>Exact time of the accident, HH:MM format. No missing values. 458 different values.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>localizacion</td>
+          <td>Text</td>
+          <td>The location where the accident happened. No missing values.</td>
+          <td>There are some ","s in between the values which needs to be corrected. This attribut does not have a well defined format.</td>
+        </tr>
+        <tr>
+          <td>numero</td>
+          <td>Text</td>
+          <td>The number of the street where the accident happend. No missing values.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>distrito</td>
+          <td>Text</td>
+          <td>The distinct of the accident. 21 different values (no missing values).</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>tipo_accidente</td>
+          <td>Text</td>
+          <td>The type of the accident. 12 different values (no missing values).</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>estado_meteorologico</td>
+          <td>Text</td>
+          <td>The whether status during the accident. 5 different options, 63 (~2,75%) missing values</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>tipo_vehiculo</td>
+          <td>Text</td>
+          <td>The type of the vehicle. 2 different values (no missing values).</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>tipo_persona</td>
+          <td>Text</td>
+          <td>The type of the person (conductor, pasajero, peaton). 3 different values (no missing values).</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>rango_edad</td>
+          <td>Text</td>
+          <td>The range of the person's age. 18 different values (no missing values).</td>
+          <td>There no missing values, however, one of hte values is "Deconocido". This needs to be handled later.</td>
+        </tr>
+        <tr>
+          <td>sexo</td>
+          <td>Text</td>
+          <td>The gender of the person. 3 different values.</td>
+          <td>There no missing values, however, one of hte values is "Deconocido". This needs to be handled later.</td>
+        </tr>
+        <tr>
+          <td>lesividad</td>
+          <td>Number</td>
+          <td>The harmfulness of the accident. It has a value between 1-15 based on how harmful the accident was. 269 (~11,7%) missing values.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>coordenada_x_utm</td>
+          <td>Number</td>
+          <td>The X coordinate of the accident (no missing values).</td>
+          <td>The format of the values is not valid.</td>
+        </tr>
+        <tr>
+          <td>coordenada_y_utm</td>
+          <td>Nuber</td>
+          <td>The Y coordinate of the accident (no missing values).</td>
+          <td>The format of the values is not valid.</td>
+        </tr>
+        <tr>
+          <td>positiva_alcohol</td>
+          <td>Text</td>
+          <td>The result of the alcohol test of the person. "N" stands for the negative alcohol test, "S" for positive alcohol test. 4 missing values (~0,17%).</td>
+          <td>The missing values need to be handled.</td>
+        </tr>
+        <tr>
+          <td>positiva_drove</td>
+          <td>Text</td>
+          <td>The result of the drog test of the person. All values are missing (100%).</td>
+          <td>All the values are missing so this column needs to be removed.</td>
+        </tr>
+      </thead>
+      </table>
+      
+      <h2>Resource naming strategy</h2>
+
+      <p>Hash URIs for ontological terms, slash URIs for individuals.</p>
+
+      <ul>
+        <li>Domain: http://bicycleaccidents.org/</li>
+        <li>Ontologycal terms: http://bicycleaccidents.org/ontology#</li>
+        <li>Individuals path: http://bicycleaccidents.org/resource/</li>
+        <li>Ontological terms example: http://bicycleaccidents.org/ontology#hasAge</li>
+	      <li>Individuals example: http://bicycleaccidents.org/resource/2019S000036</li>
+      </ul>
+
+      <h2>Ontology</h2>
+
+      <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2021-10-18T11:38:54.679Z\&quot; agent=\&quot;5.0 (X11)\&quot; etag=\&quot;rOgbfCXGQwicfVN-yEG6\&quot; version=\&quot;15.5.2\&quot;&gt;&lt;diagram id=\&quot;k9W5ulVU8Oljyv-qk_FP\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+      <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+
+</body>
+</html>

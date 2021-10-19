@@ -1,0 +1,29 @@
+#################################################################
+#    Individuals
+#################################################################
+
+:11187846 a :studyRoom;
+	:hasPK "11187846"^^xsd:string;
+    :hasName "Aula Estudio Centro Cultural San Juan Bautista (Ciudad Lineal)"^^xsd:string;
+    :hasSchedule " Julio: Lunes a viernes, de 9:30 a 14 horas (domingos y festivos cerrado) Septiembre: Lunes a viernes, de 9:30 a 20:30 horas (domingos y festivos cerrado) Semana Santa: de 9:30 a 20 horas (domingos y festivos cerrado)"^^xsd:string;
+    :hasDescription "Puestos de lectura: 15 (reducido 10). Se trata de un aula que se utiliza cuando no hay talleres, durante julio, septiembre y Semana Santa. Zona wifi "^^xsd:string;
+    :hasTransport "Metro: Avenida de la Paz (línea 4)  Bus: 53"^^xsd:string;
+    :hasAccesibility "1"^^xsd:string
+    :hasContentUrl "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=e10cd76f718a2710VgnVCM1000001d4a900aRCRD"^^xsd:string;
+    :hasTelephone1 "914 157 705"^^xsd:string ;
+	:isLocated :Location1 ;
+    :hasAddress :Address1 .
+	
+:Location1 a :Location;
+	:latitude "40.45224710166"^^xsd:string ;
+	:longitude "-3.658029027767765"^^xsd:string .
+
+:Address1 a :Address;
+    :hasRoadType "CALLE"^^xsd:string ;
+    :hasRoadName "SAN NEMESIO"^^xsd:string ;
+    :hasRoadNumber "4"^^xsd:string ;
+    :hasTown "MADRID"^^xsd:string ;
+    :hasProvince "MADRID"^^xsd:string ;
+    :hasPostalCode "28043"^^xsd:string ;
+    :hasNeighbourhood "SAN JUAN BAUTISTA"^^xsd:string ;
+    :hasDistrict "CIUDAD LINEAL"^^xsd:string .

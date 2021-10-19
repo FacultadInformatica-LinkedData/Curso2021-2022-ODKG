@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Dataset requirements</title>
+    </head>
+    <body>
+        <div class="container-md">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h1">Dataset requirements</span>
+                </div>
+            </nav>
+            <table class="mt-2 table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nº</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Comment</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">R1</th>
+                        <td>Data are in one of the selected smart city domains.</td>
+                        <td>Data provides the information regarding the location of electrical scooters for renting which is related to the domain Smart Traffic.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">R2</th>
+                        <td>Data are available as a CSV file.</td>
+                        <td>The data is stored in the file E-Scooter_Trips_2019 which is a csv file located on the csv folder.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">R3</th>
+                        <td>Data have an open license so they can be published.</td>
+                        <td>As stated in the description of the dataset in this <a href="https://data.cityofchicago.org/Transportation/E-Scooter-Trips-2019-Pilot/2kfw-zvte">link</a>. The data has a See Terms of Use clause that leads to the following description  (<a href="https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html">More info</a>), that basically states that the City of Chicago does not take care of any issues regarding any error that is on the data and also that in the case that the data is used on an application it should state the following paragraph &ldquo; This site provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago.  The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site.  The data provided at this site is subject to change at any time.  It is understood that the data provided at this site is being used at one&apos;s own risk &rdquo;   </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">R4</th>
+                        <td>Data can be easily linked with generic real-world entities (e.g., locations).</td>
+                        <td>This dataset has the attributes Start centroid Latitude , Start centroid Longitude, End centroid Latitude and End centroid Longitude ,of the scooters , that way it is possible to link this information to a real world map.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">R5</th>
+                        <td>Documentation exists for the data (optional).</td>
+                        <td>In the following link there is the documentation and explanation of the schema of data:  <a href="https://data.cityofchicago.org/Transportation/E-Scooter-Trips-2019-Pilot/2kfw-zvte">here</a>.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">R6</th>
+                        <td>Data can come from multiple data sources (optional).</td>
+                        <td>This dataset provides information collected just from the server where scooters are connected to, so it is not multiple sources.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,263 @@
+@prefix : <http://pharmacies.odkg.es/group08/ontology/ppg8#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://pharmacies.odkg.es/group08/ontology/ppg8> .
+
+<http://pharmacies.odkg.es/group08/ontology/ppg8> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://dbpedia.org/ontology/amsterdamCode
+<http://dbpedia.org/ontology/amsterdamCode> rdf:type owl:AnnotationProperty ;
+                                            rdfs:domain <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://dbpedia.org/ontology/departmentCode
+<http://dbpedia.org/ontology/departmentCode> rdf:type owl:AnnotationProperty ;
+                                             rdfs:domain <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://dbpedia.org/ontology/hasAbsorbedMunicipality
+<http://dbpedia.org/ontology/hasAbsorbedMunicipality> rdf:type owl:AnnotationProperty ;
+                                                      rdfs:domain <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://dbpedia.org/ontology/municipalityRenamedTo
+<http://dbpedia.org/ontology/municipalityRenamedTo> rdf:type owl:AnnotationProperty ;
+                                                    rdfs:domain <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://dbpedia.org/ontology/municipalityType
+<http://dbpedia.org/ontology/municipalityType> rdf:type owl:AnnotationProperty ;
+                                               rdfs:domain <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://open.vocab.org/terms/defines
+<http://open.vocab.org/terms/defines> rdf:type owl:AnnotationProperty .
+
+
+###  http://open.vocab.org/terms/describes
+<http://open.vocab.org/terms/describes> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2007/05/powder-s#describedby
+<http://www.w3.org/2007/05/powder-s#describedby> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+<http://www.w3.org/ns/prov#wasDerivedFrom> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#pharmacyId
+:pharmacyId rdf:type rdfs:Datatype ;
+            owl:equivalentClass xsd:integer ,
+                                xsd:string .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dbpedia.org/ontology/municipalityAbsorbedBy
+<http://dbpedia.org/ontology/municipalityAbsorbedBy> rdf:type owl:ObjectProperty ;
+                                                     rdfs:range <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://dbpedia.org/ontology/presentMunicipality
+<http://dbpedia.org/ontology/presentMunicipality> rdf:type owl:ObjectProperty ;
+                                                  rdfs:range <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasAddress
+:hasAddress rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Pharmacy ;
+            rdfs:range :Address .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasCoordinates
+:hasCoordinates rdf:type owl:ObjectProperty ;
+                rdfs:domain :Address ;
+                rdfs:range :Coordinates .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasKM
+:hasKM rdf:type owl:ObjectProperty ;
+       rdfs:domain :Address ;
+       rdfs:range [ rdf:type owl:Restriction ;
+                    owl:onProperty owl:topDataProperty ;
+                    owl:someValuesFrom xsd:string
+                  ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasMunicipality
+:hasMunicipality rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Address ;
+                 rdfs:range <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasName
+:hasName rdf:type owl:ObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range [ rdf:type owl:Restriction ;
+                      owl:onProperty owl:topDataProperty ;
+                      owl:someValuesFrom xsd:string
+                    ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasOwner
+:hasOwner rdf:type owl:ObjectProperty ;
+          rdfs:domain :Pharmacy ;
+          rdfs:range :Owner .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasPharmacyIdentifier
+:hasPharmacyIdentifier rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Pharmacy ;
+                       rdfs:range [ rdf:type owl:Restriction ;
+                                    owl:onProperty owl:topDataProperty ;
+                                    owl:someValuesFrom :pharmacyId
+                                  ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasRoadType
+:hasRoadType rdf:type owl:ObjectProperty ;
+             rdfs:domain :Address ;
+             rdfs:range [ rdf:type owl:Restriction ;
+                          owl:onProperty owl:topDataProperty ;
+                          owl:someValuesFrom xsd:string
+                        ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasStreet
+:hasStreet rdf:type owl:ObjectProperty ;
+           rdfs:domain :Address ;
+           rdfs:range <http://dbpedia.org/ontology/Street> .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasStreetNumber
+:hasStreetNumber rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Address ;
+                 rdfs:range [ rdf:type owl:Restriction ;
+                              owl:onProperty owl:topDataProperty ;
+                              owl:someValuesFrom xsd:string
+                            ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasX
+:hasX rdf:type owl:ObjectProperty ;
+      rdfs:domain :Coordinates ;
+      rdfs:range [ rdf:type owl:Restriction ;
+                   owl:onProperty owl:topDataProperty ;
+                   owl:someValuesFrom xsd:string
+                 ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasY
+:hasY rdf:type owl:ObjectProperty ;
+      rdfs:domain :Coordinates ;
+      rdfs:range [ rdf:type owl:Restriction ;
+                   owl:onProperty owl:topDataProperty ;
+                   owl:someValuesFrom xsd:string
+                 ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/FormerMunicipality
+<http://dbpedia.org/ontology/FormerMunicipality> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://dbpedia.org/ontology/GovernmentalAdministrativeRegion
+<http://dbpedia.org/ontology/GovernmentalAdministrativeRegion> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Municipality
+<http://dbpedia.org/ontology/Municipality> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://dbpedia.org/ontology/GovernmentalAdministrativeRegion> ;
+                                           rdfs:comment "An administrative body governing a territorial unity on the lower level, administering one or a few more settlements"@en ,
+                                                        "Un Municipio es el ente local definido en el artículo 140 de la Constitución española y la entidad básica de la organización territorial del Estado según el artículo 1 de la Ley 7/1985, de 2 de abril, Reguladora de las Bases del Régimen Local. Tiene personalidad jurídica y plena capacidad para el cumplimiento de sus fines. La delimitación territorial de Municipio está recogida del REgistro Central de Cartografía del IGN"@es ,
+                                                        "Δήμος ονομάζεται μία οντότητα της δημόσιας διοίκησης, η οποία στα περισσότερα κράτη αποτελεί τη βασική αυτοδιοικητική μονάδα και κατά κανόνα περιλαμβάνει μια πόλη ή κωμόπολη και τα γύρω χωριά της."@el ;
+                                           rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
+                                           rdfs:label "Gemeinde"@de ,
+                                                      "commune"@fr ,
+                                                      "gemeente"@nl ,
+                                                      "municipality"@en ,
+                                                      "municipio"@es ,
+                                                      "δήμος"@el ,
+                                                      "基礎自治体"@ja ;
+                                           <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                                           <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:Municipality> .
+
+
+###  http://dbpedia.org/ontology/PopulatedPlace
+<http://dbpedia.org/ontology/PopulatedPlace> rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Street
+<http://dbpedia.org/ontology/Street> rdf:type owl:Class ;
+                                     owl:equivalentClass <http://www.wikidata.org/entity/Q79007> ;
+                                     rdfs:subClassOf <http://dbpedia.org/ontology/PopulatedPlace> ;
+                                     rdfs:comment "A Street is different from a Road in as far as the infrastructure aspect is much less important here. A Street is a social and architectural ensemble much more than the connection between two geographic points."@en ;
+                                     rdfs:isDefinedBy <http://dbpedia.org/ontology/> ;
+                                     rdfs:label "Straße"@de ,
+                                                "rue"@nl ,
+                                                "sráid"@ga ,
+                                                "straat"@fr ,
+                                                "street"@en ,
+                                                "Οδός"@el ,
+                                                "ストリート"@ja ;
+                                     <http://www.w3.org/2007/05/powder-s#describedby> <http://dbpedia.org/ontology/data/definitions.ttl> ;
+                                     <http://www.w3.org/ns/prov#wasDerivedFrom> <http://mappings.dbpedia.org/index.php/OntologyClass:Street> .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Address
+:Address rdf:type owl:Class .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Coordinates
+:Coordinates rdf:type owl:Class .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Owner
+:Owner rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Person
+:Person rdf:type owl:Class .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Pharmacy
+:Pharmacy rdf:type owl:Class .
+
+
+###  http://www.wikidata.org/entity/Q79007
+<http://www.wikidata.org/entity/Q79007> rdf:type owl:Class .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://dbpedia.org/ontology/> <http://open.vocab.org/terms/defines> <http://dbpedia.org/ontology/Municipality> ,
+                                                                     <http://dbpedia.org/ontology/Street> .
+
+
+<http://dbpedia.org/ontology/data/definitions.ttl> <http://open.vocab.org/terms/describes> <http://dbpedia.org/ontology/Municipality> ,
+                                                                                           <http://dbpedia.org/ontology/Street> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

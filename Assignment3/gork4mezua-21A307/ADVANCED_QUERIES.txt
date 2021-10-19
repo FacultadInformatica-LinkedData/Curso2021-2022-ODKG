@@ -1,0 +1,57 @@
+Ejercicios avanzados sobre queries SPARQL (Assignment 3)
+
+<-- P1: Get all the properties that can be applied to instances of
+the Politician class -->
+    
+    PREFIX vocab: <http://dbpedia.org/ontology/>
+
+    SELECT DISTINCT ?prop
+    WHERE {
+        vocab:Politician ?prop ?val
+    }
+
+<-- P2: Get all the properties, except rdf:type, that can be applied
+to instances of the Politician class  -->
+
+    PREFIX vocab: <http://dbpedia.org/ontology/>
+
+    SELECT DISTINCT ?prop
+    WHERE {
+        vocab:Politician ?prop ?val .
+        FILTER(?prop != rdf:type)
+    }
+
+<-- P3: Which different values exist for the properties, except
+rdf:type, of the instances of the Politician class?  -->
+
+    PREFIX vocab: <http://dbpedia.org/ontology/>
+
+    SELECT DISTINCT ?val
+    WHERE {
+        vocab:Politician ?prop ?val .
+        FILTER(?prop != rdf:type)
+    }
+
+<-- P4: For each of the properties, except rdf:type, that can be
+applied to instances of the Politician class, which different
+values do they take in those instances?  -->
+
+    PREFIX vocab: <http://dbpedia.org/ontology/>
+
+    SELECT ?prop ?val
+    WHERE {
+        vocab:Politician ?prop ?val .
+        FILTER(?prop != rdf:type)
+    }
+
+<-- P5: For each of the properties, except rdf:type, that can be
+applied to instances of the Politician class, how many
+distinct values do they take in those instances?  -->
+
+    PREFIX vocab: <http://dbpedia.org/ontology/>
+
+    SELECT DISTINCT ?prop count(*)
+    WHERE {
+        vocab:Politician ?prop ?val .
+        FILTER(?prop != rdf:type)
+    }

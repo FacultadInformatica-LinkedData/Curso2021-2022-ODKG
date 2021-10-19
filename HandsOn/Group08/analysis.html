@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Analysis</title>
+    </head>
+
+    <body>
+        <h2><u>Analyse Data Set:</u></h2> 
+        <ul>
+            <li>farmacia_nro_soe: Unique Identifier for our Pharmacy Set - range: 2-3028 with missing values (Int)</li>
+            <li>titular_nombre: Name of the pharmacy owner - 3 duplicates and 1 missing value (String)</li>
+            <li>direccion_vial_tipo: Calle, Avenida etc.. - 15 types(String)</li>
+            <li>direccion_vial_nombre - street/square/etc.. name(String)</li>
+            <li>direcion_vial_numero - address number(Int)</li>
+            <li>municipio_nombre: name of municipality (e.g. Madrid, Torrelodones etc..) - 161 values (String)</li>
+            <li>localizacion_coordenada_x - x coordinates (Int)</li>
+            <li>localizacion_coordenada_y - y coordinates (Int)</li>
+        </ul>
+        <br>
+
+        <h2><u>License:</u></h2> 
+        <ul>
+            <li>Open Data Commons Attribution License </li>
+            <li><a href="https://opendatacommons.org/licenses/by/1-0/">https://opendatacommons.org/licenses/by/1-0/</a></li>
+            <li>https://datos.comunidad.madrid/catalogo/dataset/6f407280-6ab1-43fb-bb48-ab954ec6edae/resource/130c1f6e-b131-44a1-94c9-00c9bb807ca6/download/oficinas_farmacia.csv</a></li>
+            <li>License to be generated: Open Data Commons Attribution License</li>
+        </ul>
+        <br>
+
+        <h2><u>Resource naming strategy:</u></h2> 
+        <ul>
+            <li>Domain -> http://pharmacies.odkg.es/</li>
+            <li>Path -> group08/</li><br>
+            <li>1) ontology/</li>
+                <ul>
+                    <li>1.1) ppg8#[className]</li>
+                    <li>1.2) ppg8#[propertyName]</li>
+                </ul>
+                <br>
+            <li>2) resource/</li>
+                <ul>
+                    <li>[className] / [identifier]</li>
+                </ul>
+        </ul>
+
+        <h3>Resource naming strategy examples:</h3> 
+        <ul>
+            <li>http://pharmacies.odkg.es/</li>
+            <li>http://pharmacies.odkg.es/group08/</li>
+            <li>http://pharmacies.odkg.es/group08/ontology/</li>
+            <li>http://pharmacies.odkg.es/group08/ontology/ppg6#Pharmacy</li>
+            <li>http://pharmacies.odkg.es/group08/ontology/ppg6#hasOwner</li>
+            <li>http://pharmacies.odkg.es/group08/resource/</li>
+            <li>http://pharmacies.odkg.es/group08/resource/Pharmacy/234</li>
+        </ul>
+    </body>
+</html>

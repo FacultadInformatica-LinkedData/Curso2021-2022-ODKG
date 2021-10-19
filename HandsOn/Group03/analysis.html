@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Analysis Group 03</title>
+    </head>
+        <h1>Analysis of Data</h1>
+        <hr/>
+
+        <h2>id</h2>
+        <p>Type: Integer (7 digits) </p>
+        <p> Description: Unique number to identify each row in the dataset, in this case recycle bins. </p>
+
+        <h2>tipoResiduo</h2>
+        <p>Type: String</p>
+        <p>Range: [Resto, Envases]</p>
+        <p>Description: Attribute that indicates the type of residue which can be stored in each recycle bin. 
+            "Envases" means only plastic waste
+            "Resto" menas any other kind of waste.</p>
+
+        <h2>direccion</h2>
+        <p>Type: String</p>
+        <p>Description: It indicates the closest address of the recycle bin. </p>
+
+        <h2>longitud</h2>
+        <p> Type: Float</p>
+        <p> Description: Number that indicates the exact spatial longitude of the recycle bin.</p>
+
+        <h2>longitud</h2>
+        <p> Type: Float</p>
+        <p> Description: Number that indicates the exact spatial latitude of the recycle bin.</p>
+
+        <h2>nivelLlenado</h2>
+        <p> type: Integer</p>
+        <p> Range: [0-10]</p>
+        <p> Description: It indicates the fill level of the recycle bin, from 0 to 10. The higher the number, the fuller it is.</p>
+
+        <h2>estado</h2>
+        <p> type: String</p>
+        <p> Range: [OK, LLENA, ERROR]</p>
+        <p> Description: It indicates the actual state of the bin. 
+            "OK" means that the bin is operative,
+            "LLENA" means that the recycle bin is full, 
+            and "ERROR" means that there was an error on the lecture of the bin (the values might not be correct). </p>
+
+        <h2>fecha</h2>
+        <p>Type:DateTime(YYYY-MM-DDTHH:MM:SS)</p>
+        <p>Description: It told us the last time the information about the recicle bin was collected </p>
+
+        <h2>License</h2>
+        <p>Righstholder: the Madrid City council.</p>
+        <p>Publisher: the Open Data Portal from the Madrid City Council.</p>
+        <p>The general conditions allows the reutilization of the documents for comercial and no comercial purposes,
+            as long as such use does not constitute a public administration activity.</p>
+
+
+
+
+
+        <h1>Resource Naming</h1>
+
+        <p>Domain: http://opendataGroup03.com/</p>
+        <p>Path: http://opendataGroup03.com/smartBins</p>
+        <p>Data: http://opendataGroup03.com/smartBins/resource</p>
+        <p>Ontology: http://opendataGroup03.com/smartBins/ontology</p>
+
+	    <p> Classes: http://opendataGroup03.com/smartBins/ontology/<ontologyName>#<className> . </p>
+        <p> Properties: http://opendataGroup03.com/smartBins/ontology/<ontologyName>#<propertyName> . </p>
+        <p> Individual: http://opendataGroup03.com/smartBins/resource/<className>/<identifier> . </p>
+            
+
+
+    <body>
+
+    </body>
+
+</html>

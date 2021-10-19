@@ -1,0 +1,138 @@
+@prefix : <http://groupfive.edu/kg/ontology/MadridEvents#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://groupfive.edu/kg/ontology/MadridEvents> .
+
+<http://groupfive.edu/kg/ontology/MadridEvents> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#heldIn
+:heldIn rdf:type owl:ObjectProperty ;
+        rdfs:domain :Event ;
+        rdfs:range :Facilities .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#accessibility
+:accessibility rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Facilities ;
+               rdfs:range xsd:string .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#address
+:address rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Facilities ;
+         rdfs:range xsd:string .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#audience
+:audience rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Event ;
+          rdfs:range xsd:string .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Event ;
+             rdfs:range xsd:string .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#endingDate
+:endingDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Event ;
+            rdfs:range xsd:dateTime .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#eventID
+:eventID rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Event ;
+         rdfs:range xsd:integer .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#excludedDays
+:excludedDays rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Event ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#heldOn
+:heldOn rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Event ;
+        rdfs:range xsd:string .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#hour
+:hour rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Event ;
+      rdfs:range xsd:negativeInteger .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#latitude
+:latitude rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Facilities ;
+          rdfs:range xsd:decimal .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#longDuration
+:longDuration rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Event ;
+              rdfs:range xsd:boolean .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#longitude
+:longitude rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Facilities ;
+           rdfs:range xsd:decimal .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#price
+:price rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Event ;
+       rdfs:range xsd:float .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#startingDate
+:startingDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Event ;
+              rdfs:range xsd:dateTime .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#type
+:type rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Event ;
+      rdfs:range xsd:string .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#url
+:url rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Event ;
+     rdfs:range xsd:string .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#urlLink
+:urlLink rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Facilities ;
+         rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#Event
+:Event rdf:type owl:Class .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#Facilities
+:Facilities rdf:type owl:Class .
+

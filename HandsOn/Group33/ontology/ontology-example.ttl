@@ -1,0 +1,24 @@
+@base <http://e-scooter.com/resources/> .
+@prefix src: <http://e-scooter.com/ontology#> .
+@prefix xsd: <https://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Trip1 a src:Trip ;
+    src:hasTripId "3d059c1a-b635-472f-be90-05eb3200bdaa" ^^xsd:string ;
+    src:hasStartTime "08/06/2019 05:00:00 PM" ^^xsd:dateTime ;
+    src:hasEndTime "08/06/2019 05:00:00 PM" ^^xsd:dateTime ;
+    src:hasTripDistance "2163" ^^xsd:double ;
+    src:hasTripDuration "711" ^^xsd:double ;
+    src:hasAccuracy "10" ^^xsd:double ;
+    src:hasStartCommunity :IrvingPark ;
+    src:hasEndCommunity :IrvingPark ;
+    src:hasStartCentroid :Centroid1 ;
+    src:hasEndCentroid :Centroid1 .
+:IrvingPark a src:Community ;
+    src:hasAreaNumber "16" ^^xsd:int ;
+    src:hasAreaName "IRVING PARK" ^^xsd:string .
+:Centroid1 a src:Centroid ;
+    src:hasLocation :Location1 .
+:Location1 a src:Location ;
+    src:hasLatitude "41.95358181896" ^^xsd:double ;
+    src:hasLongitude "-87.72345248206659" ^^xsd:double .

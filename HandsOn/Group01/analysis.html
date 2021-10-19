@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis</title>
+</head>
+
+<style>
+    li {
+        margin: 5px
+    }
+
+    dd {
+        margin: 2px
+    }
+</style>
+
+<body>
+
+    <h1 style="text-align: center">Assignment 2</h1>
+
+    <h2>
+        Analyse Licensing of the Data Source.
+    </h2>
+
+    <p>
+        License of the dataset: ODC-BY 1.0. 
+    </p>
+
+    <p>
+        Potencial license of the dataset to be generated: ODC-BY 1.0. 
+    </p>
+
+    <p>
+        Publisher: Ayuntamiento de Madrid
+    </p>
+    <p>
+        Rightsholder: Dirección General de Atención a la Ciudadanía
+    </p>
+
+    <p> With this license you are free to: </p>
+    <ol>
+        <li>
+            To share: to copy, distribute and use the dataset.
+        </li>
+        <li>
+            To create: to produce works from the dataset.
+        </li>
+        <li>
+            To adapt: to modify, transform and build upon the dataset.
+        </li>
+    </ol>
+
+    <h2>
+        Analyse Data Set.
+    </h2>
+
+    <p>
+        Our dataset consists of 28 column or attributes and 56 instances or rows.
+    </p>
+    
+        <ul>
+            <li>PK: es un campo clave, dentro de la web municipal, para uso interno. </li>
+                <dd>Type: Integer</dd>
+                <dd>Missing values: No</dd>
+            <li>NOMBRE: denominación del equipamiento/instalación/organismo/... o entidad a la que se refiera el conjunto de datos.</li>
+                <dd>Type: String </dd>
+                <dd>Missing values: No </dd>
+            <li>HORARIO: horario de apertura, de actividades, de secretaria, etc. Días y horario de actividad regular. Horarios de periodos excepcionales. Fechas de cierre.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No </dd>
+            <li>EQUIPAMIENTO:  detalle de espacios internos especializados .Por ej. en Centros Culturales, se relacionan Salas de exposiciones, aulas, auditorios, salas de ensayo, salas de lectura o estudio, ascensores, aseos accesibles, cafetería, etc.</li>
+                <dd>Type: String </dd>
+                <dd>Missing values: Yes </dd>
+            <li>TRANSPORTE:  estaciones de metro e indicación de línea; líneas de bus; estaciones de Renfe.</li>
+                <dd>Type: String </dd>
+                <dd>Missing values: Yes </dd>
+            <li>DESCRIPCION: información adicional; por ej.: otros equipamientos con los que se comparte la sede física; información de venta de entradas, etc.</li>
+                <dd>Type: String </dd>
+                <dd>Missing values: Yes </dd>
+            <li>ACCESIBILIDAD: 0 = No accesible, 1 = Accesible, 2 = Instalación parcialmente accesible para personas con movilidad reducida, 3 = Sin información sobre accesibilidad para personas con movilidad reducida, 4 = Lengua de signos, 5 = Señalización podotáctil, 6 = Bucle de inducción magnético.</li>
+                <dd>Type: Integer </dd>
+                <dd>Missing values: No </dd>
+                <dd>Range: [0,6]</dd>
+            <li>CONTENT-URL: nombre del recurso en Internet, normalmente en la web municipal www.madrid.es para su localización. Se accede a la ficha existente en dicha web. Ejemplo: el centro cultural Alfredo Kraus, en este campo, tendría la siguiente url: https://www.madrid.es/portales/munimadrid/es/Inicio/Cultura-ocio-y-deporte/Cultura-y-ocio/Direcciones-ytelefonos/Centro-Cultural-Alfredo-Kraus-Fuencarral-El-Pardo- /?vgnextfmt=default&vgnextoid=7337cbf06c81c010VgnVCM1000000b205a0aRCRD&vgnextchannel=76f3efff228f e410VgnVCM2000000c205a0aRCRD.</li>
+                <dd>Type: String </dd>
+                <dd>Missing values: No </dd>
+            <li>NOMBRE-VIA: denominación del vial.</li>
+                <dd>Type: String </dd>
+                <dd>Missing values: No</dd>
+            <li>CLASE-VIAL: tipo de vial: calle, avenida, paseo, etc.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+            <li>TIPO-NUM: V, S/N, KM.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+                <dd>Possible values: V | T</dd>
+            <li>NUM: número del equipamiento en el vial. Pueden incluir descriptivos.</li>
+                <dd>Type: Integer </dd>
+                <dd>Missing values: No </dd>
+            <li>PLANTA: nivel que ocupa en el inmueble.</li>
+                <dd>Type: String </dd>
+                <dd>Missing values: Yes</dd>
+            <li>PUERTA: puerta que ocupa en el inmueble.</li>
+                <dd>This is an empty attribute</dd>
+            <li>ESCALERAS: escalera de acceso.</li>
+                <dd>This is an empty attribute</dd>
+            <li>ORIENTACION: Detalles descriptivos de la dirección, si los hubiese. Por ej., “frente a”; “con vuelta a”, “acceso por”, etc.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: Yes</dd>
+            <li>LOCALIDAD: Madrid.</li>
+                <dd>Type: String </dd>
+                <dd>Missing values: No</dd>
+                <dd>Possible values: Madrid</dd>
+            <li>PROVINCIA: Madrid.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+                <dd>Possible values: Madrid</dd>
+            <li>CODIGO-POSTAL: Codigo postal de la ubicación.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+            <li>BARRIO: denominación del barrio.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+            <li>DISTRITO: denominación del distrito.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+            <li>COORDENADA-X: coordenada de 6 caracteres sobre plano de la ciudad.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+            <li>COORDENADA-Y: coordenada de 7 caracteres sobre plano de la ciudad. Ambas coordenadas, UTM - 30, están proyectadas en el sistema de referencia ETR89. Actualizado a mayo 2019.0</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+            <li>COORDENADA-LATITUD: coordenada latitud en el sistema de referencia WGS84.</li>
+                <dd>Type: Float</dd>
+                <dd>Missing values: No</dd>
+            <li>COORDENADA-LONGITUD: coordenada longitud en el sistema de referencia WGS84 La coordenadas longitud y latitud, si se abre el fichero CSV con Excel, las muestra mal por un tema de conversión de EXCEL y manejo de puntos y comas, como separadores. Estos campos, si se abre con otro software, las muestra sin problemas. También está disponible la versión en XML, que los muestra sin problemas ni conversiones.</li>
+                <dd>Type: Float</dd>
+                <dd>Missing values: No</dd>
+            <li>TELEFONO: teléfonos de contacto.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+            <li>FAX: número de fax.</li>
+                <dd>This is an empty attribute</dd>
+            <li>EMAIL:  dirección de correo electrónico, si la tuviese. </li>
+                <dd>Type: String</dd>
+                <dd>Missing values: Yes</dd>
+            <li>TIPO: descripción de la tipología de la instalación. Se encuentra al final de la cadena de texto. En muchos conjuntos de datos, el valor que contenga será igual, pero por ejemplo en otros, como entidades de participación ciudadana, sí que permite una clasificación.</li>
+                <dd>Type: String</dd>
+                <dd>Missing values: No</dd>
+        </ul>
+
+    <h2>
+        Define Resource Naming Strategy.
+    </h2>
+
+    <p>
+        The resource naming strategy defined for the data is the following according to the Cool URIs guide:
+    </p>
+       
+    <p>
+        The URI domain chosen is http://www.studyroomsmadrid.es.
+        We selected this URI after checking that it was free.
+    </p>
+
+    <p>Path: http://www.studyroomsmadrid.es/studyRoom</p>
+    <p>Data: http://www.studyroomsmadrid.es/studyRoom/resource</p>
+    <p>Ontology: http://www.studyroomsmadrid.es/studyRoom/ontology</p>
+
+        <ul>
+          <li>
+            Classes:
+            <dd>
+                - http://www.studyroomsmadrid.es/studyRoom/ontology/&lt;ontologyName&gt;#&lt;className&gt;
+            </dd>
+          </li>
+          <li>
+            Individuals:
+            <dd>
+                 - http://www.studyroomsmadrid.es/studyRoom/resource/&lt;className&gt;/&lt;identifier&gt; .
+            </dd>
+          </li>
+          <li>
+              Properties:
+              <dd>
+                  - http://www.studyroomsmadrid.es/studyRoom/ontology/&lt;ontologyName&gt;#&lt;propertyName&gt; .
+              </dd>
+          </li>
+        </ul>
+
+</body>
+</html>

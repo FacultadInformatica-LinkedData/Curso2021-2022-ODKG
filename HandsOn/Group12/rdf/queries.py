@@ -7,12 +7,13 @@ from rdflib.plugins.sparql import prepareQuery
 """Creamos un grafo vac�o"""
 
 g = Graph()
-g.parse("data.nt", format="ntriples")
+g.parse("data-with-links.nt", format="ntriples")
 
 #for subj, pred, obj in g:
 #  print(subj,pred,obj)
 
 NS = Namespace("https://data.eventsatmadrid.org/ontology#")
+W3 = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 
 #All the facilities
 q1 = prepareQuery('''
@@ -44,9 +45,10 @@ q3 = prepareQuery('''
     ?Events ns:isHeldIn ?Facility .
     ?Facility ns:isLocatedAt ?Neighborhood .
     ?Neighborhood ns:isInDistrict ?District .
-    ?District ns:hasName "LATINA"}
+    ?District w:label "Latina"
+    }
   ''',
-  initNs = { "ns": NS}
+  initNs = { "ns": NS, "w": W3}
 )
 
 for r in g.query(q3):
@@ -56,9 +58,9 @@ for r in g.query(q3):
 q4 = prepareQuery('''
   SELECT distinct ?Events WHERE { 
     ?Events ns:isHeldIn ?Facility .
-    ?Facility ns:hasName "Teatro Circo Price"}
+    ?Facility w:label "Teatro Circo Price"}
   ''',
-  initNs = { "ns": NS}
+  initNs = { "ns": NS, "w": W3}
 )
 
 for r in g.query(q4):
@@ -70,9 +72,9 @@ q5 = prepareQuery('''
     ?Events ns:hasPrice "Gratuito" .
     ?Events ns:isHeldIn ?Facility .
     ?Facility ns:isLocatedAt ?Neighborhood .
-    ?Neighborhood ns:hasName "PUERTA DEL ANGEL"}
+    ?Neighborhood w:label "Barrio de Puerta del Ángel"}
   ''',
-  initNs = { "ns": NS}
+  initNs = { "ns": NS, "w": W3}
 )
 
 for r in g.query(q5):
@@ -81,10 +83,10 @@ for r in g.query(q5):
 #All the events  for FAMILIAS and CODIGO POSTAL
 q6 = prepareQuery('''
   SELECT distinct ?Events WHERE { 
-    ?Events ns:hasType "Familias" .
+    ?Events ns:hasTargetAudience "Familias" .
     ?Events ns:isHeldIn ?Facility .
     ?Facility ns:hasAddress ?Address .
-    ?Address ns:hasPostalCode "28047"^^xsd:int}
+    ?Address ns:hasPostalCode "28047"}
   ''',
   initNs = { "ns": NS}
 )
@@ -97,7 +99,7 @@ q7 = prepareQuery('''
   SELECT distinct ?Events WHERE { 
     ?Events ns:isHeldIn ?Facility .
     ?Facility ns:hasAddress ?Address .
-    ?Address ns:hasPostalCode "28047"^^xsd:int}
+    ?Address ns:hasPostalCode "28047"}
   ''',
   initNs = { "ns": NS}
 )

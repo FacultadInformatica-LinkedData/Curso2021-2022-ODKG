@@ -1,0 +1,150 @@
+<html>
+<head>
+</head>
+<body>
+    <h1>Specification of the requirements satisfied by the selected datasets.</h1>
+    <h2>License</h2>
+    <div>Las condiciones generales permiten la reutilización de los documentos para fines comerciales y no comerciales. Se entiende por reutilización el uso de documentos que obran en poder del Ayuntamiento de Madrid, siempre que dicho uso no constituya una actividad administrativa pública.</div> 
+    <h2>Dataset Details</h2>
+    <!-- Estructura para Eventos provenientes de www.madrid.es -->
+    <div>
+        La información existente en este conjunto de datos, proviene de la página web municipal www.madrid.es.
+        Esta estructura de información, es genérica para todos los conjuntos de datos de eventos y actividades que
+        provienen de dicha web, con lo cual dependiendo del conjunto de datos, pudieran estar algunos campos
+        vacíos.
+        Se recuerda, que esta información es la disponible en el Ayuntamiento de Madrid. Si tuviese algún error o
+        imprecisión, se puede usar el formulario de “comunicar un error …” que existe en la página del conjunto de
+        datos, para indicarlo.
+        El concepto tiempo real asociado a estos conjuntos de datos, significa que se está dando la última
+        información disponible en la Web municipal: la misma se actualiza en cuanto se conoce un cambio en la
+        información. Como se indica en el apartado condiciones de uso, toda información que hay en ambas webs
+        es susceptible de tener algún error, que nos pueden comunicar para su corrección.
+        La generación de la información puede tardar dependiendo del volumen de registros a descargar, aunque
+        obtenida una primera vez, existe una memoria cache de unas cuantas horas, para evitar penalizar su
+        consumo.
+        Los formatos en los que se puede descargar esta información son: CSV (separados por punto y coma, para
+        una apertura más fácil desde un estándar de facto como es Microsoft Excel), GEORSS, RDF y XML.
+    </div>
+    <h3>La estructura de cada conjunto de datos (en CSV y XML), es la siguiente:</h3>
+    <div>    
+        <ol>
+            <li> ID-EVENTO: es un campo clave, dentro de la web municipal, para uso interno.</li>
+            <li> TITULO: denominación del evento al que se refiere.</li>
+            <li> PRECIO: coste del evento/actividad. En muchos casos se trata de actividades gratuitas, como por
+            ejemplo todas las realizadas y organizadas en Bibliotecas Municipales, por lo que el campo
+            aparecerá vacío en muchas ocasiones.</li>
+            <li> GRATUITO: campo booleano, en el que figurará un “0” cuando no se ha marcado o un “1” cuando
+            se marque el evento como gratuito.</li>
+            <li> LARGA-DURACION: campo booleano en el que figurará un “0” cuando no se ha marcado o un “1”
+            si se trata de un evento que se desarrolla a lo largo del tiempo, como por ejemplo, Talleres,
+            exposiciones, etc.</li>
+            <li> DIAS-SEMANA: son las iniciales de cada día de la semana en los que se desarrolla el evento.
+            L,M,X,J,V,S,D.</li>
+            Importante: Esta codificación solo es válida para eventos de larga duración (“larga-duracion=1”), y
+            no debe tenerse en cuenta para eventos puntuales (“larga-duración=0”).
+            <li> DIAS-EXCLUIDOS: en eventos de larga duración, son los días concretos que no se celebra la
+            misma. Es una fecha con el formato D/M/AAAA. Si existiesen varios días que no se celebran, se
+            mostrarían las fechas separadas por el carácter “punto y coma“</li>
+            <li> FECHA: campo fecha de inicio del evento, con estructura (aaaa-mm-dd hh:mm:ss.0). Ej.: 2014-05-
+            29 00:00:00.0</li>
+            <li> FECHA-FIN: campo fecha de fin del evento, con estructura (aaaa-mm-dd hh:mm:ss.0). Ej.: 2014-
+            05-29 00:00:00.0</li>
+            <li> HORA: campo en el que se indica la hora de incio del evento, con la estructura (hh:mm) Ej.:18:00
+            <li> DESCRIPCION: campo memo con la descripción del evento.
+            <li> CONTENT-URL: nombre del recurso en Internet del evento concreto,en la web municipal
+            www.madrid.es, para su localización. Se accede a la ficha del evento existente en dicha web
+            <li> TITULO-ACTIVIDAD: denominación del evento o la actividad a la que éste está asociado.</li>
+            <li> URL-ACTIVIDAD: nombre del recurso en Internet, en la web municipal www.madrid.es, de la
+            actividad en la que se inscribe el evento. Se accede a la ficha de dicha actividad existente en dicha
+            web.</li>
+            <li> URL-INSTALACION: nombre del recurso en Internet, en la web municipal www.madrid.es, para su
+            localización., de la instalación donde se desarrolla el evento .Se accede a la ficha de la instalación 
+            existente en dicha web. Por ej. Biblioteca Pública Municipal Ana María Matute, Centro Deportivo
+            Municipal Daoiz y Velarde 1, etc.</li>
+            <li> NOMBRE-INSTALACION: denominación de la instalación donde se desarrolla el evento.</li>
+            <li> ACCESIBILIDAD-INSTALACION: 0 = No accesible, 1 = Accesible, 2 = Instalación parcialmente
+            accesible para personas con movilidad reducida, 3 = Sin información sobre accesibilidad para
+            personas con movilidad reducida, 4 = Lengua de signos, 5 = Señalización podotáctil, 6 = Bucle de
+            inducción magnético.</li>  
+            <li> CLASE-VIAL-INSTALACION: tipo de vial de la instalación (calle, avenida, paseo, etc.) donde se
+            celebra el evento</li>
+            <li> NOMBRE-VIA-INSTALACION: denominación del vial de la instalación donde se celebra el evento</li>
+            <li> NUM-INSTALACION: número del vial de la instalación donde se celebra el evento</li>
+            <li> DISTRITO-INSTALACION: denominación del distrito donde se celebra el evento</li>
+            <li> BARRIO-INSTALACION: denominación del distrito donde se celebra el evento</li>
+            <li> CODIGO-POSTAL-INSTALACION: código postal de la instalación donde se celebra el evento</li>
+            <li> COORDENADA-X: coordenada de 6 caracteres sobre plano de la ciudad</li>
+            <li> COORDENADA-Y: coordenada de 7 caracteres sobre plano de la ciudad</li>
+            Ambas coordenadas, UTM - 30, están proyectadas en el sistema de referencia
+            ETRS89.</li>
+            <li> COORDENADA-LATITUD: coordenada latitud en el sistema de referencia WGS84</li>
+            <li> COORDENADA-LONGITUD: coordenada longitud en el sistema de referencia WGS84
+            La coordenadas longitud y latitud, si se abre el fichero CSV con Excel, las muestra mal por
+            un tema de conversión de EXCEL y manejo de puntos y comas, como separadores. Estos
+            campos, si se abre con otro software, las muestra sin problemas. También está disponible la
+            versión en XML, que los muestra sin problemas ni conversiones.</li>
+            <li> DISTRITO: nombre del distrito donde se desarrolla la actividad.</li>
+            <li> TIPO: descripción de la tipología de la actividad. Se encuentra al final de la cadena de texto. En
+            muchos conjuntos de datos, el valor que contenga será igual, pero por ejemplo en otros, como
+            <br>Actividades, sí que permite una clasificación, dando la siguiente información:
+            <br>Ejemplo no exhaustivo:
+            <br>Clasificación por Tipo, para contenido/actividades
+            <br>ActividadesDeportivas
+            <br>ActividadesEscolares
+            <br>ActividadesInfantiles
+            <br>ActosReligiosos
+            <br>Campamentos
+            <br>Carnavales
+            <br>Circos
+            <br>ConmemoracionesHomenajes
+            <br>Conciertos
+            <br>ConferenciasColoquios
+            <br>CongresosJornadas
+            <br>CorridasToros
+            <br>CuentacuentosTíteresMarionetas
+            <br>CursosTalleres
+            <br>DanzaBallet
+            <br>ExpectáculosHumorMagia
+            <br>ExcursionesViajes
+            <br>Exposiciones
+            <br>FeriasMuestras
+            <br>FiestasActividadesCalle
+            <br>FiestasNavidadesReyes
+            <br>FiestasSanIsidro
+            <br>FiestasSemanaSanta
+            <br>Flamenco
+            <br>ItinerariosOtrasActividadesAmbientales
+            <br>ObrasTeatro
+            <br>Ópera
+            <br>Películas
+            <br>PerfomancesEspectáculosAudiovisuales
+            <br>RecitalesPresentacionesActosLiterarios
+            <br>VeranosVilla
+            <br>VisitasGuiadasTurísticas
+            <br>Zarzuelas
+            <br>Para este tipo de conjuntos de datos provenientes de la Web Municipal, se ha incluido una funcionalidad
+            visual, que permite su visualización en un mapa de las instalaciones o equipamientos donde se desarrollan
+            los eventos y una breve descripción con links a la web, al posicionarse sobre cada uno de ellos.</li>
+            <li>AUDIENCIA: tipo de usuario al que se dirige el evento</li>
+        </ol> 
+    </div>
+    <h3>Requerimientos</h3>
+    <div>
+        <ol>
+            <li><strong>R1 Los datos son del dominio de Smart Cites</strong>R1</li>
+            Los datos se aplican al turismo inteligente, ya que es informaci&oacute;n de eventos y activiades en Madrid.
+            <li><strong>R2 Los datos est&aacute;n disponibles en formato CSV</strong></li>
+            Los datos se encuentran publicados en la p&aacute;gina de datos abiertos de Madrid en <a href="https://datos.madrid.es" target="blank">https://datos.madrid.es</a>
+            <li><strong>R3 Los datos tienen licencia abierta que permiten su publicaci&oacute;n</strong></li>
+            La licencia permite el uso comercial y no comercial de los datos. M&aacute;s informaci&oacute;n aqu&iacute;: <a href="https://datos.madrid.es/egob/catalogo/aviso-legal" target="blank">https://datos.madrid.es/egob/catalogo/aviso-legal</a>
+            <li><strong>R4 Los datos se pueden vincular a entidades reales</strong></li>
+            Los datos se pueden vincular con entidades reales como: Circos, Eventos, Museos, Teatros, Fiestas.
+            <li><strong>R5 Documentaci&oacute;n existente para los datos</strong></li>
+            Existe informaci&oacute;n disponible de los datos como este documento. <a href="https://datos.madrid.es/FWProjects/egob/Catalogo/XComun/Ficheros/Estructura_DS_eventos_wwwmadrid.pdf" target="blank">Documento </a>
+            <li><strong>R6 Los datos provienen de m&uacute;ltiles fuentes</strong></li>
+            Los datos pueden provenir de multiples fuentes en cualquier formato, ya que es informaci&oacute;n de eventos en Madrid.
+        </ol>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+1.
+SELECT DISTINCT ?class
+WHERE {
+  ?instance rdf:type ?class.
+}
+
+
+2.
+SELECT DISTINCT ?class
+WHERE{
+ ?class rdfs:subClassOf <http://GP-onto.fi.upm.es/exercise2#Establishment>
+}
+
+3.
+
+select distinct ?inst
+where{
+?inst rdf:type <http://GP-onto.fi.upm.es/exercise2#City>
+}
+
+4.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select distinct *
+where{
+ex:Santiago_de_Compostela ex:hasInhabitantNumber ?obj
+}
+
+5.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select ?place ?pobl
+where{
+?place ex:hasInhabitantNumber ?pobl
+}order by desc(?pobl)
+
+6.
+
+SELECT DISTINCT * 
+WHERE{
+Class a <http%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23Class>.%0D%0A}%0D%0A&
+
+7.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select distinct ?city ?hab
+where{
+?x rdfs:subClassOf ex:Locality.
+?city rdf:type ?x.
+?city ex:hasInhabitantNumber ?hab
+}
+
+8.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select distinct ?city xsd:integer(?hab) as ?habitants
+where{
+?x rdfs:subClassOf ex:Locality.
+?city rdf:type ?x.
+?city ex:hasInhabitantNumber ?hab.
+FILTER(xsd:integer(?hab) > 200000)
+}
+9.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select *
+where{
+ex:Pazo_Breogan ?prop ?value
+}
+10.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select *
+where{
+?class rdfs:subClassOf ex:Location
+}
+11.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select *
+where{
+?inst rdf:type ex:Locality
+}
+
+12.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select ?prop ?value
+where{
+?obj ?prop ?value.
+?obj rdfs:label "Madrid"
+}
+13.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select distinct ?inst ex:isIn as ?property ?prov
+where{
+?x rdfs:subClassOf ex:TouristicLocation.
+?inst rdf:type ?x.
+?inst ex:isPlacedIn ?loc.
+?loc ex:inProvince ?prov
+}
+14.
+PREFIX ex: <http://GP-onto.fi.upm.es/exercise2#>
+select distinct COUNT(*) as ?number_of_instances
+where{
+?instance rdf:type ex:Town
+}

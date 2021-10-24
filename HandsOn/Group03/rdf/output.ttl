@@ -1,0 +1,90 @@
+@base          <http://helio.linkeddata.es/> .
+<http://opendatagroup03.com/smartbins/resource/bin/1522416>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#RecycleBin> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasCapacity>
+                "4"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasStatus>
+                "OK"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#isLocatedIn>
+                <http://opendatagroup03.com/smartbins/resource/location/1522416> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#lastUpdate>
+                "2021-10-06T09:31:50"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#residueType>
+                "resto"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/location/1522705>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#Location> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasAddress>
+                "JosÃ© Del Hierro NÂ° 52"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/location/1521210>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#Location> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasAddress>
+                "Manuel Machado CV Alcalde Luis Marichalar"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/bin/1522423>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#RecycleBin> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasCapacity>
+                "6"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasStatus>
+                "OK"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#isLocatedIn>
+                <http://opendatagroup03.com/smartbins/resource/location/1522423> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#lastUpdate>
+                "2021-10-06T09:52:37"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#residueType>
+                "envases"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/location/1522416>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#Location> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasAddress>
+                "PeÃ±a Gorbea NÂ°2"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/location/1517391>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#Location> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasAddress>
+                "Pza. Mercurio FTE. Junta Municpal De Barajas"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/location/1522423>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#Location> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasAddress>
+                "Estacion Cercanias Asamblea De Madrid"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/bin/1522705>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#RecycleBin> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasCapacity>
+                "6"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasStatus>
+                "OK"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#isLocatedIn>
+                <http://opendatagroup03.com/smartbins/resource/location/1522705> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#lastUpdate>
+                "2021-10-06T09:45:12"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#residueType>
+                "envases"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/bin/1517391>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#RecycleBin> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasCapacity>
+                "0"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasStatus>
+                "OK"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#isLocatedIn>
+                <http://opendatagroup03.com/smartbins/resource/location/1517391> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#lastUpdate>
+                "2021-10-06T09:29:40"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#residueType>
+                "resto"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://opendatagroup03.com/smartbins/resource/bin/1521210>
+        a       <http://opendatagroup03.com/smartbins/ontology/ont#RecycleBin> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasCapacity>
+                "4"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#hasStatus>
+                "OK"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#isLocatedIn>
+                <http://opendatagroup03.com/smartbins/resource/location/1521210> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#lastUpdate>
+                "2021-10-06T10:42:18"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://opendatagroup03.com/smartbins/ontology/ont#residueType>
+                "resto"^^<http://www.w3.org/2001/XMLSchema#string> .

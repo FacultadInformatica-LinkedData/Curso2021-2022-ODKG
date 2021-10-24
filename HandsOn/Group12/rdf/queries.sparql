@@ -1,0 +1,108 @@
+1.-Get all the Facilities with their Neighborhood and District
+
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?Facility ?Neighborhood ?District WHERE {
+    ?Facility ns:isLocatedAt ?Neighborhood .
+    ?Neighborhood ns:isInDistrict ?District  }
+
+2.- Get all the districts
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT distinct ?District WHERE {
+    ?Facility ns:isLocatedAt ?Neighborhood .
+    ?Neighborhood ns:isInDistrict ?District  }
+
+3.- Get all the events in a district
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT distinct ?Events WHERE {
+    ?Events ns:isHeldIn ?Facility .
+    ?Facility ns:isLocatedAt ?Neighborhood .
+    ?Neighborhood ns:isInDistrict ?District .
+    ?District ns:hasName "LATINA"}
+
+4.- Get all the events in a facility
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT distinct ?Events WHERE {
+    ?Events ns:isHeldIn ?Facility .
+    ?Facility ns:hasName "Teatro Circo Price"}
+
+5.- Get all the events in a neighborhood with free access
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT distinct ?Events WHERE {
+    ?Events ns:hasPrice "Gratuito" .
+    ?Events ns:isHeldIn ?Facility .
+    ?Facility ns:isLocatedAt ?Neighborhood .
+    ?Neighborhood ns:hasName "PUERTA DEL ANGEL"}
+
+6.- Get all the events  for type "FAMILIAS" in a postal code
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT distinct ?Events WHERE {
+    ?Events ns:hasType "Familias" .
+    ?Events ns:isHeldIn ?Facility .
+    ?Facility ns:hasAddress ?Address .
+    ?Address ns:hasPostalCode "28047"^^xsd:int}
+
+7.- Get all the events in certain postal code
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT distinct ?Events WHERE {
+    ?Events ns:isHeldIn ?Facility .
+    ?Facility ns:hasAddress ?Address .
+    ?Address ns:hasPostalCode "28047"^^xsd:int}
+
+8.- Get all the events between two dates
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?title ?startDate WHERE {
+    ?Events ns:hasTitle ?title.
+    ?Events ns:hasStartDate ?startDate.
+    ?Events ns:hasFinishDate ?finishDate.
+    FILTER  (?startDate > "2021-10-21"^^xsd:date)
+    FILTER  (?finishDate < "2021-10-25"^^xsd:date)
+    FILTER  (?finishDate = ?startDate)
+    }
+
+9.- how many free events are there in each district for the next month?
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?District (COUNT(?Events) AS ?ccount) WHERE {
+    ?Events ns:hasStartDate ?startDate.
+    ?Events ns:hasFinishDate ?finishDate.
+    ?Events ns:isHeldIn ?Facility .
+    ?Events ns:hasPrice "Gratuito" .
+    ?Facility ns:isLocatedAt ?Neighborhood .
+    ?Neighborhood ns:isInDistrict ?District .
+    FILTER  (?startDate >= "2021-10-21"^^xsd:date)
+    FILTER  (?startDate <= "2021-11-21"^^xsd:date)
+    }
+   GROUP BY ?District
+
+10.- All the events in a certain day after certain hour
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+  SELECT ?title ?hour WHERE {
+    ?Events ns:hasTitle ?title.
+    ?Events ns:hasHour ?hour.
+    ?Events ns:hasStartDate ?startDate.
+    ?Events ns:hasFinishDate ?finishDate.
+    ?Events ns:isHeldIn ?Facility .
+    ?Facility ns:isLocatedAt ?Neighborhood .
+    ?Neighborhood ns:isInDistrict ?District .
+    FILTER  (?startDate = "2021-10-22"^^xsd:date)
+    FILTER  (?startDate = ?finishDate)
+    FILTER  (?hour >= "18"^^xsd:int)
+    }
+
+11.- Get the facilities and the number of free Events they have
+PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?Facility ?freeEvents {
+    SELECT ?Facility (COUNT(?Events) AS ?freeEvents)  WHERE {
+      ?Events ns:isHeldIn ?Facility .
+      ?Events ns:hasPrice ?price
+      FILTER  (?price >= "Gratuito"^^xsd:string)
+      }
+      GROUP BY ?Facility
+    }
+    ORDER BY ?freeEvents DESC(?freeEvents)
+

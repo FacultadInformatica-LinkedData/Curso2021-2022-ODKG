@@ -90,6 +90,15 @@
                 rdfs:range :Coordinates .
 
 
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasKM
+:hasKM rdf:type owl:ObjectProperty ;
+       rdfs:domain :Address ;
+       rdfs:range [ rdf:type owl:Restriction ;
+                    owl:onProperty owl:topDataProperty ;
+                    owl:someValuesFrom xsd:string
+                  ] .
+
+
 ###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasMunicipality
 :hasMunicipality rdf:type owl:ObjectProperty ;
                  rdfs:domain :Address ;
@@ -118,6 +127,15 @@
                                     owl:onProperty owl:topDataProperty ;
                                     owl:someValuesFrom :pharmacyId
                                   ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasRoadType
+:hasRoadType rdf:type owl:ObjectProperty ;
+             rdfs:domain :Address ;
+             rdfs:range [ rdf:type owl:Restriction ;
+                          owl:onProperty owl:topDataProperty ;
+                          owl:someValuesFrom xsd:string
+                        ] .
 
 
 ###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasStreet

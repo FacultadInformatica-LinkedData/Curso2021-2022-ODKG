@@ -4,10 +4,10 @@
 from rdflib import Graph, Namespace, Literal
 from rdflib.plugins.sparql import prepareQuery
 
-"""Creamos un grafo vacío"""
+"""Creamos un grafo vacï¿½o"""
 
 g = Graph()
-g.parse("data.ttl", format="ntriples")
+g.parse("data.nt", format="ntriples")
 
 #for subj, pred, obj in g:
 #  print(subj,pred,obj)

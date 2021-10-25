@@ -9,11 +9,11 @@
 
 <#Event> a rr:TriplesMap;
    rml:logicalSource [
-      rml:source "./data/agenda-actividades-eventos.csv";
+      rml:source "csv/events-with-links.csv";
       rml:referenceFormulation ql:CSV
    ];
    rr:subjectMap [
-      rr:template "http://groupfive.edu/kg/ontology/MadridEvents#{ID}";
+      rr:template "http://groupfive.edu/kg/ontology/MadridEvents#{eventID}";
       rr:class ex:Event 
    ];
 
@@ -25,9 +25,33 @@
    ];
 
    rr:predicateObjectMap [
-      rr:predicate ex:accessibility;
+      rr:predicate ex:accessibility1;
       rr:objectMap [ 
-         rml:reference "accessibility";
+         rml:reference "accessibility1";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility2;
+      rr:objectMap [ 
+         rml:reference "accessibility2";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility3;
+      rr:objectMap [ 
+         rml:reference "accessibility3";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility4;
+      rr:objectMap [ 
+         rml:reference "accessibility4";
          rr:datatype xsd:string
       ]
    ];
@@ -43,7 +67,7 @@
    rr:predicateObjectMap [
       rr:predicate ex:audience1;
       rr:objectMap [ 
-         rml:reference "audience 1";
+         rml:reference "audience1";
          rr:datatype xsd:string
       ]
    ];
@@ -51,7 +75,7 @@
    rr:predicateObjectMap [
       rr:predicate ex:audience2;
       rr:objectMap [ 
-         rml:reference "audience 2";
+         rml:reference "audience2";
          rr:datatype xsd:string
       ]
    ];
@@ -331,9 +355,33 @@
    ];
 
    rr:predicateObjectMap [
-      rr:predicate ex:accessibility;
+      rr:predicate ex:accessibility1;
       rr:objectMap [ 
-         rml:reference "accessibility"; 
+         rml:reference "accessibility1";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility2;
+      rr:objectMap [ 
+         rml:reference "accessibility2";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility3;
+      rr:objectMap [ 
+         rml:reference "accessibility3";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility4;
+      rr:objectMap [ 
+         rml:reference "accessibility4";
          rr:datatype xsd:string
       ]
    ];

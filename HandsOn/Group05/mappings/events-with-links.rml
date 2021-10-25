@@ -25,33 +25,9 @@
    ];
 
    rr:predicateObjectMap [
-      rr:predicate ex:accessibility1;
+      rr:predicate ex:accessibility;
       rr:objectMap [ 
-         rml:reference "accessibility 1";
-         rr:datatype xsd:string
-      ]
-   ];
-
-   rr:predicateObjectMap [
-      rr:predicate ex:accessibility2;
-      rr:objectMap [ 
-         rml:reference "accessibility 2";
-         rr:datatype xsd:string
-      ]
-   ];
-
-   rr:predicateObjectMap [
-      rr:predicate ex:accessibility3;
-      rr:objectMap [ 
-         rml:reference "accessibility 3";
-         rr:datatype xsd:string
-      ]
-   ];
-
-   rr:predicateObjectMap [
-      rr:predicate ex:accessibility4;
-      rr:objectMap [ 
-         rml:reference "accessibility 4";
+         rml:reference "accessibility";
          rr:datatype xsd:string
       ]
    ];
@@ -161,7 +137,7 @@
    ];
 
    rr:predicateObjectMap [
-      rr:predicate ex:Sunday;
+      rr:predicate ex:street;
       rr:objectMap [ 
          rml:reference "street";
          rr:datatype xsd:string
@@ -169,7 +145,7 @@
    ];
 
    rr:predicateObjectMap [
-      rr:predicate ex:Sunday;
+      rr:predicate ex:district;
       rr:objectMap [ 
          rml:reference "district";
          rr:datatype xsd:string
@@ -177,7 +153,7 @@
    ];
 
    rr:predicateObjectMap [
-    rr:predicate ex:Sunday;
+    rr:predicate ex:neighborhood;
     rr:objectMap [ 
        rml:reference "neighborhood";
        rr:datatype xsd:string
@@ -214,17 +190,89 @@
          rml:reference "url";
          rr:datatype xsd:string
       ]
+   ];
+
+      rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [
+           rr:termType rr:IRI;
+           rml:reference "neighborhood_reconciliation"
+        ]
+     ];
+  
+     rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [
+           rr:dataType xsd:string ;
+           rml:reference "neighborhood"
+        ]
+     ];
+  
+     rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [
+           rr:termType rr:IRI;
+           rml:reference "district_reconciliation"
+        ]
+     ];
+  
+     rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [
+           rr:dataType xsd:string ;
+           rml:reference "district"
+        ]
+     ];
+  
+     rr:predicateObjectMap [
+      rr:predicate owl:sameAs;
+      rr:objectMap [
+         rr:termType rr:IRI;
+         rml:reference "street_reconciliation"
+      ]
+   ];
+  
+   rr:predicateObjectMap [
+      rr:predicate rdfs:label;
+      rr:objectMap [
+         rr:dataType xsd:string ;
+         rml:reference "street"
+      ]
    ].
 
 <#Facilities> a rr:TriplesMap;
    rml:logicalSource [
-      rml:source "./data/agenda-actividades-eventos.csv";
+      rml:source "csv/events-with-links.csv";
       rml:referenceFormulation ql:CSV
    ];
    rr:subjectMap [
       rr:template "http://groupfive.edu/kg/ontology/MadridEvents#{urlLink}";
       rr:class ex:Facilities 
    ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:street;
+      rr:objectMap [ 
+         rml:reference "street";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:district;
+      rr:objectMap [ 
+         rml:reference "district";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+    rr:predicate ex:neighborhood;
+    rr:objectMap [ 
+       rml:reference "neighborhood";
+       rr:datatype xsd:string
+    ]
+ ];
 
    rr:predicateObjectMap [
       rr:predicate owl:sameAs;

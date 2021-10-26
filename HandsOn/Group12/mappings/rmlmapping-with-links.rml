@@ -5,6 +5,7 @@
 @prefix ns: <https://data.eventsatmadrid.org/ontology#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>
 @base <https://data.eventsatmadrid.org/ontology#>.
 
 
@@ -19,7 +20,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate rdfs:label;
+    rr:predicate vcard:street-address;
     rr:objectMap [
       rml:reference "ADDRESS";
       rr:datatype xsd:string
@@ -27,7 +28,7 @@
   ];
   
   rr:predicateObjectMap [
-    rr:predicate ns:hasPostalCode;
+    rr:predicate vcard:postal-code;
     rr:objectMap [
       rml:reference "CODIGO-POSTAL-INSTALACION";
       rr:datatype xsd:string
@@ -94,7 +95,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasAddress;
+    rr:predicate vcard:hasAddress;
     rr:objectMap [
       rr:parentTriplesMap <AddressMap>;
       rr:joinCondition [
@@ -244,7 +245,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasDescription;
+    rr:predicate rdfs:comment;
     rr:objectMap [
       rml:reference "DESCRIPCION";
       rr:datatype xsd:string
@@ -267,8 +268,9 @@
     ]
   ];
 
+  # https://skos.um.es/TR/skos-primer/#secalt
   rr:predicateObjectMap [
-    rr:predicate ns:hasTitle;
+    rr:predicate skos:altLabel;
     rr:objectMap [
       rml:reference "TITULO-ACTIVIDAD";
       rr:datatype xsd:string

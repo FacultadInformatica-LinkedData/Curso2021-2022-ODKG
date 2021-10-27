@@ -10,7 +10,7 @@
 
 <AddressMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "data-updated-with-links.csv" ;
+    rml:source "csv/data-updated-with-links.csv" ;
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
@@ -45,7 +45,7 @@
 
 <FacilityMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "data-updated-with-links.csv" ;
+    rml:source "csv/data-updated-with-links.csv" ;
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
@@ -117,7 +117,7 @@
 
 <NeighborhoodMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "data-updated-with-links.csv" ;
+    rml:source "csv/data-updated-with-links.csv" ;
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
@@ -152,7 +152,7 @@
 
 <DistrictMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "data-updated-with-links.csv" ;
+    rml:source "csv/data-updated-with-links.csv" ;
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
@@ -179,7 +179,7 @@
   
 <EventMap> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "data-updated-with-links.csv" ;
+    rml:source "csv/data-updated-with-links.csv" ;
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
@@ -256,14 +256,6 @@
     rr:objectMap [
       rml:reference "CONTENT-URL";
       rr:datatype xsd:anyURI
-    ]
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate rdfs:label;
-    rr:objectMap [
-      rml:reference "TITULO";
-      rr:datatype xsd:string
     ]
   ];
 

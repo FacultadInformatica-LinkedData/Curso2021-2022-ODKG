@@ -90,7 +90,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     ?Neighborhood ns:isInDistrict ?District .
     FILTER  (?startDate = "2021-10-22"^^xsd:date)
     FILTER  (?startDate = ?finishDate)
-    FILTER  (?hour >= "18"^^xsd:int)
+    FILTER  (?hour >= "18:00:00"^^xsd:time)
     }
 
 # 11.- Get the facilities and the number of free Events they have
@@ -104,4 +104,4 @@ SELECT ?Facility ?freeEvents {
       }
       GROUP BY ?Facility
     }
-    ORDER BY ?freeEvents DESC(?freeEvents)
+    ORDER BY DESC(?freeEvents)

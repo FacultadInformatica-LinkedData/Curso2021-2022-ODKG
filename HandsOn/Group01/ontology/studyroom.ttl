@@ -22,6 +22,20 @@
         rdfs:domain :studyRoom ;
         rdfs:range :Address .
 
+###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasRoadType
+:hasRoadType rdf:type owl:ObjectProperty ;          
+        rdfs:domain : studyRoom ;          
+        rdfs:range RoadType .
+
+###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasNeighbourhood
+:hasNeighbourhood rdf:type owl:ObjectProperty;          
+        rdfs:domain : studyRoom ;          
+        rdfs:range Neighbourhood .
+
+###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasDistrict
+:hasDistrict rdf:type owl:ObjectProperty ;          
+         rdfs:domain : studyRoom ;          
+        rdfs:range District .
 
 #################################################################
 #    Data properties
@@ -87,11 +101,6 @@
         rdfs:domain :Location ;          
         rdfs:range xsd:string .
 
-###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasRoadType
-:hasRoadType rdf:type owl:DatatypeProperty ;          
-        rdfs:domain :Address ;          
-        rdfs:range xsd:string .
-
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasRoadName
 :hasRoadName rdf:type owl:DatatypeProperty ;          
         rdfs:domain :Address ;          
@@ -117,22 +126,13 @@
         rdfs:domain :Address ;          
         rdfs:range xsd:string .
 
-###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasNeighbourhood
-:hasNeighbourhood rdf:type owl:DatatypeProperty ;          
-        rdfs:domain :Address ;          
-        rdfs:range xsd:string .
-
-###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasDistrict
-:hasDistrict rdf:type owl:DatatypeProperty ;          
-        rdfs:domain :Address ;          
-        rdfs:range xsd:string .
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#studyRoom
-:studyRoom rdf:type owl:Class .
+###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#StudyRoom
+:StudyRoom rdf:type owl:Class .
 
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#Location
 :Location rdf:type owl:Class .
@@ -140,3 +140,11 @@
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#Address
 :Address rdf:type owl:Class .
 
+###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#District
+:District rdf:type owl:Class .
+
+###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#Neighbourhood
+:Neighbourhood rdf:type owl:Class .
+
+###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#RoadType
+:RoadType rdf:type owl:Class .

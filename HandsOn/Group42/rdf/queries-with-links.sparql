@@ -12,6 +12,6 @@ WHERE{
 
 SELECT DISTINCT ?district ?wiki
 WHERE{
-  ?subj prop:happenedInStreet ?district.
+  ?subj prop:happenedInDistrict ?district.
   ?district owl:sameAs ?wiki
 }

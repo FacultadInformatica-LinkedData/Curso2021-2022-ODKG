@@ -116,7 +116,7 @@
   
 <#StreetTP> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "./data/AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
+    rml:source "AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
@@ -124,29 +124,30 @@
     rr:class vocab:Street
   ];
   
-   rr:predicateObjectMap [
-    rr:predicateMap [ rr:constant owl:sameAs; rr:termType rr:IRI ];
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs;
     rr:objectMap [
-      rr:template "localizacion_wikidata";
-      rr:termType rr:IRI ]
+	    rml:reference "localizacion_wikidata";
+      rr:termType rr:IRI
+    ]
   ] .
   
   
   
 <#DistrictTP> a rr:TriplesMap;
   rml:logicalSource [
-    rml:source "./data/AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
+    rml:source "AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
     rr:template "http://bicycleaccidents.org/resource/{distrito}";
     rr:class vocab:District
   ];
-  
+
   rr:predicateObjectMap [
-    rr:predicateMap [ rr:constant owl:sameAs; rr:termType rr:IRI ];
+    rr:predicate owl:sameAs;
     rr:objectMap [
-      rr:template "distrito_wikidata";
-      rr:termType rr:IRI 
-      ]
+	    rml:reference "distrito_wikidata";
+      rr:termType rr:IRI
+    ]
   ] .

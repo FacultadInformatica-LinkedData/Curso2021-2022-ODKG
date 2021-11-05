@@ -4,9 +4,10 @@
 
 ### I. Install all libriries:
 
-1. ``` python3 -m pip install Flask==2.0.2 ``` - install flask
-2. ``` pip install rdflib ``` - install open graph library
-3. ``` pip install python-dotenv ``` - reads key-value pairs from a . env file. 
+1. ``` python3 -m venv venv ``` 
+2. ``` python3 -m pip install Flask==2.0.2 ``` - install flask
+3. ``` pip install rdflib ``` - install open graph library
+4. ``` pip install python-dotenv ``` - reads key-value pairs from a . env file. 
     - During development, you normally want to reload your application automatically whenever you make a change to it. You can do this by passing an environment variable in *.env* file
 
 ### II. Run the project (on MacOS):

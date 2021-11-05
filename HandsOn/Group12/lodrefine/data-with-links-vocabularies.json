@@ -1,0 +1,56 @@
+[
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "FULL-ADDRESS",
+    "newColumnName": "STREET-ADDRESS",
+    "description": "Rename column FULL-ADDRESS to STREET-ADDRESS"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "ADDRESS NUMBER",
+    "description": "Remove column ADDRESS NUMBER"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "ADDRESS",
+    "newColumnName": "STREET",
+    "description": "Rename column ADDRESS to STREET"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "URI-ADDRESS",
+    "newColumnName": "URI-STREET-ADDRESS",
+    "description": "Rename column URI-ADDRESS to URI-STREET-ADDRESS"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "same_as_wikidata_address",
+    "index": 18,
+    "description": "Move column same_as_wikidata_address to position 18"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "same_as_wikidata_address",
+    "index": 17,
+    "description": "Move column same_as_wikidata_address to position 17"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "STREET",
+    "expression": "grel:value.toUppercase().replace(' - ', '-').replace(' ', '-').replace(',', '').replace('(','').replace(')','').replace('.','').replace('Á','A').replace('É','E').replace('Í','I').replace('Ó','O').replace('Ú','U').replace('Ñ','N').replace('Ç','C')",
+    "onError": "set-to-blank",
+    "newColumnName": "URI-STREET",
+    "columnInsertIndex": 17,
+    "description": "Create column URI-STREET at index 17 based on column STREET using expression grel:value.toUppercase().replace(' - ', '-').replace(' ', '-').replace(',', '').replace('(','').replace(')','').replace('.','').replace('Á','A').replace('É','E').replace('Í','I').replace('Ó','O').replace('Ú','U').replace('Ñ','N').replace('Ç','C')"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "same_as_wikidata_address",
+    "newColumnName": "same_as_wikidata_street",
+    "description": "Rename column same_as_wikidata_address to same_as_wikidata_street"
+  }
+]

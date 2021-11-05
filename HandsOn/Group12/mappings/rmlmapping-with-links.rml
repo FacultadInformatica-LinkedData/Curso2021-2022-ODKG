@@ -3,9 +3,11 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix ns: <https://data.eventsatmadrid.org/ontology#>.
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
 @base <https://data.eventsatmadrid.org/ontology#>.
 
 
@@ -15,14 +17,14 @@
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
-    rr:template "https://data.eventsatmadrid.org/resource/Address/{URI-ADDRESS}";
-    rr:class ns:Address
+    rr:template "https://data.eventsatmadrid.org/resource/Address/{URI-STREET-ADDRESS}";
+    rr:class vcard:Address
   ];
 
   rr:predicateObjectMap [
     rr:predicate vcard:street-address;
     rr:objectMap [
-      rml:reference "ADDRESS";
+      rml:reference "STREET-ADDRESS";
       rr:datatype xsd:string
       ]
   ];
@@ -33,16 +35,38 @@
       rml:reference "CODIGO-POSTAL-INSTALACION";
       rr:datatype xsd:string
     ]
+  ].
+
+# to add to do:
+# http://dbpedia.org/ontology/Street
+# http://dbpedia.org/ontology/RouteOfTransportation
+# http://rdfs.co/juso/latest/html#term-Street
+# https://www.wikidata.org/wiki/Q79007
+<StreetMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "csv/data-updated-with-links.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+  rr:subjectMap [
+    rr:template "https://data.eventsatmadrid.org/resource/Street/{URI-STREET}";
+    rr:class dbpedia-owl:RouteOfTransportation
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "STREET";
+      rr:datatype xsd:string
+      ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate owl:sameAs;
     rr:objectMap [
-      rml:reference "same_as_wikidata_address";
+      rml:reference "same_as_wikidata_street";
       rr:termType rr:IRI
     ]
   ].
-
 
 <FacilityMap> a rr:TriplesMap;
   rml:logicalSource [
@@ -63,7 +87,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasURL;
+    rr:predicate vcard:hasURL;
     rr:objectMap [
       rml:reference "URL-INSTALACION";
       rr:datatype xsd:anyURI
@@ -113,7 +137,19 @@
         rr:child "ID-EVENTO";
         rr:parent "ID-EVENTO"
       ]
-    ]
+    ];
+  ];
+
+  # dbpedia-owl:location
+  rr:predicateObjectMap [
+    rr:predicate ns:isInStreet;
+    rr:objectMap [
+      rr:parentTriplesMap <StreetMap>;
+      rr:joinCondition [
+        rr:child "ID-EVENTO";
+        rr:parent "ID-EVENTO"
+      ]
+    ];
   ].
 
 <NeighborhoodMap> a rr:TriplesMap;
@@ -177,7 +213,8 @@
     ]
   ].
 
-  
+# https://schema.org/Event
+# https://www.bbc.co.uk/ontologies/coreconcepts#terms_Event
 <EventMap> a rr:TriplesMap;
   rml:logicalSource [
     rml:source "csv/data-updated-with-links.csv" ;
@@ -253,7 +290,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasURL;
+    rr:predicate vcard:hasURL;
     rr:objectMap [
       rml:reference "CONTENT-URL";
       rr:datatype xsd:anyURI
@@ -295,4 +332,3 @@
       ]
     ]
   ].
-

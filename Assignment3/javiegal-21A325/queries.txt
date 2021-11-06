@@ -1,0 +1,129 @@
+1.-
+select ?class 
+where {
+?class a rdfs:Class
+}
+
+2.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?class 
+where {
+?class rdfs:subClassOf* ex2:Establishment
+}
+
+3.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?instance 
+where {
+?instance rdf:type ex2:City
+}
+
+4.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?value 
+where {
+ex2:Santiago_de_Compostela ex2:hasInhabitantNumber ?value
+}
+
+5.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?place ?value
+where {
+?place ex2:hasInhabitantNumber ?value.
+
+{?place <http://www.w3.org/2000/01/rdf-schema#label> "Santiago_de_Compostela"}
+UNION
+{?place <http://www.w3.org/2000/01/rdf-schema#label> "Arzua"}
+}
+
+6.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?place ?value
+where {
+?place ex2:hasInhabitantNumber ?value.
+} order by asc(?place)
+
+7.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?place ?value
+where {
+?place a ?subclass.
+?subclass rdfs:subClassOf* ex2:Locality.
+OPTIONAL{?place ex2:hasInhabitantNumber ?value}
+}
+
+8.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?place ?value
+where {
+?place ex2:hasInhabitantNumber ?value.
+FILTER (xsd:integer(?value) > "200000"^^<http://www.w3.org/2001/XMLSchema#integer>)
+}
+
+9.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?street ?number ?locality ?province
+where {
+?place <http://www.w3.org/2000/01/rdf-schema#label> "Pazo_Breogan".
+?place ex2:isPlacedIn ?locality.
+?locality ex2:inProvince ?province.
+?place ex2:hasAddress ?add.
+?add ex2:hasStreet ?street.
+?add ex2:hasNumber ?number
+}
+
+10.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?subclass
+where {
+?subclass rdfs:subClassOf* ex2:Location
+}
+
+11.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+select ?instance
+where {
+?instance a ?subclass.
+?subclass rdfs:subClassOf* ex2:Locality
+}
+
+12.-
+describe ?resource
+where{
+?resource rdfs:label "Madrid".
+}
+
+13.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+construct {?touristicPlace ex2:isIn ?province}
+where {
+?touristicPlace rdf:type/rdfs:subClassOf ex2:TouristicLocation.
+?touristicPlace ex2:isPlacedIn ?locality.
+?locality ex2:inProvince ?province
+}
+
+14.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+ask {
+?x a ex2:Town
+}
+
+15.-
+PREFIX ex2:<http://GP-onto.fi.upm.es/exercise2#>
+
+ask {
+?x a ex2:Chapel
+}
+

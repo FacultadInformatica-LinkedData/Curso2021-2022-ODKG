@@ -186,7 +186,7 @@
     ];
 
   rr:subjectMap [
-    rr:template "http://e-scooter.com/resources/centroid/CENT_{StartCentroidLatitude}%{StartCentroidLongitude}";
+    rr:template "http://e-scooter.com/resources/centroid/CENT_{StartCentroidLatitude}_{StartCentroidLongitude}";
     rr:class vocab:Centroid
   ];
 
@@ -209,7 +209,7 @@
     ];
 
   rr:subjectMap [
-    rr:template "http://e-scooter.com/resources/centroid/CENT_{EndCentroidLatitude}%{EndCentroidLongitude}";
+    rr:template "http://e-scooter.com/resources/centroid/CENT_{EndCentroidLatitude}_{EndCentroidLongitude}";
     rr:class vocab:Centroid
   ];
 

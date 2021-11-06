@@ -1,0 +1,400 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "District full name",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "district of Madrid"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column District full name to type Q3032114"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "District full name",
+    "expression": "grel:\"https://www.wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_district",
+    "columnInsertIndex": 6,
+    "description": "Create column same_as_wikidata_district at index 6 based on column District full name using expression grel:\"https://www.wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Street full name",
+    "newColumnName": "Street full name 2",
+    "description": "Rename column Street full name to Street full name 2"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Street full name 2",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "Street full name",
+    "columnInsertIndex": 9,
+    "description": "Create column Street full name at index 9 based on column Street full name 2 using expression grel:value"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q79007",
+        "name": "street"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Street full name 2 to type Q79007"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "similarValue": "Calle San Bernardo",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740864",
+      "name": "San Bernardo street",
+      "types": [
+        "Q79007"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item San Bernardo street (Q5740864) for cells containing \"Calle San Bernardo\" in column Street full name 2"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "similarValue": "Calle Mayor",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1149052",
+      "name": "Calle Mayor",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Mayor (Q1149052) for cells containing \"Calle Mayor\" in column Street full name 2"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "similarValue": "Gran Vía",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1324163",
+      "name": "Gran Vía",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Gran Vía (Q1324163) for cells containing \"Gran Vía\" in column Street full name 2"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "similarValue": "Calle Huertas",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2364997",
+      "name": "Calle de las Huertas, Madrid",
+      "types": [
+        "Q83620",
+        "Q79007"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle de las Huertas, Madrid (Q2364997) for cells containing \"Calle Huertas\" in column Street full name 2"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "similarValue": "Alberto Aguilera",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740796",
+      "name": "Calle de Alberto Aguilera",
+      "types": [
+        "Q79007"
+      ],
+      "score": 89
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle de Alberto Aguilera (Q5740796) for cells containing \"Alberto Aguilera\" in column Street full name 2"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "similarValue": "Madrid Río. Puente de Segovia con Paseo Ermita del Santo Senda peatonal",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28137105",
+      "name": "Paseo de la Ermita del Santo",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo de la Ermita del Santo (Q28137105) for cells containing \"Madrid Río. Puente de Segovia con Paseo Ermita del Santo Senda peatonal\" in column Street full name 2"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "similarValue": "Plaza del Emperador Carlos V",
+    "judgment": "matched",
+    "match": {
+      "id": "Q7203711",
+      "name": "Plaza del Emperador Carlos V",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Plaza del Emperador Carlos V (Q7203711) for cells containing \"Plaza del Emperador Carlos V\" in column Street full name 2"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name 2",
+    "similarValue": "Calle Bailén",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740811",
+      "name": "calle de Bailén",
+      "types": [
+        "Q79007"
+      ],
+      "score": 89
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Bailén (Q5740811) for cells containing \"Calle Bailén\" in column Street full name 2"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Street full name: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "Street full name",
+          "from": 89,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": false,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Street full name 2",
+    "expression": "grel:\"https://www.wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_street",
+    "columnInsertIndex": 9,
+    "description": "Create column same_as_wikidata_street at index 9 based on column Street full name 2 using expression grel:\"https://www.wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Street full name 2",
+    "description": "Remove column Street full name 2"
+  }
+]

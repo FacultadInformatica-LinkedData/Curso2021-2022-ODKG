@@ -75,7 +75,7 @@ mappings:
   startcentroid:
     sources:
       - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
-    s: http://e-scooter.com/resources/centroid/CENT_$(StartCentroidLatitude)%$(StartCentroidLongitude)
+    s: http://e-scooter.com/resources/centroid/CENT_$(StartCentroidLatitude)_$(StartCentroidLongitude)
     po:
       - [a, vocab:Centroid]
       - p: vocab:hasLocation
@@ -89,7 +89,7 @@ mappings:
   endcentroid:
     sources:
       - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
-    s: http://e-scooter.com/resources/centroid/CENT_$(EndCentroidLatitude)%$(EndCentroidLongitude)
+    s: http://e-scooter.com/resources/centroid/CENT_$(EndCentroidLatitude)_$(EndCentroidLongitude)
     po:
       - [a, vocab:Centroid]
       - p: vocab:hasLocation

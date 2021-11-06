@@ -1,0 +1,278 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ns: <https://data.eventsatmadrid.org/ontology#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@base <https://data.eventsatmadrid.org/ontology#>.
+
+
+<AddressMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "data-updated.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+  rr:subjectMap [
+    rr:template "https://data.eventsatmadrid.org/resource/Address/{ADDRESS}";
+    rr:class ns:Address
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "ADDRESS";
+      rr:datatype xsd:string
+      ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate ns:hasPostalCode;
+    rr:objectMap [
+      rml:reference "CODIGO-POSTAL-INSTALACION";
+      rr:datatype xsd:string
+    ]
+  ].
+
+<FacilityMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "data-updated.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+  rr:subjectMap [
+    rr:template "https://data.eventsatmadrid.org/resource/Facility/{NOMBRE-INSTALACION}";
+    rr:class ns:Facility
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "NOMBRE-INSTALACION";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasURL;
+    rr:objectMap [
+      rml:reference "URL-INSTALACION";
+      rr:datatype xsd:anyURI
+    ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate ns:hasAccesibility;
+    rr:objectMap [
+      rml:reference "ACCESIBILIDAD-INSTALACION";
+      rr:datatype xsd:string
+    ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate ns:hasScheduleURL;
+    rr:objectMap [
+      rml:reference "URL-ACTIVIDAD";
+      rr:datatype xsd:anyURI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasCoordinates;
+    rr:objectMap [
+      rml:reference "COORDINATES";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasAddress;
+    rr:objectMap [
+      rr:parentTriplesMap <AddressMap>;
+      rr:joinCondition [
+        rr:child "ID-EVENTO";
+        rr:parent "ID-EVENTO"
+      ]
+    ];
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:isLocatedAt;
+    rr:objectMap [
+      rr:parentTriplesMap <NeighborhoodMap>;
+      rr:joinCondition [
+        rr:child "ID-EVENTO";
+        rr:parent "ID-EVENTO"
+      ]
+    ]
+  ].
+
+<NeighborhoodMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "data-updated.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+  rr:subjectMap [
+    rr:template "https://data.eventsatmadrid.org/resource/Neighborhood/{BARRIO-INSTALACION}";
+    rr:class ns:Neighborhood
+  ];
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "BARRIO-INSTALACION";
+      rr:datatype xsd:string
+    ]
+  ];
+  rr:predicateObjectMap [
+    rr:predicate ns:isInDistrict;
+    rr:objectMap [
+      rr:parentTriplesMap <DistrictMap>;
+      rr:joinCondition [
+        rr:child "ID-EVENTO";
+        rr:parent "ID-EVENTO"
+      ]
+    ]
+  ].
+
+<DistrictMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "data-updated.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+  rr:subjectMap [
+    rr:template "https://data.eventsatmadrid.org/resource/District/{DISTRITO-INSTALACION}";
+    rr:class ns:District
+  ];
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "DISTRITO-INSTALACION";
+      rr:datatype xsd:string
+    ]
+  ].
+
+  
+<EventMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "data-updated.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+  rr:subjectMap [
+    rr:template "https://data.eventsatmadrid.org/resource/Event/{ID-EVENTO}";
+    rr:class ns:Event
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "TITULO";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasPrice;
+    rr:objectMap [
+      rml:reference "PRECIO";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasDays;
+    rr:objectMap [
+      rml:reference "DIAS-SEMANA";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasExcludedDays;
+    rr:objectMap [
+      rml:reference "DIAS-EXCLUIDOS";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasStartDate;
+    rr:objectMap [
+      rml:reference "FECHA";
+      rr:datatype xsd:date
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasFinishDate;
+    rr:objectMap [
+      rml:reference "FECHA-FIN";
+      rr:datatype xsd:date
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasHour;
+    rr:objectMap [
+      rml:reference "HORA";
+      rr:datatype xsd:time
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasDescription;
+    rr:objectMap [
+      rml:reference "DESCRIPCION";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasURL;
+    rr:objectMap [
+      rml:reference "CONTENT-URL";
+      rr:datatype xsd:anyURI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "TITULO";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasTargetAudience;
+    rr:objectMap [
+      rml:reference "AUDIENCIA";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasTitle;
+    rr:objectMap [
+      rml:reference "TITULO-ACTIVIDAD";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:hasType;
+    rr:objectMap [
+      rml:reference "TIPO";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate ns:isHeldIn;
+    rr:objectMap [
+      rr:parentTriplesMap <FacilityMap>;
+      rr:joinCondition [
+        rr:child "ID-EVENTO";
+        rr:parent "ID-EVENTO"
+      ]
+    ]
+  ].
+

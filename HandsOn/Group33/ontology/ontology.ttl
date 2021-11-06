@@ -3,6 +3,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <https://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 base: a owl:Ontology ;
     dc:creator "Group33" ;
@@ -67,6 +68,12 @@ base:hasAreaName a owl:DatatypeProperty ;
     rdfs:domain base:Community ;
     rdfs:label "Area name" ;
     rdfs:range xsd:string .
+
+base:sameAsWikidata a owl:DatatypeProperty ;
+    rdfs:comment "The property that determines the URI to the Wikidata resource." ;
+    rdfs:domain base:Community ;
+    rdfs:label "Wikidata IRI" ;
+    rdfs:range rr:IRI .
 
 base:hasLatitude a owl:DatatypeProperty ;
     rdfs:comment "The property that determines the latitude of a Centroid." ;

@@ -1,0 +1,409 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix ex: <http://groupfive.edu/kg/ontology/MadridEvents#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+
+<#Event> a rr:TriplesMap;
+   rml:logicalSource [
+      rml:source "csv/events-with-links.csv";
+      rml:referenceFormulation ql:CSV
+   ];
+   rr:subjectMap [
+      rr:template "http://groupfive.edu/kg/ontology/MadridEvents#{eventID}";
+      rr:class ex:Event 
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:heldIn;
+      rr:objectMap [ 
+         rml:reference "Facilities" 
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility1;
+      rr:objectMap [ 
+         rml:reference "accessibility1";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility2;
+      rr:objectMap [ 
+         rml:reference "accessibility2";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility3;
+      rr:objectMap [ 
+         rml:reference "accessibility3";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility4;
+      rr:objectMap [ 
+         rml:reference "accessibility4";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:address;
+      rr:objectMap [ 
+         rml:reference "address";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:audience1;
+      rr:objectMap [ 
+         rml:reference "audience1";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:audience2;
+      rr:objectMap [ 
+         rml:reference "audience2";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:endingDate;
+      rr:objectMap [ 
+         rml:reference "EndingDate";
+         rr:datatype xsd:dateTime
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:heldOn;
+      rr:objectMap [ 
+         rml:reference "heldOn";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:longDuration;
+      rr:objectMap [ 
+         rml:reference "longDuration";
+         rr:datatype xsd:boolean
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:Monday;
+      rr:objectMap [ 
+         rml:reference "Monday";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:Tuesday;
+      rr:objectMap [ 
+         rml:reference "Tuesday";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:Wednesday;
+      rr:objectMap [ 
+         rml:reference "Wednesday";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:Thursday;
+      rr:objectMap [ 
+         rml:reference "Thursday";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:Friday;
+      rr:objectMap [ 
+         rml:reference "Friday";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:Saturday;
+      rr:objectMap [ 
+         rml:reference "Saturday";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:Sunday;
+      rr:objectMap [ 
+         rml:reference "Sunday";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:street;
+      rr:objectMap [ 
+         rml:reference "street";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:district;
+      rr:objectMap [ 
+         rml:reference "district";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+    rr:predicate ex:neighborhood;
+    rr:objectMap [ 
+       rml:reference "neighborhood";
+       rr:datatype xsd:string
+    ]
+ ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:price;
+      rr:objectMap [ 
+         rml:reference "price";
+         rr:datatype xsd:float
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:startingDate;
+      rr:objectMap [ 
+         rml:reference "startingDate";
+         rr:datatype xsd:dateTime
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:type;
+      rr:objectMap [ 
+         rml:reference "type";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:url;
+      rr:objectMap [ 
+         rml:reference "url";
+         rr:datatype xsd:string
+      ]
+   ];
+
+      rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [
+           rr:termType rr:IRI;
+           rml:reference "neighborhood_reconciliation"
+        ]
+     ];
+  
+     rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [
+           rr:dataType xsd:string ;
+           rml:reference "neighborhood"
+        ]
+     ];
+  
+     rr:predicateObjectMap [
+        rr:predicate owl:sameAs;
+        rr:objectMap [
+           rr:termType rr:IRI;
+           rml:reference "district_reconciliation"
+        ]
+     ];
+  
+     rr:predicateObjectMap [
+        rr:predicate rdfs:label;
+        rr:objectMap [
+           rr:dataType xsd:string ;
+           rml:reference "district"
+        ]
+     ];
+  
+     rr:predicateObjectMap [
+      rr:predicate owl:sameAs;
+      rr:objectMap [
+         rr:termType rr:IRI;
+         rml:reference "street_reconciliation"
+      ]
+   ];
+  
+   rr:predicateObjectMap [
+      rr:predicate rdfs:label;
+      rr:objectMap [
+         rr:dataType xsd:string ;
+         rml:reference "street"
+      ]
+   ].
+
+<#Facilities> a rr:TriplesMap;
+   rml:logicalSource [
+      rml:source "csv/events-with-links.csv";
+      rml:referenceFormulation ql:CSV
+   ];
+   rr:subjectMap [
+      rr:template "http://groupfive.edu/kg/ontology/MadridEvents#{urlLink}";
+      rr:class ex:Facilities 
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:street;
+      rr:objectMap [ 
+         rml:reference "street";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:district;
+      rr:objectMap [ 
+         rml:reference "district";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+    rr:predicate ex:neighborhood;
+    rr:objectMap [ 
+       rml:reference "neighborhood";
+       rr:datatype xsd:string
+    ]
+ ];
+
+   rr:predicateObjectMap [
+      rr:predicate owl:sameAs;
+      rr:objectMap [
+         rr:termType rr:IRI;
+         rml:reference "neighborhood_reconciliation"
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate rdfs:label;
+      rr:objectMap [
+         rr:dataType xsd:string ;
+         rml:reference "neighborhood"
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate owl:sameAs;
+      rr:objectMap [
+         rr:termType rr:IRI;
+         rml:reference "district_reconciliation"
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate rdfs:label;
+      rr:objectMap [
+         rr:dataType xsd:string ;
+         rml:reference "district"
+      ]
+   ];
+
+   rr:predicateObjectMap [
+    rr:predicate owl:sameAs;
+    rr:objectMap [
+       rr:termType rr:IRI;
+       rml:reference "street_reconciliation"
+    ]
+ ];
+
+ rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+       rr:dataType xsd:string ;
+       rml:reference "street"
+    ]
+ ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:address;
+      rr:objectMap [ 
+         rml:reference "address"; 
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility1;
+      rr:objectMap [ 
+         rml:reference "accessibility1";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility2;
+      rr:objectMap [ 
+         rml:reference "accessibility2";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility3;
+      rr:objectMap [ 
+         rml:reference "accessibility3";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:accessibility4;
+      rr:objectMap [ 
+         rml:reference "accessibility4";
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:street;
+      rr:objectMap [ 
+         rml:reference "street"; 
+         rr:datatype xsd:string
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:latitude;
+      rr:objectMap [ 
+         rml:reference "latitude"; 
+      ]
+   ];
+
+   rr:predicateObjectMap [
+      rr:predicate ex:longitude;
+      rr:objectMap [ 
+         rml:reference "longitude"; 
+      ]
+   ].

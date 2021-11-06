@@ -1,57 +1,57 @@
-1.-Get all the Facilities with their Neighborhood and District
-
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 1.-Get all the Facilities with their Neighborhood and District
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
 SELECT ?Facility ?Neighborhood ?District WHERE {
     ?Facility ns:isLocatedAt ?Neighborhood .
     ?Neighborhood ns:isInDistrict ?District  }
 
-2.- Get all the districts
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 2.- Get all the districts
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
 SELECT distinct ?District WHERE {
     ?Facility ns:isLocatedAt ?Neighborhood .
     ?Neighborhood ns:isInDistrict ?District  }
 
-3.- Get all the events in a district
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 3.- Get all the events in a district
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT distinct ?Events WHERE {
     ?Events ns:isHeldIn ?Facility .
     ?Facility ns:isLocatedAt ?Neighborhood .
     ?Neighborhood ns:isInDistrict ?District .
-    ?District ns:hasName "LATINA"}
+    ?District rdfs:label "Latina"}
 
-4.- Get all the events in a facility
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 4.- Get all the events in a facility
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT distinct ?Events WHERE {
     ?Events ns:isHeldIn ?Facility .
-    ?Facility ns:hasName "Teatro Circo Price"}
+    ?Facility rdfs:label "Teatro Circo Price"}
 
-5.- Get all the events in a neighborhood with free access
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 5.- Get all the events in a neighborhood with free access
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT distinct ?Events WHERE {
     ?Events ns:hasPrice "Gratuito" .
     ?Events ns:isHeldIn ?Facility .
     ?Facility ns:isLocatedAt ?Neighborhood .
-    ?Neighborhood ns:hasName "PUERTA DEL ANGEL"}
+    ?Neighborhood rdfs:label "Barrio de Puerta del Ángel"}
 
-6.- Get all the events  for type "FAMILIAS" in a postal code
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+# 6.- Get all the events  for type "FAMILIAS" in a postal code
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
 SELECT distinct ?Events WHERE {
-    ?Events ns:hasType "Familias" .
+    ?Events ns:hasTargetAudience "Familias" .
     ?Events ns:isHeldIn ?Facility .
     ?Facility ns:hasAddress ?Address .
-    ?Address ns:hasPostalCode "28047"^^xsd:int}
+    ?Address ns:hasPostalCode "28047"}
 
-7.- Get all the events in certain postal code
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+# 7.- Get all the events in certain postal code
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
 SELECT distinct ?Events WHERE {
     ?Events ns:isHeldIn ?Facility .
     ?Facility ns:hasAddress ?Address .
-    ?Address ns:hasPostalCode "28047"^^xsd:int}
+    ?Address ns:hasPostalCode "28047"}
 
-8.- Get all the events between two dates
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 8.- Get all the events between two dates
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?title ?startDate WHERE {
     ?Events ns:hasTitle ?title.
@@ -62,8 +62,8 @@ SELECT ?title ?startDate WHERE {
     FILTER  (?finishDate = ?startDate)
     }
 
-9.- how many free events are there in each district for the next month?
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 9.- how many free events are there in each district for the next month?
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?District (COUNT(?Events) AS ?ccount) WHERE {
     ?Events ns:hasStartDate ?startDate.
@@ -77,8 +77,8 @@ SELECT ?District (COUNT(?Events) AS ?ccount) WHERE {
     }
    GROUP BY ?District
 
-10.- All the events in a certain day after certain hour
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 10.- All the events in a certain day after certain hour
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   SELECT ?title ?hour WHERE {
     ?Events ns:hasTitle ?title.
@@ -93,8 +93,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     FILTER  (?hour >= "18"^^xsd:int)
     }
 
-11.- Get the facilities and the number of free Events they have
-PREFIX ns: <http://www.w3.org/2000/01/rdf-schema#>
+# 11.- Get the facilities and the number of free Events they have
+PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?Facility ?freeEvents {
     SELECT ?Facility (COUNT(?Events) AS ?freeEvents)  WHERE {
@@ -105,4 +105,3 @@ SELECT ?Facility ?freeEvents {
       GROUP BY ?Facility
     }
     ORDER BY ?freeEvents DESC(?freeEvents)
-

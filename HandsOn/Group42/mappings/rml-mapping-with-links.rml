@@ -1,0 +1,153 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix transit: <http://vocab.org/transit/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix vocab: <http://bicycleaccidents.org/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@base <http://bicycleaccidents.org/ontology#>.
+
+<#AccidentTP> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://bicycleaccidents.org/resource/{num_expediente}";
+    rr:class vocab:Accident
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasDate;
+    rr:objectMap [
+      rml:reference "DateTime";
+      rr:datatype  xsd:dateTime
+      ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasNumber;
+    rr:objectMap [
+      rml:reference "numero"
+      ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasAccidentType;
+    rr:objectMap [
+      rml:reference "tipo_accidente"
+      ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasWeather;
+    rr:objectMap [
+      rml:reference "estado_meteorológico"
+      ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasVehicleType;
+    rr:objectMap [
+      rml:reference "tipo_vehiculo"
+      ]
+  ]; 
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasPersonType;
+    rr:objectMap [
+      rml:reference "tipo_persona"
+      ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasAge;
+    rr:objectMap [
+      rml:reference "rango_edad"
+      ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasSex;
+    rr:objectMap [
+      rml:reference "sexo"
+      ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasInjury;
+    rr:objectMap [
+      rml:reference "lesividad"
+      ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasPositiveAlcoholTest;
+    rr:objectMap [
+      rml:reference "positiva_alcohol"
+      ]
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate vocab:happenedInStreet;
+    rr:objectMap [
+      rr:parentTriplesMap <#StreetTP>;
+      rr:joinCondition [
+        rr:child "num_expediente";
+        rr:parent "num_expediente";
+      ]
+    ]
+  ] ;
+  
+    rr:predicateObjectMap [
+    rr:predicate vocab:happenedInDistrict;
+    rr:objectMap [
+      rr:parentTriplesMap <#DistrictTP>;
+      rr:joinCondition [
+        rr:child "num_expediente";
+        rr:parent "num_expediente";
+      ]
+    ]
+  ] .
+
+  
+  
+  
+<#StreetTP> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+  rr:subjectMap [
+    rr:template "http://bicycleaccidents.org/resource/{localizacion}";
+    rr:class vocab:Street
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs;
+    rr:objectMap [
+	    rml:reference "localizacion_wikidata";
+      rr:termType rr:IRI
+    ]
+  ] .
+  
+  
+  
+<#DistrictTP> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+  rr:subjectMap [
+    rr:template "http://bicycleaccidents.org/resource/{distrito}";
+    rr:class vocab:District
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs;
+    rr:objectMap [
+	    rml:reference "distrito_wikidata";
+      rr:termType rr:IRI
+    ]
+  ] .

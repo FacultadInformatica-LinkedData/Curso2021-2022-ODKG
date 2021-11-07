@@ -1,3 +1,8 @@
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
 #title {
     text-align: center;
     padding:3%;
@@ -11,7 +16,7 @@
 }
 
 #FilterCol {
-    background-color: rgb(103, 94, 231);
+    background-color: #f4f5f7;
     text-align: center;   
 }
 

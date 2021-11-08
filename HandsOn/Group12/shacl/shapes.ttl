@@ -1,0 +1,373 @@
+@prefix schema: <https://schema.org/> .
+@prefix :      <https://data.eventsatmadrid.org/ontology#> .
+@prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix afn:   <http://jena.apache.org/ARQ/function#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix geo:   <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix juso:  <http://rdfs.co/juso/> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix locn:  <http://www.w3.org/ns/locn#> .
+@prefix spatial: <http://geovocab.org/spatial#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+
+<https://astrea.linkeddata.es/shapes#efe8d6382f1ee6c89a0d6f5c3ee679ca>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  schema:AdministrativeArea .
+
+<https://astrea.linkeddata.es/shapes#8510901e4520099a3f46fcb15755e6b3>
+        a               sh:PropertyShape ;
+        rdfs:label      "pertenece al distrito"@es , "Una entidad espacial que está contenida dentro de los límites de la región delimitada por el distrito."@es , "is in district"@en ;
+        sh:class        juso:District ;
+        sh:description  "Una entidad espacial que está contenida dentro de los límites de la región delimitada por el distrito."@es ;
+        sh:name         "is in district"@en , "pertenece al distrito"@es ;
+        sh:nodeKind     sh:BlankNodeOrIRI ;
+        sh:path         :isInDistrict .
+
+<https://astrea.linkeddata.es/shapes#bb55c007a6f0524a0861844cfef04b97>
+        a                 sh:PropertyShape ;
+        rdfs:isDefinedBy  <http://www.w3.org/2006/vcard/ns> ;
+        rdfs:label        "street address"@en , "The street address associated with the address of the object"@en ;
+        sh:datatype       xsd:string ;
+        sh:description    "The street address associated with the address of the object"@en ;
+        sh:name           "street address"@en ;
+        sh:nodeKind       sh:Literal ;
+        sh:path           vcard:street-address ;
+        sh:pattern        ".*" .
+
+<https://astrea.linkeddata.es/shapes#6abef0677604ac2e8d8d29096dd3a0f8>
+        a            sh:PropertyShape ;
+        sh:datatype  xsd:date ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      schema:endDate ;
+        sh:pattern   "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+<https://astrea.linkeddata.es/shapes#a753db5074ef13e46a2fdb7674aa1629>
+        a                 sh:PropertyShape ;
+        rdfs:isDefinedBy  <http://www.w3.org/2006/vcard/ns> ;
+        rdfs:label        "additional name"@en , "The additional name associated with the object"@en ;
+        sh:datatype       xsd:string ;
+        sh:description    "The additional name associated with the object"@en ;
+        sh:name           "additional name"@en ;
+        sh:nodeKind       sh:Literal ;
+        sh:path           vcard:additional-name ;
+        sh:pattern        ".*" .
+
+<https://astrea.linkeddata.es/shapes#09241a83e96f05c556e4b507062307da>
+        a               sh:PropertyShape ;
+        rdfs:label      "Initials of each day of the week in which the event is held. Possible values are: L, M, X, J, V, S, D."@en , "days of the week"@en , "Iniciales de cada día de la semana en los que se desarrolla el evento. L,M,X,J,V,S,D."@es , "días de la semana"@es ;
+        sh:datatype     xsd:string ;
+        sh:description  "Iniciales de cada día de la semana en los que se desarrolla el evento. L,M,X,J,V,S,D."@es , "Initials of each day of the week in which the event is held. Possible values are: L, M, X, J, V, S, D."@en ;
+        sh:name         "días de la semana"@es , "days of the week"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         :hasDaysOfWeek ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#9e3ce93776c892c0f7881425cde63bbb>
+        a         sh:PropertyShape ;
+        sh:class  juso:Geometry .
+
+<https://astrea.linkeddata.es/shapes#a46f0ab85307c2c3871cde346c2ed43e>
+        a               sh:NodeShape ;
+        rdfs:label      "Evento de Ciudad"@es , "City Event"@en ;
+        sh:description  "Suceso importante y programado, de índole social, académica, artística o deportiva que se desarrolla en el ámbito de una ciudad."@es , "Important and programmed event, of a social, academic, artistic or sporting nature that is held in a city."@en ;
+        sh:name         "Evento de Ciudad"@es , "City Event"@en ;
+        sh:nodeKind     sh:IRI ;
+        sh:property     <https://astrea.linkeddata.es/shapes#725d7e3946bb954f326d414d2ec63766> , <https://astrea.linkeddata.es/shapes#0297d1226b452b3fad1bb917bd7aa544> , <https://astrea.linkeddata.es/shapes#dc1310a4b936d9ac1b7cee3ccdc2e557> , <https://astrea.linkeddata.es/shapes#aac67367b43eefb3bace65190b2b8746> , <https://astrea.linkeddata.es/shapes#46193045496dec5e671655c80559715d> , <https://astrea.linkeddata.es/shapes#09241a83e96f05c556e4b507062307da> , <https://astrea.linkeddata.es/shapes#a249d85dba64bbf148090db05338417b> ;
+        sh:targetClass  :CityEvent .
+
+<https://astrea.linkeddata.es/shapes#73154e6936a514f0e493e8958c5f3a12>
+        a               sh:PropertyShape ;
+        rdfs:label      "URL containing the scheduled activities at a facility."@en , "schedule URL"@en , "URL que contiene información acerca de las actividades agendadas para en una instalación."@es , "URL del calendario"@es ;
+        sh:datatype     xsd:anyURI ;
+        sh:description  "URL que contiene información acerca de las actividades agendadas para en una instalación."@es , "URL containing the scheduled activities at a facility."@en ;
+        sh:name         "URL del calendario"@es , "schedule URL"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         :hasScheduleURL ;
+        sh:pattern      "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?" .
+
+<https://astrea.linkeddata.es/shapes#98b09f903f7c0430de000bc04dfa1705>
+        a                 sh:PropertyShape ;
+        rdfs:isDefinedBy  <http://www.w3.org/2006/vcard/ns> ;
+        rdfs:label        "has address"@en , "To specify the components of the delivery address for the object"@en ;
+        sh:class          vcard:Address ;
+        sh:description    "To specify the components of the delivery address for the object"@en ;
+        sh:name           "has address"@en ;
+        sh:nodeKind       sh:BlankNodeOrIRI ;
+        sh:path           vcard:hasAddress .
+
+<https://astrea.linkeddata.es/shapes#725d7e3946bb954f326d414d2ec63766>
+        a               sh:PropertyShape ;
+        rdfs:label      "Descripción de la tipología de la actividad."@es , "tipo de evento"@es , "Description of the type of event."@en , "type of event"@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "Description of the type of event."@en , "Descripción de la tipología de la actividad."@es ;
+        sh:name         "tipo de evento"@es , "type of event"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         :eventType ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#20dbf5594df31c18d255f26622a5b899>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:property     <https://astrea.linkeddata.es/shapes#4a9ef772374131fcf3561884e88910c3> , <https://astrea.linkeddata.es/shapes#aea0d086befcf2e1814eadaa9174be69> ;
+        sh:targetClass  schema:Thing .
+
+<https://astrea.linkeddata.es/shapes#4dfc5117abd03184cd20ca6c953fb623>
+        a               sh:PropertyShape ;
+        rdfs:label      "is accessible for free"@en , "Indica si un evento es gratuito."@es , "es gratuito"@es , "Indicates whether an event is accessible for free."@en ;
+        sh:datatype     xsd:boolean ;
+        sh:description  "Indicates whether an event is accessible for free."@en , "es gratuito"@es , "Indica si un evento es gratuito."@es , "is accessible for free"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         schema:isAccessibleForFree ;
+        sh:pattern      "true|false|0|1" .
+
+<https://astrea.linkeddata.es/report/0620946147>
+        a       <https://w3id.org/def/astrea#ReportEntry> ;
+        <https://w3id.org/def/astrea#message>
+                "Shapes generated with no errors" ;
+        <https://w3id.org/def/astrea#statusCode>
+                "200"^^xsd:int .
+
+<https://astrea.linkeddata.es/shapes#6ace7559c09873d57bb26d2909a563c6>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  geo:SpatialThing .
+
+<https://astrea.linkeddata.es/shapes#07beae0284bdf02041d016393cfb1cdb>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  juso: ;
+        rdfs:seeAlso      <https://en.wikipedia.org/wiki/Thoroughfare> ;
+        sh:nodeKind       sh:IRI ;
+        sh:targetClass    juso:Thoroughfare .
+
+<https://astrea.linkeddata.es/shapes#54d8ba98fbf02fcb53d7bd43ab214be8>
+        a            sh:PropertyShape ;
+        sh:datatype  xsd:date ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      schema:startDate ;
+        sh:pattern   "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+<https://astrea.linkeddata.es/shapes#dc1310a4b936d9ac1b7cee3ccdc2e557>
+        a               sh:PropertyShape ;
+        rdfs:label      "Días concretos que no se celebra un evento. Es una fecha con el formato D/M/AAAA. Si existiesen varios días que no se celebran, se mostrarían las fechas separadas por el carácter “punto y coma“"@es , "Specific days in which an event is not held. It is a date in the format D / M / YYYY. If there are several excluded dates, the dates will be shown separated by the \"semicolon\" character."@en , "except dates"@en , "fechas excluidas"@es ;
+        sh:datatype     xsd:string ;
+        sh:description  "Días concretos que no se celebra un evento. Es una fecha con el formato D/M/AAAA. Si existiesen varios días que no se celebran, se mostrarían las fechas separadas por el carácter “punto y coma“"@es , "Specific days in which an event is not held. It is a date in the format D / M / YYYY. If there are several excluded dates, the dates will be shown separated by the \"semicolon\" character."@en ;
+        sh:name         "fechas excluidas"@es , "except dates"@en ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         :exceptDates ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#aea0d086befcf2e1814eadaa9174be69>
+        a            sh:PropertyShape ;
+        sh:datatype  xsd:float ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      schema:latitude ;
+        sh:pattern   "(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([Ee](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN" .
+
+<https://astrea.linkeddata.es/shapes#893caaacc926a9f495507e0dab3266bc>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  juso: ;
+        sh:nodeKind       sh:IRI ;
+        sh:property       <https://astrea.linkeddata.es/shapes#c52a043c66e049126b272c3c11326009> , <https://astrea.linkeddata.es/shapes#de4662610769cd7ed47ed89967592cbe> , <https://astrea.linkeddata.es/shapes#8510901e4520099a3f46fcb15755e6b3> ;
+        sh:targetClass    juso:SpatialThing .
+
+<https://astrea.linkeddata.es/shapes#c52a043c66e049126b272c3c11326009>
+        a               sh:PropertyShape ;
+        rdfs:label      "Street in which a spatial thing is located."@en , "Calle en la que se encuentra una entidad espacial."@es , "está en la calle"@es , "is in street"@en ;
+        sh:class        juso:Street ;
+        sh:description  "Calle en la que se encuentra una entidad espacial."@es , "Street in which a spatial thing is located."@en ;
+        sh:name         "está en la calle"@es , "is in street"@en ;
+        sh:nodeKind     sh:BlankNodeOrIRI ;
+        sh:path         :isInStreet .
+
+<https://astrea.linkeddata.es/shapes#6ee59227e7154e78fe9a88ad1d304350>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  juso: ;
+        rdfs:seeAlso      <https://en.wikipedia.org/wiki/District> ;
+        sh:nodeKind       sh:IRI ;
+        sh:targetClass    juso:District .
+
+<https://astrea.linkeddata.es/shapes#23dc9b281021047adbf14f21017b88fd>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  juso: ;
+        rdfs:seeAlso      <https://en.wikipedia.org/wiki/Geographical_feature> ;
+        sh:nodeKind       sh:IRI ;
+        sh:not            <https://astrea.linkeddata.es/shapes#9e3ce93776c892c0f7881425cde63bbb> ;
+        sh:targetClass    juso:Feature , <http://www.geonames.org/ontology#Feature> .
+
+<https://astrea.linkeddata.es/shapes#f85907bdcffdc39534274db7faacc26f>
+        a               sh:NodeShape ;
+        rdfs:label      "Facility"@en , "Instalación"@es ;
+        sh:description  "A place, amenity, or piece of equipment provided for a particular purpose (definition from Oxford Languages)"@en , "Recinto o lugar acondicionado con todas las cosas necesarias para cumplir un servicio (definición de Oxford Languages)."@es ;
+        sh:name         "Instalación"@es , "Facility"@en ;
+        sh:nodeKind     sh:IRI ;
+        sh:property     <https://astrea.linkeddata.es/shapes#73154e6936a514f0e493e8958c5f3a12> , <https://astrea.linkeddata.es/shapes#1147cb5c8ea6c6d6793914a6427b3687> ;
+        sh:targetClass  :Facility .
+
+<https://astrea.linkeddata.es/shapes#0297d1226b452b3fad1bb917bd7aa544>
+        a               sh:PropertyShape ;
+        rdfs:label      "Type of user to whom the event is directed."@en , "tiene audiencia objetiva"@es , "Tipo de usuario al que se dirige el evento."@es , "has target audience"@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "Type of user to whom the event is directed."@en , "Tipo de usuario al que se dirige el evento."@es ;
+        sh:name         "has target audience"@en , "tiene audiencia objetiva"@es ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         :hasTargetAudience ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#bb48a93dba07799ad735021b166af47a>
+        a            sh:PropertyShape ;
+        sh:nodeKind  sh:Literal .
+
+<https://astrea.linkeddata.es/shapes#a53ff16a4df43ccc7a411947aab92e3f>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  juso: ;
+        rdfs:seeAlso      <https://en.wikipedia.org/wiki/Political_division> ;
+        sh:nodeKind       sh:IRI ;
+        sh:targetClass    juso:PoliticalDivision .
+
+<https://astrea.linkeddata.es/shapes#6ddc0b40525de8d44aa81deabedaa0bf>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  <http://www.geonames.org/ontology#Feature> .
+
+<https://astrea.linkeddata.es/shapes#ea797737aa91410509f2d0452e811e22>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  juso:Geometry .
+
+<https://astrea.linkeddata.es/shapes#00b2415d75ba7f5b0d2a7cd256502142>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  juso: ;
+        rdfs:seeAlso      <https://en.wikipedia.org/wiki/Administrative_division> , <http://www.geonames.org/ontology#A.ADMD> ;
+        sh:nodeKind       sh:IRI ;
+        sh:targetClass    juso:AdministrativeDivision .
+
+<https://astrea.linkeddata.es/shapes#74325d2c9b0d8af5033119df41ad29df>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  <http://www.w3.org/2006/vcard/ns> ;
+        rdfs:label        "Address"@en ;
+        sh:description    "To specify the components of the delivery address for the  object"@en ;
+        sh:name           "Address"@en ;
+        sh:nodeKind       sh:IRI ;
+        sh:targetClass    vcard:Address .
+
+<https://astrea.linkeddata.es/shapes#8c9f0a3ef50fe390869f7c693885d425>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  gsp:Feature .
+
+<https://astrea.linkeddata.es/shapes#56a0166a46caa4cce95a6b9e4554ef4d>
+        a                 sh:PropertyShape ;
+        rdfs:isDefinedBy  <http://www.w3.org/2006/vcard/ns> ;
+        rdfs:label        "The postal code associated with the address of the object"@en , "postal code"@en ;
+        sh:datatype       xsd:string ;
+        sh:description    "The postal code associated with the address of the object"@en ;
+        sh:name           "postal code"@en ;
+        sh:nodeKind       sh:Literal ;
+        sh:path           vcard:postal-code ;
+        sh:pattern        ".*" .
+
+<https://astrea.linkeddata.es/shapes#c882664618b695f2904264820a0c87a9>
+        a            sh:PropertyShape ;
+        sh:nodeKind  sh:BlankNodeOrIRI ;
+        sh:path      foaf:based_near .
+
+<https://astrea.linkeddata.es/shapes#46193045496dec5e671655c80559715d>
+        a               sh:PropertyShape ;
+        rdfs:label      "is held at"@en , "Instalación en la que se desarrolla el evento."@es , "Facility in which a city event is held."@en , "se desarrolla en"@es ;
+        sh:class        :Facility ;
+        sh:description  "Facility in which a city event is held."@en , "Instalación en la que se desarrolla el evento."@es ;
+        sh:name         "se desarrolla en"@es , "is held at"@en ;
+        sh:nodeKind     sh:BlankNodeOrIRI ;
+        sh:path         :isHeldAt .
+
+<https://astrea.linkeddata.es/shapes#a249d85dba64bbf148090db05338417b>
+        a            sh:PropertyShape ;
+        sh:datatype  xsd:time ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      schema:doorTime ;
+        sh:pattern   "(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" .
+
+<https://astrea.linkeddata.es/shapes#d356b58f142e9a9cdac1f08fb6f504b7>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  juso: ;
+        rdfs:seeAlso      <https://en.wikipedia.org/wiki/Street> , <http://www.geonames.org/ontology#R.ST> ;
+        sh:nodeKind       sh:IRI ;
+        sh:targetClass    juso:Street .
+
+<https://astrea.linkeddata.es/shapes#fe589dda5032f94cfdca781494d2766f>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:property     <https://astrea.linkeddata.es/shapes#4dfc5117abd03184cd20ca6c953fb623> , <https://astrea.linkeddata.es/shapes#6abef0677604ac2e8d8d29096dd3a0f8> , <https://astrea.linkeddata.es/shapes#54d8ba98fbf02fcb53d7bd43ab214be8> ;
+        sh:targetClass  schema:Event .
+
+<https://astrea.linkeddata.es/shapes#4a9ef772374131fcf3561884e88910c3>
+        a            sh:PropertyShape ;
+        sh:datatype  xsd:float ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      schema:longitude ;
+        sh:pattern   "(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([Ee](\\+|-)?[0-9]+)?|(\\+|-)?INF|NaN" .
+
+<https://astrea.linkeddata.es/shapes#1147cb5c8ea6c6d6793914a6427b3687>
+        a               sh:PropertyShape ;
+        rdfs:label      "tipo(s) de accesibilidad"@es , "Type(s) of accessibility provided by the facility. Current supported types of accessibility are as listed:\n- 0 = Not accessible.\n- 1 = Accessible.\n- 2 = Partially accessible facility for people with reduced mobility.\n- 3 = No information concerning accessibility for people with reduced mobility is available. \n- 4 = Sign language.\n- 5 = Pedotactile signaling.\n- 6 = Magnetic induction loop."@en , "Tipo(s) de accesibilidad disponibles en una instalación. Los tipos de accesibilidad soportados son los siguientes: 0 = No accesible, 1 = Accesible, 2 = Instalación parcialmente accesible para personas con movilidad reducida, 3 = Sin información sobre accesibilidad para personas con movilidad reducida, 4 = Lengua de signos, 5 = Señalización podotáctil, 6 = Bucle de inducción magnético."@es , "accessibility type(s)"@en ;
+        sh:datatype     xsd:string ;
+        sh:description  "Type(s) of accessibility provided by the facility. Current supported types of accessibility are as listed:\n- 0 = Not accessible.\n- 1 = Accessible.\n- 2 = Partially accessible facility for people with reduced mobility.\n- 3 = No information concerning accessibility for people with reduced mobility is available. \n- 4 = Sign language.\n- 5 = Pedotactile signaling.\n- 6 = Magnetic induction loop."@en , "Tipo(s) de accesibilidad disponibles en una instalación. Los tipos de accesibilidad soportados son los siguientes: 0 = No accesible, 1 = Accesible, 2 = Instalación parcialmente accesible para personas con movilidad reducida, 3 = Sin información sobre accesibilidad para personas con movilidad reducida, 4 = Lengua de signos, 5 = Señalización podotáctil, 6 = Bucle de inducción magnético."@es ;
+        sh:name         "accessibility type(s)"@en , "tipo(s) de accesibilidad"@es ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         :accessibilityType ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#ffa627c90b2f93431bad38fc95750b9e>
+        a               sh:PropertyShape ;
+        rdfs:label      "location" , "The relation between something and the point, \n or other geometrical thing in space, where it is.  For example, the realtionship between\n a radio tower and a Point with a given lat and long.\n Or a relationship between a park and its outline as a closed arc of points, or a road and\n its location as a arc (a sequence of points).\n Clearly in practice there will be limit to the accuracy of any such statement, but one would expect\n an accuracy appropriate for the size of the object and uses such as mapping .\n " ;
+        sh:class        geo:SpatialThing ;
+        sh:description  "The relation between something and the point, \n or other geometrical thing in space, where it is.  For example, the realtionship between\n a radio tower and a Point with a given lat and long.\n Or a relationship between a park and its outline as a closed arc of points, or a road and\n its location as a arc (a sequence of points).\n Clearly in practice there will be limit to the accuracy of any such statement, but one would expect\n an accuracy appropriate for the size of the object and uses such as mapping .\n " ;
+        sh:name         "location" ;
+        sh:nodeKind     sh:BlankNodeOrIRI ;
+        sh:path         geo:location .
+
+<http://astrea.linkeddata.es/report>
+        a       <https://w3id.org/def/astrea#ShapeReport> ;
+        <https://w3id.org/def/astrea#contains>
+                <https://astrea.linkeddata.es/shapes#a46f0ab85307c2c3871cde346c2ed43e> , <https://astrea.linkeddata.es/shapes#efe8d6382f1ee6c89a0d6f5c3ee679ca> , <https://astrea.linkeddata.es/shapes#98b09f903f7c0430de000bc04dfa1705> , <https://astrea.linkeddata.es/shapes#6ace7559c09873d57bb26d2909a563c6> , <https://astrea.linkeddata.es/shapes#a753db5074ef13e46a2fdb7674aa1629> , <https://astrea.linkeddata.es/shapes#6ddc0b40525de8d44aa81deabedaa0bf> , <https://astrea.linkeddata.es/shapes#4dfc5117abd03184cd20ca6c953fb623> , <https://astrea.linkeddata.es/shapes#ea797737aa91410509f2d0452e811e22> , <https://astrea.linkeddata.es/shapes#0297d1226b452b3fad1bb917bd7aa544> , <https://astrea.linkeddata.es/shapes#6abef0677604ac2e8d8d29096dd3a0f8> , <https://astrea.linkeddata.es/shapes#33e0b81be4a15cd69f51369023873407> , <https://astrea.linkeddata.es/shapes#00b2415d75ba7f5b0d2a7cd256502142> , <https://astrea.linkeddata.es/shapes#c52a043c66e049126b272c3c11326009> , <https://astrea.linkeddata.es/shapes#a53ff16a4df43ccc7a411947aab92e3f> , <https://astrea.linkeddata.es/shapes#d356b58f142e9a9cdac1f08fb6f504b7> , <https://astrea.linkeddata.es/shapes#fe589dda5032f94cfdca781494d2766f> , <https://astrea.linkeddata.es/shapes#73154e6936a514f0e493e8958c5f3a12> , <https://astrea.linkeddata.es/shapes#4a9ef772374131fcf3561884e88910c3> , <https://astrea.linkeddata.es/shapes#aac67367b43eefb3bace65190b2b8746> , <https://astrea.linkeddata.es/shapes#725d7e3946bb954f326d414d2ec63766> , <https://astrea.linkeddata.es/shapes#bb55c007a6f0524a0861844cfef04b97> , <https://astrea.linkeddata.es/shapes#74325d2c9b0d8af5033119df41ad29df> , <https://astrea.linkeddata.es/shapes#8c9f0a3ef50fe390869f7c693885d425> , <https://astrea.linkeddata.es/shapes#de4662610769cd7ed47ed89967592cbe> , <https://astrea.linkeddata.es/shapes#54d8ba98fbf02fcb53d7bd43ab214be8> , <https://astrea.linkeddata.es/shapes#6ee59227e7154e78fe9a88ad1d304350> , <https://astrea.linkeddata.es/shapes#23dc9b281021047adbf14f21017b88fd> , <https://astrea.linkeddata.es/shapes#f85907bdcffdc39534274db7faacc26f> , <https://astrea.linkeddata.es/shapes#b8840ae319dd17775a4c3ff2c43caeca> , <https://astrea.linkeddata.es/shapes#ffa627c90b2f93431bad38fc95750b9e> , <https://astrea.linkeddata.es/shapes#46193045496dec5e671655c80559715d> , <https://astrea.linkeddata.es/shapes#c882664618b695f2904264820a0c87a9> , <https://astrea.linkeddata.es/shapes#aea0d086befcf2e1814eadaa9174be69> , <https://astrea.linkeddata.es/shapes#893caaacc926a9f495507e0dab3266bc> , <https://astrea.linkeddata.es/shapes#a249d85dba64bbf148090db05338417b> , <https://astrea.linkeddata.es/shapes#20dbf5594df31c18d255f26622a5b899> , <https://astrea.linkeddata.es/shapes#9e3ce93776c892c0f7881425cde63bbb> , <https://astrea.linkeddata.es/shapes#bb48a93dba07799ad735021b166af47a> , <https://astrea.linkeddata.es/shapes#07beae0284bdf02041d016393cfb1cdb> , <https://astrea.linkeddata.es/shapes#56a0166a46caa4cce95a6b9e4554ef4d> , <https://astrea.linkeddata.es/shapes#1147cb5c8ea6c6d6793914a6427b3687> , <https://astrea.linkeddata.es/shapes#dc1310a4b936d9ac1b7cee3ccdc2e557> , <https://astrea.linkeddata.es/shapes#8510901e4520099a3f46fcb15755e6b3> , <https://astrea.linkeddata.es/shapes#09241a83e96f05c556e4b507062307da> ;
+        <https://w3id.org/def/astrea#generatedShapesFrom>
+                <https://astrea.linkeddata.es/report/0620946147> .
+
+<https://astrea.linkeddata.es/shapes#33e0b81be4a15cd69f51369023873407>
+        a                 sh:NodeShape ;
+        rdfs:isDefinedBy  juso: ;
+        rdfs:seeAlso      <https://en.wikipedia.org/wiki/Neighbourhood> ;
+        sh:nodeKind       sh:IRI ;
+        sh:targetClass    juso:Neighborhood .
+
+<https://astrea.linkeddata.es/shapes#b8840ae319dd17775a4c3ff2c43caeca>
+        a            sh:PropertyShape ;
+        sh:nodeKind  sh:Literal .
+
+<https://astrea.linkeddata.es/shapes#aac67367b43eefb3bace65190b2b8746>
+        a               sh:PropertyShape ;
+        rdfs:label      "Price of the city event."@en , "has price"@en , "Coste del evento/actividad."@es , "tiene coste"@es ;
+        sh:datatype     xsd:string ;
+        sh:description  "Coste del evento/actividad."@es , "Price of the city event."@en ;
+        sh:name         "has price"@en , "tiene coste"@es ;
+        sh:nodeKind     sh:Literal ;
+        sh:path         :hasPrice ;
+        sh:pattern      ".*" .
+
+<https://astrea.linkeddata.es/shapes#de4662610769cd7ed47ed89967592cbe>
+        a               sh:PropertyShape ;
+        rdfs:label      "is in neighborhood"@en , "Entidad espacial que está contenida dentro de los límites de la región delimitada por el barrio."@es , "A spatial thing that is contained  within the borders of the region delimited by the district."@en , "pertenece al barrio"@es ;
+        sh:class        juso:Neighborhood ;
+        sh:description  "Entidad espacial que está contenida dentro de los límites de la región delimitada por el barrio."@es , "A spatial thing that is contained  within the borders of the region delimited by the district."@en ;
+        sh:name         "pertenece al barrio"@es , "is in neighborhood"@en ;
+        sh:nodeKind     sh:BlankNodeOrIRI ;
+        sh:path         :isInNeighborhood .

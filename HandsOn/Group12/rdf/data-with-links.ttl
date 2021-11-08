@@ -504,7 +504,7 @@
 <https://data.eventsatmadrid.org/resource/Address/CALLE-ANDALUCES-DEL-POZO-1>
   a vcard:Address ;
   vcard:street-address "CALLE ANDALUCES DEL POZO, 1" ;
-  vcard:postal-code "28053" .
+  vcard:postal-code 3 .
 
 <https://data.eventsatmadrid.org/resource/Address/CALLE-FUENTE-DEL-REY-11>
   a vcard:Address ;

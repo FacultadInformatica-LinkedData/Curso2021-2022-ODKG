@@ -1,14 +1,13 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#>.
-@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
-@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix ns: <https://data.eventsatmadrid.org/ontology#>.
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix owl: <http://www.w3.org/2002/07/owl#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
-@base <https://data.eventsatmadrid.org/ontology#>.
+@prefix : <https://data.eventsatmadrid.org/ontology#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix juso: <http://rdfs.co/juso/> .
+@base <https://data.eventsatmadrid.org/ontology#> .
 
 
 <AddressMap> a rr:TriplesMap;
@@ -37,11 +36,7 @@
     ]
   ].
 
-# to add to do:
-# http://dbpedia.org/ontology/Street
-# http://dbpedia.org/ontology/RouteOfTransportation
-# http://rdfs.co/juso/latest/html#term-Street
-# https://www.wikidata.org/wiki/Q79007
+
 <StreetMap> a rr:TriplesMap;
   rml:logicalSource [
     rml:source "csv/data-updated-with-links.csv" ;
@@ -49,7 +44,7 @@
   ];
   rr:subjectMap [
     rr:template "https://data.eventsatmadrid.org/resource/Street/{URI-STREET}";
-    rr:class dbpedia-owl:RouteOfTransportation
+    rr:class juso:Street
   ];
 
   rr:predicateObjectMap [
@@ -75,7 +70,7 @@
   ];
   rr:subjectMap [
     rr:template "https://data.eventsatmadrid.org/resource/Facility/{URI-NOMBRE-INSTALACION}";
-    rr:class ns:Facility
+    rr:class :Facility
   ];
 
   rr:predicateObjectMap [
@@ -95,7 +90,7 @@
   ];
   
   rr:predicateObjectMap [
-    rr:predicate ns:hasAccesibility;
+    rr:predicate :accessibilityType;
     rr:objectMap [
       rml:reference "ACCESIBILIDAD-INSTALACION";
       rr:datatype xsd:string
@@ -103,7 +98,7 @@
   ];
   
   rr:predicateObjectMap [
-    rr:predicate ns:hasScheduleURL;
+    rr:predicate :hasScheduleURL;
     rr:objectMap [
       rml:reference "URL-ACTIVIDAD";
       rr:datatype xsd:anyURI
@@ -111,10 +106,18 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasCoordinates;
+    rr:predicate schema:latitude;
     rr:objectMap [
-      rml:reference "COORDINATES";
-      rr:datatype xsd:string
+      rml:reference "LATITUDE";
+      rr:datatype xsd:float
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate schema:longitude;
+    rr:objectMap [
+      rml:reference "LONGITUDE";
+      rr:datatype xsd:float
     ]
   ];
 
@@ -130,7 +133,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:isLocatedAt;
+    rr:predicate :isInNeighborhood;
     rr:objectMap [
       rr:parentTriplesMap <NeighborhoodMap>;
       rr:joinCondition [
@@ -140,9 +143,8 @@
     ];
   ];
 
-  # dbpedia-owl:location
   rr:predicateObjectMap [
-    rr:predicate ns:isInStreet;
+    rr:predicate :isInStreet;
     rr:objectMap [
       rr:parentTriplesMap <StreetMap>;
       rr:joinCondition [
@@ -159,7 +161,7 @@
   ];
   rr:subjectMap [
     rr:template "https://data.eventsatmadrid.org/resource/Neighborhood/{URI-BARRIO-INSTALACION}";
-    rr:class ns:Neighborhood
+    rr:class juso:Neighborhood
   ];
   rr:predicateObjectMap [
     rr:predicate rdfs:label;
@@ -168,22 +170,23 @@
       rr:datatype xsd:string
     ]
   ];
-  rr:predicateObjectMap [
-    rr:predicate ns:isInDistrict;
-    rr:objectMap [
-      rr:parentTriplesMap <DistrictMap>;
-      rr:joinCondition [
-        rr:child "ID-EVENTO";
-        rr:parent "ID-EVENTO"
-      ]
-    ]
-  ];
 
   rr:predicateObjectMap [
     rr:predicate owl:sameAs;
     rr:objectMap [
       rml:reference "same_as_wikidata_barrio";
       rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate :isInDistrict;
+    rr:objectMap [
+      rr:parentTriplesMap <DistrictMap>;
+      rr:joinCondition [
+        rr:child "ID-EVENTO";
+        rr:parent "ID-EVENTO"
+      ]
     ]
   ].
 
@@ -194,7 +197,7 @@
   ];
   rr:subjectMap [
     rr:template "https://data.eventsatmadrid.org/resource/District/{URI-DISTRITO-INSTALACION}";
-    rr:class ns:District
+    rr:class juso:District
   ];
   rr:predicateObjectMap [
     rr:predicate rdfs:label;
@@ -204,7 +207,6 @@
     ]
   ];
 
-
   rr:predicateObjectMap [
     rr:predicate owl:sameAs;
     rr:objectMap [
@@ -213,8 +215,7 @@
     ]
   ].
 
-# https://schema.org/Event
-# https://www.bbc.co.uk/ontologies/coreconcepts#terms_Event
+
 <EventMap> a rr:TriplesMap;
   rml:logicalSource [
     rml:source "csv/data-updated-with-links.csv" ;
@@ -222,7 +223,7 @@
   ];
   rr:subjectMap [
     rr:template "https://data.eventsatmadrid.org/resource/Event/{ID-EVENTO}";
-    rr:class ns:Event
+    rr:class :CityEvent
   ];
 
   rr:predicateObjectMap [
@@ -234,7 +235,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasPrice;
+    rr:predicate :hasPrice;
     rr:objectMap [
       rml:reference "PRECIO";
       rr:datatype xsd:string
@@ -242,7 +243,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasDays;
+    rr:predicate :hasDaysOfWeek;
     rr:objectMap [
       rml:reference "DIAS-SEMANA";
       rr:datatype xsd:string
@@ -250,7 +251,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasExcludedDays;
+    rr:predicate :exceptDates;
     rr:objectMap [
       rml:reference "DIAS-EXCLUIDOS";
       rr:datatype xsd:string
@@ -258,7 +259,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasStartDate;
+    rr:predicate schema:startDate;
     rr:objectMap [
       rml:reference "FECHA";
       rr:datatype xsd:date
@@ -266,7 +267,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasFinishDate;
+    rr:predicate schema:endDate;
     rr:objectMap [
       rml:reference "FECHA-FIN";
       rr:datatype xsd:date
@@ -274,7 +275,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasHour;
+    rr:predicate schema:doorTime;
     rr:objectMap [
       rml:reference "HORA";
       rr:datatype xsd:time
@@ -298,16 +299,15 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasTargetAudience;
+    rr:predicate :hasTargetAudience;
     rr:objectMap [
       rml:reference "AUDIENCIA";
       rr:datatype xsd:string
     ]
   ];
 
-  # https://skos.um.es/TR/skos-primer/#secalt
   rr:predicateObjectMap [
-    rr:predicate skos:altLabel;
+    rr:predicate vcard:additional-name;
     rr:objectMap [
       rml:reference "TITULO-ACTIVIDAD";
       rr:datatype xsd:string
@@ -315,7 +315,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:hasType;
+    rr:predicate :eventType;
     rr:objectMap [
       rml:reference "TIPO";
       rr:datatype xsd:string
@@ -323,7 +323,15 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate ns:isHeldIn;
+    rr:predicate schema:isAccessibleForFree;
+    rr:objectMap [
+      rml:reference "IS-FREE";
+      rr:datatype xsd:boolean
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate :isHeldAt;
     rr:objectMap [
       rr:parentTriplesMap <FacilityMap>;
       rr:joinCondition [

@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+ width="1263" height="695" viewBox="0 0 1263 695">
+ onmousemove="movetip(evt)" onmouseup="endmove()">
+<rect x="0" y="0" width="100%" height="100%" style="fill:#F0F8FF;"/>
+<script type="application/ecmascript"> <![CDATA[
+var dragtipid = null; var dragcase = false; function init(evt){
+if (window.svgDocument==null) svgDocument = evt.target.ownerDocument;
+}
+function movetip(evt){if (dragtipid!=null){ dragcase = true;
+var tip=svgDocument.getElementById(dragtipid);
+tip.setAttributeNS(null,"x",evt.clientX-2);
+tip.setAttributeNS(null,"y",evt.clientY-2);
+}}
+function endmove(){dragtipid = null;}
+function startmove(evt,id){dragtipid = id; dragcase = false;
+var tip=svgDocument.getElementById(dragtipid);
+tip.setAttributeNS(null,"x",evt.clientX-2);
+tip.setAttributeNS(null,"y",evt.clientY-2);
+}
+function Showtip(evt,id){ dragtipid = null;
+var tip=svgDocument.getElementById(id);
+var vis=tip.getAttributeNS(null,"visibility");
+if (vis=="hidden"){
+tip.setAttributeNS(null,"x",evt.clientX-2);
+tip.setAttributeNS(null,"y",evt.clientY-2);
+tip.setAttributeNS(null,"visibility","visible");
+}}
+function Hidetip(id){ dragtipid = null; if (dragcase==false){
+var tip=svgDocument.getElementById(id);
+tip.setAttributeNS(null,"visibility","hidden");
+}}
+]]></script>
+<defs><linearGradient id="activ1" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#FFFF00;stop-opacity:1"/>
+<stop offset="100%" style="stop-color:#FFFFF0;stop-opacity:1"/>
+</linearGradient></defs>
+<g id="2000961848"><polygon points="463,593 594,593 594,687 463,687 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="466" y1="608" x2="593" y2="608"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="511" y="605">Facility</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;font-style:italic;">
+<tspan x="466" y="617">&quot;Recinto o lugar acondicionado </tspan>
+<tspan x="466" y="628">con todas las cosas necesarias </tspan>
+<tspan x="466" y="639">para cumplir un servicio </tspan>
+<tspan x="466" y="650">(definición de Oxford Languages)</tspan>
+<tspan x="466" y="661">.&quot;</tspan>
+</text>
+<line x1="466" y1="662" x2="593" y2="662"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="466" y="671">accessibilityType:string</tspan>
+<tspan x="466" y="683">hasScheduleURL:anyURI</tspan>
+</text>
+</g>
+<g id="2000962291"><polygon points="676,294 804,294 804,332 676,332 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="679" y1="309" x2="803" y2="309"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="707" y="307">Feature{juso}</tspan>
+</text>
+</g>
+<g id="2000962687"><polygon points="795,235 923,235 923,273 795,273 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="798" y1="250" x2="922" y2="250"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="814" y="248">SpatialThing{juso}</tspan>
+</text>
+</g>
+<g id="2000962751"><polygon points="672,387 801,387 801,426 672,426 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="675" y1="402" x2="799" y2="402"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="689" y="400">Thoroughfare{juso}</tspan>
+</text>
+</g>
+<g id="2000962804"><polygon points="983,370 1111,370 1111,408 983,408 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="986" y1="385" x2="1109" y2="385"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="993" y="383">PoliticalDivision{juso}</tspan>
+</text>
+</g>
+<g id="2000962927"><polygon points="952,559 1081,559 1081,597 952,597 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="955" y1="573" x2="1079" y2="573"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="984" y="571">District{juso}</tspan>
+</text>
+</g>
+<g id="2000962994"><polygon points="268,523 268,485 339,485 345,491 345,523 "
+style="fill:White; stroke-width:1;stroke:Black;"/>
+<line x1="345" y1="491" x2="339" y2="491"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="339" y1="491" x2="339" y2="485"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="271" y1="498" x2="344" y2="498"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="281" y="495">&lt;&lt;issued&gt;&gt;</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="271" y="507">&quot;2015-10-02+09:</tspan>
+<tspan x="271" y="519">00&quot;^^xsd:date&quot;</tspan>
+</text>
+</g>
+<g id="2000963000"><polygon points="8,476 8,441 79,441 86,447 86,476 "
+style="fill:White; stroke-width:1;stroke:Black;"/>
+<line x1="86" y1="447" x2="79" y2="447"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="79" y1="447" x2="79" y2="441"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="11" y1="454" x2="84" y2="454"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="10" y="452">&lt;&lt;term_status&gt;&gt;</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="11" y="463">&quot;testing&quot;@en</tspan>
+</text>
+</g>
+<g id="2000963006"><polygon points="38,651 38,531 110,531 116,538 116,651 "
+style="fill:White; stroke-width:1;stroke:Black;"/>
+<line x1="116" y1="538" x2="110" y2="538"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="110" y1="538" x2="110" y2="531"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="41" y1="545" x2="114" y2="545"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="46" y="542">&lt;&lt;definition&gt;&gt;</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="41" y="554">&quot;</tspan>
+<tspan x="41" y="566">    A spatial thing </tspan>
+<tspan x="41" y="578">that contains the </tspan>
+<tspan x="41" y="590">current one </tspan>
+<tspan x="41" y="602">within the </tspan>
+<tspan x="41" y="614">borders of its </tspan>
+<tspan x="41" y="626">own</tspan>
+<tspan x="41" y="638">    region.</tspan>
+<tspan x="41" y="650">    &quot;@en</tspan>
+</text>
+</g>
+<g id="2000963012"><polygon points="211,480 211,445 282,445 289,451 289,480 "
+style="fill:White; stroke-width:1;stroke:Black;"/>
+<line x1="289" y1="451" x2="282" y2="451"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="282" y1="451" x2="282" y2="445"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="214" y1="458" x2="287" y2="458"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="219" y="456">&lt;&lt;prefLabel&gt;&gt;</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="214" y="467">&quot;within&quot;@en</tspan>
+</text>
+</g>
+<g id="2000963018"><polygon points="131,566 131,527 203,527 209,534 209,566 "
+style="fill:White; stroke-width:1;stroke:Black;"/>
+<line x1="209" y1="534" x2="203" y2="534"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="203" y1="534" x2="203" y2="527"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="135" y1="541" x2="208" y2="541"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="141" y="538">&lt;&lt;modified&gt;&gt;</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="135" y="550">&quot;2015-10-02+09:</tspan>
+<tspan x="135" y="562">00&quot;^^xsd:date&quot;</tspan>
+</text>
+</g>
+<g id="2000963024"><polygon points="8,527 8,489 79,489 86,495 86,527 "
+style="fill:White; stroke-width:1;stroke:Black;"/>
+<line x1="86" y1="495" x2="79" y2="495"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="79" y1="495" x2="79" y2="489"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="11" y1="502" x2="84" y2="502"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="10" y="499">&lt;&lt;isDefinedBy&gt;&gt;</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="11" y="511">&quot;http://rdfs.co/</tspan>
+<tspan x="11" y="523">juso/&quot;</tspan>
+</text>
+</g>
+<g id="2000963732"><polygon points="113,425 198,425 198,460 113,460 "
+style="fill:#80FF80; stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="118" y="435">P{http://geovocab.</tspan>
+<tspan x="132" y="447">org/spatial}</tspan>
+</text>
+</g>
+<g id="2000963745"><polygon points="107,488 193,488 193,523 107,523 "
+style="fill:#80FF80; stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="125" y="498">within{juso}</tspan>
+</text>
+</g>
+<g id="2000963758"><polygon points="214,528 300,528 300,566 214,566 "
+style="fill:#80FF80; stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="227" y="539">sfWithin{http://</tspan>
+<tspan x="219" y="551">www.opengis.net/</tspan>
+<tspan x="226" y="563">ont/geosparql}</tspan>
+</text>
+</g>
+<g id="2000961822"><polygon points="696,163 719,163 719,166 696,166 "
+style="fill:#8000FF; stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000962436"><polygon points="421,339 552,339 552,480 421,480 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="424" y1="354" x2="550" y2="354"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="463" y="352">CityEvent</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;font-style:italic;">
+<tspan x="424" y="363">&quot;Suceso importante y </tspan>
+<tspan x="424" y="374">programado, de índole social, </tspan>
+<tspan x="424" y="385">académica, artística o deportiva </tspan>
+<tspan x="424" y="396">que se desarrolla en el ámbito de </tspan>
+<tspan x="424" y="407">una ciudad.&quot;</tspan>
+</text>
+<line x1="424" y1="408" x2="550" y2="408"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="424" y="417">exceptDates:string</tspan>
+<tspan x="424" y="429">eventType:string</tspan>
+<tspan x="424" y="441">hasTargetAudience:string</tspan>
+<tspan x="424" y="453">hasDaysOfWeek:string</tspan>
+<tspan x="424" y="465">hasPrice:string</tspan>
+<tspan x="424" y="477">doorTime{schema}:time</tspan>
+</text>
+</g>
+<g id="2000962350"><polygon points="419,237 548,237 548,300 419,300 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="422" y1="251" x2="546" y2="251"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="445" y="249">Event{schema}</tspan>
+</text>
+<line x1="422" y1="251" x2="546" y2="251"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="422" y="260">endDate{schema}:date</tspan>
+<tspan x="422" y="272">isAccessibleForFree</tspan>
+<tspan x="422" y="284">{schema}:boolean</tspan>
+<tspan x="422" y="296">startDate{schema}:date</tspan>
+</text>
+</g>
+<g id="2000962268"><polygon points="252,235 380,235 380,284 252,284 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="255" y1="250" x2="379" y2="250"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="278" y="248">Address{vcard}</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;font-style:italic;">
+<tspan x="255" y="259">&quot;To specify the components of </tspan>
+<tspan x="255" y="270">the delivery address for the  </tspan>
+<tspan x="255" y="281">object&quot;</tspan>
+</text>
+</g>
+<g id="2000961818"><polygon points="1027,531 1067,531 1067,534 1027,534 "
+style="fill:#8000FF; stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000962868"><polygon points="1095,560 1223,560 1223,598 1095,598 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="1098" y1="575" x2="1221" y2="575"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="1109" y="573">Neighborhood{juso}</tspan>
+</text>
+</g>
+<g id="2000961814"><polygon points="753,359 776,359 776,362 753,362 "
+style="fill:#8000FF; stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000962168"><polygon points="979,475 1107,475 1107,513 979,513 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="982" y1="503" x2="1106" y2="503"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="989" y="487">AdministrativeDivision</tspan>
+<tspan x="1029" y="500">{juso}</tspan>
+</text>
+</g>
+<g id="2000962018"><polygon points="566,35 947,35 947,110 566,110 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="569" y1="50" x2="945" y2="50"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="718" y="48">Thing{schema}</tspan>
+</text>
+<line x1="569" y1="50" x2="945" y2="50"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="569" y="59">postal-code{vcard}:string</tspan>
+<tspan x="569" y="71">street-address{vcard}:string</tspan>
+<tspan x="569" y="83">latitude{schema}:float</tspan>
+<tspan x="569" y="95">longitude{schema}:float</tspan>
+<tspan x="569" y="107">additional-name{vcard}:string</tspan>
+</text>
+</g>
+<g id="2000961959"><polygon points="681,560 809,560 809,598 681,598 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="684" y1="575" x2="808" y2="575"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="716" y="573">Street{juso}</tspan>
+</text>
+</g>
+<g id="2000963030"><path d="M800,294 L800,273 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+<polygon points="802,278 800,273 797,278 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000963032"><path d="M479,339 L479,300 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+<polygon points="482,304 479,300 477,304 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000963033"><path d="M1083,475 L1083,408 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+<polygon points="1085,413 1083,408 1081,413 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000963034"><path d="M699,560 L699,426 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+<polygon points="702,430 699,426 697,430 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000963151"><path d="M795,254 L784,254 781,252 780,249 780,197 781,194 784,192 805,192 808,194 810,197 810,235 "
+style="fill:none;stroke-width:1;stroke:Black;"/>
+<line x1="808" y1="230" x2="810" y2="235"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="812" y1="230" x2="810" y2="235"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="812" y="207">within{juso}</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="812" y="220">{&lt;location{wgs84_pos},</tspan>
+<tspan x="812" y="232">&lt;location{locn}}</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="786" y="232">{tran}</tspan>
+</text>
+</g>
+<g id="2000963566"><path d="M468,480 L468,593 "
+style="fill:none;stroke-width:1;stroke:Black;"/>
+<line x1="465" y1="588" x2="468" y2="593"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="470" y1="588" x2="468" y2="593"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="469" y="576">isHeldAt</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="469" y="589">{&lt;location{wgs84_pos}}</tspan>
+</text>
+</g>
+<g id="2000963637"><path d="M566,65 L311,65 308,67 307,70 307,235 "
+style="fill:none;stroke-width:1;stroke:Black;"/>
+<line x1="304" y1="230" x2="307" y2="235"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="309" y1="230" x2="307" y2="235"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="308" y="232">hasAddress{vcard}</tspan>
+</text>
+</g>
+<g id="2000963724"><path d="M1095,566 L1090,566 1087,565 1085,562 1085,537 1084,534 1081,532 1067,532 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+</g>
+<g id="2000963725"><path d="M986,559 L986,537 987,534 990,532 1027,532 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+</g>
+<g id="2000963771"><path d="M193,517 L255,517 258,518 260,521 260,528 "
+style="fill:none;stroke-width:1;stroke:Black;stroke-dasharray:4,4;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="196" y="515">&lt;&lt;sameAs&gt;&gt;</tspan>
+</text>
+</g>
+<g id="2000963778"><path d="M156,488 L156,460 "
+style="fill:none;stroke-width:1;stroke:Black;stroke-dasharray:4,4;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="97" y="482">&lt;&lt;sameAs&gt;&gt;</tspan>
+</text>
+</g>
+<g id="2000963785"><path d="M116,591 L122,591 125,590 127,587 127,523 "
+style="fill:none;stroke-width:1;stroke:Black;stroke-dasharray:4,4;"/>
+</g>
+<g id="2000963786"><path d="M86,509 L107,509 "
+style="fill:none;stroke-width:1;stroke:Black;stroke-dasharray:4,4;"/>
+</g>
+<g id="2000963787"><path d="M165,527 L165,523 "
+style="fill:none;stroke-width:1;stroke:Black;stroke-dasharray:4,4;"/>
+</g>
+<g id="2000963788"><path d="M211,464 L179,464 176,466 174,469 174,488 "
+style="fill:none;stroke-width:1;stroke:Black;stroke-dasharray:4,4;"/>
+</g>
+<g id="2000963789"><path d="M268,500 L193,500 "
+style="fill:none;stroke-width:1;stroke:Black;stroke-dasharray:4,4;"/>
+</g>
+<g id="2000963790"><path d="M86,458 L86,458 89,460 90,463 90,494 92,497 95,499 107,499 "
+style="fill:none;stroke-width:1;stroke:Black;stroke-dasharray:4,4;"/>
+</g>
+<g id="2000963352"><path d="M566,40 L566,40 562,38 561,35 561,22 562,19 566,17 566,17 569,19 570,22 570,35 "
+style="fill:none;stroke-width:1;stroke:Black;"/>
+<line x1="568" y1="30" x2="570" y2="35"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="573" y1="30" x2="570" y2="35"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="572" y="32">based_near{foaf}</tspan>
+</text>
+</g>
+<g id="2000963701"><path d="M1046,531 L1046,513 "
+style="fill:none;stroke-width:2;stroke:Purple;"/>
+<polygon points="1049,517 1046,513 1044,517 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000963501"><path d="M832,273 L832,572 833,575 836,576 952,576 "
+style="fill:none;stroke-width:1;stroke:Black;"/>
+<line x1="948" y1="574" x2="952" y2="576"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="948" y1="579" x2="952" y2="576"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="838" y="575">isInDistrict</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="888" y="575">{&lt;within{juso}}</tspan>
+</text>
+</g>
+<g id="2000963281"><path d="M906,273 L906,293 908,296 911,298 1172,298 1175,300 1176,303 1176,560 "
+style="fill:none;stroke-width:1;stroke:Black;"/>
+<line x1="1174" y1="555" x2="1176" y2="560"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="1179" y1="555" x2="1176" y2="560"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="1178" y="543">isInNeighborhood</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="1178" y="557">{&lt;within{juso}}</tspan>
+</text>
+</g>
+<g id="2000963731"><path d="M587,593 L587,365 589,362 592,360 753,360 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+</g>
+<g id="2000963723"><path d="M987,370 L987,365 986,362 983,360 776,360 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+</g>
+<g id="2000963702"><path d="M765,359 L765,332 "
+style="fill:none;stroke-width:2;stroke:Purple;"/>
+<polygon points="767,337 765,332 762,337 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000963730"><path d="M764,387 L764,362 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+</g>
+<g id="2000963721"><path d="M380,240 L391,240 394,238 395,235 395,202 397,198 400,197 665,197 668,195 670,192 670,170 671,167 675,166 696,166 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+</g>
+<g id="2000963728"><path d="M919,235 L919,192 917,189 914,187 752,187 748,186 747,183 747,170 745,167 742,166 719,166 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+</g>
+<g id="2000963719"><path d="M548,276 L704,276 707,275 709,272 709,166 "
+style="fill:none;stroke-width:2;stroke:#8000FF;"/>
+</g>
+<g id="2000963700"><path d="M710,163 L710,110 "
+style="fill:none;stroke-width:2;stroke:Purple;"/>
+<polygon points="712,114 710,110 707,114 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000963035"><path d="M809,273 L809,510 808,513 804,515 709,515 706,517 704,520 704,560 "
+style="fill:none;stroke-width:1;stroke:Black;"/>
+<line x1="702" y1="555" x2="704" y2="560"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="706" y1="555" x2="704" y2="560"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="706" y="543">isInStreet</tspan>
+</text>
+<text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="706" y="557">{&lt;location{wgs84_pos}}</tspan>
+</text>
+</g>
+</svg>

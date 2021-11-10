@@ -1,10 +1,9 @@
-var endpointdummy = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql'
-var querydummy = `SELECT ?item ?itemLabel WHERE {
-                        ?item wdt:P31 wd:Q146.
-                        ?item rdfs:label ?itemLabel.
-                        FILTER(LANG(?itemLabel) = 'en')
-                      }
-            `
+var endpointwikidata = 'https://query.wikidata.org/bigdata/namespace/wdq/sparql'
+var districtQuery = `SELECT ?district ?districtLabel 
+WHERE {
+  wd:Q2807  wdt:P150 ?district
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". } # Helps get the label in your language, if not, then en language
+}ORDER BY ?districtLabel `
 
 var endpoint = 'http://localhost:9000/sparql'
 
@@ -34,15 +33,19 @@ var config = {
         "selector": "#result"
       }
 
+var list_districts = [];
 var list_events = [];
-var number_events = 2;
+var number_events = 6;
 
 function loadEvents() {
     //this is dummy example
-    result = sparql.get(endpointdummy, querydummy).then(function(data) {
+    result = sparql.get(endpointwikidata, districtQuery).then(function(data) {
       console.log(data)
-      //htmltable(data, config)
+     // htmltable(data, config)
+      list_districts =sparql.parseResponse(data);
+      generateDistrict(list_districts);
     })
+    
 
     //this is a query for events
     result = sparql.query(endpoint, queryEvents).then(function(data) {
@@ -103,7 +106,7 @@ function renderEvents(events_json, config, reset=false){
     var events = eventosRow.selectAll(".card-body")
         .data(events_json)
         .enter()
-        .append("div").attr("class", "col col-xl-6 col-lg-12 col-md-12 col-sm-12")
+        .append("div").attr("class", "col col-xl-4 col-lg-12 col-md-12 col-sm-12")
         .append("div").attr("class", "card")
         .append("div").attr("class", "card-body")
 
@@ -111,11 +114,11 @@ function renderEvents(events_json, config, reset=false){
         .text(function(col) { return col.Label })
     events.append("h6").attr("class", "card-subtitle mb-2 text-muted")
         .text(function(col) { return col.Title })
-    events.append("p").attr("class", "card-text")
+   /* events.append("p").attr("class", "card-text")
         .style("height", "30vh").style("overflow", "auto")
         .append("small")
         .text(function(col) { return col.Description })
-
+*/
     events.append("span").attr("class", "badge bg-success me-1")
         .text(function(col) { return col.Type })
     events.append("span").attr("class", "badge bg-success")
@@ -143,7 +146,7 @@ function renderEvents(events_json, config, reset=false){
         .text(function(col)
             {
                 if(col.ExcludedDays){
-                    return " " + col.ExcludedDays
+                    return " " + col.ExcludedDays.replace(";"," ")
                 }
                 return ""
             })
@@ -163,7 +166,7 @@ function renderEvents(events_json, config, reset=false){
         .text(function(col)
             {
                 if(col.Hour){
-                    return " " + col.Hour
+                    return " " + col.Hour.split(":")[0]+":"+ col.Hour.split(":")[1]
                 }
                 return ""
             })
@@ -188,6 +191,7 @@ function renderEvents(events_json, config, reset=false){
     events.append("div").attr("class", "card-footer text-center")
         .append("a").attr("class", "btn btn-primary")
         .attr("href", function(col) { return col.URL }).text("Ver más")
+        .attr("target","_blank")
 
 }
 
@@ -234,3 +238,14 @@ function htmltable(json, config) {
   })
 }
 
+function generateDistrict(list_districts) {
+    //generar option select y append
+    for (dist of list_districts) {
+        //console.log(dist.districtLabel);
+        var x = document.createElement("OPTION"); //Creamos una nueva opcion para el desplegable
+        x.setAttribute("value",dist.districtLabel); //Le asignamos el valor del dato obtenido
+        var t = document.createTextNode(dist.districtLabel); //Le asignamos el nombre del dato obtenido
+        x.appendChild(t);
+        document.getElementById("seldist").appendChild(x);
+    }
+}

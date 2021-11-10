@@ -11,8 +11,7 @@ body {
 }
 
 #main {
-    margin: auto;
-    
+    margin: auto;   
 }
 
 #FilterCol {
@@ -42,7 +41,7 @@ body {
 }
 
 #chkrow {
-    padding-left: 10vw;
+    padding-left: 3vw;
     text-align: left;
 }
 

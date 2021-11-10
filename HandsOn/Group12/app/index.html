@@ -51,12 +51,12 @@
                 <div class="col col-2" id="FilterCol">
                     <aside class="bd-aside sticky-xl-top text-muted align-self-start mb-3 mb-xl-5 px-2">
                         <nav class="small">
-                            <span class="fs-5 fw-semibold">Filters</span>
-                            <p id="filter">Filters</p>
+                            
+                            <p id="filter"><strong>Filters</strong></p>
                             <button type="button" class="btn btn-primary" id="btnclear" onclick="loadEvents()">Clear filters</button>
                             <br><br>
                             <div id="hola"></div>
-                            <div class="row" id="date">Date
+                            <div class="row" id="date"><strong>Date</strong>
                                 <div id="chkrow">
                                     <input class="form-check-input" type="checkbox" id="D1" value="1">
                                     <label class="form-check-label" for="D1">Less than 7 days</label>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="row" id="location">Facility
+                            <div class="row" id="location"><strong>Facility</strong>
                                 <div id="chkrow">
                                     <input class="form-check-input" type="checkbox" id="F1">
                                     <label class="form-check-label" for="F1">Cultural center</label>
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="row" id="price">Price
+                            <div class="row" id="price"><strong>Price</strong>
                                 <div id="chkrow">
                                     <input class="form-check-input" type="checkbox" id="P1">
                                     <label class="form-check-label" for="P1">Free</label>
@@ -97,11 +97,7 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="row" id="type">Type of event
-                                <div id="chkrow">
-                                    <input class="form-check-input" type="checkbox" id="TE1">
-                                    <label class="form-check-label" for="TE1">All</label>
-                                </div>
+                            <div class="row" id="type"><strong>Type of event</strong>
                                 <div id="chkrow">
                                     <input class="form-check-input" type="checkbox" id="TE2">
                                     <label class="form-check-label" for="TE2">Kids</label>
@@ -111,66 +107,23 @@
                                     <label class="form-check-label" for="TE3">Adults</label>
                                 </div>
                             </div>
+                            <br>
+                            <div class="row" id="type"><strong>District</strong>
+                                <div id="chkrow">
+                                    <select id="seldist" class="form-select" aria-label="Default select example">
+                                        <option selected value="default"> Select District</option>
+                                    </select>
+                                    <input class="form-check-input" type="checkbox" id="nd">
+                                    <label class="form-check-label" for="nd">Nearest Districts also</label>
+                                </div>
+                            </div>
                         </nav>
                     </aside>
                 </div>
                 <div class="col col-9" id="events">
                     <div class="container-fluid">
                          <div class="row">
-                            <div class="col col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Las palabras desnudas</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Fortificación y ciudad. 29 maquetas</h6>
-                                        <p class="card-text"><small>Un hombre vive sumido en unaprofunda crisis tras varios añosseparado de la que fue su parejasentimental. La culpa, los remordimientosy la nostalgia, le mantienensumido en un estado de ansiedadconstante que le llevará a rozar lalocura. De ese período oscuronace la necesidad de escribir undiario personal. Lo que comenzócomo un ejercicio catártico, poco apoco se va convirtiendo en laaventura más fascinante de suvida? La que le llevará a encontrarun amor que jamás había conocido. 60 minutos</small></p>
-                                        <span class="badge bg-success">CursosTalleres</span>
-                                        <span class="badge bg-success">Mujeres</span>
-                                        <hr class="col-12">
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><i class="bi bi-calendar-range-fill" title="Date range"></i> 2021-10-05 - 2021-10-06 </li>
-                                            <li class="list-group-item"><i class="bi bi-calendar-x-fill" title="Excluded days"></i> 12/10/2021</li>
-                                            <li class="list-group-item"><i class="bi bi-calendar-week-fill" title="Days"></i> M,T,W,S,F</li>
-                                            <li class="list-group-item"><i class="bi bi-clock-fill" title="Hour"></i> 20:00:00</li>
-                                            <li class="list-group-item"><i class="bi bi-geo-alt-fill" title="Held in"></i> Centro cultural</li>
-                                        </ul>
-                                        <hr class="col-12">
-
-                                        <i class="bi bi-currency-euro" title="Price"></i>
-                                        <small class="text-muted">Gratuito</small>
-
-                                        <div class="card-footer text-center">
-                                           <a class="btn btn-primary" href="http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=785be0464605c710VgnVCM1000001d4a900aRCRD">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Las palabras desnudas</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Fortificación y ciudad. 29 maquetas</h6>
-                                        <p class="card-text"><small>Un hombre vive sumido en unaprofunda crisis tras varios añosseparado de la que fue su parejasentimental. La culpa, los remordimientosy la nostalgia, le mantienensumido en un estado de ansiedadconstante que le llevará a rozar lalocura. De ese período oscuronace la necesidad de escribir undiario personal. Lo que comenzócomo un ejercicio catártico, poco apoco se va convirtiendo en laaventura más fascinante de suvida? La que le llevará a encontrarun amor que jamás había conocido. 60 minutos</small></p>
-                                        <span class="badge bg-success">CursosTalleres</span>
-                                        <span class="badge bg-success">Mujeres</span>
-                                        <hr class="col-12">
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><i class="bi bi-calendar-range-fill" title="Date range"></i> 2021-10-05 - 2021-10-06 </li>
-                                            <li class="list-group-item"><i class="bi bi-calendar-x-fill" title="Excluded days"></i> 12/10/2021</li>
-                                            <li class="list-group-item"><i class="bi bi-calendar-week-fill" title="Days"></i> M,T,W,S,F</li>
-                                            <li class="list-group-item"><i class="bi bi-clock-fill" title="Hour"></i> 20:00:00</li>
-                                            <li class="list-group-item"><i class="bi bi-geo-alt-fill" title="Held in"></i> Centro cultural</li>
-                                        </ul>
-                                        <hr class="col-12">
-
-                                        <i class="bi bi-currency-euro" title="Price"></i>
-                                        <small class="text-muted">Gratuito</small>
-
-                                        <div class="card-footer text-center">
-                                           <a class="btn btn-primary" href="http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&amp;vgnextoid=785be0464605c710VgnVCM1000001d4a900aRCRD">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                          </div>
                     </div>
                     <hr class="col-12">

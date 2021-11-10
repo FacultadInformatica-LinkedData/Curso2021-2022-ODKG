@@ -26,7 +26,9 @@ function generateCard(){ //Generate default card
 $("#btnclear").on("click", function() {
     $('input[type="checkbox"]:checked').prop('checked',false); //uncheck all checkbox
     $('#cardrow').empty(); //clear result field
-    
+    $('#seldist option').prop('selected', function() {
+        return this.defaultSelected;
+    });
     var newcard= generateCard(); //generate new card
     
     $('#cardrow').append(newcard); //paste new card in result field	

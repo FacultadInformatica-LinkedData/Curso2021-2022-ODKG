@@ -1,4 +1,4 @@
-
+const WIKI = 'http://www.wikidata.org/entity/';
 
 const sparqlWikiData = new Sparql('https://query.wikidata.org/bigdata/namespace/wdq/sparql');
 const events = new Events();
@@ -15,6 +15,18 @@ function loadEvents() {
 
 function showMoreEvents() {
     events.showMore();
+}
+
+function filterByDistrict(){
+    districValue = d3.select("#seldist").node().value;
+    if (districValue !=='default'){
+        distric = districValue.replace(WIKI,'wiki:')
+        query = filterByDistrictQuery.replace('FILTRO', distric);
+        events.loadEvents(query);
+    }else{
+        events.loadEvents(allEventsQuery);
+    }
+
 }
 
 function generateDistrict(list_districts) {

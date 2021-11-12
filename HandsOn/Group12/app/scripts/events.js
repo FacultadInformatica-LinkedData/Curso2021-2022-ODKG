@@ -8,26 +8,30 @@ WHERE {
 var endpoint = 'http://localhost:9000/sparql'
 
 var queryEvents = `
+    PREFIX schema: <http://schema.org/>
+    PREFIX va: <http://code-research.eu/ontology/visual-analytics#>
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+    PREFIX shema: <http://schema.org/>
     PREFIX evt: <https://data.eventsatmadrid.org/resource/Event/>
     SELECT * WHERE {
-        ?Events rdf:type ns:Event.
-        ?Events rdfs:label ?Label.
-        ?Events ns:hasTitle ?Title.
-        ?Events ns:hasPrice ?Price.
-        ?Events ns:hasType ?Type .
-        OPTIONAL { ?Events ns:hasStartDate ?StartDate} .
-        OPTIONAL { ?Events ns:hasFinishDate ?FinishDate} .
-        OPTIONAL { ?Events ns:hasHour ?Hour} .
-        ?Events ns:hasTargetAudience ?TargetAudience.
-        OPTIONAL { ?Events ns:hasDays ?Days} .
-        OPTIONAL {?Events ns:hasExcludedDays ?ExcludedDays} .
-        ?Events ns:hasURL ?URL.
-        ?Events ns:isHeldIn ?facility.
-        ?facility rdfs:label ?HeldIn
-    } LIMIT 100
+       ?Events rdf:type ns:Event.
+       ?Events rdfs:label ?Label.
+       ?Events vcard:additional-name ?Title.
+       ?Events ns:hasPrice ?Price.
+       ?Events ns:eventType ?Type.
+       ?Events schema:startDate ?StartDate.
+       OPTIONAL { ?Events schema:startDate ?FinishDate}.
+       ?Events schema:doorTime ?Hour.
+       ?Events ns:hasTargetAudience ?TargetAudience.
+       OPTIONAL { ?Events ns:hasDaysOfWeek ?Days}.
+       OPTIONAL {?Events ns:exceptDates ?ExcludedDays}.
+       ?Events vcard:hasURL ?URL.
+       ?Events ns:isHeldAt ?facility.
+       ?facility rdfs:label ?HeldIn
+    } LIMIT 50
     `
 var config = {
         "selector": "#result"

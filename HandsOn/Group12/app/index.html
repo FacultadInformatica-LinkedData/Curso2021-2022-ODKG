@@ -89,12 +89,12 @@
                             <br>
                             <div class="row" id="price"><strong>Price</strong>
                                 <div id="chkrow">
-                                    <input class="form-check-input" type="checkbox" id="P1">
+                                    <input class="form-check-input" type="radio" name="radioPrice" value="free" id="P1" onchange="filterByPrice();">
                                     <label class="form-check-label" for="P1">Free</label>
                                 </div>
                                 <div id="chkrow">
-                                    <input class="form-check-input" type="checkbox" id="P2">
-                                    <label class="form-check-label" for="P2">U must pay monka</label>
+                                    <input class="form-check-input" type="radio" name="radioPrice" value="not-free" id="P2" onchange="filterByPrice();">
+                                    <label class="form-check-label" for="P2">Not free</label>
                                 </div>
                             </div>
                             <br>

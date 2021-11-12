@@ -26,7 +26,12 @@ function filterByDistrict(){
     }else{
         events.loadEvents(allEventsQuery);
     }
+}
 
+function filterByPrice(){
+    price = d3.select('input[name="radioPrice"]:checked').node().value
+    query = filterByPriceQuery.replace('FILTRO', price==='free');
+    events.loadEvents(query);
 }
 
 function generateDistrict(list_districts) {

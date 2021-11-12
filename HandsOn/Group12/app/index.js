@@ -25,6 +25,7 @@ function generateCard(){ //Generate default card
 //clear filters
 $("#btnclear").on("click", function() {
     $('input[type="checkbox"]:checked').prop('checked',false); //uncheck all checkbox
+    $('input[type="radio"]:checked').prop('checked',false); //uncheck all radio
     $('#cardrow').empty(); //clear result field
     $('#seldist option').prop('selected', function() {
         return this.defaultSelected;

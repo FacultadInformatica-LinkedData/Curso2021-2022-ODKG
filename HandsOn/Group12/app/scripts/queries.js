@@ -62,3 +62,31 @@ var filterByDistrictQuery = `
           FILTER (?wikidata = FILTRO).
         } LIMIT 100
         `
+
+var filterByPriceQuery = `
+    PREFIX wiki: <http://en.wikipedia.org/wiki/>
+    PREFIX schema: <http://schema.org/>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+    PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+    PREFIX evt: <https://data.eventsatmadrid.org/resource/Event/>
+    SELECT * WHERE {
+      ?Events rdf:type ns:Event.
+      ?Events rdfs:label ?Label.
+      ?Events vcard:additional-name ?Title.
+      ?Events ns:hasPrice ?Price.
+      ?Events schema:isAccessibleForFree ?isFree.
+      ?Events ns:eventType ?Type.
+      ?Events schema:startDate ?StartDate.
+      OPTIONAL { ?Events schema:startDate ?FinishDate}.
+      ?Events schema:doorTime ?Hour.
+      ?Events ns:hasTargetAudience ?TargetAudience.
+      OPTIONAL { ?Events ns:hasDaysOfWeek ?Days}.
+      OPTIONAL {?Events ns:exceptDates ?ExcludedDays}.
+      ?Events vcard:hasURL ?URL.
+      ?Events ns:isHeldAt ?facility.
+      ?facility rdfs:label ?HeldIn
+      FILTER (?isFree = FILTRO).
+    } LIMIT 100
+    `

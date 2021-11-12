@@ -1,0 +1,23 @@
+# 1.- Show all districts and the URIs of entities that represent the same district
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?district ?label ?o WHERE {
+  ?district rdf:type ont:District.
+  ?district rdfs:label ?label.
+  ?district owl:sameAs ?o
+}
+
+# 2.- Show all streets and the URIs of entities that represent the same street
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT ?street ?label ?o WHERE {
+  ?street rdf:type ont:Street.
+  ?street rdfs:label ?label.
+  ?street owl:sameAs ?o
+}

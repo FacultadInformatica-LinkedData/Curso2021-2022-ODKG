@@ -1,5 +1,38 @@
 [
   {
+    "op": "core/column-removal",
+    "columnName": "Column",
+    "description": "Remove column Column"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "positiva_droga",
+    "description": "Remove column positiva_droga"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "coordenada_y_utm",
+    "description": "Remove column coordenada_y_utm"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "coordenada_x_utm",
+    "description": "Remove column coordenada_x_utm"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "fecha",
+    "expression": "join ([coalesce(cells['fecha'].value,''),coalesce(cells['hora'].value,'')],' ')",
+    "onError": "keep-original",
+    "newColumnName": "DateTime",
+    "columnInsertIndex": 2,
+    "description": "Create column DateTime at index 2 based on column fecha using expression join ([coalesce(cells['fecha'].value,''),coalesce(cells['hora'].value,'')],' ')"
+  },
+  {
     "op": "core/text-transform",
     "engineConfig": {
       "facets": [],
@@ -13,6 +46,16 @@
     "description": "Text transform on cells in column DateTime using expression value.toDate()"
   },
   {
+    "op": "core/column-removal",
+    "columnName": "fecha",
+    "description": "Remove column fecha"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "hora",
+    "description": "Remove column hora"
+  },
+  {
     "op": "core/text-transform",
     "engineConfig": {
       "facets": [],
@@ -24,32 +67,6 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Text transform on cells in column localizacion using expression grel:value.split(',')[0]"
-  },
-  {
-    "op": "core/text-transform",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "columnName": "estado_meteorologico",
-    "expression": "grel:if(value==null,\"Se desconoce\",value)",
-    "onError": "keep-original",
-    "repeat": false,
-    "repeatCount": 10,
-    "description": "Text transform on cells in column estado_meteorologico using expression grel:if(value==null,\"Se desconoce\",value)"
-  },
-  {
-    "op": "core/text-transform",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "columnName": "estado_meteorologico",
-    "expression": "grel:value.replace(\"LLuvia\",\"Lluvia\")",
-    "onError": "keep-original",
-    "repeat": false,
-    "repeatCount": 10,
-    "description": "Text transform on cells in column estado_meteorologico using expression grel:value.replace(\"LLuvia\",\"Lluvia\")"
   },
   {
     "op": "core/text-transform",

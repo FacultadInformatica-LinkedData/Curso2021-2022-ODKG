@@ -1,0 +1,14 @@
+@base <http://exercise2.com/classes/class/>.
+@prefix vocab: <http://exercise2.com/class#>.
+@prefix person: <http://exercise2.com/people#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+:class01 vocab:includes :Computer101;
+         vocab:includes :Sensor029.
+:sensor029 vocab:hasMeasurement :Measurement8401.
+
+:measurement8401 vocab:hasTemperature "29"^^xsd:integer;
+                 vocab:atTime "2010-06-12T12:00:12"^^xsd:dateTime.
+
+:computer101 vocab:hasOwner  :User10A.
+person:user10A foaf:hasName "Pedro".

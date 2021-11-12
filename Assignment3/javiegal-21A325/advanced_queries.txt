@@ -1,0 +1,33 @@
+1.-
+SELECT distinct ?p WHERE {
+?x a <http://dbpedia.org/ontology/Politician>.
+?x ?p ?o
+}
+
+2.-
+SELECT distinct ?p WHERE {
+?x a <http://dbpedia.org/ontology/Politician>.
+?x ?p ?o.
+FILTER (?p != rdf:type)
+}
+
+3.-
+SELECT distinct ?o WHERE {
+?x a <http://dbpedia.org/ontology/Politician>.
+?x ?p ?o.
+FILTER (?p != rdf:type)
+}
+
+4.-
+SELECT distinct ?p ?o WHERE {
+?x a <http://dbpedia.org/ontology/Politician>.
+?x ?p ?o.
+FILTER (?p != rdf:type)
+}
+
+5.-
+SELECT distinct ?p count(distinct ?o)WHERE {
+?x a <http://dbpedia.org/ontology/Politician>.
+?x ?p ?o.
+FILTER (?p != rdf:type)
+}

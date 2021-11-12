@@ -14,20 +14,20 @@ var queryEvents = `
     PREFIX evt: <https://data.eventsatmadrid.org/resource/Event/>
     SELECT * WHERE {
         ?Events rdf:type ns:Event.
-        OPTIONAL { ?Events rdfs:label ?Label} .
-        OPTIONAL { ?Events ns:hasTitle ?Title} .
-        OPTIONAL { ?Events ns:hasDescription ?Description} .
-        OPTIONAL { ?Events ns:hasPrice ?Price} .
-        OPTIONAL { ?Events ns:hasType ?Type} .
+        ?Events rdfs:label ?Label.
+        ?Events ns:hasTitle ?Title.
+        ?Events ns:hasPrice ?Price.
+        ?Events ns:hasType ?Type .
         OPTIONAL { ?Events ns:hasStartDate ?StartDate} .
         OPTIONAL { ?Events ns:hasFinishDate ?FinishDate} .
         OPTIONAL { ?Events ns:hasHour ?Hour} .
-        OPTIONAL { ?Events ns:hasTargetAudience ?TargetAudience} .
+        ?Events ns:hasTargetAudience ?TargetAudience.
         OPTIONAL { ?Events ns:hasDays ?Days} .
         OPTIONAL {?Events ns:hasExcludedDays ?ExcludedDays} .
-        OPTIONAL { ?Events ns:hasURL ?URL} .
-        OPTIONAL { ?Events ns:isHeldIn ?HeldIn }
-    } LIMIT 10
+        ?Events ns:hasURL ?URL.
+        ?Events ns:isHeldIn ?facility.
+        ?facility rdfs:label ?HeldIn
+    } LIMIT 100
     `
 var config = {
         "selector": "#result"
@@ -35,9 +35,9 @@ var config = {
 
 var list_districts = [];
 var list_events = [];
-var number_events = 6;
+var number_events = 3;
 
-function loadEvents() {
+function loadDistricts(){
     //this is dummy example
     result = sparql.get(endpointwikidata, districtQuery).then(function(data) {
       console.log(data)
@@ -45,29 +45,52 @@ function loadEvents() {
       list_districts =sparql.parseResponse(data);
       generateDistrict(list_districts);
     })
-    
+}
 
+function loadEvents() {
+    loading(true);
     //this is a query for events
     result = sparql.query(endpoint, queryEvents).then(function(data) {
       console.log(data)
+      list_events = data;
+      showMoreEvents() //render the first (number_events) events in HTML, deleting the previous
+      loading(false);
     })
-
-    console.log(jsonResponseExample);
-    list_events = sparql.parseResponse(jsonResponseExample)
-    loadMoreEvents(true) //render the first (number_events) events in HTML, deleting the previous
 }
 
-function loadMoreEvents(reset=false) {
+function showMoreEvents() {
     events = list_events.slice(0, number_events) //get a sublist of the first n(number_events) elements of events
-    renderEvents(events, config, reset)//render the events in HTML
+    renderEvents(events, config)//render the events in HTML
     list_events.splice(0,number_events)//delete the fist n(number_events) elements of events from original list
+}
+
+/**
+ * This function is to clear all the elements in the html
+ * It is useful when we are going to do another request to the server with different filters
+ */
+function clearEvents() {
+    d3.select('#result').selectAll("*").remove();
+}
+
+/**
+ * This function is for simulating that the page is loading
+ * It is useful when waiting for a response
+ * @param show
+ */
+function loading(show=false){
+    loadingElement = d3.select("#loading");
+    if (show){
+         loadingElement.style('display', 'block');
+    } else{
+        loadingElement.style('display', 'none');
+    }
 }
 
 /*
 Render the list of events in HTML similar to the template
 if reset is true then previous events in DOM are deleted
  */
-function renderEvents(events_json, config, reset=false){
+function renderEvents(events_json, config){
    /* This is the template created dinamicaly
    <div class="card-body">
         <h5 class="card-title">Las palabras desnudas</h5>
@@ -95,10 +118,6 @@ function renderEvents(events_json, config, reset=false){
    * */
     var opts = {
         "selector": config.selector || null
-    }
-
-    if(reset){
-        d3.select(opts.selector).selectAll("*").remove();
     }
 
     var eventosDiv = d3.select(opts.selector, "div")
@@ -146,7 +165,7 @@ function renderEvents(events_json, config, reset=false){
         .text(function(col)
             {
                 if(col.ExcludedDays){
-                    return " " + col.ExcludedDays.replace(";"," ")
+                    return " " + col.ExcludedDays.replace(/;/g," ")
                 }
                 return ""
             })

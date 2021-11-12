@@ -46,17 +46,17 @@ style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
 <tspan x="511" y="605">Facility</tspan>
 </text>
 <text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;font-style:italic;">
-<tspan x="466" y="617">&quot;Recinto o lugar acondicionado </tspan>
-<tspan x="466" y="628">con todas las cosas necesarias </tspan>
-<tspan x="466" y="639">para cumplir un servicio </tspan>
-<tspan x="466" y="650">(definición de Oxford Languages)</tspan>
-<tspan x="466" y="661">.&quot;</tspan>
+A place, amenity, or piece of equipment provided for a particular purpose (definition from Oxford Languages)
+<tspan x="466" y="617">&quot;A place, amenity, or </tspan>
+<tspan x="466" y="628">piece of equipment provided for </tspan>
+<tspan x="466" y="639">a particular purpose (definition </tspan>
+<tspan x="466" y="650">from Oxford Languages).&quot;</tspan>
 </text>
-<line x1="466" y1="662" x2="593" y2="662"
+<line x1="466" y1="653" x2="593" y2="653"
  style="stroke-width:1;stroke:Black;"/>
 <text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
-<tspan x="466" y="671">accessibilityType:string</tspan>
-<tspan x="466" y="683">hasScheduleURL:anyURI</tspan>
+<tspan x="466" y="663">accessibilityType:string</tspan>
+<tspan x="466" y="675">hasScheduleURL:anyURI</tspan>
 </text>
 </g>
 <g id="2000962291"><polygon points="676,294 804,294 804,332 676,332 "
@@ -224,29 +224,27 @@ style="fill:#80FF80; stroke-width:1;stroke:Black;"/>
 <g id="2000961822"><polygon points="696,163 719,163 719,166 696,166 "
 style="fill:#8000FF; stroke-width:1;stroke:Black;"/>
 </g>
-<g id="2000962436"><polygon points="421,339 552,339 552,480 421,480 "
+<g id="2000962436"><polygon points="421,339 552,339 552,461 421,461 "
 style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
 <line x1="424" y1="354" x2="550" y2="354"
  style="stroke-width:1;stroke:Black;"/>
 <text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
-<tspan x="463" y="352">CityEvent</tspan>
+<tspan x="463" y="352">Event</tspan>
 </text>
 <text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;font-style:italic;">
-<tspan x="424" y="363">&quot;Suceso importante y </tspan>
-<tspan x="424" y="374">programado, de índole social, </tspan>
-<tspan x="424" y="385">académica, artística o deportiva </tspan>
-<tspan x="424" y="396">que se desarrolla en el ámbito de </tspan>
-<tspan x="424" y="407">una ciudad.&quot;</tspan>
+<tspan x="424" y="363">&quot;Important and programmed </tspan>
+<tspan x="424" y="374">event of a social, academic </tspan>
+<tspan x="424" y="385">artistic or sporting nature. &quot;</tspan>
 </text>
-<line x1="424" y1="408" x2="550" y2="408"
+<line x1="424" y1="389" x2="550" y2="389"
  style="stroke-width:1;stroke:Black;"/>
 <text style="font-family:Arial;font-size:9px;kerning:0;word-spacing:-1px;fill:Black;">
-<tspan x="424" y="417">exceptDates:string</tspan>
-<tspan x="424" y="429">eventType:string</tspan>
-<tspan x="424" y="441">hasTargetAudience:string</tspan>
-<tspan x="424" y="453">hasDaysOfWeek:string</tspan>
-<tspan x="424" y="465">hasPrice:string</tspan>
-<tspan x="424" y="477">doorTime{schema}:time</tspan>
+<tspan x="424" y="398">exceptDates:string</tspan>
+<tspan x="424" y="410">eventType:string</tspan>
+<tspan x="424" y="422">hasTargetAudience:string</tspan>
+<tspan x="424" y="434">hasDaysOfWeek:string</tspan>
+<tspan x="424" y="446">hasPrice:string</tspan>
+<tspan x="424" y="458">doorTime{schema}:time</tspan>
 </text>
 </g>
 <g id="2000962350"><polygon points="419,237 548,237 548,300 419,300 "
@@ -306,7 +304,7 @@ style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
 <line x1="569" y1="50" x2="945" y2="50"
  style="stroke-width:1;stroke:Black;"/>
 <text style="font-family:Arial;font-size:11px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
-<tspan x="718" y="48">Thing{schema}</tspan>
+<tspan x="718" y="48">Thing{owl}</tspan>
 </text>
 <line x1="569" y1="50" x2="945" y2="50"
  style="stroke-width:1;stroke:Black;"/>
@@ -363,7 +361,7 @@ style="fill:none;stroke-width:1;stroke:Black;"/>
 <tspan x="786" y="232">{tran}</tspan>
 </text>
 </g>
-<g id="2000963566"><path d="M468,480 L468,593 "
+<g id="2000963566"><path d="M468,461 L468,593 "
 style="fill:none;stroke-width:1;stroke:Black;"/>
 <line x1="465" y1="588" x2="468" y2="593"
  style="stroke-width:1;stroke:Black;"/>

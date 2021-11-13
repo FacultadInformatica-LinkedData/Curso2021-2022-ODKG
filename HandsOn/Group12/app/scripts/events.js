@@ -16,6 +16,7 @@ function Events(){
 
     this.processResponse = function(response){
         this.events = response;
+        this.showElement("#no-result", this.events.length===0);
         this.showMore() //render the first (number_events) events in HTML, deleting the previous
         loading(false);
     }
@@ -26,7 +27,7 @@ function Events(){
             this.renderEvents(events_to_render)//render the events in HTML
             this.events.splice(0,number_events)//delete the fist n(number_events) elements of events from original list
         }
-        this.verifyShowMore();
+        this.showElement("#buttonShow", this.events.length>0);
     }
 
     /**
@@ -36,6 +37,7 @@ function Events(){
     this.clearEvents =  function() {
         d3.select(this.selector).selectAll("*").remove();
         this.events = [];
+        this.showElement("#no-result", false);
     }
 
         /*
@@ -163,16 +165,15 @@ function Events(){
 
     }
 
-
     /**
-     * To show or hide the show more button
+     * To show or hide one element
      */
-    this.verifyShowMore = function (){
-        buttonElement = d3.select("#buttonShow");
-        if (this.events.length>0){
-             buttonElement.style('display', 'block');
+    this.showElement = function (idSelector, show){
+        element = d3.select(idSelector);
+        if (show){
+             element.style('display', 'block');
         } else{
-            buttonElement.style('display', 'none');
+            element.style('display', 'none');
         }
     }
 

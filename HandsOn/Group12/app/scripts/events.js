@@ -2,7 +2,7 @@ function Events(){
     this.endpoint = 'http://localhost:9000/sparql';
     this.events = [];
     this.selector = '#result';
-    this.number_events_render = 3;
+    this.number_events_render = 6;
 
     const sparqlEvents = new Sparql(this.endpoint);
     const defaultQuery = allEventsQuery;
@@ -20,12 +20,13 @@ function Events(){
         loading(false);
     }
 
-    this.showMore = function() {
-        if(this.events){
-            let events_to_render = this.events.slice(0, this.number_events_render) //get a sublist of the first n(number_events) elements of events
+    this.showMore = function(number_events=this.number_events_render) {
+        if(this.events.length>0){
+            let events_to_render = this.events.slice(0, number_events) //get a sublist of the first n(number_events) elements of events
             this.renderEvents(events_to_render)//render the events in HTML
-            this.events.splice(0,this.number_events_render)//delete the fist n(number_events) elements of events from original list 
+            this.events.splice(0,number_events)//delete the fist n(number_events) elements of events from original list
         }
+        this.verifyShowMore();
     }
 
     /**
@@ -161,7 +162,20 @@ function Events(){
             .attr("target","_blank")
 
     }
-    
+
+
+    /**
+     * To show or hide the show more button
+     */
+    this.verifyShowMore = function (){
+        buttonElement = d3.select("#buttonShow");
+        if (this.events.length>0){
+             buttonElement.style('display', 'block');
+        } else{
+            buttonElement.style('display', 'none');
+        }
+    }
+
     /**
      * This function is for simulating that the page is loading
      * It is useful when waiting for a response

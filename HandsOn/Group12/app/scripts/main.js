@@ -2,6 +2,7 @@ const WIKI = 'http://www.wikidata.org/entity/';
 
 const sparqlWikiData = new Sparql('https://query.wikidata.org/bigdata/namespace/wdq/sparql');
 const events = new Events();
+let today = new Date();
 
 function loadDistricts(){
     sparqlWikiData.query(allDistrictsQuery).then(function(districts) {
@@ -10,28 +11,70 @@ function loadDistricts(){
 }
 
 function loadEvents() {
-    events.loadEvents(allEventsQuery);
+    events.loadEvents(mainQuery);
 }
 
 function showMoreEvents() {
-    events.showMore();
+    events.showMore(3);
 }
 
-function filterByDistrict(){
+function filterEvents(){
+    let query = createFilters();
+    events.loadEvents(query);
+}
+
+function createFilters(){
+    let query = mainQuery;
+    query = query.replace('#FILTERBYDATE', getFilterByDate());
+    query = query.replace('#FILTERBYFACILITY', getFilterByFacility());
+    query = query.replace('#FILTERBYPRICE', getFilterByPrice());
+    query = query.replace('#FILTERBYTYPE', getFilterByType());
+    query = query.replace('#FILTERBYDISTRICT', getFilterByDistrict());
+    return query;
+}
+
+function getFilterByDate(){
+    let dates = d3.select('input[name="radioDate"]:checked').node()
+    if(dates){
+        filter = filterByDate.replaceAll('TODAY', today.toISOString().slice(0, 10));
+        var date = new Date();
+        date.setDate(date.getDate() + Number(dates.value));
+        return filter.replaceAll('DATE', date.toISOString().slice(0, 10));
+    }
+    return '';
+}
+
+function getFilterByFacility(){
+    let facility = d3.select('input[name="radioFacility"]:checked').node()
+    if(facility){
+        return filterByFacility.replaceAll('FACILITY', facility.value);
+    }
+    return '';
+}
+
+function getFilterByPrice(){
+    let price = d3.select('input[name="radioPrice"]:checked').node()
+    if(price){
+        return filterByPrice.replaceAll('PRICE', price.value==='free');
+    }
+    return '';
+}
+
+function getFilterByType(){
+    let type = d3.select('input[name="radioType"]:checked').node()
+    if(type){
+        return filterByType.replaceAll('TYPE', type.value);
+    }
+    return '';
+}
+
+function getFilterByDistrict(){
     districValue = d3.select("#seldist").node().value;
     if (districValue !=='default'){
         distric = districValue.replace(WIKI,'wiki:')
-        query = filterByDistrictQuery.replace('FILTRO', distric);
-        events.loadEvents(query);
-    }else{
-        events.loadEvents(allEventsQuery);
+        return filterByDistric.replaceAll('DISTRICT', distric);
     }
-}
-
-function filterByPrice(){
-    price = d3.select('input[name="radioPrice"]:checked').node().value
-    query = filterByPriceQuery.replace('FILTRO', price==='free');
-    events.loadEvents(query);
+    return '';
 }
 
 function generateDistrict(list_districts) {

@@ -1,0 +1,346 @@
+[
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "NOMBRE-VIA: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "NOMBRE-VIA",
+          "from": 17,
+          "to": 51,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "district of Madrid"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column DISTRITO to type Q3032114"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "NOMBRE-VIA: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "NOMBRE-VIA",
+          "from": 17,
+          "to": 51,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO",
+    "similarValue": "CIUDAD LINEAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763694",
+      "name": "Ciudad Lineal",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ciudad Lineal (Q1763694) for cells containing \"CIUDAD LINEAL\" in column DISTRITO"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "NOMBRE-VIA: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "NOMBRE-VIA",
+          "from": 17,
+          "to": 51,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "DISTRITO",
+    "expression": "grel:\"https://www.wikidata.org/wiki/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_distrito",
+    "columnInsertIndex": 15,
+    "description": "Create column same_as_wikidata_distrito at index 15 based on column DISTRITO using expression grel:\"https://www.wikidata.org/wiki/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q34442",
+        "name": "road"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column CLASE-VIAL to type Q34442"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "CALLE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1027192",
+      "name": "Calle",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle (Q1027192) for cells containing \"CALLE\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "PLAZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q174782",
+      "name": "square",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item square (Q174782) for cells containing \"PLAZA\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "GLORIETA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1525",
+      "name": "roundabout",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item roundabout (Q1525) for cells containing \"GLORIETA\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "CALLE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q79007",
+      "name": "street",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item street (Q79007) for cells containing \"CALLE\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "AVENIDA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q7543083",
+      "name": "avenue",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenue (Q7543083) for cells containing \"AVENIDA\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "ACCESO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1137365",
+      "name": "entrance",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item entrance (Q1137365) for cells containing \"ACCESO\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "CARRETERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q34442",
+      "name": "road",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item road (Q34442) for cells containing \"CARRETERA\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "BULEVAR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q54114",
+      "name": "boulevard",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item boulevard (Q54114) for cells containing \"BULEVAR\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL",
+    "similarValue": "PASEO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q787113",
+      "name": "promenade",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item promenade (Q787113) for cells containing \"PASEO\" in column CLASE-VIAL"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CLASE-VIAL",
+    "expression": "grel:\"https://www.wikidata.org/wiki/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_road",
+    "columnInsertIndex": 9,
+    "description": "Create column same_as_wikidata_road at index 9 based on column CLASE-VIAL using expression grel:\"https://www.wikidata.org/wiki/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q10267336",
+        "name": "neighborhood of Madrid"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column BARRIO to type Q10267336"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BARRIO",
+    "expression": "grel:\"https://www.wikidata.org/wiki/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_neighborhoodOfMadrid",
+    "columnInsertIndex": 15,
+    "description": "Create column same_as_wikidata_neighborhoodOfMadrid at index 15 based on column BARRIO using expression grel:\"https://www.wikidata.org/wiki/\"+cell.recon.match.id"
+  }
+]

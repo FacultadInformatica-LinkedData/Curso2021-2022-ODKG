@@ -1,51 +1,48 @@
-@prefix : <http://bicycleaccidents.org/ontology#> .
-@rel : <http://bicycleaccidents.org/ontology/relationship/> .
-@base <http://bicycleaccidents.org/ontology> .
+@prefix : http://bicycleaccidents.org/ontology# .
+@rel : http://bicycleaccidents.org/ontology/relationship/ .
+@base http://bicycleaccidents.org/ontology .
 
 #########################################################
 # Example 1
 #########################################################
 
-:Accident2021S000047 a :Accident;
-  rel:hasAccidentID "2021S000047";
+:2021S000047 a :Accident;
   rel:hasWeather "Despejado";
-  rel:hasType "Caida";
+  rel:hasAccidentType "Caida";
   rel:hasDate "2021-01-01T11:38:00";
-  rel:involvesPerson :Person01;
-  rel:hasAddress :Address01.
-
-:Person01 a :Person;
-  rel:hasPersonID "2021S000047CH24549";
+  rel:happenedInStreet :CALLE_MAYOR;
+  rel:happenedInDistrict :CENTRO;
   rel:hasAge "45-49";
   rel:hasSex "Hombre";
   rel:hasInjury "2";
-  rel:hasPositiveAlcoholTest "N".
+  rel:hasPositiveAlcoholTest "N";
+  rel:hasNumber "1";
+  rel:hasVehicleType "Bicicleta";
+  rel:hasPersonType "Conductor".
 
-:Address01 a :Address;
-  rel:hasStreet "CALL. PRADILLO";
-  rel:hasDistrict "MORATALAZ";
-  rel:hasNumber "62".
+:CALLE_MAYOR a :Street.
+
+:CENTRO a :District.
 
 
 #########################################################
 # Example 2
 #########################################################
-:Accident2020S004545 a :Accident;
-  rel:hasAccidentID "2020S004545";
+:2020S004545 a :Accident;
   rel:hasWeather "Despejado";
-  rel:hasType "Caida";
+  rel:hasAccidentType "Caida";
   rel:hasDate "2020-02-26T13:12:00";
-  rel:involvesPerson :Person02;
-  rel:hasAddress :Address02.
-
-:Person02 a :Person;
-  rel:hasPersonID "2021S000047CH52529";
+  rel:happenedInStreet :GRAN_VIA;
+  rel:happenedInDistrict :CENTRO;
   rel:hasAge "25-29";
   rel:hasSex "Hombre";
   rel:hasInjury "5";
-  rel:hasPositiveAlcoholTest "N".
+  rel:hasPositiveAlcoholTest "N";
+  rel:hasNumber "1";
+  rel:hasVehicleType "Bicicleta";
+  rel:hasPersonType "Conductor".
 
-:Address02 a :Address;
-  rel:hasStreet "CALL. GRAN VIA";
-  rel:hasDistrict "CHAMARTIN";
-  rel:hasNumber "35".
+
+:GRAN_VIA a :Street.
+
+:CENTRO a :District.

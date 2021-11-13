@@ -1,0 +1,297 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix transit: <http://vocab.org/transit/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix vocab: <http://e-scooter.com/ontology#> .
+@base <http://e-scooter.com/resources/>.
+
+<#Trip> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+
+  rr:subjectMap [
+    rr:template "http://e-scooter.com/resources/trip/{TripID}";
+    rr:class vocab:Trip
+  ];
+  
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasStartTime;
+    rr:objectMap [
+      rml:reference "StartTime";
+      rr:datatype xsd:dateTime
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasEndTime;
+    rr:objectMap [
+      rml:reference "EndTime";
+      rr:datatype xsd:dateTime
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasTripDistance;
+    rr:objectMap [
+      rml:reference "TripDistance";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasTripDuration;
+    rr:objectMap [
+      rml:reference "TripDuration";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasAccuracy;
+    rr:objectMap [
+      rml:reference "Accuracy";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasStartCensusTract;
+    rr:objectMap [
+      rml:reference "StartCensusTract";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasEndCensusTract;
+    rr:objectMap [
+      rml:reference "EndCensusTract";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasStartCommunity;
+    rr:objectMap [
+      rr:parentTriplesMap <#StartCommunity>;
+      rr:joinCondition [
+        rr:child "TripID";
+        rr:parent "TripID"
+      ]
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasEndCommunity;
+    rr:objectMap [
+      rr:parentTriplesMap <#EndCommunity>;
+      rr:joinCondition [
+        rr:child "TripID";
+        rr:parent "TripID"
+      ]
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasStartCentroid;
+    rr:objectMap [
+      rr:parentTriplesMap <#StartCentroid>;
+      rr:joinCondition [
+        rr:child "TripID";
+        rr:parent "TripID"
+      ]
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasEndCentroid;
+    rr:objectMap [
+      rr:parentTriplesMap <#EndCentroid>;
+      rr:joinCondition [
+        rr:child "TripID";
+        rr:parent "TripID"
+      ]
+    ]
+  ] .
+
+<#StartCommunity> a rr:TriplesMap;
+
+  rml:logicalSource [
+      rml:source "./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv" ;
+      rml:referenceFormulation ql:CSV 
+    ];
+
+  rr:subjectMap [
+    rr:template "http://e-scooter.com/resources/community/{StartCommunityAreaNumber}";
+    rr:class vocab:Community
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasAreaNumber;
+    rr:objectMap [
+      rml:reference "StartCommunityAreaNumber";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasAreaName;
+    rr:objectMap [
+      rml:reference "StartCommunityAreaName";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:sameAsWikidata;
+    rr:objectMap [
+      rml:reference "start_com_wikidata";
+      rr:termType rr:IRI
+    ]
+  ].
+
+<#EndCommunity> a rr:TriplesMap;
+
+  rml:logicalSource [
+      rml:source "./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv" ;
+      rml:referenceFormulation ql:CSV 
+    ];
+
+  rr:subjectMap [
+    rr:template "http://e-scooter.com/resources/community/{EndCommunityAreaNumber}";
+    rr:class vocab:Community
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasAreaNumber;
+    rr:objectMap [
+      rml:reference "EndCommunityAreaNumber";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasAreaName;
+    rr:objectMap [
+      rml:reference "EndCommunityAreaName";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:sameAsWikidata;
+    rr:objectMap [
+      rml:reference "end_com_wikidata";
+      rr:termType rr:IRI
+    ]
+  ].
+
+<#StartCentroid> a rr:TriplesMap;
+
+  rml:logicalSource [
+      rml:source "./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv" ;
+      rml:referenceFormulation ql:CSV 
+    ];
+
+  rr:subjectMap [
+    rr:template "http://e-scooter.com/resources/centroid/CENT_{StartCentroidLatitude}_{StartCentroidLongitude}";
+    rr:class vocab:Centroid
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasLocation;
+    rr:objectMap [
+      rr:parentTriplesMap <#StartLocation>;
+      rr:joinCondition [
+        rr:child "TripID";
+        rr:parent "TripID"
+      ]
+    ]
+  ] .
+
+<#EndCentroid> a rr:TriplesMap;
+
+  rml:logicalSource [
+      rml:source "./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv" ;
+      rml:referenceFormulation ql:CSV 
+    ];
+
+  rr:subjectMap [
+    rr:template "http://e-scooter.com/resources/centroid/CENT_{EndCentroidLatitude}_{EndCentroidLongitude}";
+    rr:class vocab:Centroid
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasLocation;
+    rr:objectMap [
+      rr:parentTriplesMap <#EndLocation>;
+      rr:joinCondition [
+        rr:child "TripID";
+        rr:parent "TripID"
+      ]
+    ]
+  ] .
+
+<#StartLocation> a rr:TriplesMap;
+
+  rml:logicalSource [
+      rml:source "./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv" ;
+      rml:referenceFormulation ql:CSV 
+    ];
+
+  rr:subjectMap [
+    rr:template "http://e-scooter.com/resources/location/{StartCentroidLatitude}_{StartCentroidLongitude}";
+    rr:class vocab:Location
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasLatitude;
+    rr:objectMap [
+      rml:reference "StartCentroidLatitude";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasLongitude;
+    rr:objectMap [
+      rml:reference "StartCentroidLongitude";
+      rr:datatype xsd:double
+    ]
+  ] .
+
+<#EndLocation> a rr:TriplesMap;
+
+  rml:logicalSource [
+      rml:source "./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv" ;
+      rml:referenceFormulation ql:CSV 
+    ];
+
+  rr:subjectMap [
+    rr:template "http://e-scooter.com/resources/location/{EndCentroidLatitude}_{EndCentroidLongitude}";
+    rr:class vocab:Location
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasLatitude;
+    rr:objectMap [
+      rml:reference "EndCentroidLatitude";
+      rr:datatype xsd:double
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasLongitude;
+    rr:objectMap [
+      rml:reference "EndCentroidLongitude";
+      rr:datatype xsd:double
+    ]
+  ] .

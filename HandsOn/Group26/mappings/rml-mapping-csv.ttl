@@ -1,0 +1,167 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+#@prefix transit: <http://vocab.org/transit/terms/>.
+#@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+#@prefix wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix ex: <http://example.org#> .  
+@base <http://example.com/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+<#TriplesMap1> a rr:TriplesMap;
+#<#TriplesMap1>
+  rml:logicalSource [
+    rml:source "./data/AirQuality-updated.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+
+ 
+  rr:subjectMap [
+    rr:template "http://www.group26.org/AP/Station/{EOI_Code}";
+    rr:termType rr:IRI; rr:class ex:Station
+  ];  
+
+  #Station_Name
+  rr:predicateObjectMap [
+    rr:predicate [ rr:constant ex:hasName; rr:tempType rr:IRI ];
+    #rr:predicate ex:hasName;
+    rr:objectMap [
+      rml:reference "Station_Name";  rr:tempType rr:Literal
+    ]
+  ];
+  
+  #hasEnvironment
+  rr:predicateObjectMap [
+    rr:predicate  ex:hasEnvironment; 
+    #rr:predicate ex:hasEnvironment;
+    rr:objectMap [
+      rml:reference "Station_Environment";  rr:tempType rr:Literal
+    ]
+  ];    
+ 
+  #hasName
+  rr:predicateObjectMap [
+    rr:predicate  ex:hasName;
+    rr:objectMap [
+      rml:reference "Station_Name";  rr:tempType rr:Literal
+    ]
+  ]; 
+
+  #hasType
+  rr:predicateObjectMap [
+    rr:predicate  ex:hasType;
+    rr:objectMap [
+      rml:reference "Station_Type";  rr:tempType rr:Literal
+    ]
+  ].
+
+<#TriplesMap2> a rr:TriplesMap;
+#<#TriplesMap2>
+  rml:logicalSource [
+    rml:source "./data/AirQuality-updated.csv" ;
+    rml:referenceFormulation ql:CSV 
+  ];
+
+ 
+  rr:subjectMap [
+    rr:template "http://www.group26.org/AP/Measurement/{Pollutant_Name}-{Date}";
+    rr:termType rr:IRI; rr:class ex:Measurement
+  ] ;
+
+  #hasUnits
+  rr:predicateObjectMap [
+    rr:predicate ex:hasUnits;
+    rr:objectMap [
+      rml:reference "Units";  rr:tempType rr:Literal
+    ]
+  ]; 
+
+  #hasValue
+  rr:predicateObjectMap [
+    rr:predicate ex:hasValue ;
+    rr:objectMap [
+      rml:reference "Values";  rr:datatype <http://www.w3.org/2001/XMLSchema#float>
+    ]
+  ]; 
+
+  #inDate
+  rr:predicateObjectMap [
+    rr:predicate ex:inDate ;
+    rr:objectMap [
+      rml:reference "Date";  rr:datatype <http://www.w3.org/2001/XMLSchema#dateTime>
+    ]
+  ].    
+
+
+<#TriplesMap3> a rr:TriplesMap;
+
+#<#TriplesMap3>
+  rml:logicalSource [
+    rml:source "./data/AirQuality-updated.csv" ;
+    rml:referenceFormulation ql:CSV;
+    rr:Template "http://www.group26.org/AP/Measurement/{Pollutant_Name}-{Date}"
+  ];
+
+ 
+  rr:subjectMap [
+    rr:template "http://www.group26.org/AP/Location/{Longitude}-{Latitude}";
+    rr:termType rr:IRI; rr:class ex:Location
+  ] ;
+
+  #hasAltitude
+  rr:predicateObjectMap [
+    rr:predicate ex:hasAltitude ;
+    rr:objectMap [
+      rml:reference "Altitude";  rr:datatype <http://www.w3.org/2001/XMLSchema#float>
+    ]
+  ];
+
+  #hasLatitude
+  rr:predicateObjectMap [
+    rr:predicate ex:hasLatitude ;
+    rr:objectMap [
+      rml:reference "Latitude";  rr:datatype <http://www.w3.org/2001/XMLSchema#float>
+    ]
+  ];  
+
+  #hasLongitude
+  rr:predicateObjectMap [
+    rr:predicate ex:hasLongitude ;
+    rr:objectMap [
+      rml:reference "Longitude";  rr:datatype <http://www.w3.org/2001/XMLSchema#float>
+    ]
+  ];
+
+  #inMunicipality
+  rr:predicateObjectMap [
+    rr:predicate ex:inMunicipality; 
+    rr:objectMap [
+      rml:reference "Municipality";  rr:tempType rr:Literal
+    ]
+  ]; 
+
+  #hasINECode
+  rr:predicateObjectMap [
+    rr:predicate [ rr:constant ex:hasINECode; rr:tempType rr:IRI ];
+    rr:objectMap [
+      rml:reference "INE_Code";  rr:tempType rr:Literal
+    ]
+  ];
+  
+
+  #measuredPollutant
+  rr:predicateObjectMap [
+    rr:predicate ex:measuredPollutant ;
+    rr:objectMap [
+      rml:reference "Pollutant_Code";  rr:datatype <http://www.w3.org/2001/XMLSchema#integer>
+    ]
+  ]; 
+  
+  #pollutantName
+  rr:predicateObjectMap [
+    rr:predicate ex:pollutantName;
+    rr:objectMap [
+      rml:reference "Pollutant_Name";  rr:tempType rr:Literal
+    ]
+  ];
+       

@@ -1,10 +1,10 @@
-@prefix : <http://www.group02.org/pd/ontology/PedestriansMadrid> .
+@prefix : <http://www.group02.org/pd/ontology/PedestriansMadrid#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.group02.org/pd/ontology/PedestriansMadrid> .
+@base <http://www.group02.org/pd/ontology/PedestriansMadrid#> .
 
 <http://www.group02.org/pd/ontology/PedestriansMadrid> rdf:type owl:Ontology ;
                                                         owl:versionIRI <http://www.group02.org/pd/ontology/PedestriansMadrid> .
@@ -67,28 +67,28 @@
 :hasDistrictNumber rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf owl:topDataProperty ;
                    rdfs:domain :District ;
-                   rdfs:range xsd:decimal .
+                   rdfs:range xsd:integer .
 
 
 ###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasLatitude
 :hasLatitude rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:domain :MeasurementPoint ;
-             rdfs:range xsd:float .
+             rdfs:range xsd:decimal .
 
 
 ###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasLongitude
 :hasLongitude rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdfs:domain :MeasurementPoint ;
-              rdfs:range xsd:float .
+              rdfs:range xsd:decimal .
 
 
 ###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasNumber
 :hasNumber rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf owl:topDataProperty ;
            rdfs:domain :MeasurementPoint ;
-           rdfs:range xsd:decimal .
+           rdfs:range xsd:integer .
 
 
 ###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasObservation
@@ -102,21 +102,14 @@
 :hasPedestrians rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf owl:topDataProperty ;
                 rdfs:domain :Measurement ;
-                rdfs:range xsd:decimal .
+                rdfs:range xsd:integer .
 
 
 ###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasPostCode
 :hasPostCode rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:domain :MeasurementPoint ;
-             rdfs:range xsd:decimal .
-
-
-###  http://www.group02.org/pd/ontology/PedestriansMadrid#id
-:id rdf:type owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain :MeasurementPoint ;
-    rdfs:range xsd:string .
+             rdfs:range xsd:integer .
 
 
 #################################################################

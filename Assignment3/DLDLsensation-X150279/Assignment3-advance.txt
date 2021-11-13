@@ -1,0 +1,43 @@
+1-
+prefix ont: <http://dbpedia.org/ontology/Politician>
+select distinct ?properties 
+where {
+ ?x a ont:.
+ ?x ?properties ?value
+}
+-------------------------------------------------------------------------------------------
+2-
+prefix ont: <http://dbpedia.org/ontology/Politician>
+select distinct ?properties 
+where {
+?x a ont:.
+ ?x ?properties ?value .
+ filter(?properties != rdf:type)
+}
+-------------------------------------------------------------------------------------------
+3-
+prefix ont: <http://dbpedia.org/ontology/Politician>
+select distinct ?value 
+where {
+?x a ont:.
+ ?x ?properties ?value .
+ filter(?properties != rdf:type)
+}
+-------------------------------------------------------------------------------------------
+4-
+prefix ont: <http://dbpedia.org/ontology/Politician>
+select distinct ?properties ?value 
+where {
+?x a ont:.
+ ?x ?properties ?value .
+ filter(?properties != rdf:type)
+}
+------------------------------------------------------------------------------------------
+5-
+prefix ont: <http://dbpedia.org/ontology/Politician>
+select distinct ?properties COUNT(?value)
+where {
+?x a ont:.
+ ?x ?properties ?value .
+ filter(?properties != rdf:type)
+}

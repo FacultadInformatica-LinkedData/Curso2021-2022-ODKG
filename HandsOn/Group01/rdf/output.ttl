@@ -220,7 +220,7 @@
 <http://www.studyroomsmadrid.es/studyRoom/4814317> <http://www.studyroomsmadrid.es/ns#hasName> "Sala de estudio Centro sociocultural Cánovas del Castillo (Usera)".
 <http://www.studyroomsmadrid.es/studyRoom/4814317> <http://www.studyroomsmadrid.es/ns#hasSchedule> "De lunes a viernes de 9 a 14 y de 15 a 21:30 horas. Sábados de 9 a 14 horas. Agosto cerrado.".
 <http://www.studyroomsmadrid.es/studyRoom/4814317> <http://www.studyroomsmadrid.es/ns#hasDescription> "Puestos de lectura: 44 (aforo reducido a 15 personas) Zona wifi".
-<http://www.studyroomsmadrid.es/studyRoom/4814317> <http://www.studyroomsmadrid.es/ns#hasAccesibility> "1 y 4"^^<http://www.w3.org/2001/XMLSchema#int>.
+<http://www.studyroomsmadrid.es/studyRoom/4814317> <http://www.studyroomsmadrid.es/ns#hasAccesibility> "1"^^<http://www.w3.org/2001/XMLSchema#int>.
 <http://www.studyroomsmadrid.es/studyRoom/8071924> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.studyroomsmadrid.es/ns#StudyRoom>.
 <http://www.studyroomsmadrid.es/studyRoom/8071924> <http://www.studyroomsmadrid.es/ns#hasContentUrl> "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=df3576e159ead410VgnVCM1000000b205a0aRCRD".
 <http://www.studyroomsmadrid.es/studyRoom/8071924> <http://www.studyroomsmadrid.es/ns#hasTelephone1> "913 209 770".
@@ -552,7 +552,7 @@
 <http://www.studyroomsmadrid.es/studyRoom/7989332> <http://www.studyroomsmadrid.es/ns#hasName> "Sala de estudio y lectura del Centro Cultural Las Californias (Retiro)".
 <http://www.studyroomsmadrid.es/studyRoom/7989332> <http://www.studyroomsmadrid.es/ns#hasSchedule> "De lunes a viernes: 09.00 a 14.00 h y de 16.00 a 22.00 h Sábados: de 10.00 h a 14.00 h y de 16.00 a 21.00 h. Domingos: CERRADO.".
 <http://www.studyroomsmadrid.es/studyRoom/7989332> <http://www.studyroomsmadrid.es/ns#hasDescription> "Zona wifi Atención básica en lengua de signos.".
-<http://www.studyroomsmadrid.es/studyRoom/7989332> <http://www.studyroomsmadrid.es/ns#hasAccesibility> "1 y 4"^^<http://www.w3.org/2001/XMLSchema#int>.
+<http://www.studyroomsmadrid.es/studyRoom/7989332> <http://www.studyroomsmadrid.es/ns#hasAccesibility> "1"^^<http://www.w3.org/2001/XMLSchema#int>.
 <http://www.studyroomsmadrid.es/studyRoom/4815242> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.studyroomsmadrid.es/ns#StudyRoom>.
 <http://www.studyroomsmadrid.es/studyRoom/4815242> <http://www.studyroomsmadrid.es/ns#hasContentUrl> "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=8a760c4d87558110VgnVCM1000000b205a0aRCRD".
 <http://www.studyroomsmadrid.es/studyRoom/4815242> <http://www.studyroomsmadrid.es/ns#hasTelephone1> "917 109 300".

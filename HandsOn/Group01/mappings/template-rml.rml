@@ -46,7 +46,7 @@
     rr:predicate vocab:hasAccesibility;
     rr:objectMap [
       rml:reference "ACCESIBILIDAD";
-      rr:datatype xsd:string
+      rr:datatype xsd:int
     ]
   ];
 
@@ -116,7 +116,7 @@
     rr:predicate vocab:hasPK;
     rr:objectMap [
       rml:reference "PK";
-      rr:datatype xsd:string
+      rr:datatype xsd:int
     ]
   ].
 
@@ -127,21 +127,23 @@
   ];
 
   rr:subjectMap [
-    rr:template "http://www.studyroomsmadrid.es/location/{LATITUD},{LONGITUD}";
+    rr:template "http://www.studyroomsmadrid.es/location/{LATITUD}{LONGITUD}";
     rr:termType rr:IRI; rr:class vocab:Location
   ];
 
   rr:predicateObjectMap [
     rr:predicate wgs84_pos:lat;
     rr:objectMap [
-      rml:reference "LATITUD" 
+      rml:reference "LATITUD";
+      rr:datatype xsd:double 
     ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate wgs84_pos:long;
     rr:objectMap [
-      rml:reference "LONGITUD"
+      rml:reference "LONGITUD";
+      rr:datatype xsd:double
     ]
   ].
 
@@ -168,7 +170,7 @@ rr:predicateObjectMap [
     rr:predicate vocab:hasNumber;
     rr:objectMap [
       rml:reference "NUM";
-      rr:datatype xsd:string
+      rr:datatype xsd:int
     ]
   ];
 

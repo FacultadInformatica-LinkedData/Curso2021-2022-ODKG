@@ -44,7 +44,7 @@
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasPK
 :hasPK rdf:type owl:DatatypeProperty ;
         rdfs:domain :StudyRoom ;
-        rdfs:range xsd:string .
+        rdfs:range xsd:int .
 
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasName
 :hasName rdf:type owl:DatatypeProperty ;
@@ -64,7 +64,7 @@
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasAccesibility
 :hasAccesibility rdf:type owl:DatatypeProperty ;
         rdfs:domain :StudyRoom ;
-        rdfs:range xsd:string .
+        rdfs:range xsd:int .
 
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasContentUrl
 :hasContentUrl rdf:type owl:DatatypeProperty ;
@@ -94,12 +94,12 @@
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#latitude
 :latitude rdf:type owl:DatatypeProperty ;
         rdfs:domain :Location ;
-        rdfs:range xsd:string .    
+        rdfs:range xsd:double .    
           
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#longitude  
 :longitude rdf:type owl:DatatypeProperty ;          
         rdfs:domain :Location ;          
-        rdfs:range xsd:string .
+        rdfs:range xsd:double .
 
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasRoadName
 :hasRoadName rdf:type owl:DatatypeProperty ;          
@@ -109,7 +109,7 @@
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasRoadNumber
 :hasNumber rdf:type owl:DatatypeProperty ;          
         rdfs:domain :Address ;          
-        rdfs:range xsd:string .
+        rdfs:range xsd:int .
 
 ###  http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt#hasTown
 :hasTown rdf:type owl:DatatypeProperty ;          

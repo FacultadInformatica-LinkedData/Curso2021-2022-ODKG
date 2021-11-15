@@ -1,0 +1,191 @@
+[
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barajas District"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Barajas District,Madrid"
+      }
+    ],
+    "description": "Mass edit cells in column distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Centro District"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Centro District, Madrid"
+      }
+    ],
+    "description": "Mass edit cells in column distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Barajas District,Madrid"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Barajas District, Madrid"
+      }
+    ],
+    "description": "Mass edit cells in column distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Latina District"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Latina District, Madrid"
+      }
+    ],
+    "description": "Mass edit cells in column distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Retiro District"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Retiro District, Madrid"
+      }
+    ],
+    "description": "Mass edit cells in column distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Salamanca District"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Salamanca District, Madrid"
+      }
+    ],
+    "description": "Mass edit cells in column distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "San Blas-Canillejas District"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "San Blas-Canillejas District, Madrid"
+      }
+    ],
+    "description": "Mass edit cells in column distrito"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Tetuán District"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Tetuán District, Madrid"
+      }
+    ],
+    "description": "Mass edit cells in column distrito"
+  },
+  {
+    "op": "core/recon-match-best-candidates",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "distrito: best candidate's name match?",
+          "expression": "forNonBlank(cell.recon.features.nameMatch, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "distrito",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "(unreconciled)",
+                "l": "(unreconciled)"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "description": "Match each cell to its best recon candidate in column distrito"
+  }
+]

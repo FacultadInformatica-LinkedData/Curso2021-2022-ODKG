@@ -94,11 +94,6 @@ xsd:time rdf:type rdfs:Datatype .
          rdfs:range xsd:time .
 
 
-###  https://data.eventsatmadrid.org/ontology#hasName
-:hasName rdf:type owl:DatatypeProperty ;
-         rdfs:range xsd:string .
-
-
 ###  https://data.eventsatmadrid.org/ontology#hasPostalCode
 :hasPostalCode rdf:type owl:DatatypeProperty ;
                rdfs:domain :Address ;

@@ -1,0 +1,12 @@
+[
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "measurement_id",
+      "Date",
+      "measurement_point_id",
+      "Pedestrians"
+    ],
+    "description": "Reorder columns"
+  }
+]

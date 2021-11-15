@@ -1,0 +1,3160 @@
+[
+  {
+    "op": "core/column-removal",
+    "columnName": "Column",
+    "description": "Remove column Column"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "positiva_droga",
+    "description": "Remove column positiva_droga"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "coordenada_y_utm",
+    "description": "Remove column coordenada_y_utm"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "coordenada_x_utm",
+    "description": "Remove column coordenada_x_utm"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "fecha",
+    "expression": "join ([coalesce(cells['fecha'].value,''),coalesce(cells['hora'].value,'')],' ')",
+    "onError": "keep-original",
+    "newColumnName": "DateTime",
+    "columnInsertIndex": 2,
+    "description": "Create column DateTime at index 2 based on column fecha using expression join ([coalesce(cells['fecha'].value,''),coalesce(cells['hora'].value,'')],' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DateTime",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DateTime using expression value.toDate()"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "fecha",
+    "description": "Remove column fecha"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "hora",
+    "description": "Remove column hora"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "localizacion",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "loc_rec",
+    "columnInsertIndex": 5,
+    "description": "Create column loc_rec at index 5 based on column localizacion using expression grel:value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "localizacion",
+    "expression": "grel:value.split(',')[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column localizacion using expression grel:value.split(',')[0]"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "lesividad",
+    "expression": "grel:if(value==null,\"0\",value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column lesividad using expression grel:if(value==null,\"0\",value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "lesividad",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column lesividad using expression value.toNumber()"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "num_expediente",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "num_expediente",
+    "description": "Blank down cells in column num_expediente"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "num_expediente",
+          "expression": "isBlank(value)",
+          "columnName": "num_expediente",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "localizacion",
+    "expression": "jython:return value.replace(\".\",\"\").replace(\"/\",\"\").replace(\" \",\"_\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column localizacion using expression jython:return value.replace(\".\",\"\").replace(\"/\",\"\").replace(\" \",\"_\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "expression": "jython:return value.replace(\".\",\"\").replace(\"/\",\"\").replace(\" \",\"_\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column distrito using expression jython:return value.replace(\".\",\"\").replace(\"/\",\"\").replace(\" \",\"_\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "localizacion",
+          "columnName": "localizacion",
+          "query": "'",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "localizacion",
+    "expression": "jython:return value.replace('\\'', '_')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column localizacion using expression jython:return value.replace('\\'', '_')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "expression": "jython:value2 = value.replace('AVDA.','AVENIDA').replace('CALL.', 'CALLE').replace('CTRA. ', '').replace('C/', 'CALLE').replace('AV.', 'AVENIDA').replace('POLIG.', 'POLIGONO')\nvalue2 = value2.replace('PASEO.', 'PASEO').replace('PLAZA.', 'PLAZA')\n\nreturn value2.split(',')[0].split('/')[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column loc_rec using expression jython:value2 = value.replace('AVDA.','AVENIDA').replace('CALL.', 'CALLE').replace('CTRA. ', '').replace('C/', 'CALLE').replace('AV.', 'AVENIDA').replace('POLIG.', 'POLIGONO')\nvalue2 = value2.replace('PASEO.', 'PASEO').replace('PLAZA.', 'PLAZA')\n\nreturn value2.split(',')[0].split('/')[0]"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "distrito de Madrid"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column distrito to type Q3032114"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "VILLA_DE_VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1947988",
+      "name": "Villa de Vallecas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 64
+    },
+    "shareNewTopics": false,
+    "description": "Match item Villa de Vallecas (Q1947988) for cells containing \"VILLA_DE_VALLECAS\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "FUENCARRAL-EL_PARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q656196",
+      "name": "Fuencarral-El Pardo",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 68
+    },
+    "shareNewTopics": false,
+    "description": "Match item Fuencarral-El Pardo (Q656196) for cells containing \"FUENCARRAL-EL_PARDO\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "CIUDAD_LINEAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1763694",
+      "name": "Ciudad Lineal",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ciudad Lineal (Q1763694) for cells containing \"CIUDAD_LINEAL\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "SAN_BLAS-CANILLEJAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2001937",
+      "name": "San Blas-Canillejas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 74
+    },
+    "shareNewTopics": false,
+    "description": "Match item San Blas-Canillejas (Q2001937) for cells containing \"SAN_BLAS-CANILLEJAS\" in column distrito"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "distrito",
+    "similarValue": "PUENTE_DE_VALLECAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2003054",
+      "name": "Puente de Vallecas",
+      "types": [
+        "Q3032114"
+      ],
+      "score": 78
+    },
+    "shareNewTopics": false,
+    "description": "Match item Puente de Vallecas (Q2003054) for cells containing \"PUENTE_DE_VALLECAS\" in column distrito"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q79007",
+        "name": "calle"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column loc_rec to type Q79007"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE FELIPE ALVAREZ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q56753025",
+      "name": "Felipe Alvarez Bengochea",
+      "types": [
+        "Q79007"
+      ],
+      "score": 77
+    },
+    "shareNewTopics": false,
+    "description": "Match item Felipe Alvarez Bengochea (Q56753025) for cells containing \"CALLE FELIPE ALVAREZ\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE CASTELLO ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28058833",
+      "name": "calle de Castelló",
+      "types": [
+        "Q79007"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Castelló (Q28058833) for cells containing \"CALLE CASTELLO \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE FLORA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q27044256",
+      "name": "calle de Flora",
+      "types": [
+        "Q79007"
+      ],
+      "score": 88
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Flora (Q27044256) for cells containing \"CALLE FLORA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA POBLADOS ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26795575",
+      "name": "avenida de los Poblados",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 84
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de los Poblados (Q26795575) for cells containing \"AVENIDA POBLADOS \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE SERRANO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740879",
+      "name": "calle de Serrano",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Serrano (Q5740879) for cells containing \"CALLE SERRANO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PLAZA INDEPENDENCIA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16620041",
+      "name": "Plaza Independencia",
+      "types": [
+        ""
+      ],
+      "score": 50
+    },
+    "shareNewTopics": false,
+    "description": "Match item Plaza Independencia (Q16620041) for cells containing \"PLAZA INDEPENDENCIA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE JUAN BRAVO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28054647",
+      "name": "calle de Juan Bravo",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Juan Bravo (Q28054647) for cells containing \"CALLE JUAN BRAVO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA ALBUFERA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714221",
+      "name": "avenida de la Albufera",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 84
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de la Albufera (Q5714221) for cells containing \"AVENIDA ALBUFERA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE ALFONSO XI ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q50132666",
+      "name": "calle de Alfonso XI",
+      "types": [
+        "Q79007"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Alfonso XI (Q50132666) for cells containing \"CALLE ALFONSO XI \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE PRINCIPE DE VERGARA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5741020",
+      "name": "calle del Príncipe de Vergara",
+      "types": [
+        "Q79007"
+      ],
+      "score": 93
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle del Príncipe de Vergara (Q5741020) for cells containing \"CALLE PRINCIPE DE VERGARA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE MESON DE PAREDES ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5686332",
+      "name": "calle del Mesón de Paredes",
+      "types": [
+        "Q79007"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle del Mesón de Paredes (Q5686332) for cells containing \"CALLE MESON DE PAREDES \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO PRADO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2079615",
+      "name": "paseo del Prado",
+      "types": [
+        "Q787113",
+        "Q54114",
+        "Q79007"
+      ],
+      "score": 85
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo del Prado (Q2079615) for cells containing \"PASEO PRADO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PLAZA ESPAÑA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q101510338",
+      "name": "Plaza de España",
+      "types": [
+        "Q79007"
+      ],
+      "score": 89
+    },
+    "shareNewTopics": false,
+    "description": "Match item Plaza de España (Q101510338) for cells containing \"PLAZA ESPAÑA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO CHOPERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q27044458",
+      "name": "paseo de la Chopera",
+      "types": [
+        "Q79007",
+        "Q787113"
+      ],
+      "score": 81
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de la Chopera (Q27044458) for cells containing \"PASEO CHOPERA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE PRINCIPE DE VERGARA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5741020",
+      "name": "calle del Príncipe de Vergara",
+      "types": [
+        "Q79007"
+      ],
+      "score": 93
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle del Príncipe de Vergara (Q5741020) for cells containing \"CALLE PRINCIPE DE VERGARA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO CASTELLANA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1473674",
+      "name": "Paseo de la Castellana",
+      "types": [
+        "Q83620",
+        "Q79007",
+        "Q787113"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo de la Castellana (Q1473674) for cells containing \"PASEO CASTELLANA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "RONDA. ATOCHA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26831149",
+      "name": "Ronda de Atocha",
+      "types": [
+        "Q79007"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ronda de Atocha (Q26831149) for cells containing \"RONDA. ATOCHA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO GENERAL MARTINEZ CAMPOS ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26792155",
+      "name": "paseo del General Martínez Campos",
+      "types": [
+        "Q79007"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo del General Martínez Campos (Q26792155) for cells containing \"PASEO GENERAL MARTINEZ CAMPOS \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO RECOLETOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2550870",
+      "name": "paseo de Recoletos",
+      "types": [
+        "Q787113"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de Recoletos (Q2550870) for cells containing \"PASEO RECOLETOS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE ALFONSO XII ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5659170",
+      "name": "calle de Alfonso XII",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Alfonso XII (Q5659170) for cells containing \"CALLE ALFONSO XII \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO CASTELLANA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1473674",
+      "name": "Paseo de la Castellana",
+      "types": [
+        "Q83620",
+        "Q79007",
+        "Q787113"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo de la Castellana (Q1473674) for cells containing \"PASEO CASTELLANA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA PORTUGAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26736141",
+      "name": "Avenida de Portugal",
+      "types": [
+        "Q79007"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de Portugal (Q26736141) for cells containing \"AVENIDA PORTUGAL\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO ERMITA DEL SANTO ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28137105",
+      "name": "paseo de la Ermita del Santo",
+      "types": [
+        "Q787113"
+      ],
+      "score": 88
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de la Ermita del Santo (Q28137105) for cells containing \"PASEO ERMITA DEL SANTO \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE JOAQUIN COSTA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q27137371",
+      "name": "calle de Joaquín Costa",
+      "types": [
+        "Q79007"
+      ],
+      "score": 93
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Joaquín Costa (Q27137371) for cells containing \"CALLE JOAQUIN COSTA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA GRAN VIA DE SAN FRANCISCO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q32035437",
+      "name": "Gran Vía de San Francisco",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item Gran Vía de San Francisco (Q32035437) for cells containing \"AVENIDA GRAN VIA DE SAN FRANCISCO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE VICTORIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q29001836",
+      "name": "calle de la Victoria",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de la Victoria (Q29001836) for cells containing \"CALLE VICTORIA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "RONDA. TOLEDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6111946",
+      "name": "Ronda de Toledo",
+      "types": [
+        "Q79007"
+      ],
+      "score": 89
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ronda de Toledo (Q6111946) for cells containing \"RONDA. TOLEDO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO DELICIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6065662",
+      "name": "paseo de las Delicias",
+      "types": [
+        "Q79007"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de las Delicias (Q6065662) for cells containing \"PASEO DELICIAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE SANTA ISABEL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2882669",
+      "name": "calle de Santa Isabel",
+      "types": [
+        "Q79007"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Santa Isabel (Q2882669) for cells containing \"CALLE SANTA ISABEL\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO EXTREMADURA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6065619",
+      "name": "Paseo de Extremadura",
+      "types": [
+        "Q79007"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo de Extremadura (Q6065619) for cells containing \"PASEO EXTREMADURA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA LAS FUERZAS ARMADAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q29353164",
+      "name": "avenida de las Fuerzas Armadas",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 95
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de las Fuerzas Armadas (Q29353164) for cells containing \"AVENIDA LAS FUERZAS ARMADAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO ESPERANZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q55947011",
+      "name": "paseo de la Esperanza",
+      "types": [
+        "Q787113"
+      ],
+      "score": 83
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de la Esperanza (Q55947011) for cells containing \"PASEO ESPERANZA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE CLAUDIO MOYANO ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5794001",
+      "name": "cuesta de Moyano",
+      "types": [
+        "Q79007"
+      ],
+      "score": 93
+    },
+    "shareNewTopics": false,
+    "description": "Match item cuesta de Moyano (Q5794001) for cells containing \"CALLE CLAUDIO MOYANO \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE MAYOR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1149052",
+      "name": "Calle Mayor",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Mayor (Q1149052) for cells containing \"CALLE MAYOR\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA AMERICA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5686040",
+      "name": "avenida de América",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de América (Q5686040) for cells containing \"AVENIDA AMERICA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA ALBUFERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714221",
+      "name": "avenida de la Albufera",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 84
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de la Albufera (Q5714221) for cells containing \"AVENIDA ALBUFERA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE INFANTAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q21004010",
+      "name": "calle de las Infantas",
+      "types": [
+        "Q79007"
+      ],
+      "score": 85
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de las Infantas (Q21004010) for cells containing \"CALLE INFANTAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE RIBERA DE CURTIDORES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740938",
+      "name": "calle de la Ribera de Curtidores",
+      "types": [
+        "Q79007"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de la Ribera de Curtidores (Q5740938) for cells containing \"CALLE RIBERA DE CURTIDORES\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CIUDAD UNIVERSITARIA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1187811",
+      "name": "ciudad universitaria",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item ciudad universitaria (Q1187811) for cells containing \"CIUDAD UNIVERSITARIA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO YESERIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16616818",
+      "name": "Paseo de Yeserías",
+      "types": [
+        "Q79007",
+        "Q787113"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo de Yeserías (Q16616818) for cells containing \"PASEO YESERIAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA PABLO IGLESIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28045035",
+      "name": "avenida de Pablo Iglesias",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de Pablo Iglesias (Q28045035) for cells containing \"AVENIDA PABLO IGLESIAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO DELICIAS ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6065662",
+      "name": "paseo de las Delicias",
+      "types": [
+        "Q79007"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de las Delicias (Q6065662) for cells containing \"PASEO DELICIAS \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CANILLAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28973490",
+      "name": "carretera de Canillas",
+      "types": [
+        "Q34442",
+        "Q79007"
+      ],
+      "score": 62
+    },
+    "shareNewTopics": false,
+    "description": "Match item carretera de Canillas (Q28973490) for cells containing \"CANILLAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA CORDOBA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63247230",
+      "name": "Avenida de Córdoba",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de Córdoba (Q63247230) for cells containing \"AVENIDA CORDOBA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE HILERAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28051025",
+      "name": "calle de las Hileras",
+      "types": [
+        "Q79007"
+      ],
+      "score": 83
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de las Hileras (Q28051025) for cells containing \"CALLE HILERAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA ASTURIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q30300905",
+      "name": "avenida de Asturias",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de Asturias (Q30300905) for cells containing \"AVENIDA ASTURIAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "ATOCHA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5492657",
+      "name": "calle de Atocha",
+      "types": [
+        "Q79007"
+      ],
+      "score": 75
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Atocha (Q5492657) for cells containing \"ATOCHA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA ANDES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28997223",
+      "name": "avenida de los Andes",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 79
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de los Andes (Q28997223) for cells containing \"AVENIDA ANDES\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA ANDES ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28997223",
+      "name": "avenida de los Andes",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 79
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de los Andes (Q28997223) for cells containing \"AVENIDA ANDES \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA ANDALUCIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714182",
+      "name": "Avenida de Andalucía",
+      "types": [
+        "Q79007"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de Andalucía (Q5714182) for cells containing \"AVENIDA ANDALUCIA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA ASTURIAS ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q30300905",
+      "name": "avenida de Asturias",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de Asturias (Q30300905) for cells containing \"AVENIDA ASTURIAS \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA BUENOS AIRES ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q9639613",
+      "name": "Avenida Buenos Aires",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida Buenos Aires (Q9639613) for cells containing \"AVENIDA BUENOS AIRES \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA BURGOS ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q29902431",
+      "name": "avenida de Burgos",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de Burgos (Q29902431) for cells containing \"AVENIDA BURGOS \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA BURGOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q29902431",
+      "name": "avenida de Burgos",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de Burgos (Q29902431) for cells containing \"AVENIDA BURGOS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA CIUDAD DE BARCELONA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714227",
+      "name": "avenida de la Ciudad de Barcelona",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de la Ciudad de Barcelona (Q5714227) for cells containing \"AVENIDA CIUDAD DE BARCELONA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA CIUDAD DE BARCELONA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714227",
+      "name": "avenida de la Ciudad de Barcelona",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de la Ciudad de Barcelona (Q5714227) for cells containing \"AVENIDA CIUDAD DE BARCELONA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA CARDENAL HERRERA ORIA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q27556319",
+      "name": "avenida del Cardenal Herrera Oria",
+      "types": [
+        "Q79007"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida del Cardenal Herrera Oria (Q27556319) for cells containing \"AVENIDA CARDENAL HERRERA ORIA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA GENERAL PERON",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26761632",
+      "name": "avenida del General Perón",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida del General Perón (Q26761632) for cells containing \"AVENIDA GENERAL PERON\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA GENERAL PERON ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26761632",
+      "name": "avenida del General Perón",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida del General Perón (Q26761632) for cells containing \"AVENIDA GENERAL PERON \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA LAS FUERZAS ARMADAS ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q29353164",
+      "name": "avenida de las Fuerzas Armadas",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 95
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de las Fuerzas Armadas (Q29353164) for cells containing \"AVENIDA LAS FUERZAS ARMADAS \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE ALCOCER ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26833742",
+      "name": "avenida de Alberto Alcocer",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 70
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de Alberto Alcocer (Q26833742) for cells containing \"CALLE ALCOCER \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE ARENAL ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740980",
+      "name": "calle del Arenal",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle del Arenal (Q5740980) for cells containing \"CALLE ARENAL \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "RETIRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1131807",
+      "name": "Parque del Retiro",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parque del Retiro (Q1131807) for cells containing \"RETIRO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PLAZA ESPAÑA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q101510338",
+      "name": "Plaza de España",
+      "types": [
+        "Q79007"
+      ],
+      "score": 89
+    },
+    "shareNewTopics": false,
+    "description": "Match item Plaza de España (Q101510338) for cells containing \"PLAZA ESPAÑA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA VICTORIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714243",
+      "name": "avenida de la Reina Victoria",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 84
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de la Reina Victoria (Q5714243) for cells containing \"AVENIDA VICTORIA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA VICTORIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714243",
+      "name": "avenida de la Reina Victoria",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 84
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de la Reina Victoria (Q5714243) for cells containing \"AVENIDA VICTORIA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE ALMAGRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26844339",
+      "name": "calle de Almagro",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Almagro (Q26844339) for cells containing \"CALLE ALMAGRO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA INGENIERO EMILIO HERRERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q27277343",
+      "name": "avenida del Ingeniero Emilio Herrera",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida del Ingeniero Emilio Herrera (Q27277343) for cells containing \"AVENIDA INGENIERO EMILIO HERRERA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE SAN BERNARDO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740864",
+      "name": "calle de San Bernardo",
+      "types": [
+        "Q79007"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de San Bernardo (Q5740864) for cells containing \"CALLE SAN BERNARDO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA POBLADOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26795575",
+      "name": "avenida de los Poblados",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 84
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida de los Poblados (Q26795575) for cells containing \"AVENIDA POBLADOS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO ACACIAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q55947263",
+      "name": "paseo de las Acacias",
+      "types": [
+        "Q787113"
+      ],
+      "score": 79
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de las Acacias (Q55947263) for cells containing \"PASEO ACACIAS\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE SEBASTIAN HERRERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q68987411",
+      "name": "calle de Sebastián Herrera",
+      "types": [
+        "Q79007"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Sebastián Herrera (Q68987411) for cells containing \"CALLE SEBASTIAN HERRERA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO PINTOR ROSALES ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6065691",
+      "name": "Paseo del Pintor Rosales",
+      "types": [
+        "Q79007"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo del Pintor Rosales (Q6065691) for cells containing \"PASEO PINTOR ROSALES \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "loc_rec",
+          "expression": "facetCount(value, 'value', 'loc_rec') > 1",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PLAZA CASTILLA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q786291",
+      "name": "plaza de Castilla",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item plaza de Castilla (Q786291) for cells containing \"PLAZA CASTILLA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "loc_rec",
+          "expression": "facetCount(value, 'value', 'loc_rec') > 1",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PLAZA CIBELES ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1537446",
+      "name": "plaza de Cibeles",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item plaza de Cibeles (Q1537446) for cells containing \"PLAZA CIBELES \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "loc_rec",
+          "expression": "facetCount(value, 'value', 'loc_rec') > 1",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO ERMITA DEL SANTO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28137105",
+      "name": "paseo de la Ermita del Santo",
+      "types": [
+        "Q787113"
+      ],
+      "score": 88
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de la Ermita del Santo (Q28137105) for cells containing \"PASEO ERMITA DEL SANTO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA PORTUGAL ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26736141",
+      "name": "Avenida de Portugal",
+      "types": [
+        "Q79007"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de Portugal (Q26736141) for cells containing \"AVENIDA PORTUGAL \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE GOYA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28015873",
+      "name": "calle de Goya",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Goya (Q28015873) for cells containing \"CALLE GOYA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO PRADO ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q2079615",
+      "name": "paseo del Prado",
+      "types": [
+        "Q787113",
+        "Q54114",
+        "Q79007"
+      ],
+      "score": 85
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo del Prado (Q2079615) for cells containing \"PASEO PRADO \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PASEO SANTA MARIA DE LA CABEZA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6065630",
+      "name": "paseo de Santa María de la Cabeza",
+      "types": [
+        "Q79007",
+        "Q787113"
+      ],
+      "score": 95
+    },
+    "shareNewTopics": false,
+    "description": "Match item paseo de Santa María de la Cabeza (Q6065630) for cells containing \"PASEO SANTA MARIA DE LA CABEZA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE MEJIA LEQUERICA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q24560004",
+      "name": "calle de Mejía Lequerica",
+      "types": [
+        "Q79007"
+      ],
+      "score": 93
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Mejía Lequerica (Q24560004) for cells containing \"CALLE MEJIA LEQUERICA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE MESON DE PAREDES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5686332",
+      "name": "calle del Mesón de Paredes",
+      "types": [
+        "Q79007"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle del Mesón de Paredes (Q5686332) for cells containing \"CALLE MESON DE PAREDES\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE PUEBLA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28856259",
+      "name": "calle de la Puebla",
+      "types": [
+        "Q79007"
+      ],
+      "score": 80
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de la Puebla (Q28856259) for cells containing \"CALLE PUEBLA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE GOYA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28015873",
+      "name": "calle de Goya",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Goya (Q28015873) for cells containing \"CALLE GOYA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "AVENIDA MEDITERRANEO ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q57739480",
+      "name": "avenida del Mediterráneo",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 91
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida del Mediterráneo (Q57739480) for cells containing \"AVENIDA MEDITERRANEO \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "CALLE CRUZ ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16659214",
+      "name": "calle de la Cruz",
+      "types": [
+        "Q79007"
+      ],
+      "score": 78
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de la Cruz (Q16659214) for cells containing \"CALLE CRUZ \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "RONDA. VALENCIA ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q16626200",
+      "name": "ronda de Valencia",
+      "types": [
+        "Q79007"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item ronda de Valencia (Q16626200) for cells containing \"RONDA. VALENCIA \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "RONDA. SEGOVIA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q27955399",
+      "name": "Ronda de Segovia",
+      "types": [
+        "Q79007"
+      ],
+      "score": 90
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ronda de Segovia (Q27955399) for cells containing \"RONDA. SEGOVIA\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PQUE. RETIRO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1131807",
+      "name": "Parque del Retiro",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parque del Retiro (Q1131807) for cells containing \"PQUE. RETIRO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PQUE. MADRID RIO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6062341",
+      "name": "Madrid Río",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Madrid Río (Q6062341) for cells containing \"PQUE. MADRID RIO\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PQUE. MADRID RIO ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6062341",
+      "name": "Madrid Río",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Madrid Río (Q6062341) for cells containing \"PQUE. MADRID RIO \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PQUE. JUAN CARLOS I",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1583169",
+      "name": "Parque Juan Carlos I",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parque Juan Carlos I (Q1583169) for cells containing \"PQUE. JUAN CARLOS I\" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PLAZA SAN JUAN DE LA CRUZ ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q27345106",
+      "name": "plaza de San Juan de la Cruz",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item plaza de San Juan de la Cruz (Q27345106) for cells containing \"PLAZA SAN JUAN DE LA CRUZ \" in column loc_rec"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "similarValue": "PQUE. RETIRO ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1131807",
+      "name": "Parque del Retiro",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Parque del Retiro (Q1131807) for cells containing \"PQUE. RETIRO \" in column loc_rec"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "expression": "jython:if value[-1] == ' ':\n   value2 = value[:-1]\nelse:\n   value2 = value\nreturn value2",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column loc_rec using expression jython:if value[-1] == ' ':\n   value2 = value[:-1]\nelse:\n   value2 = value\nreturn value2"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q22698",
+        "name": "parque"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column loc_rec to type Q22698"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "loc_rec: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "loc_rec",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loc_rec",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wikidata.reconci.link/es/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q79007",
+        "name": "calle"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column loc_rec to type Q79007"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "distrito",
+    "expression": "grel:\"https://wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "distrito_wikidata",
+    "columnInsertIndex": 5,
+    "description": "Create column distrito_wikidata at index 5 based on column distrito using expression grel:\"https://wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "loc_rec",
+    "expression": "grel:\"https://wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "localizacion_wikidata",
+    "columnInsertIndex": 7,
+    "description": "Create column localizacion_wikidata at index 7 based on column loc_rec using expression grel:\"https://wikidata.org/entity/\"+cell.recon.match.id"
+  }
+]

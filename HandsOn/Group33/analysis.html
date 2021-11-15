@@ -1,292 +1,448 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Analysis</title>
-</head>
-<style>
-table, th, td {
-  border:1px solid black;
-}
-</style>
-
-<body>
-  <h2>Data Set Description:</h2>
-  <table style="width:80%">
-    <col style="width:20%">
-    <col style="width:20%">
-	  <col style="width:60%">
-    <tr>
-      <th>Name</th>
-      <th>Data Type</th>
-      <th>Description</th>
-      <th>Count</th>
-      <th>Mean</th>
-      <th>Std</th>
-      <th>Min</th>
-      <th>25%</th>
-      <th>50%</th>
-      <th>75%</th>
-      <th>Max</th>
-    </tr>
-    <tr>
-      <td>Trip ID</td>
-      <td>Text</td>
-      <td>A unique ID for each trip.</td> 
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Start Time</td>
-      <td>Date & Time</td>
-      <td>When the trip started, rounded to the nearest hour.</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>End Time</td>
-      <td>Date & Time</td>
-      <td>When the trip ended, rounded to the nearest hour.</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Trip Distance</td>
-      <td>Number</td>
-      <td>Trip distance in meters. (Divide by 1609 for miles.)</td>
-      <td>71100</td>
-      <td>16679.22</td>
-      <td>63674.1</td>
-      <td>0</td>
-      <td>835</td>
-      <td>2000</td>
-      <td>3981</td>
-      <td>64706150</td>
-    </tr>
-    <tr>
-      <td>Trip Duration</td>
-      <td>Number</td>
-      <td>Trip time in seconds.</td>
-      <td>71100</td>
-      <td>947.917</td>
-      <td>1512.281</td>
-      <td>0</td>
-      <td>253</td>
-      <td>578</td>
-      <td>1146</td>
-      <td>90075</td>
-
-    </tr>
-    <tr>
-      <td>Accuracy</td>
-      <td>Number</td>
-      <td>The approximate level of accuracy, in meters, of the GPS measurements reported by the provider.</td>
-      <td>71100</td>
-      <td>821.7422</td>
-      <td>84169.05</td>
-      <td>0</td>
-      <td>10</td>
-      <td>10</td>
-      <td>152</td>
-      <td>22187000</td>
-      
-    </tr>
-    <tr>
-      <td>Start Census Tract</td>
-      <td>Number</td>
-      <td>The Census Tract where the trip started. For privacy, this Census Tract is not shown for some trips.</td>
-      <td>15082</td>
-      <td>17031360000</td>
-      <td>268602.4</td>
-      <td>1.703115e+10</td>
-      <td>1.703120e+10</td>
-      <td>1.703122e+10</td>
-      <td>1.703127e+10</td>
-      <td>1.703184e+10</td>
-      
-    </tr>
-    <tr>
-      <td>End Census Tract</td>
-      <td>Number</td>
-      <td>The Census Tract where the trip ended. For privacy, this Census Tract is not shown for some trips.</td>
-      <td>1.5103e+4</td>
-      <td>1.703135e+10</td>
-      <td>2.651985e+5</td>
-      <td>1.703107e+10</td>
-      <td>1.703120e+10</td>
-      <td>1.703122e+10</td>
-      <td>1.703123e+10</td>
-      <td>1.703184e+10</td>
-      
-    </tr>
-    <tr>
-      <td>Start Community Area Number</td>
-      <td>Number</td>
-      <td>The Community Area number where the trip started.</td>
-      <td>58531</td>
-      <td>21.592</td>
-      <td>3.428</td>
-      <td>5</td>
-      <td>20</td>
-      <td>22</td>
-      <td>23</td>
-      <td>60</td>
-    </tr>
-    <tr>
-      <td>End Community Area Number</td>
-      <td>Number</td>
-      <td>The Community Area number where the trip ended</td>
-      <td>58582</td>
-      <td>21.060</td>
-      <td>4.339</td>
-      <td>4</td>
-      <td>19</td>
-      <td>22</td>
-      <td>23</td>
-      <td>66</td>
-      
-    </tr>
-    <tr>
-      <td>Start Community Area Name</td>
-      <td>Plain Text</td>
-      <td>The Community Area name where the trip started.</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-      <td>End Community Area Name</td>
-      <td>Plain Text</td>
-      <td>The Community Area name where the trip ended.</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      
-    </tr>
-    <tr>
-      <td>Start Centroid Latitude</td>
-      <td>Number</td>
-      <td>The latitude of the center of the trip start census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
-      <td>58532</td>
-      <td>41.917</td>
-      <td>0.0236</td>
-      <td>41.83</td>
-      <td>41.9</td>
-      <td>41.92</td>
-      <td>41.93</td>
-      <td>41.95</td>
-      
-    </tr>
-    <tr>
-      <td>Start Centroid Longitude</td>
-      <td>Number</td>
-      <td>The longitude of the center of the trip start census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
-      <td>58532</td>
-      <td>-87.72</td>
-      <td>0.027</td>
-      <td>-87.828</td>
-      <td>-87.734</td>
-      <td>-87.720</td>
-      <td>-87.705</td>
-      <td>-87.633</td>
-      
-    </tr>
-    <tr>
-      <td>End Centroid Latitude</td>
-      <td>Number</td>
-      <td>The latitude of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
-      <td>58582</td>
-      <td>41.917</td>
-      <td>0.022</td>
-      <td>41.7718</td>
-      <td>41.9</td>
-      <td>41.922</td>
-      <td>41.927</td>
-      <td>41.978</td>
-      
-    </tr>
-    <tr>
-      <td>End Centroid Longitude</td>
-      <td>Number</td>
-      <td>The longitude of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
-      <td>58582</td>
-      <td>-87.72</td>
-      <td>0.0253</td>
-      <td>-87.82</td>
-      <td>-87.73</td>
-      <td>-87.72</td>
-      <td>-87.70</td>
-      <td>-87.59</td>
-      
-    </tr>
-    <tr>
-      <td>End Centroid Location</td>
-      <td>Point</td>
-      <td>The location of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
-
-  <h3>Licensing of the Data Source:</h3>
-  <ul>
-    <li>Data has an open license with some Terms of use that are described in the following paragraph</li>
-    <br>
-    <td align="right">&emsp;As stated in the description of the dataset in this <a href="https://data.cityofchicago.org/Transportation/E-Scooter-Trips-2019-Pilot/2kfw-zvte">link</a>.The data has a See Terms of Use clause that leads to the following description  (<a href="https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html">More info</a>), that basically states that the City of Chicago does not take care of any issues regarding any error that is on the data and also that in the case that the data is used on an application it should state the following paragraph &ldquo; This site provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago.  The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site.  The data provided at this site is subject to change at any time.  It is understood that the data provided at this site is being used at one&apos;s own risk &rdquo;   </td>
-  </ul>
-
-  <h3>Resource naming strategy examples:</h3>
-  <ul>
-    Due to the fact that our data concerns only one topic (e-scooter) and is small in itself, we will use a hash (#) to access resources.
-    The URI domain is http://e-scooter.com because it better reflects the theme of our application.
-    <p>Ontological path:</p>
-    <li>Class: http://e-scooter.com/ontology#{className}</li>
-    <li>Property: http://e-scooter.com/ontology#{propertyName}</li>
-    <li>Individuals: 
-      <ul>
-        <li>Trip: http://e-scooter.com/resource/trip/{id}</li>
-        <li>Community: http://e-scooter.com/resource/community/{AreaNumber}</li>
-        <li>Centroid: http://e-scooter.com/resource/centroid/CENT_{CentroidLatitude}%{CentroidLongitude}</li>
-        <li>Location: http://e-scooter.com/resource/location/{CentroidLatitude}_{CentroidLongitude}</li>
-      </ul>
-    </li>
-
-    
-  </ul>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>E-scooter</title>
+        <link rel="icon" type="image/x-icon" href="requirements/styles/assets/sc-logo.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="requirements/styles/css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="analysis.html">E-scooter locator</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Requirements
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <li><a class="dropdown-item" href="requirements/datasetRequirements.html">Dataset</a></li>
+                              <li><a class="dropdown-item" href="requirements/applicationRequirements.html">Application</a></li>
+                            </ul>
+                          </li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="analysis.html">Analysis</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('requirements/styles/assets/img/bg-header.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>E-Scooter Trips</h1>
+                            <span class="subheading">Chicago E-scooter Pilot Program</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Electronic scooter trips taken during the 2019 Chicago pilot program. For more information on the pilot, see <a href="https://www.chicago.gov/scooters">here</a>.</p>
+                        <h2 class="section-heading">Dataset description</h2>
+                        <p>The next table shows the structure of the <i>CSV</i> file of the dataset. Each row of the table describes one of the columns that the file contains and the characteristics of it.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Datatype</th>
+                                    <th scope="col">Description</th>
+                                    <th class="text-center" scope="col">Count</th>
+                                    <th class="text-center" scope="col">Mean</th>
+                                    <th class="text-center" scope="col">Std.</th>
+                                    <th class="text-center" scope="col">Min.</th>
+                                    <th class="text-center" scope="col">25%</th>
+                                    <th class="text-center" scope="col">50%</th>
+                                    <th class="text-center" scope="col">75%</th>
+                                    <th class="text-center" scope="col">Max.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><small>Trip ID</small></th>
+                                    <td><small>Text</small></td>
+                                    <td>
+                                        <small>
+                                            A unique ID for each trip.
+                                        </small>
+                                    </td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Start Time</small></th>
+                                    <td><small>DateTime</small></td>
+                                    <td>
+                                        <small>
+                                            When the trip started, rounded to the nearest hour.
+                                        </small>
+                                    </td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>End Time</small></th>
+                                    <td><small>DateTime</small></td>
+                                    <td>
+                                        <small>
+                                            When the trip ended, rounded to the nearest hour.
+                                        </small>
+                                    </td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Trip Distance</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            Trip distance in meters (divide by 1,609 for miles).
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>71,100</small></td>
+                                    <td class="text-center"><small>16,679.22</small></td>
+                                    <td class="text-center"><small>63,674.1</small></td>
+                                    <td class="text-center"><small>0</small></td>
+                                    <td class="text-center"><small>835</small></td>
+                                    <td class="text-center"><small>2,000</small></td>
+                                    <td class="text-center"><small>3,981</small></td>
+                                    <td class="text-center"><small>64,706,150</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Trip Duration</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            Trip time in seconds.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>71,100</small></td>
+                                    <td class="text-center"><small>947.917</small></td>
+                                    <td class="text-center"><small>1,512.281</small></td>
+                                    <td class="text-center"><small>0</small></td>
+                                    <td class="text-center"><small>253</small></td>
+                                    <td class="text-center"><small>578</small></td>
+                                    <td class="text-center"><small>1,146</small></td>
+                                    <td class="text-center"><small>90,075</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Accuracy</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The approximate level of accuracy, in meters, of the GPS measurements reported by the provider.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>71,100</small></td>
+                                    <td class="text-center"><small>821.7422</small></td>
+                                    <td class="text-center"><small>84169.05</small></td>
+                                    <td class="text-center"><small>0</small></td>
+                                    <td class="text-center"><small>10</small></td>
+                                    <td class="text-center"><small>10</small></td>
+                                    <td class="text-center"><small>152</small></td>
+                                    <td class="text-center"><small>22,187,000</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Start Census Tract</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The Census Tract where the trip started. For privacy, this Census Tract is not shown for some trips.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>15,082</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>268,602.4</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>End Census Tract</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The Census Tract where the trip ended. For privacy, this Census Tract is not shown for some trips.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>15,103</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>265,198.5</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                    <td class="text-center"><small>1.70e+10</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Start Community Area Number</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The Community Area number where the trip started.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>58,531</small></td>
+                                    <td class="text-center"><small>21.592</small></td>
+                                    <td class="text-center"><small>3.428</small></td>
+                                    <td class="text-center"><small>5</small></td>
+                                    <td class="text-center"><small>20</small></td>
+                                    <td class="text-center"><small>22</small></td>
+                                    <td class="text-center"><small>23</small></td>
+                                    <td class="text-center"><small>60</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>End Community Area Number</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The Community Area number where the trip ended.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>58,582</small></td>
+                                    <td class="text-center"><small>21.060</small></td>
+                                    <td class="text-center"><small>4.339</small></td>
+                                    <td class="text-center"><small>4</small></td>
+                                    <td class="text-center"><small>19</small></td>
+                                    <td class="text-center"><small>22</small></td>
+                                    <td class="text-center"><small>23</small></td>
+                                    <td class="text-center"><small>66</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Start Community Area Name</small></th>
+                                    <td><small>Plain text</small></td>
+                                    <td>
+                                        <small>
+                                            The Community Area name where the trip started.
+                                        </small>
+                                    </td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>End Community Area Name</small></th>
+                                    <td><small>Plain text</small></td>
+                                    <td>
+                                        <small>
+                                            The Community Area name where the trip ended.
+                                        </small>
+                                    </td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Start Centroid Latitude</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The latitude of the center of the trip start census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>58,532</small></td>
+                                    <td class="text-center"><small>41.917</small></td>
+                                    <td class="text-center"><small>0.0236</small></td>
+                                    <td class="text-center"><small>41.83</small></td>
+                                    <td class="text-center"><small>41.9</small></td>
+                                    <td class="text-center"><small>41.92</small></td>
+                                    <td class="text-center"><small>41.93</small></td>
+                                    <td class="text-center"><small>41.95</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Start Centroid Longitude</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The longitude of the center of the trip start census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>58,532</small></td>
+                                    <td class="text-center"><small>-87.72</small></td>
+                                    <td class="text-center"><small>0.027</small></td>
+                                    <td class="text-center"><small>-87.828</small></td>
+                                    <td class="text-center"><small>-87.734</small></td>
+                                    <td class="text-center"><small>-87.720</small></td>
+                                    <td class="text-center"><small>-87.705</small></td>
+                                    <td class="text-center"><small>-87.633</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>Start Centroid Location</small></th>
+                                    <td><small>Point</small></td>
+                                    <td>
+                                        <small>
+                                            The location of the center of the trip start census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.
+                                        </small>
+                                    </td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>End Centroid Latitude</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The latitude of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>58,582</small></td>
+                                    <td class="text-center"><small>41.917</small></td>
+                                    <td class="text-center"><small>0.022</small></td>
+                                    <td class="text-center"><small>41.7718</small></td>
+                                    <td class="text-center"><small>41.9</small></td>
+                                    <td class="text-center"><small>41.922</small></td>
+                                    <td class="text-center"><small>41.927</small></td>
+                                    <td class="text-center"><small>41.978</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>End Centroid Longitude</small></th>
+                                    <td><small>Number</small></td>
+                                    <td>
+                                        <small>
+                                            The longitude of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.
+                                        </small>
+                                    </td>
+                                    <td class="text-center"><small>58,582</small></td>
+                                    <td class="text-center"><small>-87.72</small></td>
+                                    <td class="text-center"><small>0.0253</small></td>
+                                    <td class="text-center"><small>-87.82</small></td>
+                                    <td class="text-center"><small>-87.73</small></td>
+                                    <td class="text-center"><small>-87.72</small></td>
+                                    <td class="text-center"><small>-87.70</small></td>
+                                    <td class="text-center"><small>-87.59</small></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><small>End Centroid Location</small></th>
+                                    <td><small>Point</small></td>
+                                    <td>
+                                        <small>
+                                            The location of the center of the trip end census tract or the community area if the census tract has been hidden for privacy. This column will be blank for locations outside Chicago.
+                                        </small>
+                                    </td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                    <td class="text-center">&#9033;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <span class="caption text-muted">Description of the dataset elements</span>
+                        <h2 class="section-heading">Licensing of the Data Source</h2>
+                        <p>Data has an open license with some Terms of use that are described in the following paragraph.</p>
+                        <p>As stated in the description of the dataset in this <a href="https://data.cityofchicago.org/Transportation/E-Scooter-Trips-2019-Pilot/2kfw-zvte">link</a>.The data has a See Terms of Use clause that leads to the following description  (<a href="https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html">More info</a>), that basically states that the City of Chicago does not take care of any issues regarding any error that is on the data and also that in the case that the data is used on an application it should state the following paragraph.</p>
+                        <blockquote class="blockquote">&ldquo; This site provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago.  The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site.  The data provided at this site is subject to change at any time.  It is understood that the data provided at this site is being used at one&apos;s own risk.&rdquo;</blockquote>
+                        <h2 class="section-heading">Resource naming strategy examples</h2>
+                        <p>Due to the fact that our data concerns only one topic (<i>e-scooter trips</i>) and is small in itself, we will use a hash (<i>#</i>) to access the schema (classes and properties). In the case of the instancies or data resources, all of them will be accessed by the prefix <i>/resources/*</i>, and then, depending on the class, an aditional path will be used (trip, community, centroid or location). For this last case, a slash (<i>/</i>) will be used to separate the resources instead of a hash (<i>#</i>). The URI domain is <i>http://e-scooter.com</i> because it better reflects the theme of our application.</p>
+                        <p>The ontological paths defined for our application are the next ones:</p>
+                        <h3>Schema</h3>
+                        <p>
+                            <small>
+                                <ul>
+                                    <li><b>Class:</b> <small><i>http://e-scooter.com/ontology#{className}</i></small></li>
+                                    <li><b>Property:</b> <small><i>http://e-scooter.com/ontology#{propertyName}</i></small></li>
+                                </ul>
+                            </small>
+                        </p>
+                        <h3>Individuals</h3>
+                        <p>
+                            <small>
+                                <ul>
+                                    <li><b>Trip:</b> <small><i>http://e-scooter.com/resource/trip/{id}</i></small></li>
+                                    <li><b>Community:</b> <small><i>http://e-scooter.com/resource/community/{AreaNumber}</i></small></li>
+                                    <li><b>Centroid:</b> <small><i>http://e-scooter.com/resource/centroid/CENT_{Latitude}_{Longitude}</i></small></li>
+                                    <li><b>Location:</b> <small><i>http://e-scooter.com/resource/location/{Latitude}_{Longitude}</i></small></li>
+                                </ul>
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; E-scooter locator 2021</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="requirements/styles/js/scripts.js"></script>
+    </body>
 </html>

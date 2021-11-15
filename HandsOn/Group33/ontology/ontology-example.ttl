@@ -15,7 +15,8 @@
     src:hasEndCentroid <http://e-scooter.com/resources/centroid/CENT_41.95358181896%-87.72345248206659> .
 <http://e-scooter.com/resources/community/16> a src:Community ;
     src:hasAreaNumber "16" ^^xsd:int ;
-    src:hasAreaName "IRVING PARK" ^^xsd:string .
+    src:hasAreaName "IRVING PARK" ^^xsd:string;
+    src:sameAsWikidata <https://wikidata.org/entity/Q3154615> .
 <http://e-scooter.com/resources/centroid/CENT_41.95358181896%-87.72345248206659> a src:Centroid ;
     src:hasLocation <http://e-scooter.com/resources/location/41.95358181896_-87.72345248206659> .
 <http://e-scooter.com/resources/location/41.95358181896_-87.72345248206659> a src:Location ;

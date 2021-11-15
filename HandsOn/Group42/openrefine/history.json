@@ -56,51 +56,6 @@
     "description": "Remove column hora"
   },
   {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "rango_edad",
-    "expression": "grel:value.split(\" \")[1].toNumber()",
-    "onError": "set-to-blank",
-    "newColumnName": "low_age",
-    "columnInsertIndex": 10,
-    "description": "Create column low_age at index 10 based on column rango_edad using expression grel:value.split(\" \")[1].toNumber()"
-  },
-  {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "rango_edad",
-    "expression": "grel:value.split(\" \")[-2].toNumber()",
-    "onError": "set-to-blank",
-    "newColumnName": "high_age",
-    "columnInsertIndex": 10,
-    "description": "Create column high_age at index 10 based on column rango_edad using expression grel:value.split(\" \")[-2].toNumber()"
-  },
-  {
-    "op": "core/column-move",
-    "columnName": "low_age",
-    "index": 10,
-    "description": "Move column low_age to position 10"
-  },
-  {
-    "op": "core/text-transform",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "columnName": "lesividad",
-    "expression": "grel:value.substring(0,-2)",
-    "onError": "keep-original",
-    "repeat": false,
-    "repeatCount": 10,
-    "description": "Text transform on cells in column lesividad using expression grel:value.substring(0,-2)"
-  },
-  {
     "op": "core/text-transform",
     "engineConfig": {
       "facets": [],
@@ -112,32 +67,6 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Text transform on cells in column localizacion using expression grel:value.split(',')[0]"
-  },
-  {
-    "op": "core/text-transform",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "columnName": "estado_meteorológico",
-    "expression": "grel:if(value==null,\"Se desconoce\",value)",
-    "onError": "keep-original",
-    "repeat": false,
-    "repeatCount": 10,
-    "description": "Text transform on cells in column estado_meteorológico using expression grel:if(value==null,\"Se desconoce\",value)"
-  },
-  {
-    "op": "core/text-transform",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "columnName": "estado_meteorológico",
-    "expression": "grel:value.replace(\"LLuvia\",\"Lluvia\")",
-    "onError": "keep-original",
-    "repeat": false,
-    "repeatCount": 10,
-    "description": "Text transform on cells in column estado_meteorológico using expression grel:value.replace(\"LLuvia\",\"Lluvia\")"
   },
   {
     "op": "core/text-transform",
@@ -158,12 +87,66 @@
       "facets": [],
       "mode": "row-based"
     },
-    "columnName": "low_age",
-    "expression": "grel:if(value==null,\"NA\",value)",
+    "columnName": "lesividad",
+    "expression": "value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Text transform on cells in column low_age using expression grel:if(value==null,\"NA\",value)"
+    "description": "Text transform on cells in column lesividad using expression value.toNumber()"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "num_expediente",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "num_expediente",
+    "description": "Blank down cells in column num_expediente"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "num_expediente",
+          "expression": "isBlank(value)",
+          "columnName": "num_expediente",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
   },
   {
     "op": "core/text-transform",
@@ -171,24 +154,47 @@
       "facets": [],
       "mode": "row-based"
     },
-    "columnName": "high_age",
-    "expression": "grel:if(value==null,\"NA\",value)",
+    "columnName": "localizacion",
+    "expression": "jython:return value.replace(\".\",\"\").replace(\"/\",\"\").replace(\" \",\"_\")",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Text transform on cells in column high_age using expression grel:if(value==null,\"NA\",value)"
+    "description": "Text transform on cells in column localizacion using expression jython:return value.replace(\".\",\"\").replace(\"/\",\"\").replace(\" \",\"_\")"
   },
   {
-    "op": "core/column-addition",
+    "op": "core/text-transform",
     "engineConfig": {
       "facets": [],
       "mode": "row-based"
     },
-    "baseColumnName": "num_expediente",
-    "expression": "grel:value+cells[\"tipo_persona\"].value.substring(0,1)+cells[\"sexo\"].value.substring(0,1)+cells[\"lesividad\"].value.substring(0,1)+cells[\"low_age\"].value+cells[\"high_age\"].value",
-    "onError": "set-to-blank",
-    "newColumnName": "idPersonAccident",
-    "columnInsertIndex": 1,
-    "description": "Create column idPersonAccident at index 1 based on column num_expediente using expression grel:value+cells[\"tipo_persona\"].value.substring(0,1)+cells[\"sexo\"].value.substring(0,1)+cells[\"lesividad\"].value.substring(0,1)+cells[\"low_age\"].value+cells[\"high_age\"].value"
+    "columnName": "distrito",
+    "expression": "jython:return value.replace(\".\",\"\").replace(\"/\",\"\").replace(\" \",\"_\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column distrito using expression jython:return value.replace(\".\",\"\").replace(\"/\",\"\").replace(\" \",\"_\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "text",
+          "name": "localizacion",
+          "columnName": "localizacion",
+          "query": "'",
+          "mode": "text",
+          "caseSensitive": false,
+          "invert": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "localizacion",
+    "expression": "jython:return value.replace('\\'', '_')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column localizacion using expression jython:return value.replace('\\'', '_')"
   }
 ]

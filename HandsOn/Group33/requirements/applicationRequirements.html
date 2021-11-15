@@ -1,50 +1,110 @@
 <!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="mockup.css">
-</head>	
-<body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>E-scooter</title>
+        <link rel="icon" type="image/x-icon" href="styles/assets/sc-logo.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="styles/css/mk-styles.css" rel="stylesheet" />
+        <style>
+            .float{
+                position:fixed;
+                width:60px;
+                height:60px;
+                top:40px;
+                left:40px;
+                background-color:#A9A9;
+                color:#FFF;
+                border-radius:50px;
+                text-align:center;
+            }
 
-<div class="container">
-  <img src="woman.jpg" alt="Snow" style="width:100%;opacity: 0.5"></img>
-  <div class="top-left"><h1 style="font-size:60px;">Available Scooter Locator </h1> </div>
-  <div class="left"><p align="justify" style="font-size: 20px;">This application allows you to locate where are <br>  
-  	the closest available scooter to you in the city of chicago <br>
-  based on the information of the dataset of 2019 </p></div>
-
-  
-</div>
-
-<div class="container2">
-	<h1 style="color: blue;font-family: monospace;">Write down your location</h1>
-	<div class="left2"><h2 style="color: blue;font-family: monospace;left: 16px">Description</h2></div>
-	<div class="left3"><p> On this map you will see your location and <br>the scooters available that are close to you </p></div>
-	<div class="left4"> 
-	<form>
-		<input type="text" name="Fname" size="20" value="Enter your Location here">
-	</form>
-	</div>
-
-	<div class="left5">Here the user will introduce his location <br>so that the application can find out where <br>is the closest available scooter</div>
-
-	<div class="right5"><img src ="maps.png" ></div>
-
-	<div class="left6"><p align = "justify" style="font-size: 20px;">Since  the dataset has the information of<br>  
-  	the trips made on 2019 of electric scooters  <br>
-    that is, the location and time when they were taken and left,<br>
-    it is possible to identify what is the closest scooter available <br>
-    <br>
-    As side objectives, would be interesting to deploy an analysis regarding <br>
-    what are the most common routes and the locations that could be <br>
-    added to the available area </p></div>
-
-	<p style="top: 10000px"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-
-	
-  
-</div>
-
-
-
-</body>
+            .my-float{
+                margin-top:22px;
+            }
+        </style>
+    </head>
+    <body style="background-image: url('styles/assets/img/mk-top.jpg');">
+        <!-- Masthead-->
+        <div class="masthead">
+            <div class="masthead-content text-white">
+                <div class="container-fluid px-4 px-lg-0">
+                    <h1 class="fst-italic lh-1 mb-4">Available Scooter Locator</h1>
+                    <p class="mb-5">This application allows you to locate where are the closest available scooter to you in the city of chicago based on the information of the dataset of 2019</p>
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * SB Forms Contact Form * *-->
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- This form is pre-integrated with SB Forms.-->
+                    <!-- To make this form functional, sign up at-->
+                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                    <!-- to get an API token!-->
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <!-- Email address input-->
+                        <div class="row input-group-newsletter">
+                            <div class="col"><input class="form-control" id="text" type="text" placeholder="Enter desired location..." aria-label="Enter desired location..." data-sb-validations="required" /></div>
+                            <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Search</button></div>
+                        </div>
+                        <div class="invalid-feedback mt-2" data-sb-feedback="text:required">A location is required.</div>
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3 mt-2">
+                                <div class="fw-bolder">Location has been found!</div>
+                            </div>
+                        </div>
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error finding location!</div></div>
+                    </form>
+                    <p class="mt-3 text-muted"><small>Here the user will introduce his location so that the application can find out where is the closest available scooter.</small></p>
+                    <a href="../analysis.html" class="float">
+                        <i class="fas fa-arrow-left my-float"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="w-100 position-relative" style="z-index: 100;">
+            <div class="w-100 position-absolute bottom-0 start-0 container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12 bg-dark">
+                        <div class="small text-center text-muted fst-italic">
+                            Since the dataset has the information of the trips made on 2019 of electric scooters that is, the location and time when they were taken and left, it is possible to identify what is the closest scooter available.
+                            <br>
+                            As side objectives, would be interesting to deploy an analysis regarding what are the most common routes and the locations that could be added to the available area.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Social Icons-->
+        <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
+        <div class="social-icons">
+            <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
+                <img src="styles/assets/img/mk-map.png" />
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="styles/js/mk-scripts.js"></script>
+                <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
 </html>

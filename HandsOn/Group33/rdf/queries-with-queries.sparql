@@ -1,0 +1,47 @@
+PREFIX schm: <http://e-scooter.com/ontology#>
+PREFIX inst: <http://e-scooter.com/resources/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Get all the instances on de RDF, with values
+SELECT * WHERE { 
+    ?s ?p ?o
+}
+
+# Get all the instances of type Trip
+SELECT ?insts
+WHERE {
+    ?insts rdf:type schm:Trip
+}
+
+# Get all the comunities properties and values
+SELECT ?com ?prop ?val
+WHERE {
+    ?com rdf:type schm:Community .
+    ?com ?prop ?val
+}
+
+# Get the comunity with number 15
+SELECT ?com ?num
+WHERE {
+    ?com schm:hasAreaNumber ?num .
+    FILTER(xsd:double(?num) = "15"^^xsd:double)
+}
+
+# Get al the classes with 'sameAsWikidata' property and its value
+SELECT ?s ?wiki_link
+WHERE {
+    ?s schm:sameAsWikidata ?wiki_link      
+}
+
+# Get al the communities with wikidata IRI and name
+SELECT ?s ?wiki_link ?name
+WHERE {
+    ?s schm:sameAsWikidata ?wiki_link .
+    ?s schm:hasAreaName ?name     
+}
+
+
+
+

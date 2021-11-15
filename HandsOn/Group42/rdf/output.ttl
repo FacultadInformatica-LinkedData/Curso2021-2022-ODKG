@@ -1,0 +1,129 @@
+@base          <http://helio.linkeddata.es/> .
+<http://bicycleaccidents.org/resource/AVDA_GRAN_VIA_DE_HORTALEZA__GTA_LUIS_ROSALES>
+        a       <http://bicycleaccidents.org/ontology#Street> .
+
+<http://bicycleaccidents.org/resource/AVDA_SANTA_EUGENIA__CALL_REAL_DE_ARGANDA>
+        a       <http://bicycleaccidents.org/ontology#Street> .
+
+<http://bicycleaccidents.org/resource/2019S000132>
+        a       <http://bicycleaccidents.org/ontology#Accident> ;
+        <http://bicycleaccidents.org/ontology#happenedInDistrict>
+                <http://bicycleaccidents.org/resource/VILLA_DE_VALLECAS> ;
+        <http://bicycleaccidents.org/ontology#happenedInStreet>
+                <http://bicycleaccidents.org/resource/AVDA_SANTA_EUGENIA__CALL_REAL_DE_ARGANDA> ;
+        <http://bicycleaccidents.org/ontology#hasAccidentType>
+                "Alcance"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasAge>
+                "De 18 a 20 a��os"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasDate>
+                "2019-03-01T12:45:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://bicycleaccidents.org/ontology#hasInjury>
+                "7"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasNumber>
+                "64"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasPersonType>
+                "Conductor"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasPositiveAlcoholTest>
+                "N"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasSex>
+                "Hombre"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasVehicleType>
+                "Bicicleta"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasWeather>
+                "Despejado"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://bicycleaccidents.org/resource/2019S000036>
+        a       <http://bicycleaccidents.org/ontology#Accident> ;
+        <http://bicycleaccidents.org/ontology#happenedInDistrict>
+                <http://bicycleaccidents.org/resource/HORTALEZA> ;
+        <http://bicycleaccidents.org/ontology#happenedInStreet>
+                <http://bicycleaccidents.org/resource/AVDA_GRAN_VIA_DE_HORTALEZA__GTA_LUIS_ROSALES> ;
+        <http://bicycleaccidents.org/ontology#hasAccidentType>
+                "Colisi��n fronto-lateral"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasAge>
+                "De 70 a 74 a��os"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasDate>
+                "2019-02-01T20:45:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://bicycleaccidents.org/ontology#hasInjury>
+                "3"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasNumber>
+                "65B"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasPersonType>
+                "Conductor"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasPositiveAlcoholTest>
+                "N"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasSex>
+                "Hombre"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasVehicleType>
+                "Bicicleta"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasWeather>
+                "Despejado"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://bicycleaccidents.org/resource/2019S000045>
+        a       <http://bicycleaccidents.org/ontology#Accident> ;
+        <http://bicycleaccidents.org/ontology#happenedInDistrict>
+                <http://bicycleaccidents.org/resource/MONCLOA-ARAVACA> ;
+        <http://bicycleaccidents.org/ontology#happenedInStreet>
+                <http://bicycleaccidents.org/resource/CTRA_DEHESA_DE_LA_VILLA> ;
+        <http://bicycleaccidents.org/ontology#hasAccidentType>
+                "Ca��da"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasAge>
+                "De 15 a 17 a��os"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasDate>
+                "2019-03-01T10:30:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://bicycleaccidents.org/ontology#hasInjury>
+                "2"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasNumber>
+                "1"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasPersonType>
+                "Conductor"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasPositiveAlcoholTest>
+                "N"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasSex>
+                "Hombre"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasVehicleType>
+                "Bicicleta"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasWeather>
+                "Despejado"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://bicycleaccidents.org/resource/MONCLOA-ARAVACA>
+        a       <http://bicycleaccidents.org/ontology#District> .
+
+<http://bicycleaccidents.org/resource/VILLA_DE_VALLECAS>
+        a       <http://bicycleaccidents.org/ontology#District> .
+
+<http://bicycleaccidents.org/resource/2019S000133>
+        a       <http://bicycleaccidents.org/ontology#Accident> ;
+        <http://bicycleaccidents.org/ontology#happenedInDistrict>
+                <http://bicycleaccidents.org/resource/VILLA_DE_VALLECAS> ;
+        <http://bicycleaccidents.org/ontology#happenedInStreet>
+                <http://bicycleaccidents.org/resource/CALL_FELIPE_ALVAREZ> ;
+        <http://bicycleaccidents.org/ontology#hasAccidentType>
+                "Alcance"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasAge>
+                "De 15 a 17 a��os"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasDate>
+                "2019-03-01T14:30:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://bicycleaccidents.org/ontology#hasInjury>
+                "7"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasNumber>
+                "10"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasPersonType>
+                "Conductor"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasPositiveAlcoholTest>
+                "N"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasSex>
+                "Hombre"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasVehicleType>
+                "Bicicleta"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://bicycleaccidents.org/ontology#hasWeather>
+                "Se desconoce"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://bicycleaccidents.org/resource/CALL_FELIPE_ALVAREZ>
+        a       <http://bicycleaccidents.org/ontology#Street> .
+
+<http://bicycleaccidents.org/resource/CTRA_DEHESA_DE_LA_VILLA>
+        a       <http://bicycleaccidents.org/ontology#Street> .
+
+<http://bicycleaccidents.org/resource/HORTALEZA>
+        a       <http://bicycleaccidents.org/ontology#District> .

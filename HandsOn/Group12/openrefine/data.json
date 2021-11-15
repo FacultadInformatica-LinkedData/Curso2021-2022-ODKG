@@ -1,0 +1,1000 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FECHA",
+    "expression": "grel:value.split(\" \")[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column FECHA using expression grel:value.split(\" \")[0]"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FECHA-FIN",
+    "expression": "grel:value.split(\" \")[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column FECHA-FIN using expression grel:value.split(\" \")[0]"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "GRATUITO",
+          "expression": "value",
+          "columnName": "GRATUITO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "1",
+                "l": "1"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "grel:0.0",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PRECIO using expression grel:0.0"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "GRATUITO",
+          "expression": "value",
+          "columnName": "GRATUITO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "0",
+                "l": "0"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "PRECIO",
+          "expression": "value",
+          "columnName": "PRECIO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "grel:N/A",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PRECIO using expression grel:N/A"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "GRATUITO",
+          "expression": "value",
+          "columnName": "GRATUITO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "0",
+                "l": "0"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "PRECIO",
+          "expression": "value",
+          "columnName": "PRECIO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "grel:\"N/A\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PRECIO using expression grel:\"N/A\""
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "LARGA-DURACION",
+    "description": "Remove column LARGA-DURACION"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "GRATUITO",
+          "expression": "value",
+          "columnName": "GRATUITO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "1",
+                "l": "1"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "PRECIO",
+          "expression": "value",
+          "columnName": "PRECIO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": 0,
+                "l": "0.0"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "grel:\"Gratuito\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PRECIO using expression grel:\"Gratuito\""
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "PRECIO",
+          "expression": "value",
+          "columnName": "PRECIO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "N/A",
+                "l": "N/A"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "grel:\"No hay información\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PRECIO using expression grel:\"No hay información\""
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "PRECIO",
+          "expression": "value",
+          "columnName": "PRECIO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Entrada libre",
+                "l": "Entrada libre"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "grel:\"Gratuito\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PRECIO using expression grel:\"Gratuito\""
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "PRECIO",
+          "expression": "grel:value.toLowercase().contains(\"gratuit\") || value.toLowercase().contains(\"libre\")",
+          "columnName": "PRECIO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Actividad gratuita"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Gratuito"
+      }
+    ],
+    "description": "Mass edit cells in column PRECIO"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "PRECIO",
+          "expression": "grel:value.toLowercase().contains(\"gratuit\") || value.toLowercase().contains(\"libre\")",
+          "columnName": "PRECIO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Entrada gratuita "
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Gratuito"
+      }
+    ],
+    "description": "Mass edit cells in column PRECIO"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "PRECIO",
+          "expression": "grel:value.toLowercase().contains(\"libre\")",
+          "columnName": "PRECIO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "grel:\"Gratuito\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PRECIO using expression grel:\"Gratuito\""
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "ID-EVENTO",
+          "expression": "value",
+          "columnName": "ID-EVENTO",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "GRATUITO",
+    "description": "Remove column GRATUITO"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "COORDENADA-X",
+    "description": "Remove column COORDENADA-X"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "COORDENADA-Y",
+    "description": "Remove column COORDENADA-Y"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Column",
+    "description": "Remove column Column"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "AUDIENCIA",
+    "expression": "grel:value.replace(\"/usuario/\",\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column AUDIENCIA using expression grel:value.replace(\"/usuario/\",\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TIPO",
+    "expression": "grel:value.replace(\"/contenido/actividades/\", \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TIPO using expression grel:value.replace(\"/contenido/actividades/\", \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CLASE-VIAL-INSTALACION",
+    "expression": "join ([coalesce(cells['CLASE-VIAL-INSTALACION'].value,''),coalesce(cells['NOMBRE-VIA-INSTALACION'].value,'')],' ')",
+    "onError": "keep-original",
+    "newColumnName": "ADDRESS",
+    "columnInsertIndex": 16,
+    "description": "Create column ADDRESS at index 16 based on column CLASE-VIAL-INSTALACION using expression join ([coalesce(cells['CLASE-VIAL-INSTALACION'].value,''),coalesce(cells['NOMBRE-VIA-INSTALACION'].value,'')],' ')"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "description": "Remove column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "NOMBRE-VIA-INSTALACION",
+    "description": "Remove column NOMBRE-VIA-INSTALACION"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ADDRESS",
+    "expression": "join ([coalesce(cells['ADDRESS'].value,''),coalesce(cells['NUM-INSTALACION'].value,'')],', ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column ADDRESS using expression join ([coalesce(cells['ADDRESS'].value,''),coalesce(cells['NUM-INSTALACION'].value,'')],', ')"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "NUM-INSTALACION",
+    "description": "Remove column NUM-INSTALACION"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LATITUD",
+    "expression": "join ([coalesce(cells['LATITUD'].value,''),coalesce(cells['LONGITUD'].value,'')],',')",
+    "onError": "keep-original",
+    "newColumnName": "COORDINATES",
+    "columnInsertIndex": 20,
+    "description": "Create column COORDINATES at index 20 based on column LATITUD using expression join ([coalesce(cells['LATITUD'].value,''),coalesce(cells['LONGITUD'].value,'')],',')"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "LATITUD",
+    "description": "Remove column LATITUD"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "LONGITUD",
+    "description": "Remove column LONGITUD"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PRECIO",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PRECIO using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ID-EVENTO",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column ID-EVENTO using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TITULO",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TITULO using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DIAS-SEMANA",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DIAS-SEMANA using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DIAS-EXCLUIDOS",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DIAS-EXCLUIDOS using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CONTENT-URL",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CONTENT-URL using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DESCRIPCION",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DESCRIPCION using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FECHA-FIN",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column FECHA-FIN using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "HORA",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column HORA using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "FECHA",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column FECHA using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "URL-INSTALACION",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column URL-INSTALACION using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "NOMBRE-INSTALACION",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column NOMBRE-INSTALACION using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ACCESIBILIDAD-INSTALACION",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column ACCESIBILIDAD-INSTALACION using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "URL-ACTIVIDAD",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column URL-ACTIVIDAD using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TITULO-ACTIVIDAD",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TITULO-ACTIVIDAD using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CODIGO-POSTAL-INSTALACION",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CODIGO-POSTAL-INSTALACION using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO-INSTALACION",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BARRIO-INSTALACION using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DISTRITO-INSTALACION",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DISTRITO-INSTALACION using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ADDRESS",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column ADDRESS using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "TIPO",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column TIPO using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "COORDINATES",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column COORDINATES using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "AUDIENCIA",
+    "expression": "grel:value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column AUDIENCIA using expression grel:value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "ID-EVENTO",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column ID-EVENTO using expression value.toNumber()"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "TITULO",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "III Jornadas de Teatro y Feminismos: Autoras",
+          "III Jornadas de teatro y feminismos: autoras"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "III Jornadas de Teatro y Feminismos: Autoras"
+      },
+      {
+        "from": [
+          "Leyendo cuentos en octubre ?Tranquila Tragaleguas y el Unicornio mágico?, de 6 a 9 años",
+          "Leyendo cuentos en octubre ?Tranquila Tragaleguas? y ?El Unicornio mágico?, de 6 a 9 años"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Leyendo cuentos en octubre ?Tranquila Tragaleguas y el Unicornio mágico?, de 6 a 9 años"
+      },
+      {
+        "from": [
+          "Magia Mental. Presentación mágica de alumnos",
+          "Magia Mental. presentación mágica de alumnos"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Magia Mental. Presentación mágica de alumnos"
+      },
+      {
+        "from": [
+          "Magia Impromptu. Historia de la Magia",
+          "Magia impromptu. Historia de la Magia"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Magia Impromptu. Historia de la Magia"
+      },
+      {
+        "from": [
+          "Devórate",
+          "Devórate."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Devórate"
+      },
+      {
+        "from": [
+          "El Mejor de los Sentidos",
+          "El mejor de los sentidos"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "El Mejor de los Sentidos"
+      },
+      {
+        "from": [
+          "Luz de Gas",
+          "Luz de gas"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Luz de Gas"
+      },
+      {
+        "from": [
+          "El Reino de la Alegría",
+          "El reino de la alegría"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "El Reino de la Alegría"
+      },
+      {
+        "from": [
+          "BRUSCO CLOWN",
+          "Brusco Clown"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BRUSCO CLOWN"
+      }
+    ],
+    "description": "Mass edit cells in column TITULO"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "DESCRIPCION",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Conferencia. Ciclo El Madrid de los Austrias (Siglos XVi-XVII)",
+          "Conferencia. Ciclo El Madrid de los Austrias (Siglos XVI-XVII)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Conferencia. Ciclo El Madrid de los Austrias (Siglos XVi-XVII)"
+      },
+      {
+        "from": [
+          "La IX edición de Madrid con Otra Mirada tiene como protagonista a Sabatini y el museo rinde homenaje al arquitecto invitando a conocerle en el recorrido guiado 'Sabatini en Madrid: un personaje a causa de las Artes'. El recorrido comenzará en las salas del siglo XVII con el fin de comparar, al pasar a las salas del siglo XVIII, cómo nuestra ciudad, de tener una fisonomía barroca y poco evolucionada, se fue transformando en la ciudad ilustrada del siglo XVIII, siguiendo el proyecto urbanístico de la nueva dinastía borbónica, empresa para la que contaron con prestigiosos urbanistas, ingenieros o arquitectos como Sabatini, que diseñó y ejecutó importantes novedades para convertir a Madrid en una urbe moderna, elegante, monumental y agradable para vivir. Este perfil urbano y monumental de la ciudad se ha mantenido hasta la actualidad, y en él destacan hitos tan importantes como la Puerta de Alcalá o la Puerta del Jardín Botánico, entre otros muchos, que convirtieron a Sabatini en pieza fundamental para la configuración de aquella nueva ciudad que imaginó Carlos III en el siglo XVIII.",
+          "La IX edición de Madrid con otra Mirada tiene como protagonista a Sabatini y el museo rinde homenaje al arquitecto invitando a conocerle en el recorrido guiado 'Sabatini en Madrid: un personaje a causa de las Artes'. El recorrido comenzará en las salas del siglo XVII con el fin de comparar, al pasar a las salas del siglo XVIII, cómo nuestra ciudad, de tener una fisonomía barroca y poco evolucionada, se fue transformando en la ciudad ilustrada del siglo XVIII, siguiendo el proyecto urbanístico de la nueva dinastía borbónica, empresa para la que contaron con prestigiosos urbanistas, ingenieros o arquitectos como Sabatini, que diseñó y ejecutó importantes novedades para convertir a Madrid en una urbe moderna, elegante, monumental y agradable para vivir. Este perfil urbano y monumental de la ciudad se ha mantenido hasta la actualidad, y en él destacan hitos tan importantes como la Puerta de Alcalá o la Puerta del Jardín Botánico, entre otros muchos, que convirtieron a Sabatini en pieza fundamental para la configuración de aquella nueva ciudad que imaginó Carlos III en el siglo XVIII."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "La IX edición de Madrid con Otra Mirada tiene como protagonista a Sabatini y el museo rinde homenaje al arquitecto invitando a conocerle en el recorrido guiado 'Sabatini en Madrid: un personaje a causa de las Artes'. El recorrido comenzará en las salas del siglo XVII con el fin de comparar, al pasar a las salas del siglo XVIII, cómo nuestra ciudad, de tener una fisonomía barroca y poco evolucionada, se fue transformando en la ciudad ilustrada del siglo XVIII, siguiendo el proyecto urbanístico de la nueva dinastía borbónica, empresa para la que contaron con prestigiosos urbanistas, ingenieros o arquitectos como Sabatini, que diseñó y ejecutó importantes novedades para convertir a Madrid en una urbe moderna, elegante, monumental y agradable para vivir. Este perfil urbano y monumental de la ciudad se ha mantenido hasta la actualidad, y en él destacan hitos tan importantes como la Puerta de Alcalá o la Puerta del Jardín Botánico, entre otros muchos, que convirtieron a Sabatini en pieza fundamental para la configuración de aquella nueva ciudad que imaginó Carlos III en el siglo XVIII."
+      },
+      {
+        "from": [
+          "Brusco de nombre, que no de carácter, es la nueva estrella nacida del público mismo. Brusco es un divertido personaje, a veces portando una maleta mágica, otras veces con otros maravillosos elementos. ¿Qué nos traerá en esta ocasión Brusco?  Edad recomendada: a partir de 3 años.",
+          "Brusco de nombre, que no de carácter, es la nueva estrella nacida del público mismo. Brusco es un divertido personaje, a veces portando una maleta mágica, otras veces con otros maravillosos elementos? ¿Qué nos traerá en esta ocasión Brusco? Edad recomendada:  A partir de 3 años"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Brusco de nombre, que no de carácter, es la nueva estrella nacida del público mismo. Brusco es un divertido personaje, a veces portando una maleta mágica, otras veces con otros maravillosos elementos. ¿Qué nos traerá en esta ocasión Brusco?  Edad recomendada: a partir de 3 años."
+      },
+      {
+        "from": [
+          "Tranquila Tragaleguas y el Unicornio mágico   Edades: De 6 a 9 años. Apúntate a este divertido taller y a través de la pantalla ¡volveremos a leer y a divertirnos juntos!  Envía el formulario seleccionando la fecha de la actividad. La biblioteca se pondrá en contacto contigo para proporcionarte el enlace que deberás activar en tu ordenador, tablet o movil. La conexión se realizará a través de la aplicación ZOOM.  El máximo por sesión son 15 plazas, se respetará el orden de inscripción.",
+          "Tranquila Tragaleguas y el Unicornio mágico  Edades: De 6 a 9 años. Apúntate a este divertido taller y a través de la pantalla ¡volveremos a leer y a divertirnos juntos!  Envía el formulario seleccionando la fecha de la actividad. La biblioteca se pondrá en contacto contigo para proporcionarte el enlace que deberás activar en tu ordenador, tablet o movil. La conexión se realizará a través de la aplicación ZOOM.  El máximo por sesión son 15 plazas, se respetará el orden de inscripción."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Tranquila Tragaleguas y el Unicornio mágico   Edades: De 6 a 9 años. Apúntate a este divertido taller y a través de la pantalla ¡volveremos a leer y a divertirnos juntos!  Envía el formulario seleccionando la fecha de la actividad. La biblioteca se pondrá en contacto contigo para proporcionarte el enlace que deberás activar en tu ordenador, tablet o movil. La conexión se realizará a través de la aplicación ZOOM.  El máximo por sesión son 15 plazas, se respetará el orden de inscripción."
+      }
+    ],
+    "description": "Mass edit cells in column DESCRIPCION"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "TITULO-ACTIVIDAD",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Devórate",
+          "Devórate."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Devórate"
+      }
+    ],
+    "description": "Mass edit cells in column TITULO-ACTIVIDAD"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "BARRIO-INSTALACION",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "LOS JERONIMOS",
+          "LOS JERÓNIMOS"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "LOS JERONIMOS"
+      }
+    ],
+    "description": "Mass edit cells in column BARRIO-INSTALACION"
+  }
+]

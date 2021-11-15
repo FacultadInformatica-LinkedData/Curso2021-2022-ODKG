@@ -1,0 +1,89 @@
+# Prefixes
+PREFIX : <http://bicycleaccidents.org/resource/>.
+PREFIX prop: <http://bicycleaccidents.org/ontology#>.
+
+###################################################################
+Displays every different values in a column (except of AccidentID)
+###################################################################
+# SELECTs all possible Age Ranges
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasAge ?obj
+}
+
+# SELECTs all possible Dates
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasDate ?obj
+}
+
+# SELECTs all possible Weathers
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasWeather ?obj
+}
+
+# SELECTs all possible Types of accident
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasAccidentType ?obj
+}
+
+# SELECTs all possible Districts
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:happenedInDistrict ?obj
+}
+
+# SELECTs all possible Types of Injuries
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasInjury ?obj
+}
+
+# SELECTs all possible Numbers
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasNumber ?obj
+}
+
+# SELECTs all possible Types of person
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasPersonType ?obj
+}
+
+# SELECTs all possible Results of alcohol test
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasPositiveAlcoholTest ?obj
+}
+
+# SELECTs all possible Genders
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasSex ?obj
+}
+
+# SELECTs all possible Streets
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:happenedInStreet ?obj
+}
+
+# SELECTs all possible Vehicle types
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasVehicleType ?obj
+}
+
+###################################################################
+Some simple queries
+###################################################################
+# Shows streets where a woman was involved in an accident which was "Despejado"
+SELECT DISTINCT ?street
+WHERE{
+  ?id prop:hasWeather "Despejado".
+  ?id prop:hasSex "Mujer".
+  ?id prop:happenedInStreet ?street
+}

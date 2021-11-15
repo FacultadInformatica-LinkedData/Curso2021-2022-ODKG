@@ -1,0 +1,27 @@
+PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema#
+PREFIX vocab: http://opendatagroup03.com/smartbins/ontology/ont#
+
+## 1. Get all the recycle bins and its location
+SELECT ?rb ?loc
+WHERE {
+    ?rb a vocab:RecycleBin
+    ?loc a vocab:Location
+}
+
+## 2. Order Recycle Bins by Capacity  #####
+
+SELECT DISTINCT ?rb ?cap
+WHERE {
+    ?rb vocab:hasCapacity ?cap
+}
+ORDER BY ?cap
+
+
+## 3. Get all the recycle bins that have more than 5 of Capacity
+SELECT DISTINCT ?rb ?state
+WHERE {
+?rb vocab:hasStatus ?state
+FILTER(?state = "OK") 
+
+}

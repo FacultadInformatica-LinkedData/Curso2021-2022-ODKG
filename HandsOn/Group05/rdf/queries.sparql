@@ -1,0 +1,15 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://groupfive.edu/kg/ontology/>
+
+SELECT DISTINCT ?b
+WHERE{
+    ?b rdf:type dbo:Event.
+    ?b dbo:price "free". 
+    ?b dbo:startingDate "23/10/2021 00:00". 
+}
+
+SELECT DISTINCT ?b
+WHERE {
+    ?b rdf:type dbo:Facilities.
+    ?b dbo:address "CALLE CAMARENA 10 ALUCHE 28047".
+}

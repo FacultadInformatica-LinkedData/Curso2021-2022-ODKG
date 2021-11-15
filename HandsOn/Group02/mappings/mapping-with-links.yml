@@ -1,0 +1,80 @@
+prefixes:
+  rr: http://www.w3.org/ns/r2rml#
+  foaf: http://xmlns.com/foaf/0.1/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  rev: http://purl.org/stuff/rev#
+  schema: http://schema.org/
+  dct: http://purl.org/dc/terms/
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  vocab: http://www.group02.org/pd/ontology/PedestriansMadrid#
+  owl: http://www.w3.org/2002/07/owl#
+
+mappings:
+    TriplesMap1:
+        sources:
+        - [MEASUREMENTS-updated.csv~csv]
+        s: http://group02.org/pd/resource/Measurement/Measurement_$(measurement_id)
+        po:
+        - [a, vocab:Measurement]
+        - [vocab:hasPedestrians, $(Pedestrians), xsd:integer]
+        - [vocab:hasDate, $(Date), xsd:dateTime]
+        - [rdfs:label, Measurement_$(measurement_id)]
+        - p: vocab:isLocated
+          o:
+          - mapping: TriplesMap2
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(measurement_point_id)]
+                - [str2, $(measurement_point_id)]
+
+    TriplesMap2:
+        sources:
+        - [MEASUREMENT_POINTS-updated.csv~csv]
+        s: http://group02.org/pd/resource/MeasurementPoint/$(measurement_point_id)
+        po:
+        - [a, vocab:MeasurementPoint]
+        - [vocab:hasLatitude, $(Latitude), xsd:decimal]
+        - [vocab:hasLongitude, $(Longitude), xsd:decimal]
+        - [vocab:hasNumber, $(Number), xsd:integer]
+        - [vocab:hasObservation, $(Comments)]
+        - [vocab:hasPostCode, $(Post code), xsd:integer]
+        - [rdfs:label, $(measurement_point_id)]
+        - p: vocab:hasStreet
+          o:
+          - mapping: TriplesMap3
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(Street short name)]
+                - [str2, $(Street short name)]
+
+    TriplesMap3:
+        sources:
+        - [STREETS-updated-with-links.csv~csv]
+        s: http://group02.org/pd/resource/Street/$(Street short name)
+        po:
+        - [a, vocab:Street]
+        - [owl:sameAs, $(same_as_wikidata_street)~iri]
+        - [rdfs:label, $(Street full name)]
+        - p: vocab:hasDistrict
+          o:
+          - mapping: TriplesMap4
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(District Number)]
+                - [str2, $(District Number)]
+
+    TriplesMap4:
+        sources:
+        - [DISTRICTS-updated-with-links.csv~csv]
+        s: http://group02.org/pd/resource/District/$(District full name)
+        po:
+        - [a, vocab:District]
+        - [vocab:hasDistrictNumber, $(District Number), xsd:integer]
+        - [owl:sameAs, $(same_as_wikidata_district)~iri]
+        - [rdfs:label, $(District full name)]

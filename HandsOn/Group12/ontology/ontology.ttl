@@ -9,6 +9,18 @@
 <https://data.eventsatmadrid.org/ontology#> rdf:type owl:Ontology .
 
 #################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#time
+xsd:time rdf:type rdfs:Datatype .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
@@ -24,16 +36,16 @@
           rdfs:range :Facility .
 
 
-###  https://data.eventsatmadrid.org/ontology#isLocatedAt
-:isLocatedAt rdf:type owl:ObjectProperty ;
-             rdfs:domain :Facility ;
-             rdfs:range :Neighborhood .
-
-
 ###  https://data.eventsatmadrid.org/ontology#isInDistrict
 :isInDistrict rdf:type owl:ObjectProperty ;
               rdfs:domain :Neighborhood ;
               rdfs:range :District .
+
+
+###  https://data.eventsatmadrid.org/ontology#isLocatedAt
+:isLocatedAt rdf:type owl:ObjectProperty ;
+             rdfs:domain :Facility ;
+             rdfs:range :Neighborhood .
 
 
 #################################################################
@@ -44,6 +56,12 @@
 :hasAccessibility rdf:type owl:DatatypeProperty ;
                   rdfs:domain :Facility ;
                   rdfs:range xsd:string .
+
+
+###  https://data.eventsatmadrid.org/ontology#hasCoordinates
+:hasCoordinates rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Facility ;
+                rdfs:range xsd:string .
 
 
 ###  https://data.eventsatmadrid.org/ontology#hasDays
@@ -58,21 +76,22 @@
                 rdfs:range xsd:string .
 
 
+###  https://data.eventsatmadrid.org/ontology#hasExcludedDays
+:hasExcludedDays rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Event ;
+                 rdfs:range xsd:string .
+
+
 ###  https://data.eventsatmadrid.org/ontology#hasFinishDate
 :hasFinishDate rdf:type owl:DatatypeProperty ;
                rdfs:domain :Event ;
-               rdfs:range xsd:dateTime .
+               rdfs:range xsd:date .
 
 
 ###  https://data.eventsatmadrid.org/ontology#hasHour
 :hasHour rdf:type owl:DatatypeProperty ;
          rdfs:domain :Event ;
-         rdfs:range xsd:dateTimeStamp .
-
-
-###  https://data.eventsatmadrid.org/ontology#hasName
-:hasName rdf:type owl:DatatypeProperty ;
-         rdfs:range xsd:string .
+         rdfs:range xsd:time .
 
 
 ###  https://data.eventsatmadrid.org/ontology#hasPostalCode
@@ -87,39 +106,16 @@
           rdfs:range xsd:string .
 
 
-###  https://data.eventsatmadrid.org/ontology#hasStartDate
-:hasStartDate rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Event ;
-              rdfs:range xsd:dateTime .
-
-
-###  https://data.eventsatmadrid.org/ontology#hasType
-:hasType rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Event ;
-         rdfs:range xsd:string .
-
-
-###  https://data.eventsatmadrid.org/ontology#hasURL
-:hasURL rdf:type owl:DatatypeProperty ;
-        rdfs:range xsd:anyURI .
-
-
-###  https://data.eventsatmadrid.org/ontology#hasCoordinates
-:hasCoordinates rdf:type owl:DatatypeProperty ;
-                rdfs:domain :Facility ;
-                rdfs:range xsd:string .
-
-
-###  https://data.eventsatmadrid.org/ontology#hasExcludedDays
-:hasExcludedDays rdf:type owl:DatatypeProperty ;
-                 rdfs:domain :Event ;
-                 rdfs:range xsd:string .
-
-
 ###  https://data.eventsatmadrid.org/ontology#hasScheduleURL
 :hasScheduleURL rdf:type owl:DatatypeProperty ;
                 rdfs:domain :Facility ;
                 rdfs:range xsd:anyURI .
+
+
+###  https://data.eventsatmadrid.org/ontology#hasStartDate
+:hasStartDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Event ;
+              rdfs:range xsd:date .
 
 
 ###  https://data.eventsatmadrid.org/ontology#hasStreetAddress
@@ -138,6 +134,17 @@
 :hasTitle rdf:type owl:DatatypeProperty ;
           rdfs:domain :Event ;
           rdfs:range xsd:string .
+
+
+###  https://data.eventsatmadrid.org/ontology#hasType
+:hasType rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Event ;
+         rdfs:range xsd:string .
+
+
+###  https://data.eventsatmadrid.org/ontology#hasURL
+:hasURL rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:anyURI .
 
 
 #################################################################

@@ -1,48 +1,43 @@
-@prefix : <http://www.group02.org/pd/ontology/PedestriansMadrid> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.group02.org/pd/ontology/PedestriansMadrid#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.group02.org/pd/ontology/PedestriansMadrid> .
+@base <http://www.group02.org/pd/ontology/PedestriansMadrid#> .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://www.group02.org/pd/resource/District#Centro
-<http://www.group02.org/pd/resource/District#Centro> rdf:type owl:NamedIndividual ,
-                                                              :District ;
-                                                     :hasDistrictNumber 1 ;
-                                                     rdfs:label "Centro" .
+###  http://www.group02.org/pd/resource/Measurement/Measurement_1
+<http://www.group02.org/pd/resource/Measurement/Measurement_1> rdf:type :Measurement ;
+                                                               :isLocated <http://www.group02.org/pd/resource/MeasurementPoint/PERM_PEA08_PM01> ;
+                                                               :hasDate "2019-09-01T00:00:00Z"^^xsd:dateTime ;
+                                                               :hasPedestrians "535"^^xsd:integer ;
+                                                               rdfs:label "Measurement_1" .
 
 
-###  http://www.group02.org/pd/resource/Measurement#PERM_PEA08_PM01_01_09_2019_00_00
-<http://www.group02.org/pd/resource/Measurement#PERM_PEA08_PM01_01_09_2019_00_00> rdf:type owl:NamedIndividual ,
-                                                                                           :Measurement ;
-                                                                                  :isLocated <http://www.group02.org/pd/resource/MeasurementPoint#PERM_PEA08_PM01> ;
-                                                                                  :hasDate "2019-09-01T00:00:00"^^xsd:dateTime ;
-                                                                                  :hasPedestrians 535 .
-
-
-###  http://www.group02.org/pd/resource/MeasurementPoint#PERM_PEA08_PM01
-<http://www.group02.org/pd/resource/MeasurementPoint#PERM_PEA08_PM01> rdf:type owl:NamedIndividual ,
-                                                                               :MeasurementPoint ;
-                                                                      :hasStreet <http://www.group02.org/pd/resource/Street#GranVia> ;
-                                                                      :hasLatitude 40.4202703 ;
-                                                                      :hasLongitude -3.704325575 ;
-                                                                      :hasNumber 34 ;
+###  http://www.group02.org/pd/resource/MeasurementPoint/PERM_PEA08_PM01
+<http://www.group02.org/pd/resource/MeasurementPoint/PERM_PEA08_PM01> rdf:type :MeasurementPoint ;
+                                                                      :hasStreet <http://www.group02.org/pd/resource/Street/GranVia> ;
+                                                                      :hasLatitude "40.4202703"^^xsd:decimal ;
+                                                                      :hasLongitude "-3.704325575"^^xsd:decimal ;
+                                                                      :hasNumber "34"^^xsd:integer ;
                                                                       :hasObservation "Acera Pares" ;
-                                                                      :hasPostCode 28013 ;
-                                                                      :id "PERM_PEA08_PM01" .
+                                                                      :hasPostCode "28013"^^xsd:integer ;
+                                                                      rdfs:label "PERM_PEA08_PM01" .
 
 
-###  http://www.group02.org/pd/resource/Street#GranVia
-<http://www.group02.org/pd/resource/Street#GranVia> rdf:type owl:NamedIndividual ,
-                                                             :Street ;
-                                                    :hasDistrict <http://www.group02.org/pd/resource/District#Centro> ;
+###  http://www.group02.org/pd/resource/Street/GranVia
+<http://www.group02.org/pd/resource/Street/GranVia> rdf:type :Street ;
+                                                    :hasDistrict <http://www.group02.org/pd/resource/District/Centro> ;
                                                     rdfs:label "Gran Vía" .
 
+
+###  http://www.group02.org/pd/resource/District/Centro
+<http://www.group02.org/pd/resource/District/Centro> rdf:type :District ;
+                                                     :hasDistrictNumber "1"^^xsd:integer ;
+                                                     rdfs:label "Centro" .
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

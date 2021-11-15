@@ -1,0 +1,46 @@
+prefixes:
+  rr: http://www.w3.org/ns/r2rml#
+  foaf: http://xmlns.com/foaf/0.1/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  rev: http://purl.org/stuff/rev#
+  schema: http://schema.org/
+  dct: http://purl.org/dc/terms/
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  vocab: http://opendatagroup03.com/smartbins/ontology/ont#
+  owl: http://www.w3.org/2002/07/owl#
+
+  
+mappings:
+  binMap:
+    sources:
+      - [./data/binProperties.csv~csv]
+    s: http://opendatagroup03.com/smartbins/resource/bin/$(Bid)
+    po:
+      - [a, vocab:RecycleBin]
+      - [vocab:hasCapacity,$(nivelLlenado),xsd:integer]
+      - [vocab:residueType,$(tipoResiduo),xsd:string]
+      - [vocab:hasStatus,$(estado),xsd:string]
+      - [vocab:lastUpdate,$(fecha),xsd:dateTime]
+      - p: vocab:isLocatedIn
+        o:
+          mapping: locationMap
+          condition:
+            function: equal
+            parameters:
+            - [str1, $(Bid)]
+            - [str2, $(Lid)]
+
+  locationMap:
+    sources:
+      - [./data/locationProperties.csv~csv]
+    s: http://opendatagroup03.com/smartbins/resource/location/$(Lid)
+    po:
+      - [a, vocab:Location]
+      - [vocab:hasAddress,$(direccion),xsd:string]
+      - [vocab:latitude,$(latitud),xsd:float]
+      - [vocab:longitude,$(longitud),xsd:float]
+
+

@@ -1,0 +1,119 @@
+prefixes:
+  rr: <http://www.w3.org/ns/r2rml#>
+  rml: <http://semweb.mmlab.be/ns/rml#>
+  ql: <http://semweb.mmlab.be/ns/ql#>
+  transit: <http://vocab.org/transit/terms/>
+  xsd: <http://www.w3.org/2001/XMLSchema#>
+  grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#>
+  fnml: <http://semweb.mmlab.be/ns/fnml#>
+  fno: <https://w3id.org/function/ontology#>
+  foaf: <http://xmlns.com/foaf/0.1/>
+  wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+  vocab: <http://e-scooter.com/ontology#>
+
+mappings:
+  trip:
+    sources:
+      - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
+    s: http://e-scooter.com/resources/trip/$(TripID)
+    po:
+      - [a, vocab:Trip]
+      - [vocab:hasStartTime,$(StartTime),xsd:dateTime]
+      - [vocab:hasEndTime,$(EndTime),xsd:dateTime]
+      - [vocab:hasTripDistance,$(TripDistance),xsd:double]
+      - [vocab:hasTripDuration,$(TripDuration),xsd:double]
+      - [vocab:hasAccuracy,$(Accuracy),xsd:double]
+      - [vocab:hasStartCensusTract,$(StartCensusTract),xsd:double]
+      - [vocab:hasEndCensusTract,$(EndCensusTract),xsd:double]
+      - p: vocab:hasStartCommunity
+        o:
+          mapping: startcom
+          condition: equal
+          parameters: 
+            - [str1, $(TripID)]
+            - [str2, $(TripID)]
+      - p: vocab:hasEndCommunity
+        o:
+          mapping: endcom
+          condition: equal
+          parameters: 
+            - [str1, $(TripID)]
+            - [str2, $(TripID)]
+      - p: vocab:hasStartCentroid
+        o:
+          mapping: startcentroid
+          condition: equal
+          parameters: 
+            - [str1, $(TripID)]
+            - [str2, $(TripID)]
+      - p: vocab:hasEndCentroid
+        o:
+          mapping: endcentroid
+          condition: equal
+          parameters: 
+            - [str1, $(TripID)]
+            - [str2, $(TripID)]
+
+  startcom:
+    sources:
+      - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
+    s: http://e-scooter.com/resources/community/$(StartCommunityAreaNumber)
+    po:
+      - [a, vocab:Community]
+      - [vocab:hasAreaNumber,$(StartCommunityAreaNumber),xsd:double]
+      - [vocab:hasAreaName,$(StartCommunityAreaName),xsd:string]
+  
+  endcom:
+    sources:
+      - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
+    s: http://e-scooter.com/resources/community/$(EndCommunityAreaNumber)
+    po:
+      - [a, vocab:Community]
+      - [vocab:hasAreaNumber,$(EndCommunityAreaNumber),xsd:double]
+      - [vocab:hasAreaName,$(EndCommunityAreaName),xsd:string]
+  
+  startcentroid:
+    sources:
+      - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
+    s: http://e-scooter.com/resources/centroid/CENT_$(StartCentroidLatitude)_$(StartCentroidLongitude)
+    po:
+      - [a, vocab:Centroid]
+      - p: vocab:hasLocation
+        o:
+          mapping: startloc
+          condition: equal
+          parameters: 
+            - [str1, $(TripID)]
+            - [str2, $(TripID)]
+  
+  endcentroid:
+    sources:
+      - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
+    s: http://e-scooter.com/resources/centroid/CENT_$(EndCentroidLatitude)_$(EndCentroidLongitude)
+    po:
+      - [a, vocab:Centroid]
+      - p: vocab:hasLocation
+        o:
+          mapping: endloc
+          condition: equal
+          parameters: 
+            - [str1, $(Trip ID)]
+            - [str2, $(Trip ID)]
+  
+  startloc:
+    sources:
+      - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
+    s: http://e-scooter.com/resources/location/$(StartCentroidLatitude)_$(StartCentroidLongitude)
+    po:
+      - [a, vocab:Location]
+      - [vocab:hasLatitude,$(StartCentroidLatitude),xsd:double]
+      - [vocab:hasLongitude,$(StartCentroidLongitude),xsd:double]
+  
+  endloc:
+    sources:
+      - [./data/E-Scooter_Trips_2019_sample_10_percent-updated.csv~csv]
+    s: http://e-scooter.com/resources/location/$(EndCentroidLatitude)_$(EndCentroidLongitude)
+    po:
+      - [a, vocab:Location]
+      - [vocab:hasLatitude,$(EndCentroidLatitude),xsd:double]
+      - [vocab:hasLongitude,$(EndCentroidLongitude),xsd:double]

@@ -1,0 +1,114 @@
+# 1.- All existing streets with their label and the district they belong to
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?street ?streetName ?district WHERE {
+  ?street rdf:type ont:Street.
+  ?street rdfs:label ?streetName.
+  ?street ont:hasDistrict ?district
+}
+
+# 2.- All existing districts
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?district ?districtName WHERE {
+  ?district rdf:type ont:District.
+  ?district rdfs:label ?districtName
+}
+
+# 3.- All existing measurement points and their information
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?measurement_point ?label ?street ?number ?postCode ?obs ?latitude ?longitude WHERE {
+  ?measurement_point rdf:type ont:MeasurementPoint.
+  ?measurement_point rdfs:label ?label.
+  ?measurement_point ont:hasStreet ?street.
+  ?measurement_point ont:hasNumber ?number.
+  ?measurement_point ont:hasPostCode ?postCode.
+  ?measurement_point ont:hasObservation ?obs.
+  ?measurement_point ont:hasLatitude ?latitude.
+  ?measurement_point ont:hasLongitude ?longitude
+}
+
+# 4.- All measurement points and the amount of measurements associated to each one
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?measurement_point (COUNT(?measurement) AS ?nMeasurements) WHERE  {
+  ?measurement_point rdf:type ont:MeasurementPoint.
+  ?measurement ont:isLocated ?measurement_point.
+} GROUP BY ?measurement_point
+
+# 5.- Minimum and maximum number of pedestrians for a single measurement
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT (MAX(?pedestrians) AS ?max) (MIN(?pedestrians) AS ?min) WHERE  {
+  ?measurement rdf:type ont:Measurement
+  ?measurement ont:hasPedestrians ?pedestrians.
+}
+
+# 6.- Amount of measurements
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT (COUNT(*) AS ?nMeasurements) WHERE  {
+  ?measurement rdf:type ont:Measurement.
+}
+
+# 7.- All districts and the amount of measurements associated to each one
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?district (COUNT(*) AS ?nMeasurements) WHERE  {
+  ?measurement ont:isLocated ?measurement_point.
+  ?measurement_point ont:hasStreet ?street.
+  ?street ont:hasDistrict ?district.
+  ?district rdf:type ont:District.
+} GROUP BY ?district
+
+# 8.- All streets and the amount of measurements associated to each one
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#
+SELECT ?street (COUNT(*) AS ?nMeasurements) WHERE  {
+  ?measurement ont:isLocated ?measurement_point.
+  ?measurement_point ont:hasStreet ?street.
+  ?street rdf:type ont:Street.
+} GROUP BY ?street
+
+# 9.- First 10 measurements with their info
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?measurement ?date ?pedestrians ?measurement_point ?label WHERE  {
+  ?measurement rdf:type ont:Measurement.
+  ?measurement ont:hasDate ?date.
+  ?measurement ont:hasPedestrians ?pedestrians.
+  ?measurement ont:isLocated ?measurement_point.
+  ?measurement rdfs:label ?label.
+} LIMIT 10
+
+# 10.- Date of the latest measurement
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?date WHERE {
+  ?measurement rdf:type ont:Measurement.
+  ?measurement ont:hasDate ?date.
+} ORDER BY DESC(?date) LIMIT 1
+
+# 11.- Date of the oldest measurement
+
+PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?date WHERE {
+  ?measurement rdf:type ont:Measurement.
+  ?measurement ont:hasDate ?date.
+} ORDER BY ASC(?date) LIMIT 1

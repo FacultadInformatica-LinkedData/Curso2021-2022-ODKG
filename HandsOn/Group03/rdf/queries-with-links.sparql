@@ -1,0 +1,36 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX vocab: <http://opendatagroup03.com/smartbins/ontology/ont#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+
+# 1. Get all the links of the districts
+
+SELECT ?x ?link
+WHERE {
+    ?x owl:sameAs ?link .
+    } LIMIT 100
+
+
+# 2. Get all the recycle bins that are located in Vicálvaro
+
+SELECT DISTINCT ?rb ?dis
+WHERE {
+    ?rb vocab:isLocatedIn ?loc .
+    ?loc vocab:isInDistrict ?dis .
+    ?dis owl:sameAs <https://www.wikidata.org/wiki/Q589403>
+    } LIMIT 100
+
+
+# 3. Get all the recycle bins that have more than 5 of capacity and are located in
+# Ciudad Lineal district
+
+SELECT DISTINCT ?rb ?cap
+WHERE
+{
+	?rb vocab:isLocatedIn ?loc .
+	?loc vocab:isInDistrict ?dis .
+	?dis owl:sameAs <https://www.wikidata.org/wiki/Q1763694> .
+	?rb vocab:hasCapacity ?cap .
+	FILTER(?cap > " 5 "^^<http://www.w3.org/2001/XMLSchema#integer>)
+} 

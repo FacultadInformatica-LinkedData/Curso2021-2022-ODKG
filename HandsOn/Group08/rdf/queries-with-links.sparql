@@ -1,0 +1,38 @@
+
+PREFIX ns: <http://pharmacies.odkg.es/group08/ontology/ppg8#>.
+PREFIX owl: <http://www.w3.org/2002/07/owl#>.
+
+
+# Get all the pharmacies from municipality of Madrid
+SELECT DISTINCT ?pharmacy
+WHERE {
+    ?pharmacy ns:hasAddress ?address.
+    ?address ns:hasMunicipality ?Municipality .
+    ?Municipality owl:sameAs "https://www.wikidata.org/entity/Q2807"
+}
+
+# Get all the pharmacies with municipality Ciempozuelos
+SELECT ?pharmacy
+WHERE {
+ ?pharmacy ns:hasAddress ?address.
+ ?address ns:hasMunicipality <http://dbpedia.org/ontology/Municipality/Ciempozuelos>
+}
+
+#Get all pharmacies in calle Alcala in Madrid
+SELECT ?pharmacy
+WHERE {
+ ?pharmacy ns:hasAddress <http://pharmacies.odkg.es/group08/resource/Address/CALLE_de_Alcala_Madrid>.
+}
+
+#Get address of pharmacy 456
+SELECT ?address
+WHERE {
+  <http://pharmacies.odkg.es/group08/resource/Pharmacy/456> ns:hasAddress ?address.
+}
+
+#Get the name of the owner of pharmacy 66
+SELECT ?name
+WHERE {
+  <http://pharmacies.odkg.es/group08/resource/Pharmacy/66> ns:hasOwner ?owner.
+  ?owner ns:hasName ?name
+}

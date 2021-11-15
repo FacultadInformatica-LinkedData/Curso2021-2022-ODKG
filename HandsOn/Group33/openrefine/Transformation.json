@@ -158,16 +158,6 @@
     "description": "Remove rows"
   },
   {
-    "op": "core/column-removal",
-    "columnName": "Start Centroid Location",
-    "description": "Remove column Start Centroid Location"
-  },
-  {
-    "op": "core/column-removal",
-    "columnName": "End Centroid Location",
-    "description": "Remove column End Centroid Location"
-  },
-  {
     "op": "core/text-transform",
     "engineConfig": {
       "facets": [],
@@ -465,5 +455,95 @@
     "repeat": false,
     "repeatCount": 10,
     "description": "Text transform on cells in column End Census Tract using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Trip ID",
+    "newColumnName": "TripID",
+    "description": "Rename column Trip ID to TripID"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Start Time",
+    "newColumnName": "StartTime",
+    "description": "Rename column Start Time to StartTime"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "End Time",
+    "newColumnName": "EndTime",
+    "description": "Rename column End Time to EndTime"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Trip Distance",
+    "newColumnName": "TripDistance",
+    "description": "Rename column Trip Distance to TripDistance"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Trip Duration",
+    "newColumnName": "TripDuration",
+    "description": "Rename column Trip Duration to TripDuration"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Start Census Tract",
+    "newColumnName": "StartCensusTract",
+    "description": "Rename column Start Census Tract to StartCensusTract"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "End Census Tract",
+    "newColumnName": "EndCensusTract",
+    "description": "Rename column End Census Tract to EndCensusTract"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Start Community Area Number",
+    "newColumnName": "StartCommunityAreaNumber",
+    "description": "Rename column Start Community Area Number to StartCommunityAreaNumber"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "End Community Area Number",
+    "newColumnName": "EndCommunityAreaNumber",
+    "description": "Rename column End Community Area Number to EndCommunityAreaNumber"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Start Community Area Name",
+    "newColumnName": "StartCommunityAreaName",
+    "description": "Rename column Start Community Area Name to StartCommunityAreaName"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "End Community Area Name",
+    "newColumnName": "EndCommunityAreaName",
+    "description": "Rename column End Community Area Name to EndCommunityAreaName"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Start Centroid Latitude",
+    "newColumnName": "StartCentroidLatitude",
+    "description": "Rename column Start Centroid Latitude to StartCentroidLatitude"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "Start Centroid Longitude",
+    "newColumnName": "StartCentroidLongitude",
+    "description": "Rename column Start Centroid Longitude to StartCentroidLongitude"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "End Centroid Latitude",
+    "newColumnName": "EndCentroidLatitude",
+    "description": "Rename column End Centroid Latitude to EndCentroidLatitude"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "End Centroid Longitude",
+    "newColumnName": "EndCentroidLongitude",
+    "description": "Rename column End Centroid Longitude to EndCentroidLongitude"
   }
 ]

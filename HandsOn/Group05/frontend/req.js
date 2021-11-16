@@ -23,7 +23,7 @@ $("#audience").on("change",()=> console.log('change'));
 
 function get_district() {
     makeSPARQLQuery( endpointUrl, sparqlQuery2, function( data ) {
-        $( 'body' ).append( $( '<pre>' ).text( JSON.stringify( data ) ) );
+        
         
         console.log(data.results.bindings)
         var dt = []
@@ -34,7 +34,7 @@ function get_district() {
 }
 function get_type() {
     makeSPARQLQuery( endpointUrl, sparqlQuery3, function( data ) {
-        $( 'body' ).append( $( '<pre>' ).text( JSON.stringify( data ) ) );
+        
         
         var dt = []
         console.log(data.results.bindings[0].eventType.value)
@@ -47,7 +47,7 @@ function get_type() {
 
 function get_audience() {
     makeSPARQLQuery( endpointUrl, sparqlQuery4, function( data ) {
-        $( 'body' ).append( $( '<pre>' ).text( JSON.stringify( data ) ) );
+        
         
         console.log(data.results.bindings)
         var dt = []
@@ -70,7 +70,7 @@ function get_audience() {
         
     if(districtname=="District" && type=="Type" && audience=="Audience" ) {
 
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address. ?event :hasTitle ?title .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .} limit 100"
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address. ?event :hasTitle ?title .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .} limit 10000"
         console.log(sparqlQuery)
     }
     else if (districtname !="District" && type=="Type" && audience=="Audience") {
@@ -102,7 +102,7 @@ function get_audience() {
     console.log(sparqlQuery)
 
     makeSPARQLQuery( endpointUrl, sparqlQuery, function( data ) {
-          $( 'body' ).append( $( '<pre>' ).text( JSON.stringify( data ) ) );
+          
           
       
       var dt = []
@@ -129,7 +129,7 @@ function get_audience() {
         },
         {
             id:"price",
-            name:"Price"
+            name:"€"
           },{
           id:"date",
           name:"Date"

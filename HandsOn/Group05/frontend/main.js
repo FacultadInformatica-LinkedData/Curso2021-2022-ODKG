@@ -9,10 +9,9 @@ $("#audience").on("change",()=> console.log('change'));
 
 
 const grid= new gridjs.Grid({
-  columns: ['district'],
-  data: [
-    
-  ]
+  columns: ['Search an event !!'],
+  data: [{}]
+  
 }).render(document.getElementById("wrapper"))
 
 var endpointUrl = 'http://localhost:9999/blazegraph/sparql',

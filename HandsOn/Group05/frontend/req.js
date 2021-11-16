@@ -106,8 +106,8 @@ function get_audience() {
           
       
       var dt = []
-      console.log(data)
-      data.results.bindings.forEach(e => {dt.push({"title":e.title.value, "price":e.price.value, "Address":e.address.value.toLowerCase(), "date":e.date.value.substr(0,10)}
+      console.log(data.results.bindings)
+      data.results.bindings.forEach(e => {dt.push({"title":e.title.value, "price":e.price.value, "Address":e.address.value.toLowerCase(), "date":e.date.value.substr(0,10), "facility": e.facility.value.split('/').splice(-1).join().split("%20").join(" ").split("%28").join(" ").split("%29").join(" ")}
       )})
       console.log(dt)
       
@@ -120,13 +120,17 @@ function get_audience() {
           name:"Title"
         },
         {
-          id:"price",
-          name:"Price"
-        },
+            id:"facility",
+            name:"Facility"
+          },
         {
           id:"Address",
           name:"Address"
-        },{
+        },
+        {
+            id:"price",
+            name:"Price"
+          },{
           id:"date",
           name:"Date"
         }],

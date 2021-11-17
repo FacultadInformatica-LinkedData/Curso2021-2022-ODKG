@@ -1,0 +1,175 @@
+@prefix : <http://pharmacies.odkg.es/group08/ontology/ppg8#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://pharmacies.odkg.es/group08/ontology/ppg8> .
+
+<http://pharmacies.odkg.es/group08/ontology/ppg8> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://dbpedia.org/ontology/municipalityAbsorbedBy
+<http://dbpedia.org/ontology/municipalityAbsorbedBy> rdf:type owl:ObjectProperty ;
+                                                     rdfs:range <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://dbpedia.org/ontology/presentMunicipality
+<http://dbpedia.org/ontology/presentMunicipality> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                  rdfs:range <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasAddress
+:hasAddress rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Pharmacy ;
+            rdfs:range :Address .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasKM
+:hasKM rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf owl:topObjectProperty ;
+       rdfs:domain :Address ;
+       rdfs:range [ rdf:type owl:Restriction ;
+                    owl:onProperty owl:topDataProperty ;
+                    owl:someValuesFrom xsd:string
+                  ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasMunicipality
+:hasMunicipality rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Address ;
+                 rdfs:range <http://dbpedia.org/ontology/Municipality> .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasMunicipalityName
+:hasMunicipalityName rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain <http://dbpedia.org/ontology/Municipality> ;
+                     rdfs:range [ rdf:type owl:Restriction ;
+                                  owl:onProperty owl:topDataProperty ;
+                                  owl:someValuesFrom xsd:string
+                                ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasName
+:hasName rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range [ rdf:type owl:Restriction ;
+                      owl:onProperty owl:topDataProperty ;
+                      owl:someValuesFrom xsd:string
+                    ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasOwner
+:hasOwner rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Pharmacy ;
+          rdfs:range :Owner .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasPharmacyIdentifier
+:hasPharmacyIdentifier rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:domain :Pharmacy ;
+                       rdfs:range [ rdf:type owl:Restriction ;
+                                    owl:onProperty owl:topDataProperty ;
+                                    owl:someValuesFrom xsd:integer
+                                  ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasRoadType
+:hasRoadType rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Address ;
+             rdfs:range [ rdf:type owl:Restriction ;
+                          owl:onProperty owl:topDataProperty ;
+                          owl:someValuesFrom xsd:string
+                        ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasStreet
+:hasStreet rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Address ;
+           rdfs:range <http://dbpedia.org/ontology/Street> .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasStreetName
+:hasStreetName rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain <http://dbpedia.org/ontology/Street> ;
+               rdfs:range [ rdf:type owl:Restriction ;
+                            owl:onProperty owl:topDataProperty ;
+                            owl:someValuesFrom xsd:string
+                          ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasStreetNumber
+:hasStreetNumber rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Address ;
+                 rdfs:range [ rdf:type owl:Restriction ;
+                              owl:onProperty owl:topDataProperty ;
+                              owl:someValuesFrom xsd:string
+                            ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasX
+:hasX rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty ;
+      rdfs:domain :Address ;
+      rdfs:range [ rdf:type owl:Restriction ;
+                   owl:onProperty owl:topDataProperty ;
+                   owl:someValuesFrom xsd:double
+                 ] .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#hasY
+:hasY rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty ;
+      rdfs:domain :Address ;
+      rdfs:range [ rdf:type owl:Restriction ;
+                   owl:onProperty owl:topDataProperty ;
+                   owl:someValuesFrom xsd:double
+                 ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/Municipality
+<http://dbpedia.org/ontology/Municipality> rdf:type owl:Class ;
+                                           rdfs:isDefinedBy <http://dbpedia.org/> .
+
+
+###  http://dbpedia.org/ontology/Street
+<http://dbpedia.org/ontology/Street> rdf:type owl:Class ;
+                                     rdfs:isDefinedBy <http://dbpedia.org> .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Address
+:Address rdf:type owl:Class .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Owner
+:Owner rdf:type owl:Class ;
+       rdfs:subClassOf :Person .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Person
+:Person rdf:type owl:Class .
+
+
+###  http://pharmacies.odkg.es/group08/ontology/ppg8#Pharmacy
+:Pharmacy rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

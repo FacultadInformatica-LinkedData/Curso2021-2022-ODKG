@@ -14,12 +14,12 @@ function makeSPARQLQuery( endpointUrl, sparqlQuery, doneCallback ) {
 	};
 	return $.ajax( endpointUrl, settings ).then( doneCallback );
 }
+
 // event listeners
 $("#search").on("click",update)
 $("#district").on("change",()=> console.log('change'));
 $("#type").on("change",()=> console.log('change'));
 $("#audience").on("change",()=> console.log('change'));
-
 
 function get_district() {
     makeSPARQLQuery( endpointUrl, sparqlQuery2, function( data ) {
@@ -59,7 +59,7 @@ function get_audience() {
 
 
   function update(){
-    var districtname = $( "#district" ).val();
+    var districtname = $( "#district" ).val().split(" ").join("%20");
     var type = $( "#type" ).val();
     var audience = $( "#audience" ).val();
     console.log(districtname)
@@ -67,57 +67,76 @@ function get_audience() {
     console.log(audience)
     
     var endpointUrl = 'http://localhost:9999/blazegraph/sparql';
-        
-    if(districtname=="District" && type=="Type" && audience=="Audience" ) {
 
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address. ?event :hasTitle ?title .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .} limit 10000"
-        console.log(sparqlQuery)
-    }
-    else if (districtname !="District" && type=="Type" && audience=="Audience") {
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + ">. ?event :hasTitle ?title  .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .}"
-        
-    } 
-    else if (districtname !="District" && type != "Type" && audience=="Audience") {
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + "> . ?event a :" + type + " . ?event :hasTitle ?title.?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .}"
+    if(type=="DanceEvent" || type=="EducationEvent" || type=="ExhibitionEvent" || type=="LiteraryEvent" || type=="PartiesEvent" || type=="SportsEvent" || type=="TheaterEvent"){
+  
+      if (districtname =="District" && audience=="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility . ?event a <https://schema.org/" + type + "> . ?event :hasTitle ?title  .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+      
+      }
+      else if (districtname !="District" && audience=="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + "> . ?event a <https://schema.org/" + type + "> . ?event :hasTitle ?title.?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+      
+      }
+      else if (districtname =="District" && audience !="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility . ?event a <https://schema.org/" + type + "> . ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+      
+      }
+      else if (districtname !="District" && audience!="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility . ?event a <https://schema.org/" + type + "> . ?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + "> . ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"      
+      
+      }
 
-        
-    }
-    else if (districtname !="District" && type == "Type" && audience!="Audience") {
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + "> . ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .}"      
-    }
-    else if (districtname =="District" && type != "Type" && audience=="Audience") {
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility . ?event a :" + type + " . ?event :hasTitle ?title  .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .}"
-    }
-    else if (districtname =="District" && type == "Type" && audience!="Audience") {
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility. ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .}"
-    }
-    else if (districtname =="District" && type != "Type" && audience !="Audience") {
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility . ?event a :" + type + " . ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .}"
-    }
-    else {
-        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + "> . ?event a :" + type + " . ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price .}"
+    } else {
 
-        
+      if(districtname=="District" && type=="Type" && audience=="Audience" ) {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address. ?event :hasTitle ?title .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .} limit 10000"
+      
+      }
+      else if (districtname !="District" && type=="Type" && audience=="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + ">. ?event :hasTitle ?title  .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+          
+      } 
+      else if (districtname !="District" && type != "Type" && audience=="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + "> . ?event a :" + type + " . ?event :hasTitle ?title.?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+      
+      }
+      else if (districtname !="District" && type == "Type" && audience!="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + "> . ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"      
+      
+      }
+      else if (districtname =="District" && type != "Type" && audience=="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility . ?event a :" + type + " . ?event :hasTitle ?title  .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+      
+      }
+      else if (districtname =="District" && type == "Type" && audience!="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility. ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+      }
+      else if (districtname =="District" && type != "Type" && audience !="Audience") {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility . ?event a :" + type + " . ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+      
+      }
+      else {
+        var sparqlQuery = "PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> SELECT ?title ?facility ?address ?date ?price ?url ?facilityUrl WHERE {  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .?event :hasFacility ?facility .?facility :hasDistrict <http://groupfive.edu/kg/resources/district/" + districtname + "> . ?event a :" + type + " . ?event :hasTitle ?title . ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/" + audience+ "> .?event :hasStartingDate ?date . ?event :hasEventUrl ?url . ?event <https://saref.etsi.org/core/hasPrice> ?price . ?facility :hasFacilityUrl ?facilityUrl .}"
+      
+      }
     }
-    console.log(sparqlQuery)
 
     makeSPARQLQuery( endpointUrl, sparqlQuery, function( data ) {
           
-          
-      
       var dt = []
       console.log(data.results.bindings)
-      data.results.bindings.forEach(e => {dt.push({"title":e.title.value, "price":e.price.value, "Address":e.address.value.toLowerCase(), "date":e.date.value.substr(0,10), "facility": e.facility.value.split('/').splice(-1).join().split("%20").join(" ").split("%28").join(" ").split("%29").join(" ")}
+      data.results.bindings.forEach(e => {dt.push({"title": gridjs.html(`<a href='${e.url.value}' target="_blank">${e.title.value}</a>`), "price":e.price.value, "Address":e.address.value.toLowerCase(), "date":e.date.value.substr(0,10), "facility": gridjs.html(`<a href='${e.facilityUrl.value}' target="_blank">${e.facility.value.split('/').splice(-1).join().split("%20").join(" ").split("%28").join(" ").split("%29").join(" ")}</a>`)}
       )})
       console.log(dt)
       
-  
-  
       grid.updateConfig({
         // lets update the columns field only
         columns: [{
           id:"title",
           name:"Title"
+          // Si on veut mettre la colonne en gras
+          // formatter: (cell) => gridjs.html(`<b>${cell}</b>`)
         },
         {
             id:"facility",
@@ -143,9 +162,7 @@ function get_audience() {
         data:dt
       }).forceRender();
   
-      }
+    }
   );
   
-  
-    
-  }
+}

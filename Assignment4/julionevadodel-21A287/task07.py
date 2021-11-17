@@ -9,7 +9,7 @@ Original file is located at
 **Task 07: Querying RDF(s)**
 """
 
-!pip install rdflib 
+#!pip install rdflib 
 github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2021-2022/master/Assignment4/course_materials"
 
 """Leemos el fichero RDF de la forma que lo hemos venido haciendo"""
@@ -24,8 +24,14 @@ g.parse(github_storage+"/rdf/example6.rdf", format="xml")
 """**TASK 7.1: List all subclasses of "Person" with RDFLib and SPARQL**"""
 
 # TO DO
-from rdflib.plugins.sparql import prepareQuery
 ns = Namespace("http://somewhere#")
+#RDFLib
+for s,p,o in g.triples((None,RDFS.subClassOf,ns.Person)):
+  print(s)
+
+#SPARQL
+from rdflib.plugins.sparql import prepareQuery
+
 q1 = prepareQuery('''
                   SELECT DISTINCT ?subclass
                   WHERE{
@@ -44,6 +50,16 @@ for r in g.query(q1):
 """
 
 # TO DO
+#RDFLib
+classes = [ns.Person]
+for s,p,o in g.triples((None,RDFS.subClassOf,ns.Person)):
+  classes.append(s)
+
+for c in classes:
+  for s,p,o in g.triples((None,RDF.type,c)):
+    print(s)
+
+#SPARQL
 from rdflib.plugins.sparql import prepareQuery
 ns = Namespace("http://somewhere#")
 VCARD = Namespace("http://www.w3.org/2001/vcard-rdf/3.0#")
@@ -69,6 +85,18 @@ for r in g.query(q2):
 """
 
 # TO DO
+#RDFLib
+classes = [ns.Person]
+for s,p,o in g.triples((None,RDFS.subClassOf,ns.Person)):
+  classes.append(s)
+
+for c in classes:
+  for s,p,o in g.triples((None,RDF.type,c)):
+    for s2,p2,o2 in g.triples((s,None,None)):
+      print(s2,p2,o2)
+
+
+#SPARQL
 q3 = prepareQuery('''
                   SELECT ?person ?rel ?prop
                   WHERE{

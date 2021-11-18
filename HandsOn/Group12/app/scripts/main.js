@@ -19,17 +19,43 @@ function showMoreEvents() {
 }
 
 function filterEvents(){
-    let query = createFilters();
-    events.loadEvents(query);
+    let query = bordersQuery.replace('#FILTER', getSelectedDistrict());
+    if (d3.select('input[id="nd"]:checked').node()) {
+        sparqlWikiData.query(query).then(function(borders) {
+            let borderList = borders.flatMap(x => x.borders.replace(WIKI,"wiki:")).toString();
+            //console.log(borderList);
+            let aux= getFilterByDistrict(borderList);
+            //console.log(aux);
+            let query = createFilters(aux);
+            events.loadEvents(query);
+        })
+    }else{
+        let query = createFilters();
+        events.loadEvents(query);
+    }
 }
 
-function createFilters(){
+function getSelectedDistrict(){
+    districValue = d3.select("#seldist").node().value;
+    if (districValue !=='default'){
+        distric = districValue.replace(WIKI,'wd:')
+        return distric;
+    }
+    return '';
+}
+
+function createFilters(aux){
     let query = mainQuery;
     query = query.replace('#FILTERBYDATE', getFilterByDate());
     query = query.replace('#FILTERBYFACILITY', getFilterByFacility());
     query = query.replace('#FILTERBYPRICE', getFilterByPrice());
     query = query.replace('#FILTERBYTYPE', getFilterByType());
-    query = query.replace('#FILTERBYDISTRICT', getFilterByDistrict());
+    if (aux) {
+        query = query.replace('#FILTERBYDISTRICT', aux);
+    } else {
+        query = query.replace('#FILTERBYDISTRICT', getFilterByDistrict());
+    }
+    
     return query;
 }
 
@@ -68,11 +94,16 @@ function getFilterByType(){
     return '';
 }
 
-function getFilterByDistrict(){
+function getFilterByDistrict(borderList){
     districValue = d3.select("#seldist").node().value;
     if (districValue !=='default'){
         distric = districValue.replace(WIKI,'wiki:')
-        return filterByDistric.replaceAll('DISTRICT', distric);
+        if (borderList) {
+            return filterByDistric.replaceAll('DISTRICT', distric+","+borderList);
+        } else {
+            return filterByDistric.replaceAll('DISTRICT', distric);
+        }
+        
     }
     return '';
 }

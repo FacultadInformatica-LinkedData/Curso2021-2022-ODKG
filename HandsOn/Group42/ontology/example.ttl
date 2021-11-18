@@ -1,6 +1,6 @@
-@prefix : http://bicycleaccidents.org/ontology# .
-@rel : http://bicycleaccidents.org/ontology/relationship/ .
-@base http://bicycleaccidents.org/ontology .
+@prefix : <http://bicycleaccidents.org/ontology#> .
+@prefix rel: <http://bicycleaccidents.org/ontology/relationship/> .
+@base <http://bicycleaccidents.org/ontology> .
 
 #########################################################
 # Example 1
@@ -10,7 +10,7 @@
   rel:hasWeather "Despejado";
   rel:hasAccidentType "Caida";
   rel:hasDate "2021-01-01T11:38:00";
-  rel:happenedInStreet :CALLE_MAYOR;
+  rel:happenedInAddress :CALLE_MAYOR;
   rel:happenedInDistrict :CENTRO;
   rel:hasAge "45-49";
   rel:hasSex "Hombre";
@@ -19,8 +19,9 @@
   rel:hasVehicleType "Bicicleta";
   rel:hasPersonType "Conductor".
 
-:CALLE_MAYOR a :Street;
-  rel:hasNumber "1".
+:CALLE_MAYOR_1 a :Address;
+  rel:hasNumber "1";
+  rel:hasStreet "CALLE_MAYOR".
 
 :CENTRO a :District.
 
@@ -32,7 +33,7 @@
   rel:hasWeather "Despejado";
   rel:hasAccidentType "Caida";
   rel:hasDate "2020-02-26T13:12:00";
-  rel:happenedInStreet :GRAN_VIA;
+  rel:happenedInAddress :GRAN_VIA;
   rel:happenedInDistrict :CENTRO;
   rel:hasAge "25-29";
   rel:hasSex "Hombre";
@@ -42,7 +43,8 @@
   rel:hasPersonType "Conductor".
 
 
-:GRAN_VIA a :Street;
-  rel:hasNumber "1".
+:GRAN_VIA_1 a :Address;
+  rel:hasNumber "1";
+  rel:hasStreet "GRAN_VIA".
 
 :CENTRO a :District.

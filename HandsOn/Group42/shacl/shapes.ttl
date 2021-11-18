@@ -1,0 +1,50 @@
+@prefix :      <http://bicycleaccidents.org/ontology#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix afn:   <http://jena.apache.org/ARQ/function#> .
+@prefix rel:   <http://bicycleaccidents.org/ontology/relationship/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://astrea.linkeddata.es/shapes#e2252e38599e32d1fc65b96b2ccbedad>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  :District .
+
+<http://astrea.linkeddata.es/report>
+        a       <https://w3id.org/def/astrea#ShapeReport> ;
+        <https://w3id.org/def/astrea#contains>
+                <https://astrea.linkeddata.es/shapes#56a9dd50ca2e19e0006ab5ab430a4562> , <https://astrea.linkeddata.es/shapes#57d0e706b17c44142c3e4b42bfa8cad1> , <https://astrea.linkeddata.es/shapes#575056f24351df6f99150f7189172f49> , <https://astrea.linkeddata.es/shapes#3d9eea4c17a32f51f2c5b137afb628ae> , <https://astrea.linkeddata.es/shapes#e2252e38599e32d1fc65b96b2ccbedad> ;
+        <https://w3id.org/def/astrea#generatedShapesFrom>
+                <https://astrea.linkeddata.es/report/0620946147> .
+
+<https://astrea.linkeddata.es/report/0620946147>
+        a       <https://w3id.org/def/astrea#ReportEntry> ;
+        <https://w3id.org/def/astrea#message>
+                "Shapes generated with no errors" ;
+        <https://w3id.org/def/astrea#statusCode>
+                "200"^^xsd:int .
+
+<https://astrea.linkeddata.es/shapes#56a9dd50ca2e19e0006ab5ab430a4562>
+        a            sh:PropertyShape ;
+        sh:class     :District ;
+        sh:nodeKind  sh:BlankNodeOrIRI ;
+        sh:path      :happenedInDistrict .
+
+<https://astrea.linkeddata.es/shapes#575056f24351df6f99150f7189172f49>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:targetClass  :Street .
+
+<https://astrea.linkeddata.es/shapes#57d0e706b17c44142c3e4b42bfa8cad1>
+        a            sh:PropertyShape ;
+        sh:class     :Street ;
+        sh:nodeKind  sh:BlankNodeOrIRI ;
+        sh:path      :happenedInStreet .
+
+<https://astrea.linkeddata.es/shapes#3d9eea4c17a32f51f2c5b137afb628ae>
+        a               sh:NodeShape ;
+        sh:nodeKind     sh:IRI ;
+        sh:property     <https://astrea.linkeddata.es/shapes#57d0e706b17c44142c3e4b42bfa8cad1> , <https://astrea.linkeddata.es/shapes#56a9dd50ca2e19e0006ab5ab430a4562> ;
+        sh:targetClass  :Accident .

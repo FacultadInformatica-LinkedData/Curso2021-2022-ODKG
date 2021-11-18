@@ -4,10 +4,10 @@ PREFIX : <http://bicycleaccidents.org/resource/>
 PREFIX prop: <http://bicycleaccidents.org/ontology#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
-SELECT DISTINCT ?street ?wiki
+SELECT DISTINCT ?address ?wiki
 WHERE{
-  ?subj prop:happenedInStreet ?street.
-  ?street owl:sameAs ?wiki
+  ?subj prop:happenedInAddress ?address.
+  ?address owl:sameAs ?wiki
 }
 
 SELECT DISTINCT ?district ?wiki

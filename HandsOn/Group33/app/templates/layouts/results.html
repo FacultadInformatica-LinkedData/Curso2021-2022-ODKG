@@ -1,0 +1,12 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="row"></div>
+{% for data in datalist %}
+  <p>{{data}}</p>
+{% endfor %}
+</div>
+{% endblock %}

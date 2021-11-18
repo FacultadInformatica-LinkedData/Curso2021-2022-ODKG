@@ -1,15 +1,80 @@
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX dbo: <http://groupfive.edu/kg/ontology/>
 
-SELECT DISTINCT ?b
-WHERE{
-    ?b rdf:type dbo:Event.
-    ?b dbo:price "free". 
-    ?b dbo:startingDate "23/10/2021 00:00". 
+
+1. Query all the instances of audiance:
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> 
+SELECT DISTINCT ?obj WHERE {
+  ?sub :hasAudiance ?obj .
 }
 
-SELECT DISTINCT ?b
-WHERE {
-    ?b rdf:type dbo:Facilities.
-    ?b dbo:address "CALLE CAMARENA 10 ALUCHE 28047".
+2. Query the information about all the event in the district Centro with an audiance "children":
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
+SELECT ?title ?date ?price ?url ?address WHERE { 
+  ?facility :hasDistrict <http://groupfive.edu/kg/resources/district/Centro> .
+  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
+  ?event :hasFacility ?facility . 
+  ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/children> .
+  ?event :hasTitle ?title .
+  ?event :hasStartingDate ?date .
+  ?event :hasEventUrl ?url .
+  ?event <https://saref.etsi.org/core/hasPrice> ?price .
 }
+
+3. Query all the instances of Event type:
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> 
+SELECT DISTINCT ?obj WHERE {
+  ?sub :hasType ?obj .
+}
+
+4. Query the information about all event in the district Tetuán with an audience "youth" and a type "others":
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
+SELECT ?title ?date ?price ?url ?address WHERE { 
+  ?facility :hasDistrict <http://groupfive.edu/kg/resources/district/Tetuán> .
+  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
+  ?event :hasFacility ?facility . 
+  ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/youth> .
+  ?event :hasType <http://groupfive.edu/kg/resources/eventtype/others> .
+  ?event :hasTitle ?title .
+  ?event :hasStartingDate ?date .
+  ?event :hasEventUrl ?url .
+  ?event <https://saref.etsi.org/core/hasPrice> ?price .
+}
+
+3bis.
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+SELECT ?eventType WHERE {
+  ?eventType rdfs:subClassOf <https://schema.org/Event> .
+}
+
+4bis. Query the information related to all the events of type "StorytellingPuppetsEvent"
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
+SELECT ?title ?date ?price ?url ?address WHERE { 
+  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
+  ?event :hasFacility ?facility .
+  ?event a :StorytellingPuppetsEvent .
+  ?event :hasTitle ?title .
+  ?event :hasStartingDate ?date .
+  ?event :hasEventUrl ?url .
+  ?event <https://saref.etsi.org/core/hasPrice> ?price .
+}
+
+5. Query the information about all the event held in the district Arganzuela, of type StorytellingPuppetsEvent, and for a children audiance.
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
+SELECT ?title ?facility ?address ?date ?price ?url WHERE { 
+  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
+  ?event :hasFacility ?facility .
+  ?facility :hasDistrict <http://groupfive.edu/kg/resources/district/Arganzuela> .
+  ?event a :StorytellingPuppetsEvent .
+  ?event :hasTitle ?title .
+  ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/children> .
+  ?event :hasStartingDate ?date .
+  ?event :hasEventUrl ?url .
+  ?event <https://saref.etsi.org/core/hasPrice> ?price .
+}
+

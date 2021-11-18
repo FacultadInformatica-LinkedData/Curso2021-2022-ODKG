@@ -1,5 +1,3 @@
-
-
 1. Query all the instances of audiance:
 
 PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> 
@@ -7,50 +5,28 @@ SELECT DISTINCT ?obj WHERE {
   ?sub :hasAudiance ?obj .
 }
 
-2. Query the information about all the event in the district Centro with an audiance "children":
+2. Query information about all the events that take place in the district Centro whose target audience are children:
 
 PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
-SELECT ?title ?date ?price ?url ?address WHERE { 
+SELECT ?title ?address ?date ?price ?url  WHERE { 
   ?facility :hasDistrict <http://groupfive.edu/kg/resources/district/Centro> .
   ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
   ?event :hasFacility ?facility . 
   ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/children> .
   ?event :hasTitle ?title .
   ?event :hasStartingDate ?date .
-  ?event :hasEventUrl ?url .
   ?event <https://saref.etsi.org/core/hasPrice> ?price .
-}
-
-3. Query all the instances of Event type:
-
-PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> 
-SELECT DISTINCT ?obj WHERE {
-  ?sub :hasType ?obj .
-}
-
-4. Query the information about all event in the district Tetuán with an audience "youth" and a type "others":
-
-PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
-SELECT ?title ?date ?price ?url ?address WHERE { 
-  ?facility :hasDistrict <http://groupfive.edu/kg/resources/district/Tetuán> .
-  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
-  ?event :hasFacility ?facility . 
-  ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/youth> .
-  ?event :hasType <http://groupfive.edu/kg/resources/eventtype/others> .
-  ?event :hasTitle ?title .
-  ?event :hasStartingDate ?date .
   ?event :hasEventUrl ?url .
-  ?event <https://saref.etsi.org/core/hasPrice> ?price .
 }
 
-3bis.
+3. Query all the subclasses of the class Event:
 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 SELECT ?eventType WHERE {
   ?eventType rdfs:subClassOf <https://schema.org/Event> .
 }
 
-4bis. Query the information related to all the events of type "StorytellingPuppetsEvent"
+4. Query information about all the events of type "StorytellingPuppetsEvent":
 
 PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
 SELECT ?title ?date ?price ?url ?address WHERE { 
@@ -63,7 +39,7 @@ SELECT ?title ?date ?price ?url ?address WHERE {
   ?event <https://saref.etsi.org/core/hasPrice> ?price .
 }
 
-5. Query the information about all the event held in the district Arganzuela, of type StorytellingPuppetsEvent, and for a children audiance.
+5. Query information about all the events that take place in the district Arganzuela, of type StorytellingPuppetsEvent, and whose target audience are children:
 
 PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
 SELECT ?title ?facility ?address ?date ?price ?url WHERE { 

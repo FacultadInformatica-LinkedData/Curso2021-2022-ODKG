@@ -1,138 +1,731 @@
-@prefix : <http://groupfive.edu/kg/ontology/MadridEvents#> .
+@prefix : <http://groupfive.edu/kg/ontology/MadridEvents2#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://groupfive.edu/kg/ontology/MadridEvents> .
+@base <http://groupfive.edu/kg/ontology/MadridEvents2> .
 
-<http://groupfive.edu/kg/ontology/MadridEvents> rdf:type owl:Ontology .
+<http://groupfive.edu/kg/ontology/MadridEvents2> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  htpp://www.w3.org/2002/07/owl#sameAs
+<htpp://www.w3.org/2002/07/owl#sameAs> rdf:type owl:AnnotationProperty .
+
+
+###  https://saref.etsi.org/core/hasPrice
+<https://saref.etsi.org/core/hasPrice> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#bool
+xsd:bool rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#datetime
+xsd:datetime rdf:type rdfs:Datatype .
+
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#heldIn
-:heldIn rdf:type owl:ObjectProperty ;
-        rdfs:domain :Event ;
-        rdfs:range :Facilities .
+###  http://bimerr.iot.linkeddata.es/def/occupancy-profile#hasDayOfWeek
+<http://bimerr.iot.linkeddata.es/def/occupancy-profile#hasDayOfWeek> rdf:type owl:ObjectProperty ;
+                                                                     owl:inverseOf <http://www.co-ode.org/ontologies/ont.owl#isDayOfWeekOf> ;
+                                                                     rdfs:domain <https://schema.org/Event> ;
+                                                                     rdfs:range <http://groupfive.edu/kg/ontology/MadridEvents#DaysOfTheWeek> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasAudiance
+<http://groupfive.edu/kg/ontology/MadridEvents#hasAudiance> rdf:type owl:ObjectProperty ;
+                                                            owl:inverseOf <http://groupfive.edu/kg/ontology/MadridEvents#isAudianceOf> ;
+                                                            rdfs:domain <https://schema.org/Event> ;
+                                                            rdfs:range <http://groupfive.edu/kg/ontology/MadridEvents#Audiance> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasFacility
+<http://groupfive.edu/kg/ontology/MadridEvents#hasFacility> rdf:type owl:ObjectProperty ;
+                                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                                            owl:inverseOf <http://groupfive.edu/kg/ontology/MadridEvents#isFacilityOf> ;
+                                                            rdfs:domain <https://schema.org/Event> ;
+                                                            rdfs:range <http://groupfive.edu/kg/ontology/MadridEvents#Facility> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasType
+<http://groupfive.edu/kg/ontology/MadridEvents#hasType> rdf:type owl:ObjectProperty ;
+                                                        owl:inverseOf <http://groupfive.edu/kg/ontology/MadridEvents#isTypeOf> ;
+                                                        rdfs:domain <https://schema.org/Event> ;
+                                                        rdfs:range <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#isAudianceOf
+<http://groupfive.edu/kg/ontology/MadridEvents#isAudianceOf> rdf:type owl:ObjectProperty ;
+                                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                                             rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#Audiance> ;
+                                                             rdfs:range <https://schema.org/Event> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#isFacilityOf
+<http://groupfive.edu/kg/ontology/MadridEvents#isFacilityOf> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#Facility> ;
+                                                             rdfs:range <https://schema.org/Event> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#isTypeOf
+<http://groupfive.edu/kg/ontology/MadridEvents#isTypeOf> rdf:type owl:ObjectProperty ;
+                                                         rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#EventType> ;
+                                                         rdfs:range <https://schema.org/Event> .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#isDayOfWeekOf
+<http://www.co-ode.org/ontologies/ont.owl#isDayOfWeekOf> rdf:type owl:ObjectProperty ;
+                                                         rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#DaysOfTheWeek> ;
+                                                         rdfs:range <https://schema.org/Event> .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#accessibility
-:accessibility rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Facilities ;
-               rdfs:range xsd:string .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasAccessibility
+<http://groupfive.edu/kg/ontology/MadridEvents#hasAccessibility> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#Facility> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#address
-:address rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Facilities ;
-         rdfs:range xsd:string .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasAudiance
+<http://groupfive.edu/kg/ontology/MadridEvents#hasAudiance> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#audience
-:audience rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Event ;
-          rdfs:range xsd:string .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasDescription
+<http://groupfive.edu/kg/ontology/MadridEvents#hasDescription> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                                               rdfs:domain <https://schema.org/Event> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#description
-:description rdf:type owl:DatatypeProperty ;
-             rdfs:domain :Event ;
-             rdfs:range xsd:string .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasDistrict
+<http://groupfive.edu/kg/ontology/MadridEvents#hasDistrict> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#Facility> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#endingDate
-:endingDate rdf:type owl:DatatypeProperty ;
-            rdfs:domain :Event ;
-            rdfs:range xsd:dateTime .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasEndingDate
+<http://groupfive.edu/kg/ontology/MadridEvents#hasEndingDate> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#eventID
-:eventID rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Event ;
-         rdfs:range xsd:integer .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasEventUrl
+<http://groupfive.edu/kg/ontology/MadridEvents#hasEventUrl> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:subPropertyOf owl:topDataProperty ;
+                                                            rdfs:domain <https://schema.org/Event> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#excludedDays
-:excludedDays rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Event ;
-              rdfs:range xsd:dateTime .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasExcludedDays
+<http://groupfive.edu/kg/ontology/MadridEvents#hasExcludedDays> rdf:type owl:DatatypeProperty ;
+                                                                rdfs:subPropertyOf owl:topDataProperty ;
+                                                                rdfs:domain <https://schema.org/Event> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#heldOn
-:heldOn rdf:type owl:DatatypeProperty ;
-        rdfs:domain :Event ;
-        rdfs:range xsd:string .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasFacilityUrl
+<http://groupfive.edu/kg/ontology/MadridEvents#hasFacilityUrl> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                                               rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#Facility> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#hour
-:hour rdf:type owl:DatatypeProperty ;
-      rdfs:domain :Event ;
-      rdfs:range xsd:negativeInteger .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasHour
+<http://groupfive.edu/kg/ontology/MadridEvents#hasHour> rdf:type owl:DatatypeProperty ;
+                                                        rdfs:subPropertyOf owl:topDataProperty ;
+                                                        rdfs:domain <https://schema.org/Event> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#latitude
-:latitude rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Facilities ;
-          rdfs:range xsd:decimal .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasLongDuration
+<http://groupfive.edu/kg/ontology/MadridEvents#hasLongDuration> rdf:type owl:DatatypeProperty ;
+                                                                rdfs:domain <https://schema.org/Event> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#longDuration
-:longDuration rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Event ;
-              rdfs:range xsd:boolean .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasPrice
+<http://groupfive.edu/kg/ontology/MadridEvents#hasPrice> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#longitude
-:longitude rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Facilities ;
-           rdfs:range xsd:decimal .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasStartingDate
+<http://groupfive.edu/kg/ontology/MadridEvents#hasStartingDate> rdf:type owl:DatatypeProperty .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#price
-:price rdf:type owl:DatatypeProperty ;
-       rdfs:subPropertyOf owl:topDataProperty ;
-       rdfs:domain :Event ;
-       rdfs:range xsd:float .
+###  http://groupfive.edu/kg/ontology/MadridEvents#hasTitle
+<http://groupfive.edu/kg/ontology/MadridEvents#hasTitle> rdf:type owl:DatatypeProperty .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#startingDate
-:startingDate rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Event ;
-              rdfs:range xsd:dateTime .
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> rdf:type owl:DatatypeProperty .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#type
-:type rdf:type owl:DatatypeProperty ;
-      rdfs:domain :Event ;
-      rdfs:range xsd:string .
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> rdf:type owl:DatatypeProperty .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#url
-:url rdf:type owl:DatatypeProperty ;
-     rdfs:domain :Event ;
-     rdfs:range xsd:string .
+###  http://www.w3.org/2006/vcard/ns#hasAddress
+<http://www.w3.org/2006/vcard/ns#hasAddress> rdf:type owl:DatatypeProperty ;
+                                             rdfs:subPropertyOf owl:topDataProperty ;
+                                             rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#Facility> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#urlLink
-:urlLink rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Facilities ;
-         rdfs:range xsd:string .
+###  http://www.w3.org/2006/vcard/ns#hasPostalCode
+<http://www.w3.org/2006/vcard/ns#hasPostalCode> rdf:type owl:DatatypeProperty ;
+                                                rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#Facility> .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#Event
-:Event rdf:type owl:Class .
+###  http://groupfive.edu/kg/ontology/MadridEvents#ArteUrbanoStreet
+<http://groupfive.edu/kg/ontology/MadridEvents#ArteUrbanoStreet> rdf:type owl:Class ;
+                                                                 owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                              owl:someValuesFrom :ActividadesCalleArteUrbano
+                                                                                                            ]
+                                                                                                          ) ;
+                                                                                       rdf:type owl:Class
+                                                                                     ] .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#Facilities
-:Facilities rdf:type owl:Class .
+###  http://groupfive.edu/kg/ontology/MadridEvents#Audiance
+<http://groupfive.edu/kg/ontology/MadridEvents#Audiance> rdf:type owl:Class .
 
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#CampsEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#CampsEvent> rdf:type owl:Class ;
+                                                           owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                        owl:someValuesFrom :camps
+                                                                                                      ]
+                                                                                                    ) ;
+                                                                                 rdf:type owl:Class
+                                                                               ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#CinemaAudiovisualEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#CinemaAudiovisualEvent> rdf:type owl:Class ;
+                                                                       owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                                    owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                                    owl:someValuesFrom :cinemaAudiovisual
+                                                                                                                  ]
+                                                                                                                ) ;
+                                                                                             rdf:type owl:Class
+                                                                                           ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#CommemorationEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#CommemorationEvent> rdf:type owl:Class ;
+                                                                   owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                                owl:someValuesFrom :commemorationsTributes
+                                                                                                              ]
+                                                                                                            ) ;
+                                                                                         rdf:type owl:Class
+                                                                                       ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#ConferenceEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#ConferenceEvent> rdf:type owl:Class ;
+                                                                owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                      owl:unionOf ( [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                                             owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                                             owl:someValuesFrom :conferences
+                                                                                                                           ]
+                                                                                                                         ) ;
+                                                                                                      rdf:type owl:Class
+                                                                                                    ]
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                      owl:someValuesFrom :congresses
+                                                                                                    ]
+                                                                                                  )
+                                                                                    ] ;
+                                                                rdfs:subClassOf <https://schema.org/Event> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#ContestEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#ContestEvent> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                          owl:someValuesFrom :competitions
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#DaysOfTheWeek
+<http://groupfive.edu/kg/ontology/MadridEvents#DaysOfTheWeek> rdf:type owl:Class .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#District
+<http://groupfive.edu/kg/ontology/MadridEvents#District> rdf:type owl:Class .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#EventType
+<http://groupfive.edu/kg/ontology/MadridEvents#EventType> rdf:type owl:Class ;
+                                                          owl:disjointWith <https://schema.org/Event> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#ExcursionEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#ExcursionEvent> rdf:type owl:Class ;
+                                                               owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                            owl:someValuesFrom :Excursions
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#Facility
+<http://groupfive.edu/kg/ontology/MadridEvents#Facility> rdf:type owl:Class .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#MagicCircusEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#MagicCircusEvent> rdf:type owl:Class ;
+                                                                 owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                              owl:someValuesFrom :circusMagic
+                                                                                                            ]
+                                                                                                          ) ;
+                                                                                       rdf:type owl:Class
+                                                                                     ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#OnlineEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#OnlineEvent> rdf:type owl:Class ;
+                                                            owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                         owl:someValuesFrom :Online
+                                                                                                       ]
+                                                                                                     ) ;
+                                                                                  rdf:type owl:Class
+                                                                                ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#OtherActivitiesEnvironmentalEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#OtherActivitiesEnvironmentalEvent> rdf:type owl:Class ;
+                                                                                  owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                                               owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                                               owl:someValuesFrom :Environmental
+                                                                                                                             ]
+                                                                                                                           ) ;
+                                                                                                        rdf:type owl:Class
+                                                                                                      ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#OtherEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#OtherEvent> rdf:type owl:Class ;
+                                                           owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                        owl:someValuesFrom :Others
+                                                                                                      ]
+                                                                                                    ) ;
+                                                                                 rdf:type owl:Class
+                                                                               ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#ScheduleFeaturedAgendaCultureEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#ScheduleFeaturedAgendaCultureEvent> rdf:type owl:Class ;
+                                                                                   owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                                              [ rdf:type owl:Restriction ;
+                                                                                                                                owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                                                owl:someValuesFrom :ScheduleFeaturedAgendaCulture
+                                                                                                                              ]
+                                                                                                                            ) ;
+                                                                                                         rdf:type owl:Class
+                                                                                                       ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#SchoolEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#SchoolEvent> rdf:type owl:Class ;
+                                                            owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                         owl:someValuesFrom :school
+                                                                                                       ]
+                                                                                                     ) ;
+                                                                                  rdf:type owl:Class
+                                                                                ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#StorytellingPuppetsEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#StorytellingPuppetsEvent> rdf:type owl:Class ;
+                                                                         owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                                      owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                                      owl:someValuesFrom :storytellingPuppets
+                                                                                                                    ]
+                                                                                                                  ) ;
+                                                                                               rdf:type owl:Class
+                                                                                             ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents#1city21districtEvent
+<http://groupfive.edu/kg/ontology/MadridEvents#1city21districtEvent> rdf:type owl:Class ;
+                                                                     owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                                                [ rdf:type owl:Restriction ;
+                                                                                                                  owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                                                  owl:someValuesFrom <http://groupfive.edu/kg/ontology/MadridEvents2#1ciudad21distritos>
+                                                                                                                ]
+                                                                                                              ) ;
+                                                                                           rdf:type owl:Class
+                                                                                         ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#ActividadesCalleArteUrbano
+:ActividadesCalleArteUrbano rdf:type owl:Class ;
+                            owl:equivalentClass [ rdf:type owl:Class ;
+                                                  owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ActividadesCalleArteUrbano>
+                                                            )
+                                                ] ;
+                            rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Dance
+:Dance rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Class ;
+                             owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/DanzaBaile>
+                                       )
+                           ] ;
+       rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Educational
+:Educational rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/CursosTalleres>
+                                             )
+                                 ] ;
+             rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Environmental
+:Environmental rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ItinerariosOtrasActividadesAmbientales>
+                                               )
+                                   ] ;
+               rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Excursions
+:Excursions rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ExcursionesItinerariosVisitas>
+                                            )
+                                ] ;
+            rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Exhibitions
+:Exhibitions rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/Exposiciones>
+                                             )
+                                 ] ;
+             rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Literary
+:Literary rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Class ;
+                                owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/RecitalesPresentacionesActosLiterarios>
+                                          )
+                              ] ;
+          rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Music
+:Music rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Class ;
+                             owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/Musica>
+                                       )
+                           ] ;
+       rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#MusicEvent
+:MusicEvent rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                         owl:someValuesFrom :Music
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Online
+:Online rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Class ;
+                              owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/EnLinea>
+                                        )
+                            ] ;
+        rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Others
+:Others rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Class ;
+                              owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/others>
+                                        )
+                            ] ;
+        rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Parties
+:Parties rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Class ;
+                               owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/Fiestas>
+                                         )
+                             ] ;
+         rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#ScheduleFeaturedAgendaCulture
+:ScheduleFeaturedAgendaCulture rdf:type owl:Class ;
+                               owl:equivalentClass [ rdf:type owl:Class ;
+                                                     owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ProgramacionDestacadaAgendaCultura>
+                                                               )
+                                                   ] ;
+                               rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#Theater
+:Theater rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Class ;
+                               owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/TeatroPerformance>
+                                         )
+                             ] ;
+         rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#camps
+:camps rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Class ;
+                             owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/Campamentos>
+                                       )
+                           ] ;
+       rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#cinemaAudiovisual
+:cinemaAudiovisual rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Class ;
+                                         owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/CineActividadesAudiovisuales>
+                                                   )
+                                       ] ;
+                   rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#circusMagic
+:circusMagic rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/CircoMagia>
+                                             )
+                                 ] ;
+             rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#commemorationsTributes
+:commemorationsTributes rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Class ;
+                                              owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ComemoracionesHomenajes>
+                                                        )
+                                            ] ;
+                        rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#competitions
+:competitions rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Class ;
+                                    owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ConcursosCertamenes>
+                                              )
+                                  ] ;
+              rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#conferences
+:conferences rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ConferenciasColoquios>
+                                             )
+                                 ] ;
+             rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#congresses
+:congresses rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/CongresosJornadas>
+                                            )
+                                ] ;
+            rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#school
+:school rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Class ;
+                              owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ActividadesEscolares>
+                                        )
+                            ] ;
+        rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#sport
+:sport rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Class ;
+                             owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/ActividadesDeportivas>
+                                       )
+                           ] ;
+       rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#storytellingPuppets
+:storytellingPuppets rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Class ;
+                                           owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/CuentacuentosTiteresMarionetas>
+                                                     )
+                                         ] ;
+                     rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  http://groupfive.edu/kg/ontology/MadridEvents2#1ciudad21distritos
+<http://groupfive.edu/kg/ontology/MadridEvents2#1ciudad21distritos> rdf:type owl:Class ;
+                                                                    owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                          owl:oneOf ( <http://groupfive.edu/kg/resources/eventtype/1ciudad21distritos>
+                                                                                                    )
+                                                                                        ] ;
+                                                                    rdfs:subClassOf <http://groupfive.edu/kg/ontology/MadridEvents#EventType> .
+
+
+###  https://schema.org/DanceEvent
+<https://schema.org/DanceEvent> rdf:type owl:Class ;
+                                owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                             owl:someValuesFrom :Dance
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ] .
+
+
+###  https://schema.org/EducationEvent
+<https://schema.org/EducationEvent> rdf:type owl:Class ;
+                                    owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                 owl:someValuesFrom :Educational
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ] .
+
+
+###  https://schema.org/Event
+<https://schema.org/Event> rdf:type owl:Class ;
+                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                             owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                             owl:someValuesFrom <http://groupfive.edu/kg/ontology/MadridEvents#EventType>
+                                           ] .
+
+
+###  https://schema.org/ExhibitionEvent
+<https://schema.org/ExhibitionEvent> rdf:type owl:Class ;
+                                     owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                  owl:someValuesFrom :Exhibitions
+                                                                                ]
+                                                                              ) ;
+                                                           rdf:type owl:Class
+                                                         ] .
+
+
+###  https://schema.org/LiteraryEvent
+<https://schema.org/LiteraryEvent> rdf:type owl:Class ;
+                                   owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                                owl:someValuesFrom :Literary
+                                                                              ]
+                                                                            ) ;
+                                                         rdf:type owl:Class
+                                                       ] .
+
+
+###  https://schema.org/PartiesEvent
+<https://schema.org/PartiesEvent> rdf:type owl:Class ;
+                                  owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                               owl:someValuesFrom :Parties
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ] .
+
+
+###  https://schema.org/SportsEvent
+<https://schema.org/SportsEvent> rdf:type owl:Class ;
+                                 owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                              owl:someValuesFrom :sport
+                                                                            ]
+                                                                          ) ;
+                                                       rdf:type owl:Class
+                                                     ] .
+
+
+###  https://schema.org/TheaterEvent
+<https://schema.org/TheaterEvent> rdf:type owl:Class ;
+                                  owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Event>
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://groupfive.edu/kg/ontology/MadridEvents#hasType> ;
+                                                                               owl:someValuesFrom :Theater
+                                                                             ]
+                                                                           ) ;
+                                                        rdf:type owl:Class
+                                                      ] .
+
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://groupfive.edu/kg/ontology/MadridEvents#Audiance>
+                <http://groupfive.edu/kg/ontology/MadridEvents#DaysOfTheWeek>
+                <http://groupfive.edu/kg/ontology/MadridEvents#District>
+                <http://groupfive.edu/kg/ontology/MadridEvents#Facility>
+                <https://schema.org/Event>
+              )
+] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

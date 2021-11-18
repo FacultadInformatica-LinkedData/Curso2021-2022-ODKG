@@ -17,7 +17,7 @@
     rr:template "http://bicycleaccidents.org/resource/{num_expediente}";
     rr:class vocab:Accident
   ];
-  
+
   rr:predicateObjectMap [
     rr:predicate vocab:hasDate;
     rr:objectMap [
@@ -32,20 +32,20 @@
       rml:reference "tipo_accidente"
       ]
   ];
-  
+
   rr:predicateObjectMap [
     rr:predicate vocab:hasWeather;
     rr:objectMap [
       rml:reference "estado_meteorológico"
       ]
   ];
-  
+
   rr:predicateObjectMap [
     rr:predicate vocab:hasVehicleType;
     rr:objectMap [
       rml:reference "tipo_vehiculo"
       ]
-  ]; 
+  ];
 
   rr:predicateObjectMap [
     rr:predicate vocab:hasPersonType;
@@ -53,7 +53,7 @@
       rml:reference "tipo_persona"
       ]
   ];
-  
+
   rr:predicateObjectMap [
     rr:predicate vocab:hasAge;
     rr:objectMap [
@@ -81,18 +81,18 @@
       rml:reference "positiva_alcohol"
       ]
   ];
-  
+
   rr:predicateObjectMap [
-    rr:predicate vocab:happenedInStreet;
+    rr:predicate vocab:happenedInAddress;
     rr:objectMap [
-      rr:parentTriplesMap <#StreetTP>;
+      rr:parentTriplesMap <#AddressTP>;
       rr:joinCondition [
         rr:child "num_expediente";
         rr:parent "num_expediente";
       ]
     ]
   ] ;
-  
+
     rr:predicateObjectMap [
     rr:predicate vocab:happenedInDistrict;
     rr:objectMap [
@@ -104,25 +104,30 @@
     ]
   ] .
 
-  
-  
-  
-<#StreetTP> a rr:TriplesMap;
-  rml:logicalSource [
-    rml:source "AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
-    rml:referenceFormulation ql:CSV 
-  ];
-  rr:subjectMap [
-    rr:template "http://bicycleaccidents.org/resource/{localizacion}";
-    rr:class vocab:Street
-  ];
-  rr:predicateObjectMap [
+
+
+
+  <#AddressTP> a rr:TriplesMap;
+    rml:logicalSource [
+      rml:source "AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
+      rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+      rr:template "http://bicycleaccidents.org/resource/{direccion}";
+      rr:class vocab:Address
+    ];
+    rr:predicateObjectMap [
     rr:predicate vocab:hasNumber;
     rr:objectMap [
       rml:reference "numero"
+      ]];
+    rr:predicateObjectMap [
+    rr:predicate vocab:hasStreet;
+    rr:objectMap [
+      rml:reference "localizacion"
       ]
-  ];
-  
+    ];
+
   rr:predicateObjectMap [
     rr:predicate owl:sameAs;
     rr:objectMap [
@@ -130,13 +135,13 @@
       rr:termType rr:IRI
     ]
   ] .
-  
-  
-  
+
+
+
 <#DistrictTP> a rr:TriplesMap;
   rml:logicalSource [
     rml:source "AccidentesBicicletas_2019_2020_2021-with-links.csv" ;
-    rml:referenceFormulation ql:CSV 
+    rml:referenceFormulation ql:CSV
   ];
   rr:subjectMap [
     rr:template "http://bicycleaccidents.org/resource/{distrito}";

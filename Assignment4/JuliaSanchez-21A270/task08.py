@@ -9,7 +9,7 @@ Original file is located at
 **Task 08: Completing missing data**
 """
 
-!pip install rdflib
+#!pip install rdflib
 github_storage = "https://raw.githubusercontent.com/FacultadInformatica-LinkedData/Curso2021-2022/master/Assignment4/course_materials"
 
 from rdflib import Graph, Namespace, Literal, URIRef
@@ -63,4 +63,20 @@ for s,p,o in g1.triples((None,RDF.type,NS.Person)):
 
 print("graph1 completo")
 for s,p,o in g1:
+  print(s,p,o)
+
+#completa los campos (given name, family name y email) que puedan faltar con los datos del segundo grafo con una query
+q2 = prepareQuery('''
+  SELECT ?x ?y ?z WHERE { 
+    ?x ?y ?z
+    FILTER(?y=vcard:FN || ?y=vcard:Given || ?y=vcard:EMAIL) 
+  }
+  ''',
+  initNs = { "vcard": VCARD}
+)
+
+for r in g2.query(q2):
+  g1.add(r)
+
+for s, p, o in g1:
   print(s,p,o)

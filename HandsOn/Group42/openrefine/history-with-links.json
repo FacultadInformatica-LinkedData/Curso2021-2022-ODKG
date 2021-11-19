@@ -33,6 +33,19 @@
     "description": "Create column DateTime at index 2 based on column fecha using expression join ([coalesce(cells['fecha'].value,''),coalesce(cells['hora'].value,'')],' ')"
   },
   {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "DateTime",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column DateTime using expression value.toDate()"
+  },
+  {
     "op": "core/column-removal",
     "columnName": "fecha",
     "description": "Remove column fecha"

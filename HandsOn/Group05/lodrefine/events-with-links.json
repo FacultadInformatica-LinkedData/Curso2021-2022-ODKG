@@ -1,0 +1,1439 @@
+[
+    {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "district",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q3032114",
+        "name": "district of Madrid"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column district to type Q3032114"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "district",
+    "expression": "grel:\"https://wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "district_reconciliation",
+    "columnInsertIndex": 24,
+    "description": "Create column district_reconciliation at index 24 based on column district using expression grel:\"https://wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "expression": "join ([coalesce(cells['CLASE-VIAL-INSTALACION'].value,''),coalesce(cells['NOMBRE-VIA-INSTALACION'].value,'')],' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column CLASE-VIAL-INSTALACION using expression join ([coalesce(cells['CLASE-VIAL-INSTALACION'].value,''),coalesce(cells['NOMBRE-VIA-INSTALACION'].value,'')],' ')"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CLASE-VIAL-INSTALACION",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "rt",
+    "columnInsertIndex": 23,
+    "description": "Create column rt at index 23 based on column CLASE-VIAL-INSTALACION using expression grel:value"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "NOMBRE-VIA-INSTALACION",
+    "description": "Remove column NOMBRE-VIA-INSTALACION"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "rt",
+    "expression": "join ([coalesce(cells['rt'].value,''),coalesce(cells['NUM-INSTALACION'].value,''),coalesce(cells['postal code'].value,'')],' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column rt using expression join ([coalesce(cells['rt'].value,''),coalesce(cells['NUM-INSTALACION'].value,''),coalesce(cells['postal code'].value,'')],' ')"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "rt",
+    "newColumnName": "address",
+    "description": "Rename column rt to address"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "NUM-INSTALACION",
+    "description": "Remove column NUM-INSTALACION"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "AVENIDA SANTUARIO DE VALVERDE",
+          "Avenida Santuario de Valverde"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "AVENIDA SANTUARIO DE VALVERDE"
+      }
+    ],
+    "description": "Mass edit cells in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q79007",
+        "name": "street"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column CLASE-VIAL-INSTALACION to type Q79007"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "PLAZA DE LEGAZPI",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5547886",
+      "name": "Legazpi",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Legazpi (Q5547886) for cells containing \"PLAZA DE LEGAZPI\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "matched",
+                "l": "matched"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA REAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714023",
+      "name": "avenida Real de Pinto",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 73
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida Real de Pinto (Q5714023) for cells containing \"AVENIDA REAL\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "matched",
+                "l": "matched"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "PLAZA DE LEGAZPI"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "PLAZA LEGAZPI"
+      }
+    ],
+    "description": "Mass edit cells in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE CARRIL DEL CONDE",
+    "description": "Clear recon data for cells containing \"CALLE CARRIL DEL CONDE\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE CAMARENA",
+    "description": "Clear recon data for cells containing \"CALLE CAMARENA\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "PLAZA LEGAZPI",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5547886",
+      "name": "Legazpi",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Legazpi (Q5547886) for cells containing \"PLAZA LEGAZPI\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "PLAZA MONCLOA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6080211",
+      "name": "plaza de la Moncloa",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item plaza de la Moncloa (Q6080211) for cells containing \"PLAZA MONCLOA\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA BADAJOZ",
+    "description": "Clear recon data for cells containing \"AVENIDA BADAJOZ\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CARRETERA BOADILLA DEL MONTE",
+    "description": "Clear recon data for cells containing \"CARRETERA BOADILLA DEL MONTE\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE SAN ROMÁN DEL VALLE",
+    "description": "Clear recon data for cells containing \"CALLE SAN ROMÁN DEL VALLE\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE MIRA EL RIO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q56121016",
+      "name": "Calle de Mira el Río, Madrid",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle de Mira el Río, Madrid (Q56121016) for cells containing \"CALLE MIRA EL RIO\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA LAS AGUILAS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q29405114",
+      "name": "Avenida de Las Águilas, Madrid",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 93
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de Las Águilas, Madrid (Q29405114) for cells containing \"AVENIDA LAS AGUILAS\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "PASEO CHOPERA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q27044458",
+      "name": "Paseo de la Chopera, Madrid",
+      "types": [
+        "Q79007",
+        "Q787113"
+      ],
+      "score": 81
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo de la Chopera, Madrid (Q27044458) for cells containing \"PASEO CHOPERA\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "RONDA ATOCHA",
+    "judgment": "matched",
+    "match": {
+      "id": "Q26831149",
+      "name": "Ronda de Atocha",
+      "types": [
+        "Q79007"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ronda de Atocha (Q26831149) for cells containing \"RONDA ATOCHA\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE CANARIAS",
+    "description": "Clear recon data for cells containing \"CALLE CANARIAS\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE PRINCIPE",
+    "judgment": "matched",
+    "match": {
+      "id": "Q15788175",
+      "name": "Calle del Príncipe, Madrid",
+      "types": [
+        "Q79007"
+      ],
+      "score": 88
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle del Príncipe, Madrid (Q15788175) for cells containing \"CALLE PRINCIPE\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA MORATALAZ",
+    "judgment": "matched",
+    "match": {
+      "id": "Q104778384",
+      "name": "Avenida de Moratalaz",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de Moratalaz (Q104778384) for cells containing \"AVENIDA MORATALAZ\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA REAL",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5714023",
+      "name": "avenida Real de Pinto",
+      "types": [
+        "Q79007",
+        "Q7543083"
+      ],
+      "score": 73
+    },
+    "shareNewTopics": false,
+    "description": "Match item avenida Real de Pinto (Q5714023) for cells containing \"AVENIDA REAL\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA TOREROS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q29918658",
+      "name": "Avenida de los Toreros, Madrid",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 81
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de los Toreros, Madrid (Q29918658) for cells containing \"AVENIDA TOREROS\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE PRINCESA DE EBOLI",
+    "description": "Clear recon data for cells containing \"CALLE PRINCESA DE EBOLI\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE MARIA MARTINEZ OVIOL",
+    "description": "Clear recon data for cells containing \"CALLE MARIA MARTINEZ OVIOL\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA DE LAS GLORIETAS",
+    "description": "Clear recon data for cells containing \"AVENIDA DE LAS GLORIETAS\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE MONTE DE MONTJUICH",
+    "description": "Clear recon data for cells containing \"CALLE MONTE DE MONTJUICH\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE MATAPOZUELOS",
+    "description": "Clear recon data for cells containing \"CALLE MATAPOZUELOS\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA SÉPTIMA",
+    "description": "Clear recon data for cells containing \"AVENIDA SÉPTIMA\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE ALISEDA",
+    "description": "Clear recon data for cells containing \"CALLE ALISEDA\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE VIRGEN DE LA ANTIGUA",
+    "description": "Clear recon data for cells containing \"CALLE VIRGEN DE LA ANTIGUA\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE MANUEL VELEZ",
+    "description": "Clear recon data for cells containing \"CALLE MANUEL VELEZ\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE CASTROSERNA",
+    "description": "Clear recon data for cells containing \"CALLE CASTROSERNA\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "AVENIDA MONFORTE DE LEMOS",
+    "judgment": "matched",
+    "match": {
+      "id": "Q52683954",
+      "name": "Avenida de Monforte de Lemos, Madrid",
+      "types": [
+        "Q7543083"
+      ],
+      "score": 94
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de Monforte de Lemos, Madrid (Q52683954) for cells containing \"AVENIDA MONFORTE DE LEMOS\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE OLIVAR",
+    "judgment": "matched",
+    "match": {
+      "id": "Q20021057",
+      "name": "Calle del Olivar, Madrid",
+      "types": [
+        "Q79007"
+      ],
+      "score": 86
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle del Olivar, Madrid (Q20021057) for cells containing \"CALLE OLIVAR\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "PLAZA CIBELES",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1537446",
+      "name": "plaza de Cibeles",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item plaza de Cibeles (Q1537446) for cells containing \"PLAZA CIBELES\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE ARREGUI Y ARUEJ",
+    "description": "Clear recon data for cells containing \"CALLE ARREGUI Y ARUEJ\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "CLASE-VIAL-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "CLASE-VIAL-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "CLASE-VIAL-INSTALACION",
+    "similarValue": "CALLE SERRANO",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740879",
+      "name": "Serrano Street",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Serrano Street (Q5740879) for cells containing \"CALLE SERRANO\" in column CLASE-VIAL-INSTALACION"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "CLASE-VIAL-INSTALACION",
+    "expression": "grel:\"http://wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "street_reconciliation",
+    "columnInsertIndex": 23,
+    "description": "Create column street_reconciliation at index 23 based on column CLASE-VIAL-INSTALACION using expression grel:\"http://wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "CLASE-VIAL-INSTALACION",
+    "newColumnName": "street",
+    "description": "Rename column CLASE-VIAL-INSTALACION to street"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BARRIO-INSTALACION",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q10267336",
+        "name": "neighborhood of Madrid"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column BARRIO-INSTALACION to type Q10267336"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "BARRIO-INSTALACION: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "BARRIO-INSTALACION",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "matched",
+                "l": "matched"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BARRIO-INSTALACION",
+    "expression": "grel:\"https://wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "neighborhood_reconciliation",
+    "columnInsertIndex": 28,
+    "description": "Create column neighborhood_reconciliation at index 28 based on column BARRIO-INSTALACION using expression grel:\"https://wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "BARRIO-INSTALACION",
+    "newColumnName": "neighborhood",
+    "description": "Rename column BARRIO-INSTALACION to neighborhood"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "audience1",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Niños",
+          "Niños,"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Niños"
+      },
+      {
+        "from": [
+          "Familias",
+          "Familias,"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Familias"
+      }
+    ],
+    "description": "Mass edit cells in column audience1"
+  }
+]

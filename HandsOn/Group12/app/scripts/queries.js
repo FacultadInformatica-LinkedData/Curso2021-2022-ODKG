@@ -11,10 +11,10 @@ var allEventsQuery = `
         PREFIX va: <http://code-research.eu/ontology/visual-analytics#>
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+        PREFIX ns: <https://data.eventsinmadrid.org/ontology#>
         PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
         PREFIX shema: <http://schema.org/>
-        PREFIX evt: <https://data.eventsatmadrid.org/resource/Event/>
+        PREFIX evt: <https://data.eventsinmadrid.org/resource/Event/>
         SELECT * WHERE {
            ?Events rdf:type ns:Event.
            ?Events rdfs:label ?Label.
@@ -38,10 +38,10 @@ var mainQuery = `
     PREFIX owl: <http://www.w3.org/2002/07/owl#>
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+    PREFIX ns: <https://data.eventsinmadrid.org/ontology#>
     PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
     PREFIX wiki: <https://wikidata.org/entity/>
-    PREFIX evt: <https://data.eventsatmadrid.org/resource/Event/>
+    PREFIX evt: <https://data.eventsinmadrid.org/resource/Event/>
     SELECT * WHERE {
       ?Events rdf:type ns:Event.
       ?Events rdfs:label ?Label.

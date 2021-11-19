@@ -1,4 +1,4 @@
-@prefix : <https://data.eventsatmadrid.org/ontology#> .
+@prefix : <https://data.eventsinmadrid.org/ontology#> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix gsp: <http://www.opengis.net/ont/geosparql#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -15,9 +15,9 @@
 @prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix spatial: <http://geovocab.org/spatial#> .
-@base <https://data.eventsatmadrid.org/ontology#> .
+@base <https://data.eventsinmadrid.org/ontology#> .
 
-<https://data.eventsatmadrid.org/ontology#> rdf:type owl:Ontology .
+<https://data.eventsinmadrid.org/ontology#> rdf:type owl:Ontology .
 
 #################################################################
 #    Annotation properties
@@ -113,7 +113,7 @@ locn:location rdf:type owl:ObjectProperty .
 foaf:based_near rdf:type owl:ObjectProperty .
 
 
-###  https://data.eventsatmadrid.org/ontology#isHeldAt
+###  https://data.eventsinmadrid.org/ontology#isHeldAt
 :isHeldAt rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf geo:location ;
           rdfs:domain :CityEvent ;
@@ -124,7 +124,7 @@ foaf:based_near rdf:type owl:ObjectProperty .
                      "se desarrolla en"@es .
 
 
-###  https://data.eventsatmadrid.org/ontology#isInDistrict
+###  https://data.eventsinmadrid.org/ontology#isInDistrict
 :isInDistrict rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf juso:within ;
               rdfs:domain juso:SpatialThing ;
@@ -134,7 +134,7 @@ foaf:based_near rdf:type owl:ObjectProperty .
                          "pertenece al distrito"@es .
 
 
-###  https://data.eventsatmadrid.org/ontology#isInNeighborhood
+###  https://data.eventsinmadrid.org/ontology#isInNeighborhood
 :isInNeighborhood rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf juso:within ;
                   rdfs:domain juso:SpatialThing ;
@@ -145,7 +145,7 @@ foaf:based_near rdf:type owl:ObjectProperty .
                              "pertenece al barrio"@es .
 
 
-###  https://data.eventsatmadrid.org/ontology#isInStreet
+###  https://data.eventsinmadrid.org/ontology#isInStreet
 :isInStreet rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf geo:location ;
             rdfs:domain juso:SpatialThing ;
@@ -184,7 +184,7 @@ vcard:street-address rdf:type owl:DatatypeProperty ;
                      rdfs:label "street address"@en .
 
 
-###  https://data.eventsatmadrid.org/ontology#accessibilityType
+###  https://data.eventsinmadrid.org/ontology#accessibilityType
 :accessibilityType rdf:type owl:DatatypeProperty ;
                    rdfs:domain :Facility ;
                    rdfs:range xsd:string ;
@@ -201,7 +201,7 @@ vcard:street-address rdf:type owl:DatatypeProperty ;
                               "tipo(s) de accesibilidad"@es .
 
 
-###  https://data.eventsatmadrid.org/ontology#eventType
+###  https://data.eventsinmadrid.org/ontology#eventType
 :eventType rdf:type owl:DatatypeProperty ;
            rdfs:domain :CityEvent ;
            rdfs:range xsd:string ;
@@ -211,7 +211,7 @@ vcard:street-address rdf:type owl:DatatypeProperty ;
                       "type of event"@en .
 
 
-###  https://data.eventsatmadrid.org/ontology#exceptDates
+###  https://data.eventsinmadrid.org/ontology#exceptDates
 :exceptDates rdf:type owl:DatatypeProperty ;
              rdfs:domain :CityEvent ;
              rdfs:range xsd:string ;
@@ -221,7 +221,7 @@ vcard:street-address rdf:type owl:DatatypeProperty ;
                         "fechas excluidas"@es .
 
 
-###  https://data.eventsatmadrid.org/ontology#hasDaysOfWeek
+###  https://data.eventsinmadrid.org/ontology#hasDaysOfWeek
 :hasDaysOfWeek rdf:type owl:DatatypeProperty ;
                rdfs:domain :CityEvent ;
                rdfs:range xsd:string ;
@@ -231,7 +231,7 @@ vcard:street-address rdf:type owl:DatatypeProperty ;
                           "días de la semana"@es .
 
 
-###  https://data.eventsatmadrid.org/ontology#hasPrice
+###  https://data.eventsinmadrid.org/ontology#hasPrice
 :hasPrice rdf:type owl:DatatypeProperty ;
           rdfs:domain :CityEvent ;
           rdfs:range xsd:string ;
@@ -241,7 +241,7 @@ vcard:street-address rdf:type owl:DatatypeProperty ;
                      "tiene coste"@es .
 
 
-###  https://data.eventsatmadrid.org/ontology#hasScheduleURL
+###  https://data.eventsinmadrid.org/ontology#hasScheduleURL
 :hasScheduleURL rdf:type owl:DatatypeProperty ;
                 rdfs:domain :Facility ;
                 rdfs:range xsd:anyURI ;
@@ -251,7 +251,7 @@ vcard:street-address rdf:type owl:DatatypeProperty ;
                            "schedule URL"@en .
 
 
-###  https://data.eventsatmadrid.org/ontology#hasTargetAudience
+###  https://data.eventsinmadrid.org/ontology#hasTargetAudience
 :hasTargetAudience rdf:type owl:DatatypeProperty ;
                    rdfs:domain :CityEvent ;
                    rdfs:range xsd:string ;
@@ -472,7 +472,7 @@ vcard:Address rdf:type owl:Class ;
               rdfs:label "Address"@en .
 
 
-###  https://data.eventsatmadrid.org/ontology#CityEvent
+###  https://data.eventsinmadrid.org/ontology#CityEvent
 :CityEvent rdf:type owl:Class ;
            rdfs:subClassOf schema:Event ;
            rdfs:comment "Important and programmed event, of a social, academic, artistic or sporting nature."@en ,
@@ -481,7 +481,7 @@ vcard:Address rdf:type owl:Class ;
                       "Evento"@es .
 
 
-###  https://data.eventsatmadrid.org/ontology#Facility
+###  https://data.eventsinmadrid.org/ontology#Facility
 :Facility rdf:type owl:Class ;
           rdfs:subClassOf juso:Feature ;
           rdfs:comment "A place, amenity, or piece of equipment provided for a particular purpose (definition from Oxford Languages)"@en ,

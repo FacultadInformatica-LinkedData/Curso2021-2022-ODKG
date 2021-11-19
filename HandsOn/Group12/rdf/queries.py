@@ -12,7 +12,7 @@ g.parse("data-with-links.nt", format="ntriples")
 #for subj, pred, obj in g:
 #  print(subj,pred,obj)
 
-NS = Namespace("https://data.eventsatmadrid.org/ontology#")
+NS = Namespace("https://data.eventsinmadrid.org/ontology#")
 RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 OWL = Namespace("http://www.w3.org/2002/07/owl#")
 

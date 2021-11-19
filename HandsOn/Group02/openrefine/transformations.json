@@ -104,6 +104,19 @@
       "mode": "row-based"
     },
     "columnName": "PEATONES",
+    "expression": "grel:value.replace('.','')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column PEATONES using expression grel:value.replace('.','')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "PEATONES",
     "expression": "value.toNumber()",
     "onError": "keep-original",
     "repeat": false,
@@ -348,5 +361,31 @@
     "oldColumnName": "LONGITUD",
     "newColumnName": "Longitude",
     "description": "Rename column LONGITUD to Longitude"
-  }
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "expression": "grel:value.replace(\"Madrid Río. Puente de Segovia con Paseo Ermita del Santo Senda peatonal\", \"Paseo Ermita del Santo\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Street full name using expression grel:value.replace(\"Madrid Río. Puente de Segovia con Paseo Ermita del Santo Senda peatonal\", \"Paseo Ermita del Santo\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street short name",
+    "expression": "grel:value.replace(\"MadridRio.PuentedeSegoviaconPaseoErmitadelSantoSendapeatonal\", \"PaseoErmitadelSanto\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Street short name using expression grel:value.replace(\"MadridRio.PuentedeSegoviaconPaseoErmitadelSantoSendapeatonal\", \"PaseoErmitadelSanto\")"
+  },
 ]

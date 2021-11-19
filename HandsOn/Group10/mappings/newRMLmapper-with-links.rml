@@ -1,0 +1,287 @@
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.          
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix smart: <http://smartcity.linkeddata.es/lcc/ontology/MadridEvents#>.
+@base <http://smartcity.linkeddata.es/lcc/ontology/MadridEvents>.
+
+
+<#TriplesMap1> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./csv/eventosfinal-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{ID-EVENTO}";
+    rr:termType rr:IRI; rr:class smart:Event
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate smart:title;
+    rr:objectMap [
+      rml:reference "TITULO"] 
+    ];
+ rr:predicateObjectMap [
+    rr:predicate smart:price;
+    rr:objectMap [
+      rml:reference "PRECIO"
+      ]
+  ];
+rr:predicateObjectMap [
+    rr:predicate smart:free;
+    rr:objectMap [
+      rml:reference "GRATUITO"; rr:dataType xsd:boolean 
+		
+      ]
+  ];
+  rr:predicateObjectMap [
+    rr:predicate smart:longEvent;
+    rr:objectMap [
+      rml:reference "LARGA-DURACION"; rr:dataType xsd:boolean
+      ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate smart:excludedDays;
+    rr:objectMap [
+      rml:reference "DIAS-EXCLUIDOS"; rr:dataType xsd:dateTime
+      ]
+  ];
+    rr:predicateObjectMap [
+    rr:predicate smart:startDate;
+    rr:objectMap [
+      rml:reference "FECHA INICIAL"; rr:dataType xsd:dateTime
+      ]
+  ];
+    rr:predicateObjectMap [
+    rr:predicate smart:endDate;
+    rr:objectMap [
+      rml:reference "FECHA-FIN"; rr:dataType xsd:dateTime
+      ]
+  ];
+    rr:predicateObjectMap [
+    rr:predicate smart:hasDescription;
+    rr:objectMap [
+      rml:reference "DESCRIPCION"
+      ]
+  ];
+    rr:predicateObjectMap [
+    rr:predicate smart:URI;
+    rr:objectMap [
+      rml:reference "CONTENT-URL";
+      rr:termType rr:IRI
+      ]
+  ];
+  rr:predicateObjectMap [
+    rr:predicate smart:dayOfWeek;
+    rr:objectMap [
+      rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{DIAS-SEMANA}";
+    ]
+];
+  rr:predicateObjectMap [
+    rr:predicate smart:belongsTo;
+    rr:objectMap [
+      rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{PROGRAMA}";
+    ]
+];
+  rr:predicateObjectMap [
+    rr:predicate smart:isA;
+    rr:objectMap [
+      rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{CATEGORIA}";
+    ]
+];
+  rr:predicateObjectMap [
+    rr:predicate smart:takesPlaceIn;
+    rr:objectMap [
+      rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{NOMBRE-INSTALACION}";
+    ]
+];
+  rr:predicateObjectMap [
+    rr:predicate smart:addressedTo;
+    rr:objectMap [
+      rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{AUDIENCIA}";
+    ]
+].
+<#TriplesMap2> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{DIAS-SEMANA}";
+	rr:class smart:DayOfWeek
+	];
+  	rr:predicateObjectMap [
+    		rr:predicate owl:sameAs;
+   		rr:objectMap [
+      		rml:reference "same_as_wikidata_DIAS-SEMANA";
+    		]
+	].
+
+#map3
+<#TriplesMap3> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{PROGRAMA}";
+	rr:class smart:Activity_Program
+	];
+	rr:predicateObjectMap [ 
+		rr:predicate smart:URL;
+		rr:objectMap [ rml:reference "URL-PROGRAMA"
+		]
+	].
+#map4
+<#TriplesMap4> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{NOMBRE-INSTALACION}";
+	rr:class smart:Facility
+	];
+	rr:predicateObjectMap [ 
+		rr:predicate smart:URL;
+		rr:objectMap [ rml:reference "URL-INSTALACION"
+		]
+	];
+	rr:predicateObjectMap [ 
+		rr:predicate smart:facilityName;
+		rr:objectMap [ rml:reference "NOMBRE-INSTALACION"
+		]
+	];
+	rr:predicateObjectMap [ 
+		rr:predicate smart:accessible;
+		rr:objectMap [ rml:reference "ACCESIBILIDAD-INSTALACION"; rr:dataType xsd:boolean
+		]
+	];
+  	rr:predicateObjectMap [
+    		rr:predicate smart:hasAddress;
+   		rr:objectMap [
+      		rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{DIRECCION}";
+    		]
+	];
+  	rr:predicateObjectMap [
+    		rr:predicate smart:inHood;
+   		rr:objectMap [
+      		rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{BARRIO-INSTALACION}";
+    		]
+	].
+#map5
+<#TriplesMap5> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{DISTRITO-INSTALACION}";
+	rr:class smart:District
+	];
+	rr:predicateObjectMap [
+		rr:predicate owl:sameAs;
+		rr:objectMap [
+			rml:reference "same_as_wikidata_DISTRITO-INSTALACION"
+		]	
+	].
+#map6
+<#TriplesMap6> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "./csv/eventosfinal-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+  rr:subjectMap [
+    rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{DIRECCION}";
+    rr:termType rr:IRI; rr:class smart:Address
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate smart:postcode;
+    rr:objectMap [
+      rml:reference "CODIGO-POSTAL-INSTALACION"] 
+  ];
+ 
+  rr:predicateObjectMap [
+    rr:predicate wgs84_pos:lat_long;
+    rr:objectMap [
+      rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{LATITUD},{LONGITUD}";
+    ]
+].
+#map7
+<#TriplesMap7> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{BARRIO-INSTALACION}";
+	rr:class smart:Neighbourhood
+	];
+  	rr:predicateObjectMap [
+    		rr:predicate smart:inDistrict;
+   		rr:objectMap [
+      		rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{DISTRITO-INSTALACION}";
+    		]
+    	];
+	rr:predicateObjectMap [
+		rr:predicate owl:sameAs;
+		rr:objectMap [
+		rml:reference "same_as_wikidata_BARRIO-INSTALACION"
+		];
+	].
+
+#map8
+<#TriplesMap8> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{LATITUD},{LONGITUD}";
+	rr:class smart:Coordinates
+	];
+  	rr:predicateObjectMap [
+    		rr:predicate wgs84_pos:lat;
+    		rr:objectMap [
+      			rml:reference "LATITUD"
+    	];
+	rr:predicateObjectMap [
+    		rr:predicate wgs84_pos:long;
+    		rr:objectMap [
+      			rml:reference "LATITUD"] 
+    	].
+#map9
+<#TriplesMap9> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{CATEGORIA}";
+	rr:class smart:Category
+	]
+	rr:predicateObjectMap [
+    		rr:predicate smart:name;
+   		rr:objectMap [
+      		rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{CATEGORIA}";
+    		]
+	].
+
+#map10
+<#TriplesMap10> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{SUBCATEGORIA}";
+	rr:class smart:Subcategory
+	];
+  rr:predicateObjectMap [
+    rr:predicate smart:subClassOf;
+    rr:objectMap [
+      rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{CATEGORIA}";
+    ]
+].
+#map11
+<#TriplesMap11> a rr:TriplesMap;
+	rml:logicalSource [ 
+		rml:source "./csv/eventosfinal-with-links.csv";
+		rml:referenceFormulation ql:CSV ];
+	rr:subjectMap [ 
+	rr:template "http://smartcity.linkeddata.es/lcc/resource/MadridEvents/{AUDIENCIA}";
+	rr:class smart:Audience
+	].

@@ -6,8 +6,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <http://www.group02.org/pd/ontology/PedestriansMadrid#> .
 
-<http://www.group02.org/pd/ontology/PedestriansMadrid> rdf:type owl:Ontology ;
-                                                        owl:versionIRI <http://www.group02.org/pd/ontology/PedestriansMadrid> .
+<http://www.group02.org/pd/ontology/PedestriansMadrid#> rdf:type owl:Ontology ;
+                                                         owl:versionIRI <http://www.group02.org/pd/ontology/PedestriansMadrid#> .
 
 #################################################################
 #    Object Properties
@@ -16,40 +16,22 @@
 ###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasDistrict
 :hasDistrict rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasDistrict ;
-                           owl:allValuesFrom :Street
-                         ] ;
-             rdfs:range [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasDistrict ;
-                          owl:someValuesFrom :District
-                        ] .
+             rdfs:domain :Street ;
+             rdfs:range :District .
 
 
 ###  http://www.group02.org/pd/ontology/PedestriansMadrid#hasStreet
 :hasStreet rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
-           rdfs:domain [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasStreet ;
-                         owl:allValuesFrom :MeasurementPoint
-                       ] ;
-           rdfs:range [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasStreet ;
-                        owl:someValuesFrom :Street
-                      ] .
+           rdfs:domain :MeasurementPoint ;
+           rdfs:range :Street .
 
 
 ###  http://www.group02.org/pd/ontology/PedestriansMadrid#isLocated
 :isLocated rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
-           rdfs:domain [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasStreet ;
-                         owl:allValuesFrom :Measurement
-                       ] ;
-           rdfs:range [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasDistrict ;
-                        owl:someValuesFrom :MeasurementPoint
-                      ] .
+           rdfs:domain :Measurement ;
+           rdfs:range :MeasurementPoint .
 
 
 #################################################################

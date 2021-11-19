@@ -1,0 +1,74 @@
+<mat-toolbar>
+  <span class="ms-5">OpenData Application. Group 02</span>
+</mat-toolbar>
+<div class="container mt-5">
+  <h1>Measurements of pedestrians</h1>
+  <div class="row text-center mt-5">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Street</mat-label>
+            <mat-select formControlName="street">
+              <mat-option *ngFor="let street of streetsList" value="{{street.key}}">{{street.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Min. Pedestrians</mat-label>
+            <input formControlName="min" matInput type="number">
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Max. Pedestrians</mat-label>
+            <input formControlName="max" matInput type="number">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="text-center mb-4">
+        <button class="mx-2" mat-raised-button type="submit" color="primary">Search</button>
+        <mat-form-field class="mx-2" appearance="legacy">
+          <mat-label>Limit</mat-label>
+          <input formControlName="limit" max="1000" matInput type="number">
+          <mat-hint>Max. 1000</mat-hint>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <table class="table table-dark table-striped" *ngIf="data">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Street</th>
+          <th>Observation</th>
+          <th>Date</th>
+          <th>Pedestrians</th>
+          <th>District</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let measure of data, let i = index">
+          <td>{{i+1}}</td>
+          <td> <a href={{measure.stWikidata.value}}> {{measure.streetLabel.value}} </a> </td>
+          <td>{{measure.observation.value}}</td>
+          <td>{{measure.date.value}}</td>
+          <td>{{measure.pedestrians.value}}</td>
+          <td> <a href={{measure.dsWikidata.value}}> {{measure.districtLabel.value}} </a> </td>
+          <td> <a href="https://maps.google.com/maps?q={{measure.latitude.value}},{{measure.longitude.value}}"> Google Maps </a> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

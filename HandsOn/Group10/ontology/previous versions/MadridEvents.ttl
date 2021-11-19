@@ -1,0 +1,151 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl:    <http://www.w3.org/2003/11/swrl#> .
+@prefix protege:  <http://protege.stanford.edu/plugins/owl/protege#> .
+@prefix default:  <http://smartcity.linkeddata.es/lcc/ontology/MadridEvents#> .
+@prefix xsp:     <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix swrlb:   <http://www.w3.org/2003/11/swrlb#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+default:inHood
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Facility ;
+      rdfs:range default:Neighbourhood .
+
+default:takesPlaceIn
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Event ;
+      rdfs:range default:Facility .
+
+default:Audience
+      a       rdfs:Class .
+
+default:URL
+      a       rdf:Property ;
+      rdfs:domain
+              [ a       owl:Class ;
+                owl:unionOf (default:Event default:Activity_Program default:Facility)
+              ] ;
+      rdfs:range xsd:string .
+
+default:isA
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Event ;
+      rdfs:range default:Category .
+
+default:title
+      a       rdf:Property ;
+      rdfs:domain default:Event ;
+      rdfs:range xsd:string .
+
+default:dayOfWeek
+      a       owl:ObjectProperty ;
+      rdfs:domain default:DateTime ;
+      rdfs:range default:DayOfWeek .
+
+default:District
+      a       rdfs:Class .
+
+<http://smartcity.linkeddata.es/lcc/ontology/MadridEvents>
+      a       owl:Ontology .
+
+default:Category
+      a       rdfs:Class .
+
+default:Facility
+      a       rdfs:Class .
+
+default:latitude
+      a       rdf:Property ;
+      rdfs:domain default:Coordinates ;
+      rdfs:range xsd:string .
+
+default:addressedTo
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Event ;
+      rdfs:range default:Audience .
+
+default:DateTime
+      a       rdfs:Class .
+
+default:eventDate
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Event ;
+      rdfs:range default:DateTime .
+
+default:date
+      a       rdf:Property ;
+      rdfs:domain default:DateTime ;
+      rdfs:range xsd:string .
+
+default:Coordinates
+      a       rdfs:Class .
+
+default:inDistrict
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Facility ;
+      rdfs:range default:District .
+
+default:Event
+      a       rdfs:Class .
+
+default:name
+      a       rdf:Property ;
+      rdfs:domain
+              [ a       owl:Class ;
+                owl:unionOf (default:Activity_Program default:Address)
+              ] ;
+      rdfs:range xsd:string .
+
+default:description
+      a       rdf:Property ;
+      rdfs:domain default:Event ;
+      rdfs:range xsd:string .
+
+default:hasAddress
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Facility ;
+      rdfs:range default:Address .
+
+default:Activity_Program
+      a       rdfs:Class .
+
+default:longitude
+      a       rdf:Property ;
+      rdfs:domain default:Coordinates ;
+      rdfs:range xsd:string .
+
+default:time
+      a       rdf:Property ;
+      rdfs:domain default:DateTime .
+
+default:postcode
+      a       rdf:Property ;
+      rdfs:domain default:Address ;
+      rdfs:range xsd:string .
+
+default:Neighbourhood
+      a       rdfs:Class .
+
+default:DayOfWeek
+      a       rdfs:Class ;
+      rdfs:subClassOf default:DateTime .
+
+default:Address
+      a       rdfs:Class .
+
+default:belongsTo
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Event ;
+      rdfs:range default:Activity_Program .
+
+default:price
+      a       rdf:Property ;
+      rdfs:domain default:Event ;
+      rdfs:range xsd:string .
+
+default:hasCoordinates
+      a       owl:ObjectProperty ;
+      rdfs:domain default:Address ;
+      rdfs:range default:Coordinates .

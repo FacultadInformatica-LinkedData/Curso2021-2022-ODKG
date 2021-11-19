@@ -321,10 +321,10 @@
     <b>AUTHORITY:</b> The authority component can be further subdivided into three subcomponents
     <li>authority = [userinfo@]host[:port]</li>
     <br>
-    We eschew the use of the userinfo and port subcomponents. The host we propose is <b>"data.eventsatmadrid.org"</b>,
-    in which our ontologies will be published. It is worth noting that "eventsatmadrid.org" is an unregistered domain.
+    We eschew the use of the userinfo and port subcomponents. The host we propose is <b>"data.eventsinmadrid.org"</b>,
+    in which our ontologies will be published. It is worth noting that "eventsinmadrid.org" is an unregistered domain.
     <br><br>
-    Thus, the domain that we will be using can be formulated as: <b>https://data.eventsatmadrid.org/</b>
+    Thus, the domain that we will be using can be formulated as: <b>https://data.eventsinmadrid.org/</b>
   </p>
   <p>
     Now that we have defined the domain in which the ontology will be located, let us define the paths and patterns for
@@ -332,24 +332,24 @@
   </p>
   <li><b>Definition of ontologies:</b> Because the dataset is rather small and the number of classes and properties that
     we need to define is not very large, we will be just using one ontology. Thus, ontological terms will be located at
-    <b>https://data.eventsatmadrid.org/ontology</b> If, at any time we redesign the R.N.S. so as to include different
+    <b>https://data.eventsinmadrid.org/ontology</b> If, at any time we redesign the R.N.S. so as to include different
     ontologies, they will be defined with the following pattern, where [ontologyName] is the name of the ontology.
     [...]/ontology/<b>[ontologyName]</b>
   </li>
   <ul>
-    <li>Example of definition of a new ontology: https://data.eventsatmadrid.org/ontology/TouristAttraction</li>
+    <li>Example of definition of a new ontology: https://data.eventsinmadrid.org/ontology/TouristAttraction</li>
   </ul>
   <li><b>Ontological terms</b> are defined using hash URIs (#), verifying the following patterns:</li>
   <ul>
     <li><b>Classes:</b>[...]/ontology<b>#[className]</b></li>
     <ul>
-      <li>Example: https://data.eventsatmadrid.org/ontology#Museum</li>
+      <li>Example: https://data.eventsinmadrid.org/ontology#Museum</li>
     </ul>
   </ul>
   <ul>
     <li><b>Properties:</b>[...]/ontology<b>#[PropertyName]</b></li>
     <ul>
-      <li>Example: https://data.eventsatmadrid.org/ontology#Capacity</li>
+      <li>Example: https://data.eventsinmadrid.org/ontology#Capacity</li>
     </ul>
   </ul>
   <li><b>Definition of data:</b> following the pattern [...]<b>/resource/</b></li>
@@ -357,13 +357,13 @@
     <li><b>Individuals</b>: defined using slash (/) URIs, which must verify the pattern
       [...]/resource/[className]<b>/[identifier]</b></li>
     <ul>
-      <li>Example: https://data.eventsatmadrid.org/resource/Museum/ReinaSofia</li>
+      <li>Example: https://data.eventsinmadrid.org/resource/Museum/ReinaSofia</li>
     </ul>
   </ul>
 
   <h3>Recap of the naming strategy</h3>
   <ul>
-    <li><b>Domain:</b> https://data.eventsatmadrid.org/ </li>
+    <li><b>Domain:</b> https://data.eventsinmadrid.org/ </li>
     <ul>
       <li><b>Ontology:</b> ontology# </li>
       <ul>

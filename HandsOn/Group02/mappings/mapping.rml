@@ -11,26 +11,26 @@ map:jc_001 rr:child "Street short name";
     rr:parent "Street short name".
 map:jc_002 rr:child "District Number";
     rr:parent "District Number".
-map:map_TriplesMap1_000 rml:logicalSource map:source_000;
+map:map_Districts_000 rml:logicalSource map:source_003;
     a rr:TriplesMap;
-    rdfs:label "TriplesMap1";
-    rr:subjectMap map:s_000;
-    rr:predicateObjectMap map:pom_000, map:pom_001, map:pom_002, map:pom_003, map:pom_004.
-map:map_TriplesMap2_000 rml:logicalSource map:source_001;
-    a rr:TriplesMap;
-    rdfs:label "TriplesMap2";
-    rr:subjectMap map:s_001;
-    rr:predicateObjectMap map:pom_005, map:pom_006, map:pom_007, map:pom_008, map:pom_009, map:pom_010, map:pom_011, map:pom_012.
-map:map_TriplesMap3_000 rml:logicalSource map:source_002;
-    a rr:TriplesMap;
-    rdfs:label "TriplesMap3";
-    rr:subjectMap map:s_002;
-    rr:predicateObjectMap map:pom_013, map:pom_014, map:pom_015.
-map:map_TriplesMap4_000 rml:logicalSource map:source_003;
-    a rr:TriplesMap;
-    rdfs:label "TriplesMap4";
+    rdfs:label "Districts";
     rr:subjectMap map:s_003;
     rr:predicateObjectMap map:pom_016, map:pom_017, map:pom_018.
+map:map_MeasurementPoints_000 rml:logicalSource map:source_001;
+    a rr:TriplesMap;
+    rdfs:label "MeasurementPoints";
+    rr:subjectMap map:s_001;
+    rr:predicateObjectMap map:pom_005, map:pom_006, map:pom_007, map:pom_008, map:pom_009, map:pom_010, map:pom_011, map:pom_012.
+map:map_Measurements_000 rml:logicalSource map:source_000;
+    a rr:TriplesMap;
+    rdfs:label "Measurements";
+    rr:subjectMap map:s_000;
+    rr:predicateObjectMap map:pom_000, map:pom_001, map:pom_002, map:pom_003, map:pom_004.
+map:map_Streets_000 rml:logicalSource map:source_002;
+    a rr:TriplesMap;
+    rdfs:label "Streets";
+    rr:subjectMap map:s_002;
+    rr:predicateObjectMap map:pom_013, map:pom_014, map:pom_015.
 map:om_000 a rr:ObjectMap;
     rr:constant "http://www.group02.org/pd/ontology/PedestriansMadrid#Measurement";
     rr:termType rr:IRI.
@@ -46,7 +46,7 @@ map:om_003 a rr:ObjectMap;
     rr:template "Measurement_{measurement_id}";
     rr:termType rr:Literal.
 map:om_004 a rr:ObjectMap;
-    rr:parentTriplesMap map:map_TriplesMap2_000;
+    rr:parentTriplesMap map:map_MeasurementPoints_000;
     rr:joinCondition map:jc_000.
 map:om_005 a rr:ObjectMap;
     rr:constant "http://www.group02.org/pd/ontology/PedestriansMadrid#MeasurementPoint";
@@ -74,7 +74,7 @@ map:om_011 a rr:ObjectMap;
     rml:reference "measurement_point_id";
     rr:termType rr:Literal.
 map:om_012 a rr:ObjectMap;
-    rr:parentTriplesMap map:map_TriplesMap3_000;
+    rr:parentTriplesMap map:map_Streets_000;
     rr:joinCondition map:jc_001.
 map:om_013 a rr:ObjectMap;
     rr:constant "http://www.group02.org/pd/ontology/PedestriansMadrid#Street";
@@ -83,7 +83,7 @@ map:om_014 a rr:ObjectMap;
     rml:reference "Street full name";
     rr:termType rr:Literal.
 map:om_015 a rr:ObjectMap;
-    rr:parentTriplesMap map:map_TriplesMap4_000;
+    rr:parentTriplesMap map:map_Districts_000;
     rr:joinCondition map:jc_002.
 map:om_016 a rr:ObjectMap;
     rr:constant "http://www.group02.org/pd/ontology/PedestriansMadrid#District";
@@ -191,7 +191,7 @@ map:pom_018 a rr:PredicateObjectMap;
     rr:predicateMap map:pm_018;
     rr:objectMap map:om_018.
 map:rules_000 a <http://rdfs.org/ns/void#Dataset>;
-    <http://rdfs.org/ns/void#exampleResource> map:map_TriplesMap1_000, map:map_TriplesMap2_000, map:map_TriplesMap3_000, map:map_TriplesMap4_000.
+    <http://rdfs.org/ns/void#exampleResource> map:map_Measurements_000, map:map_MeasurementPoints_000, map:map_Streets_000, map:map_Districts_000.
 map:s_000 a rr:SubjectMap;
     rr:template "http://group02.org/pd/resource/Measurement/Measurement_{measurement_id}".
 map:s_001 a rr:SubjectMap;
@@ -199,16 +199,16 @@ map:s_001 a rr:SubjectMap;
 map:s_002 a rr:SubjectMap;
     rr:template "http://group02.org/pd/resource/Street/{Street short name}".
 map:s_003 a rr:SubjectMap;
-    rr:template "http://group02.org/pd/resource/District/{District full name}".
+    rr:template "http://group02.org/pd/resource/District/{District short name}".
 map:source_000 a rml:LogicalSource;
-    rml:source "MEASUREMENTS-updated.csv";
+    rml:source "../csv/MEASUREMENTS-updated.csv";
     rml:referenceFormulation ql:CSV.
 map:source_001 a rml:LogicalSource;
-    rml:source "MEASUREMENT_POINTS-updated.csv";
+    rml:source "../csv/MEASUREMENT_POINTS-updated.csv";
     rml:referenceFormulation ql:CSV.
 map:source_002 a rml:LogicalSource;
-    rml:source "STREETS-updated.csv";
+    rml:source "../csv/STREETS-updated.csv";
     rml:referenceFormulation ql:CSV.
 map:source_003 a rml:LogicalSource;
-    rml:source "DISTRICTS-updated.csv";
+    rml:source "../csv/DISTRICTS-updated.csv";
     rml:referenceFormulation ql:CSV.

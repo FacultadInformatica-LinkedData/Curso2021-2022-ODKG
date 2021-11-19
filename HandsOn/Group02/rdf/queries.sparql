@@ -49,8 +49,8 @@ SELECT ?measurement_point (COUNT(?measurement) AS ?nMeasurements) WHERE  {
 PREFIX ont: <http://www.group02.org/pd/ontology/PedestriansMadrid#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT (MAX(?pedestrians) AS ?max) (MIN(?pedestrians) AS ?min) WHERE  {
-  ?measurement rdf:type ont:Measurement
-  ?measurement ont:hasPedestrians ?pedestrians.
+  ?measurement rdf:type ont:Measurement.
+  ?measurement ont:hasPedestrians ?pedestrians
 }
 
 # 6.- Amount of measurements

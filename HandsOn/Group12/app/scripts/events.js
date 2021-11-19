@@ -160,7 +160,7 @@ function Events(){
 
         events.append("div").attr("class", "card-footer text-center")
             .append("a").attr("class", "btn btn-primary")
-            .attr("href", function(col) { return col.URL }).text("Ver más")
+            .attr("href", function(col) { return col.URL }).text("More details")
             .attr("target","_blank")
 
     }

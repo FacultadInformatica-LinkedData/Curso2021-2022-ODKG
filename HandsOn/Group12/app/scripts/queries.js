@@ -81,7 +81,7 @@ var mainQuery = `
       
     } LIMIT 100
         `
-var filterByDate = 'FILTER (?StartDate >= "TODAY"^^xsd:date && ?StartDate <= "DATE"^^xsd:date)';
+var filterByDate = 'FILTER ((?FinishDate <= "DATE"^^xsd:date && ?FinishDate >= "TODAY"^^xsd:date) || (?StartDate >= "TODAY"^^xsd:date && ?StartDate <= "DATE"^^xsd:date))';
 var filterByFacility = 'FILTER (strstarts(str(?HeldIn), "FACILITY"))';
 var filterByType = 'FILTER (contains(?TargetAudience, "TYPE") || contains(?Type, "TYPE"))';
 var filterByPrice = 'FILTER (?isFree = PRICE)';

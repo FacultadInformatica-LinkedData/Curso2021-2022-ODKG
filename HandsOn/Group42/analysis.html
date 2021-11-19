@@ -35,73 +35,73 @@
         </tr>
         <tr>
           <td>num_expediente</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The identification number of the accident. Not unique (there might be different people in the same accident)</td>
           <td>Duplicated values because of having more people in the same accident</td>
         </tr>
         <tr>
           <td>fecha</td>
-          <td>Text</td>
+          <td>String</td>
           <td>Date of the accident, DD/MM/YYYY format. No missing values.</td>
           <td></td>
         </tr>
         <tr>
           <td>hora</td>
-          <td>Text</td>
+          <td>String</td>
           <td>Exact time of the accident, HH:MM format. No missing values. 458 different values.</td>
           <td></td>
         </tr>
         <tr>
           <td>localizacion</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The location where the accident happened. No missing values.</td>
           <td>There are some ","s in between the values which needs to be corrected. This attribut does not have a well defined format.</td>
         </tr>
         <tr>
           <td>numero</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The number of the street where the accident happend. No missing values.</td>
           <td></td>
         </tr>
         <tr>
           <td>distrito</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The distinct of the accident. 21 different values (no missing values).</td>
           <td></td>
         </tr>
         <tr>
           <td>tipo_accidente</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The type of the accident. 12 different values (no missing values).</td>
           <td></td>
         </tr>
         <tr>
-          <td></td>estado_meteorologico</td>
-          <td>Text</td>
+          <td>estado_meteorologico</td>
+          <td>String</td>
           <td>The whether status during the accident. 5 different options, 63 (~2,75%) missing values</td>
           <td></td>
         </tr>
         <tr>
           <td>tipo_vehiculo</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The type of the vehicle. 2 different values (no missing values).</td>
           <td></td>
         </tr>
         <tr>
           <td>tipo_persona</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The type of the person (conductor, pasajero, peaton). 3 different values (no missing values).</td>
           <td></td>
         </tr>
         <tr>
           <td>rango_edad</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The range of the person's age. 18 different values (no missing values).</td>
           <td>There no missing values, however, one of hte values is "Deconocido". This needs to be handled later.</td>
         </tr>
         <tr>
           <td>sexo</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The gender of the person. 3 different values.</td>
           <td>There no missing values, however, one of hte values is "Deconocido". This needs to be handled later.</td>
         </tr>
@@ -119,19 +119,19 @@
         </tr>
         <tr>
           <td>coordenada_y_utm</td>
-          <td>Nuber</td>
+          <td>Number</td>
           <td>The Y coordinate of the accident (no missing values).</td>
           <td>The format of the values is not valid.</td>
         </tr>
         <tr>
           <td>positiva_alcohol</td>
-          <td>Text</td>
+          <td>String</td>
           <td>The result of the alcohol test of the person. "N" stands for the negative alcohol test, "S" for positive alcohol test. 4 missing values (~0,17%).</td>
           <td>The missing values need to be handled.</td>
         </tr>
         <tr>
-          <td>positiva_drove</td>
-          <td>Text</td>
+          <td>positiva_droga</td>
+          <td>String</td>
           <td>The result of the drog test of the person. All values are missing (100%).</td>
           <td>All the values are missing so this column needs to be removed.</td>
         </tr>
@@ -152,10 +152,8 @@
 
       <h2>Ontology</h2>
 
-  
-      <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2021-10-24T19:51:13.318Z\&quot; agent=\&quot;5.0 (X11)\&quot; etag=\&quot;KhQ95AfHvkPGpIsThWQx\&quot; version=\&quot;15.5.9\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;k9W5ulVU8Oljyv-qk_FP\&quot; name=\&quot;Page-1\&quot;&gt;3VxZl6I6EP41/SiHrMBjL7P0OXf69J2erZ/mMJJRepB4Ebt1fv0NLRESAVHZbF80BYSQqvrqq0rkAl3PVh8idz79xD0WXEDTW12gmwsIASKm+Eok643Ews5GMIl8Lz0pEzz4f1kqTK+bLH2PLZQTY86D2J+rwjEPQzaOFZkbRfxFPe03D9S7zt0J2xE8jN1gV/rd9+LpRmpDK5N/ZP5kKu8MaPp8M1eenD7JYup6/CUnQu8u0HXEebz5NVtdsyCZPDkvm+velxzdDixiYVznguuXz5/G/zLO7r/CJX98urv9RkcwHVu8lg/MPPH8aZNH8ZRPeOgG7zLpVcSXoceSXk3Rys75h/O5EAIhfGJxvE6V6S5jLkTTeBakR9nKj38klxskbT3mjtys0p5fG+u0sfu06QQk480J0mf/wPiMxdFanBCxwI39Z1WfbmoWk+1520vvuS9uAc3UhDHAm0tSA0aWqXax4MtozNKr8vN/aEexG01YvNOR+JF7nkz0qt5iVd8j37uaTYO7n1/hz5/wbu295yN7c7dnN1imc3EBaSAm8+o3fx1nZgT0vyWXB0aLVzVeihMAnq+yg+LXJPm+W85+sUj2JYa26W5zcNe8gkC4bmJGL1M/Zg9zd5wceRHooRpJqcKfWRSzVaXK06PUNNUZd9L2S+bJUjTNOTE2y41E0cqhKgCoQAf6BIXeZYJbojUO3MXCH2vOE4qRbLwHYiwFj68CBxIpyLzotbXOt+5Z5IsHEkrb41sbi9xvU3t9MDfhpGDCpexUV6Wqvgk52lVLDKcjV5VIUeCrnv+c+VYT7jt1F3s8eCtW7q2ZrXDJWDXURRzxP+yaBzyxs5CHidP/9oNAE7mBPwkTaxfWl5jkVeLgvojAl+mBme95QRliqMEo4rEwIJ5cNUKkGRQhUDWGrZXljBoXGDVsDUVod9ZxGYz5lAdf2CI+zT66xH2gacwifeN+W7H3NnxaJuMbXuyFtm1g08k+lqoSq2eVSBNpXCWXIhQOUB9E40IW7lsBsFEu5NiOyoVQs1RoQx0qngfhmpxJwvdASBOSCase3g4lTdsByY46zm9gEblujzTd84WfTHtjEXJ4DApXekRjsYAWhOdOCRUsIlSHQtG2poFr1zRy8EUckoevkWmYx+VyyQ36ALVhZYJIwyJqHwlqekeWjo5tg5rVKajt4ZNnimMWbAbHEKrmtGbfOFaUZjRYXqoBSSkKStyriYE9AJZchhgIYGEbGDY1RSy0EEEI2lQxLRsiwzEpECZICKDEPg7NKLZVi3WcbtHM6RTNHtjqjUFZYzUtR4uPfVMwVJSOHw9dGAANuoaaDcoZHQoOWaZhA8c2CRAw5Gh4YWNsAJys6lKILAS07muX1y3N+gDpFIaQ9JduYKiqInSeMEQbSgyxDkN9l9al2zZfFRyPfY+F5SWCHkuDws0VLZC+S4OofIGjGS18Wc8HWaQFSPUHAvrWRHn6eZomvrGpPw7YUBVBtQiFe3eJtlaQvjM3ng50+4ZWeyF2z0rARbzh2DphLkPO9kHtqRNqpHYfpy3VQXP0FQ1rMUPfuGGZGrOsvZihbSWxkGZULVNUDEv9vRWKWicwnidXBU0tYjiO4eQ/GmlCPVNX3OzeMtOyVbCx94BNXwm0pChDQSBCDVlVk1nzsSBEbGSYUO1Lt5+2cajbnWh1aOF5wtAIOA2V7rTIhAs2tXYLPKRTE9lHWM/TPEBThV1b48yE9Gwdja6tp7t8trwZwZrMOakAUzWgQeucFtjRsBbYMUWGvo3DOTbMaVVAC3Qc48pXpU5Dq6r1pz7zalwy3x3k1X/ml0GM6dOPz/bT/cf37O/oJZZ/Qmo6ra65+abXpLpwPvCgXB052DDzH3VpmkqGenCKjYBhqklUi+y2cKI73jHIogUPj+C2LQ1J9vIrKhjAWyBVo8Zy/2RVVI12xHYMB9biVno4aww321qskobKB1mbB+YObtCCnVdtRbBbirw7Op8vP4Ura/bw53aF14VAcmztRYlH20ZlNNIihRpiCgdMTg1jPUcj4GAbU2oStTxCYFKks2yKkUUhtbXtTbVDk8ZId/bENxeXCrXTbdHlxo3fWrUFZb6xAywFVl++NA4qi764YEWqrey6yo0bjwCVJnEa9p+kD+DYhlyFkzqA1KCoX/gvWiXvBP6L36SwzXUq3qRweMhwzjVkECBCBiAWIYiaNoBE8+FXF7eBAHlCMbWOrGIgBxjEyaVJSL2NSQ35t+6Ookj5loEWosh8zkLm3YYPccTYW/snFCXNwBdyUGU46XAXbpWLN18IqzaKHgMK0l8RYkHDsvqNJqCoHta64974wsn88Vtz3RFtiApiig2kYTq2jHrLK/rukeZsZZhvlMl4CU3mtCYzKV9aOZytyFh7fnQF6W+xyRHcg0mJ/iIbuttXyyyk4l02J+Yo+wCrx7Civ20hP+/NhxXRzF4jt9Fb9jI+9O5/&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+      <div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2021-11-18T21:50:21.750Z\&quot; agent=\&quot;5.0 (X11)\&quot; etag=\&quot;3ZAmYIKZgNKVUWjLNGbN\&quot; version=\&quot;15.7.3\&quot; type=\&quot;device\&quot;&gt;&lt;diagram id=\&quot;k9W5ulVU8Oljyv-qk_FP\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
       <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
-
 
 </body>
 </html>

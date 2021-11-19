@@ -3156,5 +3156,37 @@
     "newColumnName": "localizacion_wikidata",
     "columnInsertIndex": 7,
     "description": "Create column localizacion_wikidata at index 7 based on column loc_rec using expression grel:\"https://wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "localizacion",
+    "expression": "jython:value2 = value.replace('Á','A').replace('Í','I').replace('Ó','O').replace('É','E').replace('Ú','U').replace('Ñ','N')\nreturn value2",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column localizacion using expression jython:value2 = value.replace('Á','A').replace('Í','I').replace('Ó','O').replace('É','E').replace('Ú','U').replace('Ñ','N')\nreturn value2"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "localizacion",
+    "expression": "join ([coalesce(cells['localizacion'].value,''),coalesce(cells['numero'].value,'')],'_')",
+    "onError": "keep-original",
+    "newColumnName": "direccion",
+    "columnInsertIndex": 3,
+    "description": "Create column direccion at index 3 based on column localizacion using expression join ([coalesce(cells['localizacion'].value,''),coalesce(cells['numero'].value,'')],'_')"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "direccion",
+    "index": 2,
+    "description": "Move column direccion to position 2"
   }
 ]

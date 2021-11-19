@@ -55,6 +55,7 @@
   {
     "op": "core/column-reorder",
     "columnNames": [
+      "District short name",
       "District Number",
       "District full name"
     ],

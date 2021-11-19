@@ -11,11 +11,14 @@ prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   vocab: http://www.group02.org/pd/ontology/PedestriansMadrid#
   owl: http://www.w3.org/2002/07/owl#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: http://example.com/idlab/function/
+
 
 mappings:
-    TriplesMap1:
+    Measurements:
         sources:
-        - [MEASUREMENTS-updated.csv~csv]
+        - [../csv/MEASUREMENTS-updated.csv~csv]
         s: http://group02.org/pd/resource/Measurement/Measurement_$(measurement_id)
         po:
         - [a, vocab:Measurement]
@@ -24,16 +27,16 @@ mappings:
         - [rdfs:label, Measurement_$(measurement_id)]
         - p: vocab:isLocated
           o:
-          - mapping: TriplesMap2
+          - mapping: MeasurementPoints
             condition:
               function: equal
               parameters:
                 - [str1, $(measurement_point_id)]
                 - [str2, $(measurement_point_id)]
 
-    TriplesMap2:
+    MeasurementPoints:
         sources:
-        - [MEASUREMENT_POINTS-updated.csv~csv]
+        - [../csv/MEASUREMENT_POINTS-updated.csv~csv]
         s: http://group02.org/pd/resource/MeasurementPoint/$(measurement_point_id)
         po:
         - [a, vocab:MeasurementPoint]
@@ -45,36 +48,44 @@ mappings:
         - [rdfs:label, $(measurement_point_id)]
         - p: vocab:hasStreet
           o:
-          - mapping: TriplesMap3
+          - mapping: Streets
             condition:
               function: equal
               parameters:
                 - [str1, $(Street short name)]
                 - [str2, $(Street short name)]
 
-    TriplesMap3:
+    Streets:
         sources:
-        - [STREETS-updated-with-links.csv~csv]
+        - [../csv/STREETS-updated-with-links.csv~csv]
         s: http://group02.org/pd/resource/Street/$(Street short name)
         po:
         - [a, vocab:Street]
         - [owl:sameAs, $(same_as_wikidata_street)~iri]
         - [rdfs:label, $(Street full name)]
+        - p: owl:sameAs
+          o: $(same_as_dbpediaes_street)~iri
+          condition:
+            function: idlab-fn:notEqual
+            parameters:
+              - [grel:valueParameter, $(same_as_dbpediaes_street)]
+              - [grel:valueParameter2, ""]
         - p: vocab:hasDistrict
           o:
-          - mapping: TriplesMap4
+          - mapping: Districts
             condition:
               function: equal
               parameters:
                 - [str1, $(District Number)]
                 - [str2, $(District Number)]
 
-    TriplesMap4:
+    Districts:
         sources:
-        - [DISTRICTS-updated-with-links.csv~csv]
-        s: http://group02.org/pd/resource/District/$(District full name)
+        - [../csv/DISTRICTS-updated-with-links.csv~csv]
+        s: http://group02.org/pd/resource/District/$(District short name)
         po:
         - [a, vocab:District]
         - [vocab:hasDistrictNumber, $(District Number), xsd:integer]
         - [owl:sameAs, $(same_as_wikidata_district)~iri]
+        - [owl:sameAs, $(same_as_dbpedia_district)~iri]
         - [rdfs:label, $(District full name)]

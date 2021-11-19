@@ -270,53 +270,27 @@
   {
     "op": "core/recon-judge-similar-cells",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "range",
-          "name": "Street full name: best candidate's score",
-          "expression": "cell.recon.best.score",
-          "columnName": "Street full name",
-          "from": 89,
-          "to": 101,
-          "selectNumeric": true,
-          "selectNonNumeric": false,
-          "selectBlank": true,
-          "selectError": true
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "Street full name 2",
-    "similarValue": "Madrid Río. Puente de Segovia con Paseo Ermita del Santo Senda peatonal",
+    "similarValue": "Paseo Ermita del Santo",
     "judgment": "matched",
     "match": {
       "id": "Q28137105",
       "name": "Paseo de la Ermita del Santo",
       "types": [
-        ""
+        "Q787113"
       ],
-      "score": 100
+      "score": 88
     },
     "shareNewTopics": false,
-    "description": "Match item Paseo de la Ermita del Santo (Q28137105) for cells containing \"Madrid Río. Puente de Segovia con Paseo Ermita del Santo Senda peatonal\" in column Street full name 2"
+    "description": "Match item Paseo de la Ermita del Santo (Q28137105) for cells containing \"Paseo Ermita del Santo\" in column Street full name 2"
   },
   {
     "op": "core/recon-judge-similar-cells",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "range",
-          "name": "Street full name: best candidate's score",
-          "expression": "cell.recon.best.score",
-          "columnName": "Street full name",
-          "from": 89,
-          "to": 101,
-          "selectNumeric": true,
-          "selectNonNumeric": false,
-          "selectBlank": true,
-          "selectError": true
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "Street full name 2",
@@ -336,20 +310,7 @@
   {
     "op": "core/recon-judge-similar-cells",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "range",
-          "name": "Street full name: best candidate's score",
-          "expression": "cell.recon.best.score",
-          "columnName": "Street full name",
-          "from": 89,
-          "to": 101,
-          "selectNumeric": true,
-          "selectNonNumeric": false,
-          "selectBlank": true,
-          "selectError": true
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "Street full name 2",
@@ -369,20 +330,7 @@
   {
     "op": "core/column-addition",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "range",
-          "name": "Street full name: best candidate's score",
-          "expression": "cell.recon.best.score",
-          "columnName": "Street full name",
-          "from": 89,
-          "to": 101,
-          "selectNumeric": true,
-          "selectNonNumeric": false,
-          "selectBlank": true,
-          "selectError": true
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "baseColumnName": "Street full name 2",
@@ -396,5 +344,395 @@
     "op": "core/column-removal",
     "columnName": "Street full name 2",
     "description": "Remove column Street full name 2"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "District full name",
+    "config": {
+      "mode": "standard-service",
+      "service": "http://127.0.0.1:3333/extension/rdf-extension/services/dbpedia",
+      "identifierSpace": "http://www.ietf.org/rfc/rfc3986",
+      "schemaSpace": "http://www.ietf.org/rfc/rfc3986",
+      "type": {
+        "id": "http://dbpedia.org/class/yago/WikicatDistrictsOfMadrid",
+        "name": "yago:WikicatDistrictsOfMadrid"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column District full name to type http://dbpedia.org/class/yago/WikicatDistrictsOfMadrid"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "District full name",
+    "similarValue": "Centro",
+    "judgment": "matched",
+    "match": {
+      "id": "http://dbpedia.org/resource/Centro_(Madrid)",
+      "name": "Centro (Madrid)",
+      "types": [
+        ""
+      ],
+      "score": 0.3999999761581421
+    },
+    "shareNewTopics": false,
+    "description": "Match item Centro (Madrid) (http://dbpedia.org/resource/Centro_(Madrid)) for cells containing \"Centro\" in column District full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "District full name",
+    "similarValue": "Latina",
+    "judgment": "matched",
+    "match": {
+      "id": "http://dbpedia.org/resource/Latina_(Madrid)",
+      "name": "Latina (Madrid)",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Latina (Madrid) (http://dbpedia.org/resource/Latina_(Madrid)) for cells containing \"Latina\" in column District full name"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "District full name",
+    "expression": "grel:cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_dbpedia_district",
+    "columnInsertIndex": 6,
+    "description": "Create column same_as_dbpedia_district at index 6 based on column District full name using expression grel:cell.recon.match.id"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "config": {
+      "mode": "standard-service",
+      "service": "http://127.0.0.1:3333/extension/rdf-extension/services/dbpedia-es",
+      "identifierSpace": "http://www.ietf.org/rfc/rfc3986",
+      "schemaSpace": "http://www.ietf.org/rfc/rfc3986",
+      "type": {
+        "id": "http://dbpedia.org/ontology/RouteOfTransportation",
+        "name": "dbo:RouteOfTransportation"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column Street full name to type http://dbpedia.org/ontology/RouteOfTransportation"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Mayor",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Mayor_(Madrid)",
+      "name": "Calle Mayor (Madrid)",
+      "types": [
+        ""
+      ],
+      "score": 0.550000011920929
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Mayor (Madrid) (http://es.dbpedia.org/resource/Calle_Mayor_(Madrid)) for cells containing \"Calle Mayor\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Gran Vía",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Gran_Vía_de_Madrid",
+      "name": "Gran Vía de Madrid",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Gran Vía de Madrid (http://es.dbpedia.org/resource/Gran_Vía_de_Madrid) for cells containing \"Gran Vía\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Génova",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Génova",
+      "name": "Calle Génova",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Génova (http://es.dbpedia.org/resource/Calle_Génova) for cells containing \"Calle Génova\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Huertas",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Huertas",
+      "name": "Calle Huertas",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Huertas (http://es.dbpedia.org/resource/Calle_Huertas) for cells containing \"Calle Huertas\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Fuencarral",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Fuencarral",
+      "name": "Calle Fuencarral",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Fuencarral (http://es.dbpedia.org/resource/Calle_Fuencarral) for cells containing \"Calle Fuencarral\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle San Bernardo",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_San_Bernardo",
+      "name": "Calle San Bernardo",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle San Bernardo (http://es.dbpedia.org/resource/Calle_San_Bernardo) for cells containing \"Calle San Bernardo\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Hortaleza",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Hortaleza",
+      "name": "Calle Hortaleza",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Hortaleza (http://es.dbpedia.org/resource/Calle_Hortaleza) for cells containing \"Calle Hortaleza\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Atocha",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Atocha_(Madrid)",
+      "name": "Calle Atocha (Madrid)",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Atocha (Madrid) (http://es.dbpedia.org/resource/Calle_Atocha_(Madrid)) for cells containing \"Calle Atocha\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Princesa",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Princesa",
+      "name": "Calle Princesa",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Princesa (http://es.dbpedia.org/resource/Calle_Princesa) for cells containing \"Calle Princesa\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Toledo",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Toledo",
+      "name": "Calle Toledo",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Toledo (http://es.dbpedia.org/resource/Calle_Toledo) for cells containing \"Calle Toledo\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Alberto Aguilera",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_de_Alberto_Aguilera",
+      "name": "Calle de Alberto Aguilera",
+      "types": [
+        ""
+      ],
+      "score": 0.6399999856948853
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle de Alberto Aguilera (http://es.dbpedia.org/resource/Calle_de_Alberto_Aguilera) for cells containing \"Alberto Aguilera\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Ronda de Valencia",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Ronda_de_Valencia",
+      "name": "Ronda de Valencia",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Ronda de Valencia (http://es.dbpedia.org/resource/Ronda_de_Valencia) for cells containing \"Ronda de Valencia\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Alcalá",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Alcalá",
+      "name": "Calle Alcalá",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Alcalá (http://es.dbpedia.org/resource/Calle_Alcalá) for cells containing \"Calle Alcalá\" in column Street full name"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Street full name",
+    "similarValue": "Calle Bailén",
+    "judgment": "matched",
+    "match": {
+      "id": "http://es.dbpedia.org/resource/Calle_Bailén",
+      "name": "Calle Bailén",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Bailén (http://es.dbpedia.org/resource/Calle_Bailén) for cells containing \"Calle Bailén\" in column Street full name"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Street full name",
+    "expression": "grel:cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_dbpediaes_street",
+    "columnInsertIndex": 12,
+    "description": "Create column same_as_dbpediaes_street at index 12 based on column Street full name using expression grel:cell.recon.match.id"
   }
 ]

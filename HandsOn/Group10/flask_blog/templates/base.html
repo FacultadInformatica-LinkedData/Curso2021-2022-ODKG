@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+    <script>
+    $(document).ready(function () {
+      $('#data').DataTable();
+    });
+    </script>
+
+
+    <title>{% block title %} {% endblock %}</title>
+
+	<style>
+	* {
+	  box-sizing: border-box;
+	}
+
+	/* Create two equal columns that floats next to each other */
+	.column {
+	  float: left;
+	  width: 25%;
+	  padding: 20px;
+	  height: 80%; /* Should be removed. Only for demonstration */
+	  margin-left: auto;
+	  margin-right: auto;
+
+	}
+	.column2 {
+	  float: left;
+	  width: 75%;
+	  padding: 20px;
+	  height: 80%; /* Should be removed. Only for demonstration */
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+	</style>
+  </head>
+  <body>
+
+    <div class="container">
+        {% block content %} {% endblock %}
+    </div>
+
+
+
+	<div class="row">
+	  <div class="column">
+	    <form action="{{ url_for('index') }}" method="post">
+	     <style type="text/css">
+	    form {
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 70px;
+		margin-bottom: auto;
+		}
+	    </style>
+      <div>
+  	    <label for="init">Fecha inicial:</label>
+  	   	 <input type="date" id="init" name="init"><br>
+	     </div>
+	     <div>
+  	     <label for="fin">Fecha final:</label>
+  	   	 <input type="date" id="fin" name="fin"><br>
+	     </div>
+	     <div>
+  	     <input type="checkbox" id="grat" name="grat" 		value="gratis">
+         <label for="grat"> Gratuito</label><br>
+	     </div>
+	     <div>
+
+	    <select name="local" id="local">
+	     <option value="Todas">Todas</option>
+	     <option value="ProgramacionDestacadaAgendaCultura">Programacion Destacada Agenda Cultura </option>
+	     <option value="CursosTalleres">Cursos Talleres</option>
+	     <option value="TeatroPerformance">Teatro Performance</option>
+	     <option value="EnLinea">En Linea</option>
+	     <option value="Musica">Musica</option>
+	     <option value="CuentacuentosTiteresMarionetas">Cuentacuentos Titeres Marionetas</option>
+	     <option value="CineActividadesAudiovisuales">Cine Actividades Audiovisuales</option>
+	     <option value="ActividadesCalleArteUrbano">Actividades Calle Arte Urbano</option>
+	     <option value="ActividadesEscolares">Actividades Escolares</option>
+	     <option value="ItinerariosOtrasActividadesAmbientales">Itinerarios Otras Actividades Ambientales</option>
+	     <option value="Exposiciones">Exposiciones</option>
+	     <option value="CircoMagia">Circo Magia</option>
+	     <option value="ExcursionesItinerariosVisitas">Excursiones Itinerarios Visitas</option>
+	     <option value="RecitalesPresentacionesActosLiterarios">Recitales Presentaciones Actos Literarios</option>
+	     <option value="DanzaBaile">Danza Baile</option>
+	     <option value="CongresosJornadas">Congresos Jornadas</option>
+	     <option value="ConcursosCertamenes">Concursos Certamenes</option>
+	     <option value="ComemoracionesHomenajes">Comemoraciones Homenajes</option>
+	     <option value="Campamentos">Campamentos</option>
+	     <option value="ConferenciasColoquios">Conferencias Coloquios</option>
+	     <option value="ActividadesDeportivas">Actividades Deportivas</option>
+
+		</select><br>
+	    </div>
+	    <div >
+	      <input type="submit" name="submit_button" value="Submit">
+	    </div>
+	  </form>
+	  </div>
+
+	  <div class="column2">
+		<table id="data" class="demoTable">
+		    <style type="text/css">
+		    table.demoTable {
+			  border: 1px solid #1C6EA4;
+			  width: 100%;
+			  text-align: left;
+			  border-collapse: collapse;
+			  text-align: center;
+			}
+		    table.demoTable td, table.demoTable th {
+			  border: 1px solid #AAAAAA;
+			  padding: 3px 2px;
+			}
+		    table.demoTable tbody td {
+			  font-size: 13px;
+			  max-width: 150px;
+			}
+		    table.demoTable tr:nth-child(even) {
+			  background: #D0E4F5;
+			}
+		    table.demoTable thead {
+			  background: #1C6EA4;
+			  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+			  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+			  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+			  border-bottom: 2px solid #444444;
+			}
+		    table.demoTable thead th {
+			  font-size: 15px;
+			  font-weight: bold;
+			  color: #FFFFFF;
+			  border-left: 2px solid #D0E4F5;
+			}
+		    table.demoTable thead th:first-child {
+			  border-left: none;
+			}
+
+		    table.demoTable tfoot {
+			  font-size: 14px;
+			  font-weight: bold;
+			  color: #FFFFFF;
+			  background: #D0E4F5;
+			  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+			  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+			  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+			  border-top: 2px solid #444444;
+			}
+		    table.demoTable tfoot td {
+			  font-size: 14px;
+			}
+		    table.demoTable tfoot .links {
+			  text-align: right;
+			}
+		    table.demoTable tfoot .links a{
+			  display: inline-block;
+			  background: #1C6EA4;
+			  color: #FFFFFF;
+			  padding: 2px 8px;
+			  border-radius: 5px;
+			}
+		    </style>
+			<thead>
+				<tr>
+			      {%for header in headers%}
+				<th>{{header}}</th>
+			      {%endfor%}
+				</tr>
+
+			</thead>
+			<tbody>
+			      {%for event , startDate , endDate , typeEvent, location, price , link in objects%}
+			      <tr>
+				<td>{{event}}</td>
+				<td>{{startDate}}</td>
+				<td>{{endDate}}</td>
+				<td>{{typeEvent}}</td>
+				<td>{{location}}</td>
+				<td>{{price}}</td>
+				<td><a href={{link}}>link</a></td>
+				{%endfor%}
+	      			</tr>
+	      		</tbody>
+		</table>
+		<div>
+		 <p>The data used in this app was obtained from the city hall of Madrid on October 2021.  </p>
+		</div>
+  	</div>
+</div>
+
+
+
+
+
+  </body>
+</html>

@@ -6,6 +6,12 @@ var allDistrictsQuery = `
     }ORDER BY ?districtLabel
     `;
 
+var bordersQuery = `
+  SELECT ?borders  WHERE {
+    ?borders wdt:P47 #FILTER 
+  }
+  `;
+
 var allEventsQuery = `
         PREFIX schema: <http://schema.org/>
         PREFIX va: <http://code-research.eu/ontology/visual-analytics#>
@@ -79,4 +85,4 @@ var filterByDate = 'FILTER (?StartDate >= "TODAY"^^xsd:date && ?StartDate <= "DA
 var filterByFacility = 'FILTER (strstarts(str(?HeldIn), "FACILITY"))';
 var filterByType = 'FILTER (contains(?TargetAudience, "TYPE") || contains(?Type, "TYPE"))';
 var filterByPrice = 'FILTER (?isFree = PRICE)';
-var filterByDistric = 'FILTER (?wikidata = DISTRICT)';
+var filterByDistric = 'FILTER (?wikidata in (DISTRICT))';

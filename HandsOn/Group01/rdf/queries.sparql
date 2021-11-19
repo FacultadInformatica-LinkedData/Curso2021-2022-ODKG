@@ -1,5 +1,5 @@
 # Query 1: Get the name and the schedule of each study room
-PREFIX sr: <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt>
+PREFIX sr: <http://www.studyroomsmadrid.es/ns#>
 SELECT ?name ?schedule
 WHERE {
     ?x a sr:StudyRoom .
@@ -8,7 +8,7 @@ WHERE {
 }
 
 # Query 2: Get the name, the name and the type of the via of each study rooms with postal code 28024
-PREFIX sr: <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt>
+PREFIX sr: <http://www.studyroomsmadrid.es/ns#>
 SELECT ?name ?roadName ?roadType
 WHERE {
     ?x a sr:StudyRoom .
@@ -20,7 +20,7 @@ WHERE {
 }
 
 # Query 3: Get the name and the url of all study rooms which have url.
-PREFIX sr: <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt>
+PREFIX sr: <http://www.studyroomsmadrid.es/ns#>
 SELECT ?name ?url
 WHERE {
     ?x a sr:StudyRoom .
@@ -29,7 +29,8 @@ WHERE {
 }
 
 # Query 4: Get the latitude, longitude and postal code of the study room called "Aula de estudio Centro Cultural San Juan Bautista (Ciudad Lineal)".
-PREFIX sr: <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt>
+PREFIX sr: <http://www.studyroomsmadrid.es/ns#>
+PREFIX wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 SELECT ?lat ?lon ?postalCode
 WHERE {
     ?x a sr:StudyRoom .
@@ -37,6 +38,6 @@ WHERE {
     ?x sr:hasAddress ?y .
     ?y sr:hasPostalCode ?postalCode .
     ?x sr:isLocated ?z .
-    ?z sr:latitude ?lat .
-    ?z sr:longitude ?lon .
+    ?z wgs84_pos:lat ?lat .
+    ?z wgs84_pos:long ?lon .
 }

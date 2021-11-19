@@ -1,0 +1,40 @@
+@prefix : <http://groupfive.edu/kg/ontology/MadridEvents2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://groupfive.edu/kg/ontology/MadridEvents2> .
+
+<http://groupfive.edu/kg/ontology/MadridEvents2> rdf:type owl:Ontology .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://groupfive.edu/kg/resources/facility/Centro%20Cultural%20Eduardo%20Úrculo%20%28Tetuán%29
+<http://groupfive.edu/kg/resources/facility/Centro%20Cultural%20Eduardo%20Úrculo%20%28Tetuán%29> rdf:type owl:NamedIndividual ,
+                                                                                                          <http://groupfive.edu/kg/ontology/MadridEvents#Facility> ;
+                                                                                                 <http://groupfive.edu/kg/ontology/MadridEvents#hasAccessibility> "accessible"@en ;
+                                                                                                 <http://groupfive.edu/kg/ontology/MadridEvents#hasFacilityUrl> "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=bfa48ab43d6bb410VgnVCM100000171f5a0aRCRD&vgnextoid=f8f9338588355210VgnVCM1000000b205a0aRCRD" ;
+                                                                                                 <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "40.46903299144094"^^xsd:double ;
+                                                                                                 <http://www.w3.org/2003/01/geo/wgs84_pos#long> "-3.6976620067964996"^^xsd:double ;
+                                                                                                 <http://www.w3.org/2006/vcard/ns#hasAddress> "PLAZA DONOSO 5 ALMENARA" ;
+                                                                                                 <http://www.w3.org/2006/vcard/ns#hasPostalCode> "28029" ;
+                                                                                                 <http://groupfive.edu/kg/ontology/MadridEvents#hasDistrict> <http://groupfive.edu/kg/resources/district/Tetuán> .
+
+###  http://groupfive.edu/kg/resources/event/11464986
+<http://groupfive.edu/kg/resources/event/11464986> rdf:type owl:NamedIndividual ,
+                                                            <https://schema.org/Event> ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasAudiance> <http://groupfive.edu/kg/resources/audiance/children> ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasType> <http://groupfive.edu/kg/resources/eventtype/CursosTalleres> ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasDescription> "El eco desobediente y El árbol generoso   Edades: De 3 a 5 años. Apúntate a este divertido taller y a través de la pantalla ¡volveremos a leer y a divertirnos juntos!  Envía el formulario seleccionando la fecha de la actividad. La biblioteca se pondrá en contacto contigo para proporcionarte el enlace que deberás activar en tu ordenador, tablet o movil. La conexión se realizará a través de la aplicación ZOOM.  El máximo por sesión son 15 plazas, se respetará el orden de inscripción."@es ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasEndingDate> "2021-10-11T23:59:00Z"^^xsd:datetime ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasEventUrl> "http://www.madrid.es/sites/v/index.jsp?vgnextchannel=ca9671ee4a9eb410VgnVCM100000171f5a0aRCRD&vgnextoid=e42024a464edb710VgnVCM2000001f4a900aRCRD" ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasHour> "18:00" ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasLongDuration> "false"^^xsd:bool ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasStartingDate> "2021-10-11T00:00:00Z"^^xsd:datetime ;
+                                                   <http://groupfive.edu/kg/ontology/MadridEvents#hasTitle> "Leyendo cuentos en octubre ?El eco desobediente? y ?El árbol generoso?, de 3 a 5 años"@es ;
+                                                   <https://saref.etsi.org/core/hasPrice> "free" .
+

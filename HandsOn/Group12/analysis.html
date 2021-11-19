@@ -277,14 +277,17 @@
     the occasion of the exploitation or use of the contents. These rights must be authorized, licensed and/or paid, as
     the case may be, through the rights holder or the corresponding collective rights management entity at the expense
     of the legitimate user who exploits the contents.</p>
+    <br>
+    <p>Therefore, we will be able to freely make use of the data set as long as we do not breach any of the previously
+      written laws. Specifycally, the license it is going to be CC BY-SA. This license allows reusers to distribute, 
+      remix, adapt, and build upon the material in any medium or format, so long as attribution is given to the creator. 
+      The license allows for commercial use. If you remix, adapt, or build upon the material, you must license the modified material 
+      under identical terms.</p>
   <p>Source:
     https://datos.madrid.es/portal/site/egob/menuitem.3efdb29b813ad8241e830cc2a8a409a0/?vgnextoid=748eb054f9edb410VgnVCM1000000b205a0aRCRD&vgnextchannel=b4c412b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default
   </p>
 
   <br>
-
-  <p>Therefore, we will be able to freely make use of the data set as long as we do not breach any of the previously
-    written laws.</p>
 
   <h2>Resource Naming Strategy</h2>
   <p>
@@ -318,10 +321,10 @@
     <b>AUTHORITY:</b> The authority component can be further subdivided into three subcomponents
     <li>authority = [userinfo@]host[:port]</li>
     <br>
-    We eschew the use of the userinfo and port subcomponents. The host we propose is <b>"data.eventsatmadrid.org"</b>,
-    in which our ontologies will be published. It is worth noting that "eventsatmadrid.org" is an unregistered domain.
+    We eschew the use of the userinfo and port subcomponents. The host we propose is <b>"data.eventsinmadrid.org"</b>,
+    in which our ontologies will be published. It is worth noting that "eventsinmadrid.org" is an unregistered domain.
     <br><br>
-    Thus, the domain that we will be using can be formulated as: <b>https://data.eventsatmadrid.org/</b>
+    Thus, the domain that we will be using can be formulated as: <b>https://data.eventsinmadrid.org/</b>
   </p>
   <p>
     Now that we have defined the domain in which the ontology will be located, let us define the paths and patterns for
@@ -329,24 +332,24 @@
   </p>
   <li><b>Definition of ontologies:</b> Because the dataset is rather small and the number of classes and properties that
     we need to define is not very large, we will be just using one ontology. Thus, ontological terms will be located at
-    <b>https://data.eventsatmadrid.org/ontology</b> If, at any time we redesign the R.N.S. so as to include different
+    <b>https://data.eventsinmadrid.org/ontology</b> If, at any time we redesign the R.N.S. so as to include different
     ontologies, they will be defined with the following pattern, where [ontologyName] is the name of the ontology.
     [...]/ontology/<b>[ontologyName]</b>
   </li>
   <ul>
-    <li>Example of definition of a new ontology: https://data.eventsatmadrid.org/ontology/TouristAttraction</li>
+    <li>Example of definition of a new ontology: https://data.eventsinmadrid.org/ontology/TouristAttraction</li>
   </ul>
   <li><b>Ontological terms</b> are defined using hash URIs (#), verifying the following patterns:</li>
   <ul>
     <li><b>Classes:</b>[...]/ontology<b>#[className]</b></li>
     <ul>
-      <li>Example: https://data.eventsatmadrid.org/ontology#Museum</li>
+      <li>Example: https://data.eventsinmadrid.org/ontology#Museum</li>
     </ul>
   </ul>
   <ul>
     <li><b>Properties:</b>[...]/ontology<b>#[PropertyName]</b></li>
     <ul>
-      <li>Example: https://data.eventsatmadrid.org/ontology#Capacity</li>
+      <li>Example: https://data.eventsinmadrid.org/ontology#Capacity</li>
     </ul>
   </ul>
   <li><b>Definition of data:</b> following the pattern [...]<b>/resource/</b></li>
@@ -354,13 +357,13 @@
     <li><b>Individuals</b>: defined using slash (/) URIs, which must verify the pattern
       [...]/resource/[className]<b>/[identifier]</b></li>
     <ul>
-      <li>Example: https://data.eventsatmadrid.org/resource/Museum/ReinaSofia</li>
+      <li>Example: https://data.eventsinmadrid.org/resource/Museum/ReinaSofia</li>
     </ul>
   </ul>
 
   <h3>Recap of the naming strategy</h3>
   <ul>
-    <li><b>Domain:</b> https://data.eventsatmadrid.org/ </li>
+    <li><b>Domain:</b> https://data.eventsinmadrid.org/ </li>
     <ul>
       <li><b>Ontology:</b> ontology# </li>
       <ul>

@@ -1,5 +1,5 @@
 # 1.- Get all neighborhoods in district Centro with their wikidata links
-PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+PREFIX ns: <https://data.eventsinmadrid.org/ontology#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 SELECT DISTINCT ?NeighborhoodName ?wikidata_link
@@ -11,7 +11,7 @@ SELECT DISTINCT ?NeighborhoodName ?wikidata_link
   }
 
 # 2.- Get all districts that can be found in the local data file with their wikidata links
-PREFIX ns: <https://data.eventsatmadrid.org/ontology#>
+PREFIX ns: <https://data.eventsinmadrid.org/ontology#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
   SELECT DISTINCT ?DistrictName ?wikidata_link

@@ -1,0 +1,373 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Events in Madrid</title>
+  <meta name="description" content="Events in Madrid">
+  <meta name="author" content="Group 12">
+
+  <meta property="og:title" content="Events in Madrid">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eventsinmadrid.org">
+  <meta property="og:description" content="A page that shows events in Madrid based in some filters">
+  <meta property="og:image" content="image.png">
+
+  <link rel="icon" href="/logo.ico">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="scripts/queries.js"></script>
+  <script src="scripts/sparql.js"></script>
+  <script src="scripts/events.js"></script>
+  <script src="scripts/main.js"></script>
+
+</head>
+
+<body onload="loadDistricts();loadEvents()">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <div class="container-fluid">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <img src="logo.jfif" alt="logo" style="height: 45px">
+                <span class="fs-4">Events in Madrid</span>
+            </a>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#events" class="nav-link active" aria-current="page">Events</a></li>
+                <li class="nav-item"><a href="#filters" class="nav-link">Filters</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container-fluid border-top">
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col col-2" id="FilterCol">
+                    <aside class="bd-aside sticky-xl-top text-muted align-self-start mb-3 mb-xl-5 px-2">
+                        <nav class="small">
+                            
+                            <p id="filter"><strong>Filters</strong></p>
+                            <button type="button" class="btn btn-primary" id="btnclear" onclick="loadEvents();">Clear filters</button>
+                            <br><br>
+                            <div id="hola"></div>
+                            <div class="row" id="date"><strong>Date</strong>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" value="7" name="radioDate" id="D1">
+                                    <label class="form-check-label" for="D1">Less than 7 days</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" value="15" name="radioDate" id="D2">
+                                    <label class="form-check-label" for="D2">Less than 15 days</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" value="30" name="radioDate" id="D3">
+                                    <label class="form-check-label" for="D3">Less than 30 days</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" id="location"><strong>Facility</strong>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" value="Centro" name="radioFacility" id="F1">
+                                    <label class="form-check-label" for="F1">Cultural center</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" value="Biblioteca" name="radioFacility" id="F2">
+                                    <label class="form-check-label" for="F2">Library</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" value="Teatro" name="radioFacility" id="F3">
+                                    <label class="form-check-label" for="F3">Theater</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" value="Parque" name="radioFacility" id="F4">
+                                    <label class="form-check-label" for="F4">Park</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" value="Auditorio" name="radioFacility" id="F5">
+                                    <label class="form-check-label" for="F5">Auditorium</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" id="price"><strong>Price</strong>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" name="radioPrice" value="free" id="P1">
+                                    <label class="form-check-label" for="P1">Free</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" name="radioPrice" value="not-free" id="P2">
+                                    <label class="form-check-label" for="P2">Not free</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" id="type"><strong>Type of event</strong>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" name="radioType" value="Niños" id="TE2">
+                                    <label class="form-check-label" for="TE2">Kids</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" name="radioType" value="Mayores" id="TE3">
+                                    <label class="form-check-label" for="TE3">Adults</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" name="radioType" value="Familias" id="TE4">
+                                    <label class="form-check-label" for="TE4">Family</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" name="radioType" value="Jovenes" id="TE5">
+                                    <label class="form-check-label" for="TE5">Young people</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" name="radioType" value="Musica" id="TE6">
+                                    <label class="form-check-label" for="TE6">Music</label>
+                                </div>
+                                <div id="chkrow">
+                                    <input class="form-check-input" type="radio" name="radioType" value="Actividades" id="TE7">
+                                    <label class="form-check-label" for="TE7">Activities</label>
+                                </div>
+
+                            </div>
+                            <br>
+                            <div class="row" id="type"><strong>District</strong>
+                                <div id="chkrow">
+                                    <select id="seldist" class="form-select" aria-label="Default select example" onchange="filterEvents()">
+                                        <option selected value="default"> Select District</option>
+                                    </select>
+                                    <input class="form-check-input" type="checkbox" id="nd" onchange="filterEvents()">
+                                    <label class="form-check-label" for="nd">Nearest Districts also</label>
+                                </div>
+                            </div>
+                        </nav>
+                    </aside>
+                </div>
+                <div class="col col-9" id="events">
+                    <div class="container-fluid" id="result"></div>
+                    <div class="container-fluid" id="no-result" style="display: none">
+                        <div class="text-center pt-5">
+                          <img src="https://cdn.dribbble.com/users/1554526/screenshots/3399669/media/51c98501bc68499ed0220e1ba286eeaf.png?compress=1&resize=700x500"
+                               class="img-fluid" alt="No results found">
+                        </div>
+                    </div>
+
+                    <div class="container-fluid" id="loading">
+                         <div class="row">
+                             <div class="col col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title placeholder-wave ">
+                                            <span class="placeholder col-11"></span>
+                                        </h5>
+                                        <h6 class="card-subtitle placeholder-wave">
+                                            <span class="placeholder col-8"></span>
+                                        </h6>
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-4 bg-success"></span>
+                                          <span class="placeholder col-3 bg-success"></span>
+                                        </p>
+                                        <hr class="col-12">
+                                        <ul class="list-group list-group-flush placeholder-glow">
+                                            <li class="list-group-item"><span class="placeholder col-5"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-8"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-7"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-9"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-6"></span></li>
+                                        </ul>
+                                        <hr class="col-12">
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-3"></span>
+                                        </p>
+                                        <div class="card-footer text-center">
+                                           <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title placeholder-wave ">
+                                            <span class="placeholder col-11"></span>
+                                        </h5>
+                                        <h6 class="card-subtitle placeholder-wave">
+                                            <span class="placeholder col-8"></span>
+                                        </h6>
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-4 bg-success"></span>
+                                          <span class="placeholder col-3 bg-success"></span>
+                                        </p>
+                                        <hr class="col-12">
+                                        <ul class="list-group list-group-flush placeholder-glow">
+                                            <li class="list-group-item"><span class="placeholder col-5"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-8"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-7"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-9"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-6"></span></li>
+                                        </ul>
+                                        <hr class="col-12">
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-3"></span>
+                                        </p>
+                                        <div class="card-footer text-center">
+                                           <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title placeholder-wave ">
+                                            <span class="placeholder col-11"></span>
+                                        </h5>
+                                        <h6 class="card-subtitle placeholder-wave">
+                                            <span class="placeholder col-8"></span>
+                                        </h6>
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-4 bg-success"></span>
+                                          <span class="placeholder col-3 bg-success"></span>
+                                        </p>
+                                        <hr class="col-12">
+                                        <ul class="list-group list-group-flush placeholder-glow">
+                                            <li class="list-group-item"><span class="placeholder col-5"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-8"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-7"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-9"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-6"></span></li>
+                                        </ul>
+                                        <hr class="col-12">
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-3"></span>
+                                        </p>
+                                        <div class="card-footer text-center">
+                                           <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                        <div class="row">
+                             <div class="col col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title placeholder-wave ">
+                                            <span class="placeholder col-11"></span>
+                                        </h5>
+                                        <h6 class="card-subtitle placeholder-wave">
+                                            <span class="placeholder col-8"></span>
+                                        </h6>
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-4 bg-success"></span>
+                                          <span class="placeholder col-3 bg-success"></span>
+                                        </p>
+                                        <hr class="col-12">
+                                        <ul class="list-group list-group-flush placeholder-glow">
+                                            <li class="list-group-item"><span class="placeholder col-5"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-8"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-7"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-9"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-6"></span></li>
+                                        </ul>
+                                        <hr class="col-12">
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-3"></span>
+                                        </p>
+                                        <div class="card-footer text-center">
+                                           <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title placeholder-wave ">
+                                            <span class="placeholder col-11"></span>
+                                        </h5>
+                                        <h6 class="card-subtitle placeholder-wave">
+                                            <span class="placeholder col-8"></span>
+                                        </h6>
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-4 bg-success"></span>
+                                          <span class="placeholder col-3 bg-success"></span>
+                                        </p>
+                                        <hr class="col-12">
+                                        <ul class="list-group list-group-flush placeholder-glow">
+                                            <li class="list-group-item"><span class="placeholder col-5"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-8"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-7"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-9"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-6"></span></li>
+                                        </ul>
+                                        <hr class="col-12">
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-3"></span>
+                                        </p>
+                                        <div class="card-footer text-center">
+                                           <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title placeholder-wave ">
+                                            <span class="placeholder col-11"></span>
+                                        </h5>
+                                        <h6 class="card-subtitle placeholder-wave">
+                                            <span class="placeholder col-8"></span>
+                                        </h6>
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-4 bg-success"></span>
+                                          <span class="placeholder col-3 bg-success"></span>
+                                        </p>
+                                        <hr class="col-12">
+                                        <ul class="list-group list-group-flush placeholder-glow">
+                                            <li class="list-group-item"><span class="placeholder col-5"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-8"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-7"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-9"></span></li>
+                                            <li class="list-group-item"><span class="placeholder col-6"></span></li>
+                                        </ul>
+                                        <hr class="col-12">
+                                        <p class="placeholder-wave">
+                                          <span class="placeholder col-3"></span>
+                                        </p>
+                                        <div class="card-footer text-center">
+                                           <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-2"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                    <div class="d-grid gap-2 col-1 mx-auto">
+                      <button type="button" class="btn btn-primary" id="buttonShow" onclick="showMoreEvents()">See more</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script type="text/javascript" src="index.js"></script>
+    <hr class="col-12">
+    <footer id="about" class="py-3 my-4">
+        <p class="text-center text-muted">© 2021 ODKG, Group 12</p>
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@alvaroame</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@CarlosMorote</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@ddavidlorenzo</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@hasanyah</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">@Sixtrax</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

@@ -1,5 +1,5 @@
 @prefix schema: <https://schema.org/> .
-@prefix :      <https://data.eventsatmadrid.org/ontology#> .
+@prefix :      <https://data.eventsinmadrid.org/ontology#> .
 @prefix gsp:   <http://www.opengis.net/ont/geosparql#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix afn:   <http://jena.apache.org/ARQ/function#> .

@@ -99,10 +99,6 @@ xsd:datetime rdf:type rdfs:Datatype .
                                                                  rdfs:domain <http://groupfive.edu/kg/ontology/MadridEvents#Facility> .
 
 
-###  http://groupfive.edu/kg/ontology/MadridEvents#hasAudiance
-<http://groupfive.edu/kg/ontology/MadridEvents#hasAudiance> rdf:type owl:DatatypeProperty ;
-                                                            rdfs:subPropertyOf owl:topDataProperty .
-
 
 ###  http://groupfive.edu/kg/ontology/MadridEvents#hasDescription
 <http://groupfive.edu/kg/ontology/MadridEvents#hasDescription> rdf:type owl:DatatypeProperty ;

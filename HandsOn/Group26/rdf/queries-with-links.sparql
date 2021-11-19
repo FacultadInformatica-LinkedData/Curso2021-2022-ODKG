@@ -7,11 +7,13 @@ WHERE{
 ?c rdf:type rdfs:Class
 } ORDER BY ASC(?c)
 
-#Q2. Shows all stations URIs
-SELECT ?station
-WHERE{
-?station rdf:type <http://www.group26.org/AP/ontology/AirPolution#Station> 
-} ORDER BY ASC(?station)
+#Q2. Shows all the stations of Barcelona municipality
+  SELECT ?station_name WHERE {
+    ?municipality base:hasName "Barcelona"^^xsd:string .
+    ?location base:hasMunicipality ?municipality .
+    ?station base:isLocatedIn ?location .
+    ?station base:hasName ?station_name 
+  }
 
 #Q3. Describe station Barcelona-L'Eixample
 DESCRIBE ?Station
@@ -19,11 +21,13 @@ WHERE{
 ?Station <http://www.group26.org/AP/ontology/AirPolution#hasName> "L'Eixample"
 }
 
-#Q4. Show Pollutants and its names in every date in the station of Barcelona-L'Eixample
-SELECT ?Pollutant_Name ?Date
-WHERE{
-?measuredPollutant <http://www.group26.org/AP/ontology/AirPolution#measuredPollutant> <http://www.group26.org/AP/resource/Measurement/{8019043}-{?Pollutant_Name}-{?Date}>.
-} ORDER BY ASC(?Date) 
+#Q4. Extracting the coordinates of a station
+  SELECT ?longitud ?latitude WHERE {
+     ?station base:hasName ?station_name .
+     ?station base:isLocatedIn ?location .
+     ?location base:hasLatitude ?latitude .
+     ?location base:hasLongitude ?longitud .
+  }
 
 #Q5. Describe the station type and environment from L'Eixample
 DESCRIBE ?Station_Type ?Station_Environment

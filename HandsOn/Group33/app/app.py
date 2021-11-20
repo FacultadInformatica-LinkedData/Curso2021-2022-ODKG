@@ -15,3 +15,10 @@ def getSparqlCommunity():
 @app.route('/rdflib/community')
 def getRdflibCommunity():
     return jsonify(obj.allCommunitiesWithQuery())
+
+@app.route('/rdflib/position/<latitude>/<longitude>/<max_distance>')
+def getPosition(latitude, longitude, max_distance):
+    return jsonify(obj.find_escooters_near(latitude, longitude, max_distance))
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=3100, debug=True)

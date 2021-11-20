@@ -20,5 +20,13 @@ def getRdflibCommunity():
 def getPosition(latitude, longitude, max_distance):
     return jsonify(obj.find_escooters_near(latitude, longitude, max_distance))
 
+@app.route('/rdflib/statistics_of_distance_and_duration/')
+def getStatistics1():
+    return jsonify(obj.get_statistic())
+
+@app.route('/rdflib/common_start_end_community/')
+def getStatistics2():
+    return jsonify(obj.get_monst_common_community())
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=3100, debug=True)

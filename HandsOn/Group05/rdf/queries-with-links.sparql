@@ -1,0 +1,8 @@
+1. Get all the instances of the class District with their link on Wikidata:
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
+
+SELECT ?district ?sameAsWikidata WHERE {
+  ?district a :District .
+  ?district <htpp://www.w3.org/2002/07/owl#sameAs> ?sameAsWikidata .
+}

@@ -1,0 +1,2707 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "direccion_vial_tipo",
+    "expression": "join ([coalesce(cells['direccion_vial_tipo'].value,''),coalesce(cells['direccion_vial_nombre'].value,''),coalesce(cells['direccion_vial_nro'].value,''),coalesce(cells['km'].value,'')],' ')",
+    "onError": "keep-original",
+    "newColumnName": "direccion_completa",
+    "columnInsertIndex": 4,
+    "description": "Create column direccion_completa at index 4 based on column direccion_vial_tipo using expression join ([coalesce(cells['direccion_vial_tipo'].value,''),coalesce(cells['direccion_vial_nombre'].value,''),coalesce(cells['direccion_vial_nro'].value,''),coalesce(cells['km'].value,'')],' ')"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "farmacia_nro_soe",
+          "expression": "value",
+          "columnName": "farmacia_nro_soe",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "1000",
+                "l": "1000"
+              }
+            },
+            {
+              "v": {
+                "v": "1008",
+                "l": "1008"
+              }
+            },
+            {
+              "v": {
+                "v": "1007",
+                "l": "1007"
+              }
+            },
+            {
+              "v": {
+                "v": "1006",
+                "l": "1006"
+              }
+            },
+            {
+              "v": {
+                "v": "1005",
+                "l": "1005"
+              }
+            },
+            {
+              "v": {
+                "v": "1004",
+                "l": "1004"
+              }
+            },
+            {
+              "v": {
+                "v": "1003",
+                "l": "1003"
+              }
+            },
+            {
+              "v": {
+                "v": "1001",
+                "l": "1001"
+              }
+            },
+            {
+              "v": {
+                "v": "1009",
+                "l": "1009"
+              }
+            },
+            {
+              "v": {
+                "v": "10",
+                "l": "10"
+              }
+            },
+            {
+              "v": {
+                "v": "52",
+                "l": "52"
+              }
+            },
+            {
+              "v": {
+                "v": "542",
+                "l": "542"
+              }
+            },
+            {
+              "v": {
+                "v": "543",
+                "l": "543"
+              }
+            },
+            {
+              "v": {
+                "v": "100",
+                "l": "100"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "direccion_vial_tipo",
+    "expression": "join ([coalesce(cells['direccion_vial_tipo'].value,''),coalesce(cells['direccion_vial_nombre'].value,'')],' ')",
+    "onError": "keep-original",
+    "newColumnName": "dirección_completa2",
+    "columnInsertIndex": 4,
+    "description": "Create column dirección_completa2 at index 4 based on column direccion_vial_tipo using expression join ([coalesce(cells['direccion_vial_tipo'].value,''),coalesce(cells['direccion_vial_nombre'].value,'')],' ')"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "dirección_completa2",
+    "description": "Remove column dirección_completa2"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "direccion_vial_tipo",
+    "expression": "join ([coalesce(cells['direccion_vial_tipo'].value,''),coalesce(cells['direccion_vial_nombre'].value,'')],' ')",
+    "onError": "keep-original",
+    "newColumnName": "direccion_completa2",
+    "columnInsertIndex": 4,
+    "description": "Create column direccion_completa2 at index 4 based on column direccion_vial_tipo using expression join ([coalesce(cells['direccion_vial_tipo'].value,''),coalesce(cells['direccion_vial_nombre'].value,'')],' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "PLAZA",
+                "l": "PLAZA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa2",
+    "expression": "join ([coalesce(cells['direccion_completa2'].value,''),coalesce(cells['municipio_nombre'].value,'')],', ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column direccion_completa2 using expression join ([coalesce(cells['direccion_completa2'].value,''),coalesce(cells['municipio_nombre'].value,'')],', ')"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "municipio_nombre",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q2074737",
+        "name": "municipality of Spain"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column municipio_nombre to type Q2074737"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "municipio_nombre: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "municipio_nombre",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "municipio_nombre",
+    "similarValue": "Molar El",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1915119",
+      "name": "El Molar",
+      "types": [
+        "Q2074737"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item El Molar (Q1915119) for cells containing \"Molar El\" in column municipio_nombre"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "municipio_nombre: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "municipio_nombre",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "municipio_nombre",
+    "similarValue": "Navas del Rey",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1772241",
+      "name": "Navas del Rey",
+      "types": [
+        "Q2074737"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Navas del Rey (Q1772241) for cells containing \"Navas del Rey\" in column municipio_nombre"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "municipio_nombre: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "municipio_nombre",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "municipio_nombre",
+    "similarValue": "Arroyomolinos",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1778172",
+      "name": "Arroyomolinos",
+      "types": [
+        "Q2074737"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Arroyomolinos (Q1778172) for cells containing \"Arroyomolinos\" in column municipio_nombre"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "municipio_nombre: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "municipio_nombre",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "municipio_nombre",
+    "similarValue": "Valdepielagos",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1980542",
+      "name": "Valdepiélagos",
+      "types": [
+        "Q2074737"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Valdepiélagos (Q1980542) for cells containing \"Valdepielagos\" in column municipio_nombre"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "municipio_nombre",
+    "expression": "grel:\"http://wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_municipalityofspain",
+    "columnInsertIndex": 12,
+    "description": "Create column same_as_wikidata_municipalityofspain at index 12 based on column municipio_nombre using expression grel:\"http://wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "direccion_completa2",
+    "newColumnName": "direccion_completa_sn",
+    "description": "Rename column direccion_completa2 to direccion_completa_sn"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q79007",
+        "name": "street"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column direccion_completa_sn to type Q79007"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "Aeropuerto Madrid Barajas",
+    "judgment": "matched",
+    "match": {
+      "id": "Q63229909",
+      "name": "Aeropuerto de Madrid-Barajas T1",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Aeropuerto de Madrid-Barajas T1 (Q63229909) for cells containing \"Aeropuerto Madrid Barajas\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "PLAZA",
+                "l": "PLAZA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q174782",
+        "name": "square"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column direccion_completa_sn to type Q174782"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "PLAZA",
+                "l": "PLAZA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "PLAZA del Dos de Mayo, Madrid",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1531008",
+      "name": "plaza del Dos de Mayo",
+      "types": [
+        "Q174782"
+      ],
+      "score": 86
+    },
+    "shareNewTopics": false,
+    "description": "Match item plaza del Dos de Mayo (Q1531008) for cells containing \"PLAZA del Dos de Mayo, Madrid\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "PLAZA",
+                "l": "PLAZA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "PLAZA de Salesas, Madrid",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28916480",
+      "name": "Plaza de las Salesas, Madrid",
+      "types": [
+        "Q174782"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item Plaza de las Salesas, Madrid (Q28916480) for cells containing \"PLAZA de Salesas, Madrid\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "PLAZA",
+                "l": "PLAZA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "PLAZA de la Puerta del Sol, Madrid",
+    "judgment": "matched",
+    "match": {
+      "id": "Q427163",
+      "name": "Puerta del Sol",
+      "types": [
+        "Q174782"
+      ],
+      "score": 60
+    },
+    "shareNewTopics": false,
+    "description": "Match item Puerta del Sol (Q427163) for cells containing \"PLAZA de la Puerta del Sol, Madrid\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "PLAZA",
+                "l": "PLAZA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "PLAZA del Emperador Carlos V, Madrid",
+    "judgment": "matched",
+    "match": {
+      "id": "Q7203711",
+      "name": "Plaza del Emperador Carlos V",
+      "types": [
+        "Q174782",
+        "Q1525"
+      ],
+      "score": 89
+    },
+    "shareNewTopics": false,
+    "description": "Match item Plaza del Emperador Carlos V (Q7203711) for cells containing \"PLAZA del Emperador Carlos V, Madrid\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "PLAZA",
+                "l": "PLAZA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "PLAZA de Puerta de Moros, Madrid",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28047697",
+      "name": "Plaza de Puerta de Moros",
+      "types": [
+        "Q174782"
+      ],
+      "score": 87
+    },
+    "shareNewTopics": false,
+    "description": "Match item Plaza de Puerta de Moros (Q28047697) for cells containing \"PLAZA de Puerta de Moros, Madrid\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "PLAZA",
+                "l": "PLAZA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "PLAZA de Peñuelas, Madrid",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5574533",
+      "name": "Plaza de las Peñuelas, Madrid",
+      "types": [
+        "Q174782"
+      ],
+      "score": 92
+    },
+    "shareNewTopics": false,
+    "description": "Match item Plaza de las Peñuelas, Madrid (Q5574533) for cells containing \"PLAZA de Peñuelas, Madrid\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "config": {
+      "mode": "standard-service",
+      "service": "https://wdreconcile.toolforge.org/en/api",
+      "identifierSpace": "http://www.wikidata.org/entity/",
+      "schemaSpace": "http://www.wikidata.org/prop/direct/",
+      "type": {
+        "id": "Q79007",
+        "name": "street"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "description": "Reconcile cells in column direccion_completa_sn to type Q79007"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "CALLE de Goya",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28015873",
+      "name": "Calle de Goya",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle de Goya (Q28015873) for cells containing \"CALLE de Goya\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "CALLE de Quintana",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28016208",
+      "name": "calle de Quintana",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item calle de Quintana (Q28016208) for cells containing \"CALLE de Quintana\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "PASEO de la Florida",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5576961",
+      "name": "Paseo de la Florida, Madrid",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo de la Florida, Madrid (Q5576961) for cells containing \"PASEO de la Florida\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "CALLE Mayor",
+    "judgment": "matched",
+    "match": {
+      "id": "Q1149052",
+      "name": "Calle Mayor",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle Mayor (Q1149052) for cells containing \"CALLE Mayor\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "CALLE de los Embajadores",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740826",
+      "name": "Calle de Embajadores, Madrid",
+      "types": [
+        ""
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle de Embajadores, Madrid (Q5740826) for cells containing \"CALLE de los Embajadores\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "CALLE de la Princesa",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740935",
+      "name": "Princesa",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Princesa (Q5740935) for cells containing \"CALLE de la Princesa\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "CALLE de Espoz y Mina",
+    "judgment": "matched",
+    "match": {
+      "id": "Q5740830",
+      "name": "Calle de Espoz y Mina, Madrid",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Calle de Espoz y Mina, Madrid (Q5740830) for cells containing \"CALLE de Espoz y Mina\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "AVDA de Niza",
+    "judgment": "matched",
+    "match": {
+      "id": "Q28972102",
+      "name": "Avenida de Niza, Madrid",
+      "types": [
+        "Q7543083",
+        "Q79007"
+      ],
+      "score": 89
+    },
+    "shareNewTopics": false,
+    "description": "Match item Avenida de Niza, Madrid (Q28972102) for cells containing \"AVDA de Niza\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-judge-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "PASEO de las Delicias",
+    "judgment": "matched",
+    "match": {
+      "id": "Q6065662",
+      "name": "Paseo de las Delicias, Madrid",
+      "types": [
+        "Q79007"
+      ],
+      "score": 100
+    },
+    "shareNewTopics": false,
+    "description": "Match item Paseo de las Delicias, Madrid (Q6065662) for cells containing \"PASEO de las Delicias\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-clear-similar-cells",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "similarValue": "CALLE del Doctor Vallejo",
+    "description": "Clear recon data for cells containing \"CALLE del Doctor Vallejo\" in column direccion_completa_sn"
+  },
+  {
+    "op": "core/recon-mark-new-topics",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_tipo",
+          "expression": "value",
+          "columnName": "direccion_vial_tipo",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "CALLE",
+                "l": "CALLE"
+              }
+            },
+            {
+              "v": {
+                "v": "PASEO",
+                "l": "PASEO"
+              }
+            },
+            {
+              "v": {
+                "v": "AVDA",
+                "l": "AVDA"
+              }
+            },
+            {
+              "v": {
+                "v": "RONDA",
+                "l": "RONDA"
+              }
+            },
+            {
+              "v": {
+                "v": "BULEV",
+                "l": "BULEV"
+              }
+            },
+            {
+              "v": {
+                "v": "URB",
+                "l": "URB"
+              }
+            },
+            {
+              "v": {
+                "v": "SECT",
+                "l": "SECT"
+              }
+            },
+            {
+              "v": {
+                "v": "TRVA",
+                "l": "TRVA"
+              }
+            },
+            {
+              "v": {
+                "v": "CLLON",
+                "l": "CLLON"
+              }
+            },
+            {
+              "v": {
+                "v": "CMNO",
+                "l": "CMNO"
+              }
+            },
+            {
+              "v": {
+                "v": "GTA",
+                "l": "GTA"
+              }
+            },
+            {
+              "v": {
+                "v": "CUSTA",
+                "l": "CUSTA"
+              }
+            },
+            {
+              "v": {
+                "v": "PSAJE",
+                "l": "PSAJE"
+              }
+            },
+            {
+              "v": {
+                "v": "CTRA",
+                "l": "CTRA"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 60,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "shareNewTopics": false,
+    "description": "Mark to create new items for cells in column direccion_completa_sn, one item for each cell"
+  },
+  {
+    "op": "core/recon-mark-new-topics",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "direccion_completa_sn: best candidate's score",
+          "expression": "cell.recon.best.score",
+          "columnName": "direccion_completa_sn",
+          "from": 12,
+          "to": 101,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": false,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "shareNewTopics": false,
+    "description": "Mark to create new items for cells in column direccion_completa_sn, one item for each cell"
+  },
+  {
+    "op": "core/recon-mark-new-topics",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_completa_sn: judgment",
+          "expression": "forNonBlank(cell.recon.judgment, v, v, if(isNonBlank(value), \"(unreconciled)\", \"(blank)\"))",
+          "columnName": "direccion_completa_sn",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "none",
+                "l": "none"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa_sn",
+    "shareNewTopics": false,
+    "description": "Mark to create new items for cells in column direccion_completa_sn, one item for each cell"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "direccion_completa",
+    "description": "Remove column direccion_completa"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "direccion_completa_sn",
+    "newColumnName": "direccion_completa",
+    "description": "Rename column direccion_completa_sn to direccion_completa"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa",
+    "expression": "grel:value.split(\",\")[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column direccion_completa using expression grel:value.split(\",\")[0]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "direccion_completa",
+    "expression": "grel:\"https://wikidata.org/entity/\"+cell.recon.match.id",
+    "onError": "set-to-blank",
+    "newColumnName": "same_as_wikidata_road",
+    "columnInsertIndex": 5,
+    "description": "Create column same_as_wikidata_road at index 5 based on column direccion_completa using expression grel:\"https://wikidata.org/entity/\"+cell.recon.match.id"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_completa",
+    "expression": "grel:value.split(\",\")[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column direccion_completa using expression grel:value.split(\",\")[0]"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_vial_id",
+    "expression": "join ([coalesce(cells['direccion_vial_id'].value,''),coalesce(cells['municipio_nombre_id'].value,'')],'_')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column direccion_vial_id using expression join ([coalesce(cells['direccion_vial_id'].value,''),coalesce(cells['municipio_nombre_id'].value,'')],'_')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_vial_id",
+    "expression": "join ([coalesce(cells['direccion_vial_id'].value,''),coalesce(cells['direccion_vial_nro'].value,'')],'_')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column direccion_vial_id using expression join ([coalesce(cells['direccion_vial_id'].value,''),coalesce(cells['direccion_vial_nro'].value,'')],'_')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_vial_id",
+    "expression": "join ([coalesce(cells['direccion_vial_id'].value,''),coalesce(cells['km'].value,'')],'_')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column direccion_vial_id using expression join ([coalesce(cells['direccion_vial_id'].value,''),coalesce(cells['km'].value,'')],'_')"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "direccion_vial_tipo",
+    "expression": "join ([coalesce(cells['direccion_vial_tipo'].value,''),coalesce(cells['direccion_vial_nombre'].value,'')],' ')",
+    "onError": "keep-original",
+    "newColumnName": "aux",
+    "columnInsertIndex": 4,
+    "description": "Create column aux at index 4 based on column direccion_vial_tipo using expression join ([coalesce(cells['direccion_vial_tipo'].value,''),coalesce(cells['direccion_vial_nombre'].value,'')],' ')"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "direccion_vial_nombre",
+    "description": "Remove column direccion_vial_nombre"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "aux",
+    "newColumnName": "direccion_vial_nombre",
+    "description": "Rename column aux to direccion_vial_nombre"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "direccion_vial_nro",
+          "expression": "value",
+          "columnName": "direccion_vial_nro",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "S/N",
+                "l": "S/N"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_vial_nro",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "S/N"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "SN"
+      }
+    ],
+    "description": "Mass edit cells in column direccion_vial_nro"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "direccion_vial_nombre_id",
+    "expression": "join ([coalesce(cells['direccion_vial_nombre_id'].value,''),coalesce(cells['municipio_nombre'].value,'')],'_')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column direccion_vial_nombre_id using expression join ([coalesce(cells['direccion_vial_nombre_id'].value,''),coalesce(cells['municipio_nombre'].value,'')],'_')"
+  }
+]

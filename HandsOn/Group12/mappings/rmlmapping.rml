@@ -2,10 +2,10 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
 @prefix ql: <http://semweb.mmlab.be/ns/ql#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix ns: <https://data.eventsatmadrid.org/ontology#>.
+@prefix ns: <https://data.eventsinmadrid.org/ontology#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
-@base <https://data.eventsatmadrid.org/ontology#>.
+@base <https://data.eventsinmadrid.org/ontology#>.
 
 
 <AddressMap> a rr:TriplesMap;
@@ -14,7 +14,7 @@
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
-    rr:template "https://data.eventsatmadrid.org/resource/Address/{ADDRESS}";
+    rr:template "https://data.eventsinmadrid.org/resource/Address/{ADDRESS}";
     rr:class ns:Address
   ];
 
@@ -40,7 +40,7 @@
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
-    rr:template "https://data.eventsatmadrid.org/resource/Facility/{NOMBRE-INSTALACION}";
+    rr:template "https://data.eventsinmadrid.org/resource/Facility/{NOMBRE-INSTALACION}";
     rr:class ns:Facility
   ];
 
@@ -112,7 +112,7 @@
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
-    rr:template "https://data.eventsatmadrid.org/resource/Neighborhood/{BARRIO-INSTALACION}";
+    rr:template "https://data.eventsinmadrid.org/resource/Neighborhood/{BARRIO-INSTALACION}";
     rr:class ns:Neighborhood
   ];
   rr:predicateObjectMap [
@@ -139,7 +139,7 @@
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
-    rr:template "https://data.eventsatmadrid.org/resource/District/{DISTRITO-INSTALACION}";
+    rr:template "https://data.eventsinmadrid.org/resource/District/{DISTRITO-INSTALACION}";
     rr:class ns:District
   ];
   rr:predicateObjectMap [
@@ -157,7 +157,7 @@
     rml:referenceFormulation ql:CSV 
   ];
   rr:subjectMap [
-    rr:template "https://data.eventsatmadrid.org/resource/Event/{ID-EVENTO}";
+    rr:template "https://data.eventsinmadrid.org/resource/Event/{ID-EVENTO}";
     rr:class ns:Event
   ];
 

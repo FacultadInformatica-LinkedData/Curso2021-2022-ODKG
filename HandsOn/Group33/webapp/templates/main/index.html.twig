@@ -1,0 +1,269 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ asset('css/mk-styles.css') }}" rel="stylesheet" />
+    <style>
+        .float{
+            position:fixed;
+            width:60px;
+            height:60px;
+            top:40px;
+            left:40px;
+            background-color:#A9A9;
+            color:#FFF;
+            border-radius:50px;
+            text-align:center;
+        }
+
+        .my-float{
+            margin-top:22px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <!-- Leaflet search -->
+    <script src="{{ asset('chicagobounds.js') }}"></script>
+    <script src="{{ asset('leaflet-search-master/src/leaflet-search.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('leaflet-search-master/src/leaflet-search.css') }}" />
+    <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block body %}
+    <!-- Masthead-->
+    <div class="masthead">
+        <div class="masthead-content text-white">
+            <div class="container-fluid px-4 px-lg-0">
+                <h1 class="fst-italic lh-1 mb-4">Available Scooter Locator</h1>
+                <p class="mb-5">This application allows you to locate where are the closest available scooter to you in the city of chicago based on the information of the dataset of 2019</p>
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                {# <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <!-- Email address input-->
+                    <div class="row input-group-newsletter">
+                        <div class="col"><input class="form-control" id="address" type="text" placeholder="Enter desired location..." aria-label="Enter desired location..." data-sb-validations="required" /></div>
+                        <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Search</button></div>
+                    </div>
+                    <div class="invalid-feedback mt-2" data-sb-feedback="address:required">A location is required.</div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center mb-3 mt-2">
+                            <div class="fw-bolder">Location has been found!</div>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error finding location!</div></div>
+                </form> #}
+                <p class="mt-3 text-muted">
+                    <small>
+                        <ul>
+                            <li><b>Mean distance:</b><span id="mn_dist"></span></li>
+                            <li><b>Mean duration:</b><span id="mn_dur"></span></li>
+                            <li><b>Common start community (number):</b><span id="com_st"></span></li>
+                            <li><b>Common end community (number):</b><span id="com_end"></span></li>
+                        </ul>
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="w-100 position-relative" style="z-index: 100;">
+        <div class="w-100 position-absolute bottom-0 start-0 container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12 bg-dark">
+                    <div class="small text-center text-muted fst-italic">
+                        Since the dataset has the information of the trips made on 2019 of electric scooters that is, the location and time when they were taken and left, it is possible to identify what is the closest scooter available.
+                        <br>
+                        As side objectives, would be interesting to deploy an analysis regarding what are the most common routes and the locations that could be added to the available area.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Social Icons-->
+    <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
+    <div class="social-icons">
+        <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
+            {# <img src="{{ asset('assets/img/mk-map.png') }}" /> #}
+            <!--Google map-->
+            {# <div id="map_canvas1" class="map_canvas">
+                <iframe src="https://maps.google.com/maps?q=chicago&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="550" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div> #}
+            <div id="map" style="width: 550px; height: 450px; position: relative; outline: none;"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    {# <!-- Core theme JS-->
+    <script src="{{ asset('js/mk-scripts.js') }}"></script>
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> #}
+    <!-- Script para el mapa -->
+    <script>
+        var mymap = L.map('map').setView([41.881832, -87.623177], 13);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+        }).addTo(mymap);
+        
+        var markersLayer = L.layerGroup().addTo(mymap);
+
+        /* Inicialización y control de leaflet search */
+        var countryStyle = {
+            'color': "#858585",
+            'weight': 1,
+            'opacity': 0.6
+        };
+        
+        function getColor(d) {
+        return d > 100000000 ? '#800026' :
+        d > 50000000 ? '#BD0026' :
+        d > 20000000 ? '#E31A1C' :
+        d > 10000000 ? '#FC4E2A' :
+        d > 5000000 ? '#FD8D3C' :
+        d > 2000000 ? '#FEB24C' :
+        d > 1000000 ? '#FED976' :
+        '#FFEDA0';
+        }
+        
+        function popup(feature, layer) {
+            if (feature.properties && feature.properties.pri_neigh) {
+                layer.bindPopup(feature.properties.pri_neigh);
+            }
+        }
+        
+        function style(feature) {
+            return { 
+            weight: 1,
+            opacity: 1,
+            color: 'white',
+            dashArray: '3',
+            fillOpacity: 0.7
+            };
+        }
+            
+        var boundsJS = L.geoJson(chicagobounds, {
+                onEachFeature: popup,
+            }).addTo(mymap);
+
+        var searchControl = new L.Control.Search({
+            layer: boundsJS, 
+            propertyName: 'pri_neigh',
+            circleLocation: false
+        });
+
+        searchControl.on('search:locationfound', function(e) {
+            e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+            console.log(e.latlng);
+            /* Limpia los antiguos marcadores */
+            markersLayer.clearLayers();
+            /* Obtiene y muestra los nuevos marcadores */
+            $.ajax({
+                url: `http://localhost:3100/rdflib/position/${e.latlng.lat}/${e.latlng.lng}/5`,
+                method: 'GET', // or GET
+                async: false,
+                success: (arr) => {
+                    console.log(arr);
+                    try {
+                        arr.forEach((subarr) => {
+                            let lat = subarr[1];
+                            let lng = subarr[2];
+                            let marker = L.marker([lat, lng]);
+                            marker.addTo(markersLayer);
+                        });
+                    } catch(error) {
+                        /* Recarga la página, el error puede ser debido a que la sesión a caducado */
+                        // window.location.reload();
+                        console.log("Not JSON");
+                    } 
+                },
+                error: function(response) {
+                    console.log("ERROR");
+                    console.log(response);
+                }
+            });
+        })
+        .on('search:collapsed', function(e) {
+            boundsJS.eachLayer(function(layer) { //restauramos el color del elemento
+                boundsJS.resetStyle(layer);
+            });	
+        });
+        
+        mymap.addControl(searchControl);
+
+
+        /* Obtiene las estadísticas de viaje */
+        $.ajax({
+            url: 'http://localhost:3100/rdflib/statistics_of_distance_and_duration/',
+            method: 'GET', // or GET
+            async: false,
+            success: (obj) => {
+                console.log(obj);
+                try {
+                    $("#mn_dist").text(" " + obj.mean_distance + " [m]");
+                    $("#mn_dur").text(" " + obj.mean_duration + " [s]");
+                } catch(error) {
+                    /* Recarga la página, el error puede ser debido a que la sesión a caducado */
+                    // window.location.reload();
+                    console.log("Not JSON");
+                } 
+            },
+            error: function(response) {
+                console.log("ERROR");
+                console.log(response);
+            }
+        });
+
+        /* Obtiene las estadísticas de comunidades */
+        $.ajax({
+            url: 'http://localhost:3100/rdflib/common_start_end_community/',
+            method: 'GET', // or GET
+            async: false,
+            success: (obj) => {
+                console.log(obj);
+                try {
+                    $("#com_st").text(" Nº " + obj.most_common_start[0][1]);
+                    $("#com_end").text(" Nº " + obj.most_common_end[0][1]);
+                } catch(error) {
+                    /* Recarga la página, el error puede ser debido a que la sesión a caducado */
+                    // window.location.reload();
+                    console.log("Not JSON");
+                } 
+            },
+            error: function(response) {
+                console.log("ERROR");
+                console.log(response);
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,10 +1,7 @@
-# Query 1: Get the name and the wikidata info of each study room
-PREFIX sr: <http://www.studyroomsmadrid.es/studyRoom/ontology/studyOnt>
+# Query 1: Get the links with wikidata
+PREFIX sr: <http://www.studyroomsmadrid.es/ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
-SELECT ?name ?district ?wikiInfo
+SELECT ?x ?wikiInfo
 WHERE {
-    ?x a sr:StudyRoom .
-    ?x sr:hasName ?name .
-    ?x sr:hasAddress ?y .
-    ?y owl:sameAs ?wikiInfo .
+    ?x owl:sameAs ?wikiInfo .
 }

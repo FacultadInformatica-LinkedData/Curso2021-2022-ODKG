@@ -1,0 +1,47 @@
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
+#title {
+    text-align: center;
+    padding:3%;
+    font-size: 30px;
+    margin: auto;
+}
+
+#main {
+    margin: auto;   
+}
+
+#FilterCol {
+    background-color: #f4f5f7;
+    text-align: center;   
+}
+
+#filter {
+    font-size: 20px;
+}
+
+#ResCol {
+    background: rgb(28, 152, 235);
+    text-align: center;
+}
+
+#result {
+    font-size: 20px;
+}
+
+.card {
+    margin: 2%;
+}
+
+#date, #location, #price, #type {
+    display: block;
+}
+
+#chkrow {
+    padding-left: 3vw;
+    text-align: left;
+}
+

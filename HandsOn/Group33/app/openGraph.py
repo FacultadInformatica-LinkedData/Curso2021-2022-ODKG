@@ -103,7 +103,7 @@ class OpenGraph:
             WHERE {
                 {?trip rdf:type ns:Trip}.
                 {?trip ns:hasStartCommunity ?start_community}.
-                {?trip ns:hasEndCommunity ?end_comunity}.
+                {?trip ns:hasEndCommunity ?end_community}.
             }
         ''', initNs = {"ns": self.ns}
         )

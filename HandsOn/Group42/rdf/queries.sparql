@@ -1,6 +1,9 @@
 # Prefixes
-PREFIX : <http://bicycleaccidents.org/resource/>.
-PREFIX prop: <http://bicycleaccidents.org/ontology#>.
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://bicycleaccidents.org/resource/>
+PREFIX prop: <http://bicycleaccidents.org/ontology#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 ###################################################################
 Displays every different values in a column (except of AccidentID)
@@ -65,10 +68,10 @@ WHERE{
   ?subj prop:hasSex ?obj
 }
 
-# SELECTs all possible Streets
+# SELECTs all possible Addresses
 SELECT DISTINCT ?obj
 WHERE{
-  ?subj prop:happenedInStreet ?obj
+  ?subj prop:happenedInAddress ?obj
 }
 
 # SELECTs all possible Vehicle types
@@ -77,13 +80,19 @@ WHERE{
   ?subj prop:hasVehicleType ?obj
 }
 
+# SELECTs all possible Streets
+SELECT DISTINCT ?obj
+WHERE{
+  ?subj prop:hasStreet ?obj
+}
+
 ###################################################################
 Some simple queries
 ###################################################################
 # Shows streets where a woman was involved in an accident which was "Despejado"
-SELECT DISTINCT ?street
+SELECT DISTINCT ?address
 WHERE{
   ?id prop:hasWeather "Despejado".
   ?id prop:hasSex "Mujer".
-  ?id prop:happenedInStreet ?street
+  ?id prop:happenedInAddress ?address
 }

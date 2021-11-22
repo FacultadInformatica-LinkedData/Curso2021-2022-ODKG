@@ -1,6 +1,6 @@
-District Number,District full name,same_as_wikidata_district
-1,Centro,https://www.wikidata.org/entity/Q1763376
-2,Arganzuela,https://www.wikidata.org/entity/Q2000929
-7,Chamberi,https://www.wikidata.org/entity/Q1763370
-9,Moncloa-Aravaca,https://www.wikidata.org/entity/Q2017682
-10,Latina,https://www.wikidata.org/entity/Q794954
+District short name,District Number,District full name,same_as_wikidata_district,same_as_dbpedia_district
+Centro,1,Centro (Madrid),https://www.wikidata.org/entity/Q1763376,http://dbpedia.org/resource/Centro_(Madrid)
+Arganzuela,2,Arganzuela,https://www.wikidata.org/entity/Q2000929,http://dbpedia.org/resource/Arganzuela
+Chamberi,7,Chamberí,https://www.wikidata.org/entity/Q1763370,http://dbpedia.org/resource/Chamberí
+Moncloa-Aravaca,9,Moncloa-Aravaca,https://www.wikidata.org/entity/Q2017682,http://dbpedia.org/resource/Moncloa-Aravaca
+Latina,10,Latina (Madrid),https://www.wikidata.org/entity/Q794954,http://dbpedia.org/resource/Latina_(Madrid)

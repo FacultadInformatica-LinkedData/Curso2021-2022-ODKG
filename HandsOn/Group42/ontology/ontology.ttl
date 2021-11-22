@@ -1,11 +1,12 @@
-@prefix rdfs: http://www.w3.org/2000/01/rdf-schema# .
-@prefix owl: http://www.w3.org/2002/07/owl# .
-@prefix xsd: http://www.w3.org/2001/XMLSchema# .
-@prefix : http://bicycleaccidents.org/ontology# .
-@rel : http://bicycleaccidents.org/ontology/relationship/ .
-@base http://bicycleaccidents.org/ontology .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://bicycleaccidents.org/ontology#> .
+@prefix rel: <http://bicycleaccidents.org/ontology/relationship/> .
+@base <http://bicycleaccidents.org/ontology> .
 
-http://bicycleaccidents.org/ontology# rdf:type owl:Ontology.
+<http://bicycleaccidents.org/ontology#> rdf:type owl:Ontology.
 
 ###########################################
 # Object properties
@@ -14,9 +15,9 @@ http://bicycleaccidents.org/ontology# rdf:type owl:Ontology.
     rdfs:domain :Accident;
     rdfs:range :District .
 
-:happenedInStreet a owl:ObjectProperty;
+:happenedInAddress a owl:ObjectProperty;
     rdfs:domain :Accident;
-    rdfs:range :Street .
+    rdfs:range :Address .
 
 #################################################################
 #    Data properties
@@ -44,7 +45,7 @@ rel:hasVehicleType a :DataProperty;
 
 rel:hasAge a :DataProperty;
     rdfs:domain :Accident;
-    rdfs:range xsd:integer .
+    rdfs:range xsd:string .
 
 rel:hasSex a :DataProperty;
     rdfs:domain :Accident;
@@ -58,9 +59,13 @@ rel:hasPositiveAlcoholTest a :DataProperty;
     rdfs:domain :Accident;
     rdfs:range xsd:string .
 
+rel:hasStreet a :DataProperty;
+    rdfs:domain :Address;
+    rdfs:range xsd:string .
+
 rel:hasNumber a :DataProperty;
-    rdfs:domain :Accident;
-    rdfs:range xsd:integer .
+    rdfs:domain :Address;
+    rdfs:range xsd:string .
 
 #################################################################
 #    Classes
@@ -68,6 +73,6 @@ rel:hasNumber a :DataProperty;
 
 :Accident a owl:Class .
 
-:Street a owl:Class .
+:Address a owl:Class .
 
 :District a owl:Class .

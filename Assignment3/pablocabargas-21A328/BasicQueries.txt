@@ -1,0 +1,149 @@
+1 Get All the classes
+
+SELECT ?class
+WHERE {
+?class rdf:type rdfs:Class.
+}
+
+2 Get all the subclasses of the class Establishment
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?subclass
+WHERE {
+?subclass rdfs:subClassOf vocab:Establishment.
+}
+
+3 Get all instances of the class City
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?class
+WHERE {
+?class rdf:type vocab:City.
+}
+
+4 Get the number of inhabitants of Santiago de Compostela
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+SELECT ?nhabitants
+WHERE
+{
+vocab:Santiago_de_Compostela vocab:hasInhabitantNumber ?nhabitants
+}
+
+5 Get the number of inhabitants of Santiago de Compostela and Arzua
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?nhabitantsSantiago ?nhabitantsArzua
+WHERE {
+vocab:Santiago_de_Compostela vocab:hasInhabitantNumber ?nhabitantsSantiago.
+vocab:Arzua vocab:hasInhabitantNumber ?nhabitantsArzua
+} 
+
+6 Get all places, together with the number of inhabitants, ordered by the place name (ascending)
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?places ?habitants
+WHERE {
+?places vocab:hasInhabitantNumber ?habitants
+}
+ORDER BY asc(?places)
+
+7 Get all instances of  Locality together with their number of inhabitants (if this information exists)
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?locality ?inhabs
+WHERE {
+    ?locality rdf:type/rdfs:subClassOf  vocab:Locality .
+    OPTIONAL{?locality vocab:hasInhabitantNumber ?inhabs}
+}
+
+8 Get all places with more than 200.000 inhabitants
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?locality ?inhabs
+WHERE {
+    ?locality rdf:type/rdfs:subClassOf  vocab:Locality .
+    ?locality vocab:hasInhabitantNumber ?inhabs.
+    FILTER (xsd:integer(?inhabs) > "200000"^^<http://www.w3.org/2001/XMLSchema#integer>)
+}
+
+9 Get postal address data for Pazo_Breogan (street, number, locality, province)
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?street ?number ?locality ?province
+WHERE {
+
+    vocab:Pazo_Breogan vocab:isPlacedIn ?locality.
+    ?locality vocab:inProvince ?province.
+    vocab:Pazo_Breogan vocab:hasAddress  ?address.
+    ?address vocab:hasStreet ?street.
+    ?adress vocab:hasNumber ?number.
+    }
+
+10 Get all subclasses of class Location
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?subclass
+WHERE {
+?subclass rdfs:subClassOf* vocab:Location.
+}
+
+11 Get all instances of class Locality
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+SELECT ?instances
+WHERE {
+?instances rdf:type/rdfs:subClassOf* vocab:Locality.
+}
+
+12 Describe the resource with rdfs:label "Madrid”
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+DESCRIBE ?resource
+WHERE {
+    ?resource rdfs:label "Madrid" 
+} 
+
+13 Construct a graph that relates directly all touristic places with their provinces, using a new property called ”isIn”
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+CONSTRUCT {?touristic vocab:isIn ?province}
+WHERE {
+    ?touristic rdf:type/rdfs:subClassOf* vocab:TouristicLocation .
+    ?touristic vocab:isPlacedIn* ?local .
+    ?local vocab:inProvince ?province
+}
+
+14 Ask if there is some instance of Town
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+ASK
+{
+    ?instance rdf:type vocab:Town 
+} 
+
+15 Ask if there is some instance of Chapel
+
+PREFIX vocab: <http://GP-onto.fi.upm.es/exercise2#>
+
+ASK
+{
+    ?instance rdf:type vocab:Chapel 
+} 
+
+
+
+
+

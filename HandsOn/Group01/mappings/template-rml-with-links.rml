@@ -16,7 +16,7 @@
 
   rr:subjectMap [
     rr:template "http://www.studyroomsmadrid.es/studyRoom/{PK}";
-    rr:class vocab:StudyRoom
+    rr:termType rr:IRI; rr:class vocab:StudyRoom
   ];
 
     rr:predicateObjectMap [
@@ -47,7 +47,7 @@
     rr:predicate vocab:hasAccesibility;
     rr:objectMap [
       rml:reference "ACCESIBILIDAD";
-      rr:datatype xsd:string
+      rr:datatype xsd:int
     ]
   ];
 
@@ -117,7 +117,7 @@
     rr:predicate vocab:hasPK;
     rr:objectMap [
       rml:reference "PK";
-      rr:datatype xsd:string
+      rr:datatype xsd:int
     ]
   ].
 
@@ -128,21 +128,23 @@
   ];
 
   rr:subjectMap [
-    rr:template "http://www.studyroomsmadrid.es/location/{LATITUD},{LONGITUD}";
-    rr:class vocab:Location
+    rr:template "http://www.studyroomsmadrid.es/location/{LATITUD}{LONGITUD}";
+    rr:termType rr:IRI; rr:class vocab:Location
   ];
 
   rr:predicateObjectMap [
     rr:predicate wgs84_pos:lat;
     rr:objectMap [
-      rml:reference "LATITUD" 
+      rml:reference "LATITUD";
+      rr:datatype xsd:double 
     ]
   ];
 
   rr:predicateObjectMap [
     rr:predicate wgs84_pos:long;
     rr:objectMap [
-      rml:reference "LONGITUD"
+      rml:reference "LONGITUD";
+      rr:datatype xsd:double 
     ]
   ].
 
@@ -154,15 +156,7 @@
 
   rr:subjectMap [
     rr:template "http://www.studyroomsmadrid.es/address/{PK}";
-    rr:class vocab:Address
-  ];
-
-  rr:predicateObjectMap [
-    rr:predicate vocab:hasRoadType;
-    rr:objectMap [
-      rml:reference "CLASE-VIAL";
-      rr:datatype xsd:string
-    ]
+    rr:termType rr:IRI; rr:class vocab:Address
   ];
 
   rr:predicateObjectMap [
@@ -177,7 +171,7 @@ rr:predicateObjectMap [
     rr:predicate vocab:hasNumber;
     rr:objectMap [
       rml:reference "NUM";
-      rr:datatype xsd:string
+      rr:datatype xsd:int
     ]
   ];
 
@@ -198,43 +192,97 @@ rr:predicateObjectMap [
   ];
 
   rr:predicateObjectMap [
+    rr:predicate vocab:hasDistrict;
+    rr:objectMap [
+      rr:parentTriplesMap <#DistrictMapping_CSV>;
+      rr:joinCondition [
+        rr:child "PK";
+        rr:parent "PK";
+      ];
+    ];
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasNeighborhood;
+    rr:objectMap [
+      rr:parentTriplesMap <#NeighborhoodMapping_CSV>;
+      rr:joinCondition [
+        rr:child "PK";
+        rr:parent "PK";
+      ];
+    ];
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate vocab:hasRoadType;
+    rr:objectMap [
+      rr:parentTriplesMap <#RoadTypeMapping_CSV>;
+      rr:joinCondition [
+        rr:child "PK";
+        rr:parent "PK";
+      ];
+    ];
+  ];
+
+  rr:predicateObjectMap [
     rr:predicate vocab:hasPostalCode;
     rr:objectMap [
       rml:reference "CODIGO-POSTAL";
       rr:datatype xsd:string
     ]
-  ]; 
+  ].
+
+  <#DistrictMapping_CSV> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "SalasEstudioMadrid-updated-csv-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://www.studyroomsmadrid.es/district/{DISTRITO}";
+    rr:termType rr:IRI; rr:class vocab:District
+  ];
 
     rr:predicateObjectMap [
-    rr:predicate vocab:hasNeighbourhood;
+    rr:predicate owl:sameAs;
     rr:objectMap [
-      rml:reference "BARRIO";
-      rr:datatype xsd:string
+    rml:reference "same_as_wikidata_distrito";
+    rr:termType rr:IRI
     ]
+  ].
+
+  <#NeighborhoodMapping_CSV> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "SalasEstudioMadrid-updated-csv-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
   ];
 
-  rr:predicateObjectMap [
-    rr:predicate vocab:hasDistrict;
-    rr:objectMap [
-      rml:reference "DISTRITO";
-      rr:datatype xsd:string
-    ]
-   ];
-
-    rr:predicateObjectMap [
-    rr:predicate owl:sameAs;
-    rr:objectMap [
-    rml:reference "same_as_wikidata_road"]
+  rr:subjectMap [
+    rr:template "http://www.studyroomsmadrid.es/neighborhood/{BARRIO}";
+    rr:termType rr:IRI; rr:class vocab:Neighborhood
   ];
 
     rr:predicateObjectMap [
     rr:predicate owl:sameAs;
     rr:objectMap [
-    rml:reference "same_as_wikidata_neighborhoodOfMadrid"]
+    rml:reference "same_as_wikidata_neighborhoodOfMadrid";
+    rr:termType rr:IRI]
+  ].
+
+  <#RoadTypeMapping_CSV> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "SalasEstudioMadrid-updated-csv-with-links.csv" ;
+    rml:referenceFormulation ql:CSV
+  ];
+
+  rr:subjectMap [
+    rr:template "http://www.studyroomsmadrid.es/roadType/{CLASE-VIAL}";
+    rr:termType rr:IRI; rr:class vocab:RoadType
   ];
 
     rr:predicateObjectMap [
     rr:predicate owl:sameAs;
     rr:objectMap [
-    rml:reference "same_as_wikidata_distrito"]
+    rml:reference "same_as_wikidata_road";
+    rr:termType rr:IRI]
   ].

@@ -12,9 +12,9 @@ prefixes:
   vocab: http://www.group02.org/pd/ontology/PedestriansMadrid#
 
 mappings:
-    TriplesMap1:
+    Measurements:
         sources:
-        - [MEASUREMENTS-updated.csv~csv]
+        - [../csv/MEASUREMENTS-updated.csv~csv]
         s: http://group02.org/pd/resource/Measurement/Measurement_$(measurement_id)
         po:
         - [a, vocab:Measurement]
@@ -23,16 +23,16 @@ mappings:
         - [rdfs:label, Measurement_$(measurement_id)]
         - p: vocab:isLocated
           o:
-          - mapping: TriplesMap2
+          - mapping: MeasurementPoints
             condition:
               function: equal
               parameters:
                 - [str1, $(measurement_point_id)]
                 - [str2, $(measurement_point_id)]
 
-    TriplesMap2:
+    MeasurementPoints:
         sources:
-        - [MEASUREMENT_POINTS-updated.csv~csv]
+        - [../csv/MEASUREMENT_POINTS-updated.csv~csv]
         s: http://group02.org/pd/resource/MeasurementPoint/$(measurement_point_id)
         po:
         - [a, vocab:MeasurementPoint]
@@ -44,33 +44,33 @@ mappings:
         - [rdfs:label, $(measurement_point_id)]
         - p: vocab:hasStreet
           o:
-          - mapping: TriplesMap3
+          - mapping: Streets
             condition:
               function: equal
               parameters:
                 - [str1, $(Street short name)]
                 - [str2, $(Street short name)]
 
-    TriplesMap3:
+    Streets:
         sources:
-        - [STREETS-updated.csv~csv]
+        - [../csv/STREETS-updated.csv~csv]
         s: http://group02.org/pd/resource/Street/$(Street short name)
         po:
         - [a, vocab:Street]
         - [rdfs:label, $(Street full name)]
         - p: vocab:hasDistrict
           o:
-          - mapping: TriplesMap4
+          - mapping: Districts
             condition:
               function: equal
               parameters:
                 - [str1, $(District Number)]
                 - [str2, $(District Number)]
 
-    TriplesMap4:
+    Districts:
         sources:
-        - [DISTRICTS-updated.csv~csv]
-        s: http://group02.org/pd/resource/District/$(District full name)
+        - [../csv/DISTRICTS-updated.csv~csv]
+        s: http://group02.org/pd/resource/District/$(District short name)
         po:
         - [a, vocab:District]
         - [vocab:hasDistrictNumber, $(District Number), xsd:integer]

@@ -1,15 +1,56 @@
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX dbo: <http://groupfive.edu/kg/ontology/>
+1. Query all the instances of audiance:
 
-SELECT DISTINCT ?b
-WHERE{
-    ?b rdf:type dbo:Event.
-    ?b dbo:price "free". 
-    ?b dbo:startingDate "23/10/2021 00:00". 
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#> 
+SELECT DISTINCT ?obj WHERE {
+  ?sub :hasAudiance ?obj .
 }
 
-SELECT DISTINCT ?b
-WHERE {
-    ?b rdf:type dbo:Facilities.
-    ?b dbo:address "CALLE CAMARENA 10 ALUCHE 28047".
+2. Query information about all the events that take place in the district Centro whose target audience are children:
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
+SELECT ?title ?address ?date ?price ?url  WHERE { 
+  ?facility :hasDistrict <http://groupfive.edu/kg/resources/district/Centro> .
+  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
+  ?event :hasFacility ?facility . 
+  ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/children> .
+  ?event :hasTitle ?title .
+  ?event :hasStartingDate ?date .
+  ?event <https://saref.etsi.org/core/hasPrice> ?price .
+  ?event :hasEventUrl ?url .
 }
+
+3. Query all the subclasses of the class Event:
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+SELECT ?eventType WHERE {
+  ?eventType rdfs:subClassOf <https://schema.org/Event> .
+}
+
+4. Query information about all the events of type "StorytellingPuppetsEvent":
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
+SELECT ?title ?date ?price ?url ?address WHERE { 
+  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
+  ?event :hasFacility ?facility .
+  ?event a :StorytellingPuppetsEvent .
+  ?event :hasTitle ?title .
+  ?event :hasStartingDate ?date .
+  ?event :hasEventUrl ?url .
+  ?event <https://saref.etsi.org/core/hasPrice> ?price .
+}
+
+5. Query information about all the events that take place in the district Arganzuela, of type StorytellingPuppetsEvent, and whose target audience are children:
+
+PREFIX : <http://groupfive.edu/kg/ontology/MadridEvents#>
+SELECT ?title ?facility ?address ?date ?price ?url WHERE { 
+  ?facility <http://www.w3.org/2006/vcard/ns#hasAddress> ?address .
+  ?event :hasFacility ?facility .
+  ?facility :hasDistrict <http://groupfive.edu/kg/resources/district/Arganzuela> .
+  ?event a :StorytellingPuppetsEvent .
+  ?event :hasTitle ?title .
+  ?event :hasAudiance <http://groupfive.edu/kg/resources/audiance/children> .
+  ?event :hasStartingDate ?date .
+  ?event :hasEventUrl ?url .
+  ?event <https://saref.etsi.org/core/hasPrice> ?price .
+}
+

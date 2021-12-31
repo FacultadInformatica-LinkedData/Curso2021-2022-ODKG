@@ -202,9 +202,11 @@ WHERE
 
 # In Kypher:
 kgtk("""
-    query -i all
-        --match '()<-[l {label: property}]-()-[:P279*]->(:Q483501)'
+        query -i all
+        --match '
+        ()<-[l {label: property}]-(artist)-[:P106]->(class)-[:P279star]->(:Q483501)'
         --return 'distinct property'
+    / add-labels
 """)
 
 # And a film director?
@@ -219,9 +221,10 @@ WHERE {
 """
 # In Kypher:
 kgtk("""
-    query -i all
-        --match '()<-[l {label: property}]-()-[:P279*]->(:Q2526255)'
-        --return 'distinct property'
+      query -i all
+      --match '()<-[l {label: property}]-(element)-[:P106]->(class)-[:P279star]->(:Q2526255)'
+      --return 'distinct property as Property'
+    / add-labels
 """)
 
 # Embeddings. Run the noebook https://colab.research.google.com/drive/1A55l10voA4jnjoju3fojJWY3buLfaR4i?usp=sharing. 
